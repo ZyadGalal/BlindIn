@@ -1,0 +1,46 @@
+PODS:
+  - Alamofire (4.7.0)
+  - FTIndicator (1.2.9):
+    - FTIndicator/FTNotificationIndicator (= 1.2.9)
+    - FTIndicator/FTProgressIndicator (= 1.2.9)
+    - FTIndicator/FTToastIndicator (= 1.2.9)
+  - FTIndicator/FTNotificationIndicator (1.2.9)
+  - FTIndicator/FTProgressIndicator (1.2.9)
+  - FTIndicator/FTToastIndicator (1.2.9)
+  - GoogleMaps (3.1.0):
+    - GoogleMaps/Maps (= 3.1.0)
+  - GoogleMaps/Base (3.1.0)
+  - GoogleMaps/Maps (3.1.0):
+    - GoogleMaps/Base
+  - IQKeyboardManagerSwift (6.3.0)
+  - MOLH (0.8)
+  - TextFieldEffects (1.5.1)
+
+DEPENDENCIES:
+  - Alamofire (= 4.7)
+  - FTIndicator
+  - GoogleMaps
+  - IQKeyboardManagerSwift
+  - MOLH
+  - TextFieldEffects
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - FTIndicator
+    - GoogleMaps
+    - IQKeyboardManagerSwift
+    - MOLH
+    - TextFieldEffects
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  FTIndicator: f7f071fd159e5befa1d040a9ef2e3ab53fa9322c
+  GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  MOLH: b9766efe89be975ce82a8d5642f681da23c876fc
+  TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
+
+PODFILE CHECKSUM: 4311549062207bc4311a91926fbc186db274b75f
+
+COCOAPODS: 1.6.1
