@@ -35,13 +35,13 @@ extension MZInterestsViewController : UICollectionViewDataSource , UICollectionV
         let cell =  interestCollectionView.dequeueReusableCell(withReuseIdentifier: "interestsCell", for: indexPath) as! MZInterestsCollectionViewCell
         
         cell.interestLabel.text = "FORTNITE"
-        cell.interestImageView.image = UIImage(named: "fortnite")
-        
+        cell.interestImageView.image = UIImage(named: "1")
+      
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.width/3)  , height: (collectionView.frame.width/3))
+        return CGSize(width: (collectionView.frame.width/3)  , height: 150)
     }
 }
 

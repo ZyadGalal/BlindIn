@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if extensionPointIdentifier == .keyboard {
             return false
         }
+        
         return true
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetworkManager.shared.startNetworkReachabilityObserver()
         IQKeyboardManager.shared.enable = true
-
+        GMSServices.provideAPIKey("AIzaSyC1-bAGgQ52sXl4ev2GbXofTDfugryxvY0")
         return true
     }
 

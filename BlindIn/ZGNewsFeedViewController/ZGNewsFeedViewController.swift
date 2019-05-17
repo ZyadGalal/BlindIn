@@ -27,6 +27,8 @@ class ZGNewsFeedViewController: UIViewController {
         profileButton.addTarget(self, action: #selector(ProfileButtonClicked), for: .touchUpInside)
         let navigationBtn = UIBarButtonItem(customView: profileButton)
         self.navigationItem.setRightBarButton(navigationBtn, animated: false)
+        
+        
     }
     @objc func ProfileButtonClicked ()
     {

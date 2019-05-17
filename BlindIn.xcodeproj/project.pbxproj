@@ -30,6 +30,8 @@
 		32AA1C23228DF62F0036E252 /* MZHangoutDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA1C22228DF62F0036E252 /* MZHangoutDescriptionViewController.swift */; };
 		32AB8222227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB8221227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift */; };
 		32AB8224227E527D00BD98D1 /* ZGUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB8223227E527D00BD98D1 /* ZGUserProfileViewController.swift */; };
+		32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */; };
+		32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */; };
 		BD3DE6927E2A798BF3DB93A9 /* Pods_BlindInTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4110A44A917F91129B497CAB /* Pods_BlindInTests.framework */; };
 		DB5417ADA61BC1ACC45FFF14 /* Pods_BlindIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF45241557BE3ABED7FF698 /* Pods_BlindIn.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +84,8 @@
 		32AA1C22228DF62F0036E252 /* MZHangoutDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutDescriptionViewController.swift; sourceTree = "<group>"; };
 		32AB8221227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGUserProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		32AB8223227E527D00BD98D1 /* ZGUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGUserProfileViewController.swift; sourceTree = "<group>"; };
+		32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGHangMapViewController.swift; sourceTree = "<group>"; };
+		32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerShape.swift; sourceTree = "<group>"; };
 		3D9FC336C61DA2527110FD23 /* Pods-BlindInUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindInUITests.release.xcconfig"; path = "Target Support Files/Pods-BlindInUITests/Pods-BlindInUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4110A44A917F91129B497CAB /* Pods_BlindInTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindInTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E1FA619F54E85D966466F28 /* Pods-BlindIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindIn.release.xcconfig"; path = "Target Support Files/Pods-BlindIn/Pods-BlindIn.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				32AA1C14228DC57B0036E252 /* MZAuthenticationViewController */,
 				32AA1C13228DC5620036E252 /* MZInterestsViewController */,
 				32AA1C1F228DEDD30036E252 /* MZHangoutViewController */,
+				32AF49AC228EF09700EE7D18 /* ZGHangMapViewController */,
 				32AB8220227E522E00BD98D1 /* ZGUserProfileViewController */,
 				328A4C3A227E322500DFB85E /* ZGNewsFeedViewController */,
 				3258DCD7227DCCBA0014B316 /* AppDelegate.swift */,
@@ -243,6 +248,15 @@
 				32AB8223227E527D00BD98D1 /* ZGUserProfileViewController.swift */,
 			);
 			path = ZGUserProfileViewController;
+			sourceTree = "<group>";
+		};
+		32AF49AC228EF09700EE7D18 /* ZGHangMapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */,
+				32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */,
+			);
+			path = ZGHangMapViewController;
 			sourceTree = "<group>";
 		};
 		FB122979B54AA2A01C48213A /* Pods */ = {
@@ -516,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */,
 				32AB8222227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift in Sources */,
 				32AB8224227E527D00BD98D1 /* ZGUserProfileViewController.swift in Sources */,
 				32AA1C1C228DC62B0036E252 /* MZSignUpViewController.swift in Sources */,
@@ -528,6 +543,7 @@
 				328A4C3C227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift in Sources */,
 				32AA1C21228DEE900036E252 /* MZHangoutCreationViewController.swift in Sources */,
 				32AA1C18228DC5E90036E252 /* MZInterestsCollectionViewCell.swift in Sources */,
+				32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */,
 				3258DCD8227DCCBA0014B316 /* AppDelegate.swift in Sources */,
 				32AA1C1E228DC63C0036E252 /* MZAuthViewController.swift in Sources */,
 				3258DD12227DCDDF0014B316 /* Rating.swift in Sources */,
