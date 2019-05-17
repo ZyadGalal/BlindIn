@@ -20,7 +20,7 @@
 		3258DD12227DCDDF0014B316 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0D227DCDDF0014B316 /* Rating.swift */; };
 		328A4C3C227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */; };
 		328A4C3E227E327200DFB85E /* ZGNewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */; };
-		32AA1C10228DC5160036E252 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AA1C0E228DC5160036E252 /* Second.storyboard */; };
+		329AB0C3228F34F8007234CE /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 329AB0C1228F34F7007234CE /* Second.storyboard */; };
 		32AA1C16228DC5C40036E252 /* MZInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA1C15228DC5C40036E252 /* MZInterestsViewController.swift */; };
 		32AA1C18228DC5E90036E252 /* MZInterestsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA1C17228DC5E90036E252 /* MZInterestsCollectionViewCell.swift */; };
 		32AA1C1A228DC6180036E252 /* MZLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA1C19228DC6180036E252 /* MZLoginViewController.swift */; };
@@ -72,7 +72,7 @@
 		3258DD0D227DCDDF0014B316 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGNewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGNewsFeedViewController.swift; sourceTree = "<group>"; };
-		32AA1C0F228DC5160036E252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../BlendInFake/BlendIn/Base.lproj/Second.storyboard; sourceTree = "<group>"; };
+		329AB0C2228F34F7007234CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Second.storyboard; sourceTree = "<group>"; };
 		32AA1C15228DC5C40036E252 /* MZInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInterestsViewController.swift; sourceTree = "<group>"; };
 		32AA1C17228DC5E90036E252 /* MZInterestsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInterestsCollectionViewCell.swift; sourceTree = "<group>"; };
 		32AA1C19228DC6180036E252 /* MZLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZLoginViewController.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				3258DCD7227DCCBA0014B316 /* AppDelegate.swift */,
 				3258DCD9227DCCBA0014B316 /* ViewController.swift */,
 				3258DCDB227DCCBA0014B316 /* Main.storyboard */,
-				32AA1C0E228DC5160036E252 /* Second.storyboard */,
+				329AB0C1228F34F7007234CE /* Second.storyboard */,
 				3258DCDE227DCCBE0014B316 /* Assets.xcassets */,
 				3258DCE0227DCCBE0014B316 /* LaunchScreen.storyboard */,
 				3258DCE3227DCCBE0014B316 /* Info.plist */,
@@ -367,7 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32AA1C10228DC5160036E252 /* Second.storyboard in Resources */,
+				329AB0C3228F34F8007234CE /* Second.storyboard in Resources */,
 				3258DCE2227DCCBE0014B316 /* LaunchScreen.storyboard in Resources */,
 				3258DCDF227DCCBE0014B316 /* Assets.xcassets in Resources */,
 				3258DCDD227DCCBA0014B316 /* Main.storyboard in Resources */,
@@ -583,10 +583,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		32AA1C0E228DC5160036E252 /* Second.storyboard */ = {
+		329AB0C1228F34F7007234CE /* Second.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				32AA1C0F228DC5160036E252 /* Base */,
+				329AB0C2228F34F7007234CE /* Base */,
 			);
 			name = Second.storyboard;
 			sourceTree = "<group>";
