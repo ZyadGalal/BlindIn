@@ -23,7 +23,7 @@ class MZInterestsViewController: UIViewController {
     }
 }
 
-extension MZInterestsViewController : UICollectionViewDataSource , UICollectionViewDelegate{
+extension MZInterestsViewController : UICollectionViewDataSource , UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     
     
     
@@ -40,6 +40,8 @@ extension MZInterestsViewController : UICollectionViewDataSource , UICollectionV
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.frame.width/3)  , height: (collectionView.frame.width/3))
+    }
 }
 
