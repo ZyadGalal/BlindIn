@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hpl-6J-NTy">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="news" rowHeight="370" id="Uko-Nu-e0g" customClass="ZGNewsFeedTableViewCell" customModule="BlindIn" customModuleProvider="target">
@@ -200,6 +200,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1072.8" y="98.50074962518741"/>
+        </scene>
+        <!--Hang Map View Controller-->
+        <scene sceneID="hZ3-c5-jhH">
+            <objects>
+                <viewController id="rSd-ye-rT3" customClass="ZGHangMapViewController" customModule="BlindIn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cle-Zw-D8c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEE-Tk-RfU" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epv-zy-PPP">
+                                <rect key="frame" x="10" y="477" width="355" height="170"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rbN-vH-zLE">
+                                        <rect key="frame" x="8" y="8" width="135" height="154"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="Wgl-In-l85"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74c-Ut-uEK">
+                                        <rect key="frame" x="151" y="8" width="45" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <color key="textColor" red="0.23921568630000001" green="0.39607843139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkU-yN-rAn">
+                                        <rect key="frame" x="151" y="37.5" width="196" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="gGa-Rx-cti" firstAttribute="bottom" secondItem="rbN-vH-zLE" secondAttribute="bottom" constant="8" id="1Ta-XW-7VA"/>
+                                    <constraint firstItem="rbN-vH-zLE" firstAttribute="top" secondItem="gGa-Rx-cti" secondAttribute="top" constant="8" id="69a-9o-koP"/>
+                                    <constraint firstItem="rkU-yN-rAn" firstAttribute="top" secondItem="74c-Ut-uEK" secondAttribute="bottom" constant="8" id="8aY-sc-n7R"/>
+                                    <constraint firstItem="gGa-Rx-cti" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="74c-Ut-uEK" secondAttribute="trailing" constant="8" id="9Y0-Zh-Q3z"/>
+                                    <constraint firstItem="74c-Ut-uEK" firstAttribute="top" secondItem="rbN-vH-zLE" secondAttribute="top" id="NKk-3O-9CJ"/>
+                                    <constraint firstItem="rkU-yN-rAn" firstAttribute="leading" secondItem="74c-Ut-uEK" secondAttribute="leading" id="NPH-8w-9hM"/>
+                                    <constraint firstItem="gGa-Rx-cti" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rkU-yN-rAn" secondAttribute="bottom" constant="8" id="T2c-Di-IS6"/>
+                                    <constraint firstItem="gGa-Rx-cti" firstAttribute="trailing" secondItem="rkU-yN-rAn" secondAttribute="trailing" constant="8" id="e34-me-zAe"/>
+                                    <constraint firstAttribute="height" constant="170" id="jqG-EZ-hhg"/>
+                                    <constraint firstItem="rbN-vH-zLE" firstAttribute="leading" secondItem="gGa-Rx-cti" secondAttribute="leading" constant="8" id="pfc-u5-oYq"/>
+                                    <constraint firstItem="74c-Ut-uEK" firstAttribute="leading" secondItem="rbN-vH-zLE" secondAttribute="trailing" constant="8" id="qEI-86-7FT"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="gGa-Rx-cti"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="epv-zy-PPP" firstAttribute="leading" secondItem="9Pk-w5-jfE" secondAttribute="leading" constant="10" id="4re-Tq-vxU"/>
+                            <constraint firstItem="9Pk-w5-jfE" firstAttribute="trailing" secondItem="eEE-Tk-RfU" secondAttribute="trailing" id="EUb-rk-M2k"/>
+                            <constraint firstItem="9Pk-w5-jfE" firstAttribute="bottom" secondItem="epv-zy-PPP" secondAttribute="bottom" constant="20" id="Qcv-kH-sZ6"/>
+                            <constraint firstItem="9Pk-w5-jfE" firstAttribute="trailing" secondItem="epv-zy-PPP" secondAttribute="trailing" constant="10" id="c9V-NK-Xmm"/>
+                            <constraint firstItem="eEE-Tk-RfU" firstAttribute="leading" secondItem="9Pk-w5-jfE" secondAttribute="leading" id="jYm-y6-L3i"/>
+                            <constraint firstItem="eEE-Tk-RfU" firstAttribute="top" secondItem="9Pk-w5-jfE" secondAttribute="top" id="lR9-3Z-I8t"/>
+                            <constraint firstItem="9Pk-w5-jfE" firstAttribute="bottom" secondItem="eEE-Tk-RfU" secondAttribute="bottom" id="wGO-O6-MPg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Pk-w5-jfE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QyZ-0H-Rtf"/>
+                    <connections>
+                        <outlet property="hangContainerView" destination="epv-zy-PPP" id="gM4-1F-Idk"/>
+                        <outlet property="hangDescriptionLabel" destination="rkU-yN-rAn" id="952-XM-Ete"/>
+                        <outlet property="hangImageView" destination="rbN-vH-zLE" id="lrn-Lk-QDD"/>
+                        <outlet property="hangTitleLabel" destination="74c-Ut-uEK" id="yFl-lC-c71"/>
+                        <outlet property="mapView" destination="eEE-Tk-RfU" id="bQg-RR-Oze"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="184-gs-y9k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="993"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="i6O-Jg-Nqh">
+            <objects>
+                <viewController id="xgL-wr-9Ia" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bhx-uR-yZX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Xun-vA-Qy9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="spA-Me-PTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718" y="993"/>
         </scene>
         <!--     -->
         <scene sceneID="RTp-37-eL3">
@@ -631,7 +735,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="RFt-7j-1Qz"/>
+                        <segue destination="rSd-ye-rT3" kind="relationship" relationship="rootViewController" id="sNC-oX-CiG"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUu-FJ-5bl" userLabel="First Responder" sceneMemberID="firstResponder"/>
