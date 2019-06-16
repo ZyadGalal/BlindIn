@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MZAssignAdminTableViewCell" customModule="BlindIn" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="392" height="72.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="mmn-Uh-aeQ">
+                        <rect key="frame" x="14" y="9" width="50" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="S3R-87-ce0"/>
+                            <constraint firstAttribute="height" constant="53" id="ZaX-Hh-EbL"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOb-mv-UgI">
+                        <rect key="frame" x="72" y="26" width="98" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbY-KY-dDw">
+                        <rect key="frame" x="278" y="21" width="100" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="pqO-nQ-m3m"/>
+                        </constraints>
+                        <state key="normal" title="Assign">
+                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <state key="selected" title="Remove">
+                            <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ZOb-mv-UgI" secondAttribute="bottom" constant="25.5" id="3iQ-Sa-FE3"/>
+                    <constraint firstItem="BbY-KY-dDw" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ZOb-mv-UgI" secondAttribute="trailing" constant="108" id="I11-bd-0Ej"/>
+                    <constraint firstItem="BbY-KY-dDw" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ZOb-mv-UgI" secondAttribute="trailing" constant="108" id="IBo-NG-6Pe"/>
+                    <constraint firstAttribute="trailing" secondItem="BbY-KY-dDw" secondAttribute="trailing" constant="14" id="Jkd-mA-QXW"/>
+                    <constraint firstAttribute="bottom" secondItem="mmn-Uh-aeQ" secondAttribute="bottom" constant="10.5" id="LG0-L4-4Po"/>
+                    <constraint firstItem="BbY-KY-dDw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="RQm-tg-gaz"/>
+                    <constraint firstItem="ZOb-mv-UgI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="Uss-i3-IOC"/>
+                    <constraint firstItem="mmn-Uh-aeQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="Z66-fb-4uE"/>
+                    <constraint firstItem="ZOb-mv-UgI" firstAttribute="leading" secondItem="mmn-Uh-aeQ" secondAttribute="trailing" constant="8" id="aj4-sc-SiA"/>
+                    <constraint firstAttribute="bottom" secondItem="BbY-KY-dDw" secondAttribute="bottom" constant="21.5" id="c6C-Fh-RPi"/>
+                    <constraint firstItem="mmn-Uh-aeQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="ek2-8s-tbM"/>
+                    <constraint firstItem="ZOb-mv-UgI" firstAttribute="leading" secondItem="mmn-Uh-aeQ" secondAttribute="trailing" constant="8" id="gZy-q5-jD3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="adminImageView" destination="mmn-Uh-aeQ" id="pn9-ib-Tqs"/>
+                <outlet property="adminNameLabel" destination="ZOb-mv-UgI" id="X6O-pf-gGp"/>
+                <outlet property="assignButton" destination="BbY-KY-dDw" id="qF7-u1-3WX"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="1" width="1366" height="768"/>
+    </resources>
+</document>

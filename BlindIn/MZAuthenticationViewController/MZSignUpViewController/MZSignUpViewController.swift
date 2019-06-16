@@ -20,6 +20,7 @@ class MZSignUpViewController: UIViewController {
     
     @IBAction func signUpClicked(_ sender: Any) {
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInterestsViewController") as! MZInterestsViewController
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

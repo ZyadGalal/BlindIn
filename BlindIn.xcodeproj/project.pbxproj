@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		051D36D9DFBBD9FEC57B24D2 /* Pods_BlindInUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7636D7D6CCF946292D6B1CA6 /* Pods_BlindInUITests.framework */; };
+		322DEEA322A3571600408EC9 /* MZInviteFromMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DEEA222A3571600408EC9 /* MZInviteFromMapViewController.swift */; };
+		322DEEA722A368C100408EC9 /* MZInviteFromCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DEEA622A368C100408EC9 /* MZInviteFromCollectionViewController.swift */; };
+		322DEEA922A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DEEA822A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift */; };
+		322DEEAB22A3690300408EC9 /* MZBestiesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DEEAA22A3690300408EC9 /* MZBestiesCollectionViewCell.swift */; };
 		3258DCD8227DCCBA0014B316 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DCD7227DCCBA0014B316 /* AppDelegate.swift */; };
 		3258DCDA227DCCBA0014B316 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DCD9227DCCBA0014B316 /* ViewController.swift */; };
 		3258DCDD227DCCBA0014B316 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3258DCDB227DCCBA0014B316 /* Main.storyboard */; };
@@ -18,6 +22,25 @@
 		3258DD09227DCDCA0014B316 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD08227DCDCA0014B316 /* NetworkManager.swift */; };
 		3258DD11227DCDDF0014B316 /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0C227DCDDF0014B316 /* UIView+Extentions.swift */; };
 		3258DD12227DCDDF0014B316 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0D227DCDDF0014B316 /* Rating.swift */; };
+		326241BC22B53AE30085F643 /* MZNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241BB22B53AE30085F643 /* MZNotificationViewController.swift */; };
+		326241BF22B53FE50085F643 /* MZHangoutNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */; };
+		326241C222B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */; };
+		326241C322B5400F0085F643 /* MZHangoutNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326241C122B5400F0085F643 /* MZHangoutNotificationTableViewCell.xib */; };
+		326241C622B544620085F643 /* MZHangoutAddPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241C422B544620085F643 /* MZHangoutAddPostTableViewCell.swift */; };
+		326241C722B544620085F643 /* MZHangoutAddPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326241C522B544620085F643 /* MZHangoutAddPostTableViewCell.xib */; };
+		326241CB22B555900085F643 /* MZInviteNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241CA22B555900085F643 /* MZInviteNotificationViewController.swift */; };
+		326241D222B556F30085F643 /* MZFollowBackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241D022B556F30085F643 /* MZFollowBackTableViewCell.swift */; };
+		326241D322B556F30085F643 /* MZFollowBackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326241D122B556F30085F643 /* MZFollowBackTableViewCell.xib */; };
+		326241D622B5570A0085F643 /* MZConfirmBestieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241D422B5570A0085F643 /* MZConfirmBestieTableViewCell.swift */; };
+		326241D722B5570A0085F643 /* MZConfirmBestieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326241D522B5570A0085F643 /* MZConfirmBestieTableViewCell.xib */; };
+		326241DA22B574DA0085F643 /* MZHangoutSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241D922B574DA0085F643 /* MZHangoutSettingViewController.swift */; };
+		326241DD22B6573E0085F643 /* MZOffersDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241DC22B6573E0085F643 /* MZOffersDetailsViewController.swift */; };
+		32688EBE22A5E4BE00E6C89F /* MZOffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EBD22A5E4BE00E6C89F /* MZOffersViewController.swift */; };
+		32688EC122A5E4E600E6C89F /* MZOffersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EBF22A5E4E600E6C89F /* MZOffersTableViewCell.swift */; };
+		32688EC222A5E4E600E6C89F /* MZOffersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32688EC022A5E4E600E6C89F /* MZOffersTableViewCell.xib */; };
+		32688EC522A5F5F600E6C89F /* MZAssignAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EC422A5F5F600E6C89F /* MZAssignAdminViewController.swift */; };
+		32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EC822A5F62900E6C89F /* MZAssignAdminTableViewCell.swift */; };
+		32688ECB22A5F62900E6C89F /* MZAssignAdminTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32688EC922A5F62900E6C89F /* MZAssignAdminTableViewCell.xib */; };
 		328A4C3C227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */; };
 		328A4C3E227E327200DFB85E /* ZGNewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */; };
 		329AB0C3228F34F8007234CE /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 329AB0C1228F34F7007234CE /* Second.storyboard */; };
@@ -32,6 +55,14 @@
 		32AB8224227E527D00BD98D1 /* ZGUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB8223227E527D00BD98D1 /* ZGUserProfileViewController.swift */; };
 		32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */; };
 		32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */; };
+		32BC9AAF22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */; };
+		32D8620C22A49294001F0CC0 /* MZInviteMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8620B22A49294001F0CC0 /* MZInviteMembersViewController.swift */; };
+		32D8620F22A4B3D4001F0CC0 /* MZAllowedMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8620E22A4B3D4001F0CC0 /* MZAllowedMemberViewController.swift */; };
+		32D8621222A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8621022A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.swift */; };
+		32D8621322A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D8621122A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.xib */; };
+		32D8621622A4BFD8001F0CC0 /* MZBestiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8621522A4BFD8001F0CC0 /* MZBestiesViewController.swift */; };
+		32D8621D22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8621B22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift */; };
+		32D8621E22A4C3A7001F0CC0 /* MZBestieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D8621C22A4C3A7001F0CC0 /* MZBestieTableViewCell.xib */; };
 		BD3DE6927E2A798BF3DB93A9 /* Pods_BlindInTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4110A44A917F91129B497CAB /* Pods_BlindInTests.framework */; };
 		DB5417ADA61BC1ACC45FFF14 /* Pods_BlindIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF45241557BE3ABED7FF698 /* Pods_BlindIn.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +87,10 @@
 /* Begin PBXFileReference section */
 		0D58DBD301ADDFF192E4F9B9 /* Pods-BlindInUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindInUITests.debug.xcconfig"; path = "Target Support Files/Pods-BlindInUITests/Pods-BlindInUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		292CEBE25B1306A3487B0D26 /* Pods-BlindInTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindInTests.debug.xcconfig"; path = "Target Support Files/Pods-BlindInTests/Pods-BlindInTests.debug.xcconfig"; sourceTree = "<group>"; };
+		322DEEA222A3571600408EC9 /* MZInviteFromMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInviteFromMapViewController.swift; sourceTree = "<group>"; };
+		322DEEA622A368C100408EC9 /* MZInviteFromCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInviteFromCollectionViewController.swift; sourceTree = "<group>"; };
+		322DEEA822A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZNearbyMemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		322DEEAA22A3690300408EC9 /* MZBestiesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBestiesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3258DCD4227DCCBA0014B316 /* BlindIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3258DCD7227DCCBA0014B316 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3258DCD9227DCCBA0014B316 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +107,25 @@
 		3258DD08227DCDCA0014B316 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3258DD0C227DCDDF0014B316 /* UIView+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 		3258DD0D227DCDDF0014B316 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		326241BB22B53AE30085F643 /* MZNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZNotificationViewController.swift; sourceTree = "<group>"; };
+		326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutNotificationViewController.swift; sourceTree = "<group>"; };
+		326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		326241C122B5400F0085F643 /* MZHangoutNotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZHangoutNotificationTableViewCell.xib; sourceTree = "<group>"; };
+		326241C422B544620085F643 /* MZHangoutAddPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutAddPostTableViewCell.swift; sourceTree = "<group>"; };
+		326241C522B544620085F643 /* MZHangoutAddPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZHangoutAddPostTableViewCell.xib; sourceTree = "<group>"; };
+		326241CA22B555900085F643 /* MZInviteNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInviteNotificationViewController.swift; sourceTree = "<group>"; };
+		326241D022B556F30085F643 /* MZFollowBackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZFollowBackTableViewCell.swift; sourceTree = "<group>"; };
+		326241D122B556F30085F643 /* MZFollowBackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZFollowBackTableViewCell.xib; sourceTree = "<group>"; };
+		326241D422B5570A0085F643 /* MZConfirmBestieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZConfirmBestieTableViewCell.swift; sourceTree = "<group>"; };
+		326241D522B5570A0085F643 /* MZConfirmBestieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZConfirmBestieTableViewCell.xib; sourceTree = "<group>"; };
+		326241D922B574DA0085F643 /* MZHangoutSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutSettingViewController.swift; sourceTree = "<group>"; };
+		326241DC22B6573E0085F643 /* MZOffersDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZOffersDetailsViewController.swift; sourceTree = "<group>"; };
+		32688EBD22A5E4BE00E6C89F /* MZOffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZOffersViewController.swift; sourceTree = "<group>"; };
+		32688EBF22A5E4E600E6C89F /* MZOffersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZOffersTableViewCell.swift; sourceTree = "<group>"; };
+		32688EC022A5E4E600E6C89F /* MZOffersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZOffersTableViewCell.xib; sourceTree = "<group>"; };
+		32688EC422A5F5F600E6C89F /* MZAssignAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAssignAdminViewController.swift; sourceTree = "<group>"; };
+		32688EC822A5F62900E6C89F /* MZAssignAdminTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAssignAdminTableViewCell.swift; sourceTree = "<group>"; };
+		32688EC922A5F62900E6C89F /* MZAssignAdminTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZAssignAdminTableViewCell.xib; sourceTree = "<group>"; };
 		328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGNewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGNewsFeedViewController.swift; sourceTree = "<group>"; };
 		329AB0C2228F34F7007234CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Second.storyboard; sourceTree = "<group>"; };
@@ -86,6 +140,14 @@
 		32AB8223227E527D00BD98D1 /* ZGUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGUserProfileViewController.swift; sourceTree = "<group>"; };
 		32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGHangMapViewController.swift; sourceTree = "<group>"; };
 		32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerShape.swift; sourceTree = "<group>"; };
+		32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutMembersLimitViewController.swift; sourceTree = "<group>"; };
+		32D8620B22A49294001F0CC0 /* MZInviteMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInviteMembersViewController.swift; sourceTree = "<group>"; };
+		32D8620E22A4B3D4001F0CC0 /* MZAllowedMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAllowedMemberViewController.swift; sourceTree = "<group>"; };
+		32D8621022A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAllowedMemberTableViewCell.swift; sourceTree = "<group>"; };
+		32D8621122A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZAllowedMemberTableViewCell.xib; sourceTree = "<group>"; };
+		32D8621522A4BFD8001F0CC0 /* MZBestiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBestiesViewController.swift; sourceTree = "<group>"; };
+		32D8621B22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBestieTableViewCell.swift; sourceTree = "<group>"; };
+		32D8621C22A4C3A7001F0CC0 /* MZBestieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZBestieTableViewCell.xib; sourceTree = "<group>"; };
 		3D9FC336C61DA2527110FD23 /* Pods-BlindInUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindInUITests.release.xcconfig"; path = "Target Support Files/Pods-BlindInUITests/Pods-BlindInUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4110A44A917F91129B497CAB /* Pods_BlindInTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindInTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E1FA619F54E85D966466F28 /* Pods-BlindIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindIn.release.xcconfig"; path = "Target Support Files/Pods-BlindIn/Pods-BlindIn.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +195,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		322DEEA022A3562D00408EC9 /* MZInviteFromMapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				322DEEA222A3571600408EC9 /* MZInviteFromMapViewController.swift */,
+			);
+			path = MZInviteFromMapViewController;
+			sourceTree = "<group>";
+		};
+		322DEEA122A356A000408EC9 /* MZInviteFromCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				322DEEA622A368C100408EC9 /* MZInviteFromCollectionViewController.swift */,
+				322DEEA822A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift */,
+				322DEEAA22A3690300408EC9 /* MZBestiesCollectionViewCell.swift */,
+			);
+			path = MZInviteFromCollectionViewController;
+			sourceTree = "<group>";
+		};
 		3258DCCB227DCCBA0014B316 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +242,13 @@
 				32AA1C14228DC57B0036E252 /* MZAuthenticationViewController */,
 				32AA1C13228DC5620036E252 /* MZInterestsViewController */,
 				32AA1C1F228DEDD30036E252 /* MZHangoutViewController */,
+				32D8620822A4913C001F0CC0 /* MZInviteMembersViewController */,
+				326241BD22B53AF30085F643 /* MZNotificationViewController */,
+				32D8620D22A4B375001F0CC0 /* MZAllowedMemberViewController */,
+				32688EC322A5F5CA00E6C89F /* MZAssignAdminsViewController */,
+				32D8621422A4BF9E001F0CC0 /* MZBestiesViewController */,
+				32688EBC22A5E49300E6C89F /* MZOffersViewController */,
+				326241D822B574930085F643 /* MZHangoutSettingViewController */,
 				32AF49AC228EF09700EE7D18 /* ZGHangMapViewController */,
 				32AB8220227E522E00BD98D1 /* ZGUserProfileViewController */,
 				328A4C3A227E322500DFB85E /* ZGNewsFeedViewController */,
@@ -204,6 +291,77 @@
 			path = helpers;
 			sourceTree = "<group>";
 		};
+		326241BD22B53AF30085F643 /* MZNotificationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				326241BB22B53AE30085F643 /* MZNotificationViewController.swift */,
+				326241C822B548750085F643 /* MZHangoutNotificationViewController */,
+				326241C922B555260085F643 /* MZInviteNotificationViewController */,
+			);
+			path = MZNotificationViewController;
+			sourceTree = "<group>";
+		};
+		326241C822B548750085F643 /* MZHangoutNotificationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */,
+				326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */,
+				326241C122B5400F0085F643 /* MZHangoutNotificationTableViewCell.xib */,
+				326241C422B544620085F643 /* MZHangoutAddPostTableViewCell.swift */,
+				326241C522B544620085F643 /* MZHangoutAddPostTableViewCell.xib */,
+			);
+			path = MZHangoutNotificationViewController;
+			sourceTree = "<group>";
+		};
+		326241C922B555260085F643 /* MZInviteNotificationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				326241CA22B555900085F643 /* MZInviteNotificationViewController.swift */,
+				326241D022B556F30085F643 /* MZFollowBackTableViewCell.swift */,
+				326241D122B556F30085F643 /* MZFollowBackTableViewCell.xib */,
+				326241D422B5570A0085F643 /* MZConfirmBestieTableViewCell.swift */,
+				326241D522B5570A0085F643 /* MZConfirmBestieTableViewCell.xib */,
+			);
+			path = MZInviteNotificationViewController;
+			sourceTree = "<group>";
+		};
+		326241D822B574930085F643 /* MZHangoutSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				326241D922B574DA0085F643 /* MZHangoutSettingViewController.swift */,
+			);
+			path = MZHangoutSettingViewController;
+			sourceTree = "<group>";
+		};
+		326241DB22B657150085F643 /* MZOffersDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				326241DC22B6573E0085F643 /* MZOffersDetailsViewController.swift */,
+			);
+			path = MZOffersDetailsViewController;
+			sourceTree = "<group>";
+		};
+		32688EBC22A5E49300E6C89F /* MZOffersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32688EBD22A5E4BE00E6C89F /* MZOffersViewController.swift */,
+				32688EBF22A5E4E600E6C89F /* MZOffersTableViewCell.swift */,
+				32688EC022A5E4E600E6C89F /* MZOffersTableViewCell.xib */,
+				326241DB22B657150085F643 /* MZOffersDetailsViewController */,
+			);
+			path = MZOffersViewController;
+			sourceTree = "<group>";
+		};
+		32688EC322A5F5CA00E6C89F /* MZAssignAdminsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32688EC422A5F5F600E6C89F /* MZAssignAdminViewController.swift */,
+				32688EC822A5F62900E6C89F /* MZAssignAdminTableViewCell.swift */,
+				32688EC922A5F62900E6C89F /* MZAssignAdminTableViewCell.xib */,
+			);
+			path = MZAssignAdminsViewController;
+			sourceTree = "<group>";
+		};
 		328A4C3A227E322500DFB85E /* ZGNewsFeedViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,9 +383,9 @@
 		32AA1C14228DC57B0036E252 /* MZAuthenticationViewController */ = {
 			isa = PBXGroup;
 			children = (
-				32AA1C19228DC6180036E252 /* MZLoginViewController.swift */,
-				32AA1C1B228DC62B0036E252 /* MZSignUpViewController.swift */,
 				32AA1C1D228DC63C0036E252 /* MZAuthViewController.swift */,
+				32D8620A22A491F7001F0CC0 /* MZSignUpViewController */,
+				32D8620922A491D8001F0CC0 /* MZLoginViewController */,
 			);
 			path = MZAuthenticationViewController;
 			sourceTree = "<group>";
@@ -237,6 +395,7 @@
 			children = (
 				32AA1C20228DEE900036E252 /* MZHangoutCreationViewController.swift */,
 				32AA1C22228DF62F0036E252 /* MZHangoutDescriptionViewController.swift */,
+				32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */,
 			);
 			path = MZHangoutViewController;
 			sourceTree = "<group>";
@@ -257,6 +416,52 @@
 				32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */,
 			);
 			path = ZGHangMapViewController;
+			sourceTree = "<group>";
+		};
+		32D8620822A4913C001F0CC0 /* MZInviteMembersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32D8620B22A49294001F0CC0 /* MZInviteMembersViewController.swift */,
+				322DEEA122A356A000408EC9 /* MZInviteFromCollectionViewController */,
+				322DEEA022A3562D00408EC9 /* MZInviteFromMapViewController */,
+			);
+			path = MZInviteMembersViewController;
+			sourceTree = "<group>";
+		};
+		32D8620922A491D8001F0CC0 /* MZLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32AA1C19228DC6180036E252 /* MZLoginViewController.swift */,
+			);
+			path = MZLoginViewController;
+			sourceTree = "<group>";
+		};
+		32D8620A22A491F7001F0CC0 /* MZSignUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32AA1C1B228DC62B0036E252 /* MZSignUpViewController.swift */,
+			);
+			path = MZSignUpViewController;
+			sourceTree = "<group>";
+		};
+		32D8620D22A4B375001F0CC0 /* MZAllowedMemberViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32D8620E22A4B3D4001F0CC0 /* MZAllowedMemberViewController.swift */,
+				32D8621022A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.swift */,
+				32D8621122A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.xib */,
+			);
+			path = MZAllowedMemberViewController;
+			sourceTree = "<group>";
+		};
+		32D8621422A4BF9E001F0CC0 /* MZBestiesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32D8621522A4BFD8001F0CC0 /* MZBestiesViewController.swift */,
+				32D8621B22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift */,
+				32D8621C22A4C3A7001F0CC0 /* MZBestieTableViewCell.xib */,
+			);
+			path = MZBestiesViewController;
 			sourceTree = "<group>";
 		};
 		FB122979B54AA2A01C48213A /* Pods */ = {
@@ -382,9 +587,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				329AB0C3228F34F8007234CE /* Second.storyboard in Resources */,
+				32688EC222A5E4E600E6C89F /* MZOffersTableViewCell.xib in Resources */,
+				326241C322B5400F0085F643 /* MZHangoutNotificationTableViewCell.xib in Resources */,
 				3258DCE2227DCCBE0014B316 /* LaunchScreen.storyboard in Resources */,
+				32D8621322A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.xib in Resources */,
 				3258DCDF227DCCBE0014B316 /* Assets.xcassets in Resources */,
+				326241D322B556F30085F643 /* MZFollowBackTableViewCell.xib in Resources */,
+				32D8621E22A4C3A7001F0CC0 /* MZBestieTableViewCell.xib in Resources */,
+				326241C722B544620085F643 /* MZHangoutAddPostTableViewCell.xib in Resources */,
 				3258DCDD227DCCBA0014B316 /* Main.storyboard in Resources */,
+				326241D722B5570A0085F643 /* MZConfirmBestieTableViewCell.xib in Resources */,
+				32688ECB22A5F62900E6C89F /* MZAssignAdminTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,22 +745,45 @@
 			files = (
 				32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */,
 				32AB8222227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift in Sources */,
+				322DEEA722A368C100408EC9 /* MZInviteFromCollectionViewController.swift in Sources */,
+				32D8621622A4BFD8001F0CC0 /* MZBestiesViewController.swift in Sources */,
+				326241BC22B53AE30085F643 /* MZNotificationViewController.swift in Sources */,
 				32AB8224227E527D00BD98D1 /* ZGUserProfileViewController.swift in Sources */,
+				326241D222B556F30085F643 /* MZFollowBackTableViewCell.swift in Sources */,
+				32688EC122A5E4E600E6C89F /* MZOffersTableViewCell.swift in Sources */,
+				32D8620F22A4B3D4001F0CC0 /* MZAllowedMemberViewController.swift in Sources */,
+				326241DA22B574DA0085F643 /* MZHangoutSettingViewController.swift in Sources */,
+				326241CB22B555900085F643 /* MZInviteNotificationViewController.swift in Sources */,
 				32AA1C1C228DC62B0036E252 /* MZSignUpViewController.swift in Sources */,
+				326241C622B544620085F643 /* MZHangoutAddPostTableViewCell.swift in Sources */,
+				32688EC522A5F5F600E6C89F /* MZAssignAdminViewController.swift in Sources */,
 				32AA1C23228DF62F0036E252 /* MZHangoutDescriptionViewController.swift in Sources */,
+				32BC9AAF22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift in Sources */,
 				3258DD09227DCDCA0014B316 /* NetworkManager.swift in Sources */,
+				326241C222B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift in Sources */,
 				32AA1C16228DC5C40036E252 /* MZInterestsViewController.swift in Sources */,
+				32688EBE22A5E4BE00E6C89F /* MZOffersViewController.swift in Sources */,
 				3258DCDA227DCCBA0014B316 /* ViewController.swift in Sources */,
+				32D8620C22A49294001F0CC0 /* MZInviteMembersViewController.swift in Sources */,
 				32AA1C1A228DC6180036E252 /* MZLoginViewController.swift in Sources */,
+				32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */,
+				326241DD22B6573E0085F643 /* MZOffersDetailsViewController.swift in Sources */,
+				322DEEA322A3571600408EC9 /* MZInviteFromMapViewController.swift in Sources */,
 				3258DD11227DCDDF0014B316 /* UIView+Extentions.swift in Sources */,
+				32D8621222A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.swift in Sources */,
+				322DEEA922A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift in Sources */,
+				326241D622B5570A0085F643 /* MZConfirmBestieTableViewCell.swift in Sources */,
 				328A4C3C227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift in Sources */,
 				32AA1C21228DEE900036E252 /* MZHangoutCreationViewController.swift in Sources */,
+				32D8621D22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift in Sources */,
 				32AA1C18228DC5E90036E252 /* MZInterestsCollectionViewCell.swift in Sources */,
 				32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */,
+				322DEEAB22A3690300408EC9 /* MZBestiesCollectionViewCell.swift in Sources */,
 				3258DCD8227DCCBA0014B316 /* AppDelegate.swift in Sources */,
 				32AA1C1E228DC63C0036E252 /* MZAuthViewController.swift in Sources */,
 				3258DD12227DCDDF0014B316 /* Rating.swift in Sources */,
 				328A4C3E227E327200DFB85E /* ZGNewsFeedViewController.swift in Sources */,
+				326241BF22B53FE50085F643 /* MZHangoutNotificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

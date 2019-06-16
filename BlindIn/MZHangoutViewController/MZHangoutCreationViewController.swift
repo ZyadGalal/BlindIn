@@ -11,6 +11,8 @@ import UIKit
 
 class MZHangoutCreationViewController: UIViewController {
 
+    @IBOutlet weak var hangoutPrivacySwitch: UISwitch!
+    @IBOutlet weak var requestToJoinSwitch: UISwitch!
     @IBOutlet weak var startDateTextField: HoshiTextField!
     @IBOutlet weak var endDateTextField: HoshiTextField!
     
@@ -60,16 +62,26 @@ class MZHangoutCreationViewController: UIViewController {
 
     }
     
-
-    @IBAction func dateTextFieldClicked(_ sender: HoshiTextField) {
-        textFieldName = sender
-    }
-    
-    
-    
-    
     @objc func tapButton(){
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutDescriptionViewController") as! MZHangoutDescriptionViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
+    
+    
+    @IBAction func dateTextFieldClicked(_ sender: HoshiTextField) {
+        textFieldName = sender
+    }
+    
+    @IBAction func privacySwitchPressed(_ sender: Any) {
+        print(hangoutPrivacySwitch.isOn)
+    }
+    
+    @IBAction func requestToJoinSwitchPressed(_ sender: Any) {
+        print(requestToJoinSwitch.isOn)
+    }
+    
+    
+    
 }
