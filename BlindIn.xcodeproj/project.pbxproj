@@ -35,6 +35,11 @@
 		326241D722B5570A0085F643 /* MZConfirmBestieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326241D522B5570A0085F643 /* MZConfirmBestieTableViewCell.xib */; };
 		326241DA22B574DA0085F643 /* MZHangoutSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241D922B574DA0085F643 /* MZHangoutSettingViewController.swift */; };
 		326241DD22B6573E0085F643 /* MZOffersDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241DC22B6573E0085F643 /* MZOffersDetailsViewController.swift */; };
+		326241E022B6A1400085F643 /* MZEventHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241DF22B6A1400085F643 /* MZEventHistoryViewController.swift */; };
+		326241E522B6A5E90085F643 /* MZBothEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241E322B6A5E90085F643 /* MZBothEventTableViewCell.swift */; };
+		326241E622B6A5E90085F643 /* MZBothEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326241E422B6A5E90085F643 /* MZBothEventTableViewCell.xib */; };
+		326241E822B6AD0D0085F643 /* MZPastEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241E722B6AD0D0085F643 /* MZPastEventViewController.swift */; };
+		326241EA22B6AD4D0085F643 /* MZUpcomingEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241E922B6AD4D0085F643 /* MZUpcomingEventViewController.swift */; };
 		32688EBE22A5E4BE00E6C89F /* MZOffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EBD22A5E4BE00E6C89F /* MZOffersViewController.swift */; };
 		32688EC122A5E4E600E6C89F /* MZOffersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EBF22A5E4E600E6C89F /* MZOffersTableViewCell.swift */; };
 		32688EC222A5E4E600E6C89F /* MZOffersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32688EC022A5E4E600E6C89F /* MZOffersTableViewCell.xib */; };
@@ -120,6 +125,11 @@
 		326241D522B5570A0085F643 /* MZConfirmBestieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZConfirmBestieTableViewCell.xib; sourceTree = "<group>"; };
 		326241D922B574DA0085F643 /* MZHangoutSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutSettingViewController.swift; sourceTree = "<group>"; };
 		326241DC22B6573E0085F643 /* MZOffersDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZOffersDetailsViewController.swift; sourceTree = "<group>"; };
+		326241DF22B6A1400085F643 /* MZEventHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZEventHistoryViewController.swift; sourceTree = "<group>"; };
+		326241E322B6A5E90085F643 /* MZBothEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBothEventTableViewCell.swift; sourceTree = "<group>"; };
+		326241E422B6A5E90085F643 /* MZBothEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZBothEventTableViewCell.xib; sourceTree = "<group>"; };
+		326241E722B6AD0D0085F643 /* MZPastEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZPastEventViewController.swift; sourceTree = "<group>"; };
+		326241E922B6AD4D0085F643 /* MZUpcomingEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZUpcomingEventViewController.swift; sourceTree = "<group>"; };
 		32688EBD22A5E4BE00E6C89F /* MZOffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZOffersViewController.swift; sourceTree = "<group>"; };
 		32688EBF22A5E4E600E6C89F /* MZOffersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZOffersTableViewCell.swift; sourceTree = "<group>"; };
 		32688EC022A5E4E600E6C89F /* MZOffersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZOffersTableViewCell.xib; sourceTree = "<group>"; };
@@ -244,6 +254,7 @@
 				32AA1C1F228DEDD30036E252 /* MZHangoutViewController */,
 				32D8620822A4913C001F0CC0 /* MZInviteMembersViewController */,
 				326241BD22B53AF30085F643 /* MZNotificationViewController */,
+				326241DE22B6A0930085F643 /* MZEventHistoryViewController */,
 				32D8620D22A4B375001F0CC0 /* MZAllowedMemberViewController */,
 				32688EC322A5F5CA00E6C89F /* MZAssignAdminsViewController */,
 				32D8621422A4BF9E001F0CC0 /* MZBestiesViewController */,
@@ -339,6 +350,34 @@
 				326241DC22B6573E0085F643 /* MZOffersDetailsViewController.swift */,
 			);
 			path = MZOffersDetailsViewController;
+			sourceTree = "<group>";
+		};
+		326241DE22B6A0930085F643 /* MZEventHistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				326241DF22B6A1400085F643 /* MZEventHistoryViewController.swift */,
+				326241E222B6A1B80085F643 /* MZPastEventViewController */,
+				326241E122B6A1640085F643 /* MZUpcomingEventViewController */,
+				326241E322B6A5E90085F643 /* MZBothEventTableViewCell.swift */,
+				326241E422B6A5E90085F643 /* MZBothEventTableViewCell.xib */,
+			);
+			path = MZEventHistoryViewController;
+			sourceTree = "<group>";
+		};
+		326241E122B6A1640085F643 /* MZUpcomingEventViewController */ = {
+			isa = PBXGroup;
+			children = (
+				326241E922B6AD4D0085F643 /* MZUpcomingEventViewController.swift */,
+			);
+			path = MZUpcomingEventViewController;
+			sourceTree = "<group>";
+		};
+		326241E222B6A1B80085F643 /* MZPastEventViewController */ = {
+			isa = PBXGroup;
+			children = (
+				326241E722B6AD0D0085F643 /* MZPastEventViewController.swift */,
+			);
+			path = MZPastEventViewController;
 			sourceTree = "<group>";
 		};
 		32688EBC22A5E49300E6C89F /* MZOffersViewController */ = {
@@ -588,6 +627,7 @@
 			files = (
 				329AB0C3228F34F8007234CE /* Second.storyboard in Resources */,
 				32688EC222A5E4E600E6C89F /* MZOffersTableViewCell.xib in Resources */,
+				326241E622B6A5E90085F643 /* MZBothEventTableViewCell.xib in Resources */,
 				326241C322B5400F0085F643 /* MZHangoutNotificationTableViewCell.xib in Resources */,
 				3258DCE2227DCCBE0014B316 /* LaunchScreen.storyboard in Resources */,
 				32D8621322A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.xib in Resources */,
@@ -749,6 +789,7 @@
 				32D8621622A4BFD8001F0CC0 /* MZBestiesViewController.swift in Sources */,
 				326241BC22B53AE30085F643 /* MZNotificationViewController.swift in Sources */,
 				32AB8224227E527D00BD98D1 /* ZGUserProfileViewController.swift in Sources */,
+				326241E522B6A5E90085F643 /* MZBothEventTableViewCell.swift in Sources */,
 				326241D222B556F30085F643 /* MZFollowBackTableViewCell.swift in Sources */,
 				32688EC122A5E4E600E6C89F /* MZOffersTableViewCell.swift in Sources */,
 				32D8620F22A4B3D4001F0CC0 /* MZAllowedMemberViewController.swift in Sources */,
@@ -759,6 +800,7 @@
 				32688EC522A5F5F600E6C89F /* MZAssignAdminViewController.swift in Sources */,
 				32AA1C23228DF62F0036E252 /* MZHangoutDescriptionViewController.swift in Sources */,
 				32BC9AAF22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift in Sources */,
+				326241EA22B6AD4D0085F643 /* MZUpcomingEventViewController.swift in Sources */,
 				3258DD09227DCDCA0014B316 /* NetworkManager.swift in Sources */,
 				326241C222B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift in Sources */,
 				32AA1C16228DC5C40036E252 /* MZInterestsViewController.swift in Sources */,
@@ -780,8 +822,10 @@
 				32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */,
 				322DEEAB22A3690300408EC9 /* MZBestiesCollectionViewCell.swift in Sources */,
 				3258DCD8227DCCBA0014B316 /* AppDelegate.swift in Sources */,
+				326241E822B6AD0D0085F643 /* MZPastEventViewController.swift in Sources */,
 				32AA1C1E228DC63C0036E252 /* MZAuthViewController.swift in Sources */,
 				3258DD12227DCDDF0014B316 /* Rating.swift in Sources */,
+				326241E022B6A1400085F643 /* MZEventHistoryViewController.swift in Sources */,
 				328A4C3E227E327200DFB85E /* ZGNewsFeedViewController.swift in Sources */,
 				326241BF22B53FE50085F643 /* MZHangoutNotificationViewController.swift in Sources */,
 			);

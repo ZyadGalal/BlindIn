@@ -68,7 +68,6 @@ class MZInviteMembersViewController: UIViewController {
 
 extension UIViewController {
 
-    
     func childRemove() {
         removeChild()
     }
