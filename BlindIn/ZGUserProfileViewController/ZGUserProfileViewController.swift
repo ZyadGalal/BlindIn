@@ -11,6 +11,7 @@ import UIKit
 class ZGUserProfileViewController: UIViewController {
 
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fadeAnimationForNavigationTitle()
@@ -42,22 +43,21 @@ extension ZGUserProfileViewController : UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "brief")
-            return cell!
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "Mybrief") as! MyBriefTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "brief") as! ZGUserProfileBreifTableViewCell
+            
+            return cell
         }
         else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "interestsCollectionView")
             return cell!
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "news") as! ZGNewsFeedTableViewCell
-            cell.userImageView.image = UIImage(named: "1")
-            cell.userNameLable.text = "Zyad Galal"
-            cell.dateLabel.text = "5 min"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "news") as! ZGUserProfilePostsTableViewCell
             cell.hangImageView.image = UIImage(named: "1")
             cell.likeCountLabel.text = "55555"
             cell.commentCountLabel.text = "10"
-            cell.hangDescriptionLabel.text = "hi , i'm zyad mahmoud galal , i'm iOS Developer , from new damietta . in mansoura university"
+            cell.hangDescriptionLabel.text = "hi , i'm zyad mahmoud galal"
             
             return cell
         }

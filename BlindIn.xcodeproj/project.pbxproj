@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		051D36D9DFBBD9FEC57B24D2 /* Pods_BlindInUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7636D7D6CCF946292D6B1CA6 /* Pods_BlindInUITests.framework */; };
+		321B509622B6A85C00085670 /* ZGUserProfilePostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B509522B6A85C00085670 /* ZGUserProfilePostsTableViewCell.swift */; };
+		321B509822B6B56400085670 /* ZGUserProfileBreifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B509722B6B56400085670 /* ZGUserProfileBreifTableViewCell.swift */; };
+		321B509A22B6B92A00085670 /* MyBriefTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B509922B6B92A00085670 /* MyBriefTableViewCell.swift */; };
+		321B509E22B6C37F00085670 /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B509D22B6C37F00085670 /* ExploreTableViewCell.swift */; };
+		321B50A022B6C43E00085670 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B509F22B6C43E00085670 /* ExploreViewController.swift */; };
+		321B50A222B6D01700085670 /* ZGPostsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B50A122B6D01700085670 /* ZGPostsContainerViewController.swift */; };
 		322DEEA322A3571600408EC9 /* MZInviteFromMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DEEA222A3571600408EC9 /* MZInviteFromMapViewController.swift */; };
 		322DEEA722A368C100408EC9 /* MZInviteFromCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DEEA622A368C100408EC9 /* MZInviteFromCollectionViewController.swift */; };
 		322DEEA922A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DEEA822A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift */; };
@@ -92,6 +98,12 @@
 /* Begin PBXFileReference section */
 		0D58DBD301ADDFF192E4F9B9 /* Pods-BlindInUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindInUITests.debug.xcconfig"; path = "Target Support Files/Pods-BlindInUITests/Pods-BlindInUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		292CEBE25B1306A3487B0D26 /* Pods-BlindInTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindInTests.debug.xcconfig"; path = "Target Support Files/Pods-BlindInTests/Pods-BlindInTests.debug.xcconfig"; sourceTree = "<group>"; };
+		321B509522B6A85C00085670 /* ZGUserProfilePostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGUserProfilePostsTableViewCell.swift; sourceTree = "<group>"; };
+		321B509722B6B56400085670 /* ZGUserProfileBreifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGUserProfileBreifTableViewCell.swift; sourceTree = "<group>"; };
+		321B509922B6B92A00085670 /* MyBriefTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBriefTableViewCell.swift; sourceTree = "<group>"; };
+		321B509D22B6C37F00085670 /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTableViewCell.swift; sourceTree = "<group>"; };
+		321B509F22B6C43E00085670 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		321B50A122B6D01700085670 /* ZGPostsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGPostsContainerViewController.swift; sourceTree = "<group>"; };
 		322DEEA222A3571600408EC9 /* MZInviteFromMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInviteFromMapViewController.swift; sourceTree = "<group>"; };
 		322DEEA622A368C100408EC9 /* MZInviteFromCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInviteFromCollectionViewController.swift; sourceTree = "<group>"; };
 		322DEEA822A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZNearbyMemberCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -205,6 +217,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		321B509B22B6C32800085670 /* ZGExploreViewController */ = {
+			isa = PBXGroup;
+			children = (
+				321B509D22B6C37F00085670 /* ExploreTableViewCell.swift */,
+				321B509F22B6C43E00085670 /* ExploreViewController.swift */,
+			);
+			path = ZGExploreViewController;
+			sourceTree = "<group>";
+		};
+		321B509C22B6C33D00085670 /* ZGPostsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				328A4C3A227E322500DFB85E /* ZGNewsFeedViewController */,
+				321B509B22B6C32800085670 /* ZGExploreViewController */,
+				321B50A122B6D01700085670 /* ZGPostsContainerViewController.swift */,
+			);
+			path = ZGPostsViewController;
+			sourceTree = "<group>";
+		};
 		322DEEA022A3562D00408EC9 /* MZInviteFromMapViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +279,7 @@
 		3258DCD6227DCCBA0014B316 /* BlindIn */ = {
 			isa = PBXGroup;
 			children = (
+				321B509C22B6C33D00085670 /* ZGPostsViewController */,
 				3258DD07227DCD560014B316 /* helpers */,
 				32AA1C14228DC57B0036E252 /* MZAuthenticationViewController */,
 				32AA1C13228DC5620036E252 /* MZInterestsViewController */,
@@ -262,7 +294,6 @@
 				326241D822B574930085F643 /* MZHangoutSettingViewController */,
 				32AF49AC228EF09700EE7D18 /* ZGHangMapViewController */,
 				32AB8220227E522E00BD98D1 /* ZGUserProfileViewController */,
-				328A4C3A227E322500DFB85E /* ZGNewsFeedViewController */,
 				3258DCD7227DCCBA0014B316 /* AppDelegate.swift */,
 				3258DCD9227DCCBA0014B316 /* ViewController.swift */,
 				3258DCDB227DCCBA0014B316 /* Main.storyboard */,
@@ -444,6 +475,9 @@
 			children = (
 				32AB8221227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift */,
 				32AB8223227E527D00BD98D1 /* ZGUserProfileViewController.swift */,
+				321B509522B6A85C00085670 /* ZGUserProfilePostsTableViewCell.swift */,
+				321B509722B6B56400085670 /* ZGUserProfileBreifTableViewCell.swift */,
+				321B509922B6B92A00085670 /* MyBriefTableViewCell.swift */,
 			);
 			path = ZGUserProfileViewController;
 			sourceTree = "<group>";
@@ -784,7 +818,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */,
+				321B50A222B6D01700085670 /* ZGPostsContainerViewController.swift in Sources */,
 				32AB8222227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift in Sources */,
+				321B509A22B6B92A00085670 /* MyBriefTableViewCell.swift in Sources */,
 				322DEEA722A368C100408EC9 /* MZInviteFromCollectionViewController.swift in Sources */,
 				32D8621622A4BFD8001F0CC0 /* MZBestiesViewController.swift in Sources */,
 				326241BC22B53AE30085F643 /* MZNotificationViewController.swift in Sources */,
@@ -795,6 +831,7 @@
 				32D8620F22A4B3D4001F0CC0 /* MZAllowedMemberViewController.swift in Sources */,
 				326241DA22B574DA0085F643 /* MZHangoutSettingViewController.swift in Sources */,
 				326241CB22B555900085F643 /* MZInviteNotificationViewController.swift in Sources */,
+				321B509822B6B56400085670 /* ZGUserProfileBreifTableViewCell.swift in Sources */,
 				32AA1C1C228DC62B0036E252 /* MZSignUpViewController.swift in Sources */,
 				326241C622B544620085F643 /* MZHangoutAddPostTableViewCell.swift in Sources */,
 				32688EC522A5F5F600E6C89F /* MZAssignAdminViewController.swift in Sources */,
@@ -804,6 +841,7 @@
 				3258DD09227DCDCA0014B316 /* NetworkManager.swift in Sources */,
 				326241C222B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift in Sources */,
 				32AA1C16228DC5C40036E252 /* MZInterestsViewController.swift in Sources */,
+				321B509E22B6C37F00085670 /* ExploreTableViewCell.swift in Sources */,
 				32688EBE22A5E4BE00E6C89F /* MZOffersViewController.swift in Sources */,
 				3258DCDA227DCCBA0014B316 /* ViewController.swift in Sources */,
 				32D8620C22A49294001F0CC0 /* MZInviteMembersViewController.swift in Sources */,
@@ -823,11 +861,13 @@
 				322DEEAB22A3690300408EC9 /* MZBestiesCollectionViewCell.swift in Sources */,
 				3258DCD8227DCCBA0014B316 /* AppDelegate.swift in Sources */,
 				326241E822B6AD0D0085F643 /* MZPastEventViewController.swift in Sources */,
+				321B50A022B6C43E00085670 /* ExploreViewController.swift in Sources */,
 				32AA1C1E228DC63C0036E252 /* MZAuthViewController.swift in Sources */,
 				3258DD12227DCDDF0014B316 /* Rating.swift in Sources */,
 				326241E022B6A1400085F643 /* MZEventHistoryViewController.swift in Sources */,
 				328A4C3E227E327200DFB85E /* ZGNewsFeedViewController.swift in Sources */,
 				326241BF22B53FE50085F643 /* MZHangoutNotificationViewController.swift in Sources */,
+				321B509622B6A85C00085670 /* ZGUserProfilePostsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
