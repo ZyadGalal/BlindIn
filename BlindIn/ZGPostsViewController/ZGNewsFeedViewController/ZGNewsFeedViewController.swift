@@ -14,7 +14,9 @@ class ZGNewsFeedViewController: UIViewController {
         super.viewDidLoad()
         putProfileBtnInNavigationController()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
     func putProfileBtnInNavigationController ()
     {
         let profileButton : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -50,5 +52,11 @@ extension ZGNewsFeedViewController : UITableViewDataSource{
         cell.commentCountLabel.text = "10"
         cell.hangDescriptionLabel.text = "hi , i'm zyad mahmoud galal , i'm iOS Developer , from new damietta . in mansoura university"
         return cell
+    }
+}
+extension ZGNewsFeedViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGPostsDetailsViewController") as! ZGPostsDetailsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

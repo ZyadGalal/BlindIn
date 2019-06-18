@@ -11,6 +11,9 @@ import UIKit
 class MZAssignAdminViewController: UIViewController {
 
     @IBOutlet weak var assignAdminTabelView: UITableView!
+    
+    var name = ["Momen","Momen Adel","Momen Adel Mohamed","Mo2a","El Mo2"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,16 +26,23 @@ class MZAssignAdminViewController: UIViewController {
 extension MZAssignAdminViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return name.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = assignAdminTabelView.dequeueReusableCell(withIdentifier: "MZAssignAdminTableViewCell") as! MZAssignAdminTableViewCell
-        cell.adminNameLabel.text = "momen adel mohamed"
+        cell.adminNameLabel.text = name[indexPath.row]
         cell.selectionStyle = .none
         cell.assignButton.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
         cell.assignButton.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            name.remove(at: indexPath.row)
+            assignAdminTabelView.reloadData()
+        }
     }
     
     
@@ -44,7 +54,7 @@ extension MZAssignAdminViewController : UITableViewDelegate , UITableViewDataSou
             sender.isSelected = false
         }
         else{
-            sender.setTitle("Remove", for: .selected)
+            sender.setTitle("Assigned", for: .selected)
             sender.borderColor = UIColor.gray
             sender.isSelected = true
         }

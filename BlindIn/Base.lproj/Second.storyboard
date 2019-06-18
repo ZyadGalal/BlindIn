@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EWl-OK-vpG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LeQ-2f-XhZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,16 +93,56 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FLZ-7i-cCa" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="20" y="68" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="179" width="335" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="gvt-zz-KX5"/>
+                                            <constraint firstAttribute="height" constant="40" id="BjZ-Gw-y0M"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="1.2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JAx-Rm-gLt" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="20" y="68" width="335" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="mHp-sb-4Vl"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                <real key="value" value="1.2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date Of Birth" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WnN-oR-mTz" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="20" y="124" width="335" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="7kh-vm-GhC"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                <real key="value" value="1.2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -113,16 +153,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QVM-1t-7ix" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="20" y="123" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="234" width="335" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="sEa-aJ-k8A"/>
+                                            <constraint firstAttribute="height" constant="40" id="UFl-Mi-64N"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="1.2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -133,16 +173,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ey-A2-nfN" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="20" y="178" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="289" width="335" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="tO8-GA-zky"/>
+                                            <constraint firstAttribute="height" constant="40" id="UkT-io-iEF"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="1.2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -158,6 +198,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HMr-kV-5rq" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                 <rect key="frame" x="0.0" y="2" width="160" height="40"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="160" id="WRI-ea-Ymy"/>
                                                     <constraint firstAttribute="height" constant="40" id="al7-eY-pMc"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
@@ -165,7 +206,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="1.2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -186,7 +227,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="1.2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -199,22 +240,24 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="74g-sL-4SM" firstAttribute="top" secondItem="WH8-o4-Sgm" secondAttribute="top" constant="2" id="1Nj-GV-51G"/>
+                                            <constraint firstAttribute="trailing" secondItem="74g-sL-4SM" secondAttribute="trailing" id="3ef-C3-ClY"/>
                                             <constraint firstItem="HMr-kV-5rq" firstAttribute="leading" secondItem="WH8-o4-Sgm" secondAttribute="leading" id="ALL-C3-MkC"/>
                                             <constraint firstItem="74g-sL-4SM" firstAttribute="leading" secondItem="HMr-kV-5rq" secondAttribute="trailing" constant="15" id="Crz-pz-YcC"/>
+                                            <constraint firstItem="HMr-kV-5rq" firstAttribute="width" secondItem="74g-sL-4SM" secondAttribute="width" id="Cxm-a3-DdW"/>
                                             <constraint firstAttribute="bottom" secondItem="74g-sL-4SM" secondAttribute="bottom" constant="3" id="Jkl-sq-Me4"/>
                                             <constraint firstItem="HMr-kV-5rq" firstAttribute="top" secondItem="WH8-o4-Sgm" secondAttribute="top" constant="2" id="N8o-y9-QO4"/>
+                                            <constraint firstItem="HMr-kV-5rq" firstAttribute="leading" secondItem="WH8-o4-Sgm" secondAttribute="leading" id="SMe-cd-I7E"/>
                                             <constraint firstAttribute="trailing" secondItem="74g-sL-4SM" secondAttribute="trailing" id="VRC-cG-Hqa"/>
+                                            <constraint firstItem="74g-sL-4SM" firstAttribute="leading" secondItem="HMr-kV-5rq" secondAttribute="trailing" constant="15" id="WOT-ag-YJM"/>
                                             <constraint firstAttribute="bottom" secondItem="HMr-kV-5rq" secondAttribute="bottom" constant="3" id="hQg-7W-Tco"/>
                                             <constraint firstAttribute="height" constant="45" id="mrG-7m-LQE"/>
-                                            <constraint firstItem="74g-sL-4SM" firstAttribute="leading" secondItem="HMr-kV-5rq" secondAttribute="trailing" constant="15" id="rSZ-VM-17n"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bz-HR-llf">
-                                        <rect key="frame" x="82.5" y="262" width="210" height="45"/>
+                                        <rect key="frame" x="83" y="362" width="209" height="45"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="210" id="B3k-cR-zLd"/>
-                                            <constraint firstAttribute="height" constant="45" id="Esm-Tw-FNi"/>
+                                            <constraint firstAttribute="height" constant="45" id="8Tv-B9-K1i"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,21 +273,28 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="QVM-1t-7ix" firstAttribute="leading" secondItem="FLZ-7i-cCa" secondAttribute="leading" id="2z9-q4-ygh"/>
-                                    <constraint firstItem="4bz-HR-llf" firstAttribute="top" secondItem="3ey-A2-nfN" secondAttribute="bottom" constant="44" id="5gn-zH-btt"/>
-                                    <constraint firstItem="3ey-A2-nfN" firstAttribute="trailing" secondItem="QVM-1t-7ix" secondAttribute="trailing" id="DIJ-Xo-xiR"/>
-                                    <constraint firstItem="QVM-1t-7ix" firstAttribute="trailing" secondItem="FLZ-7i-cCa" secondAttribute="trailing" id="Gej-Oc-DG0"/>
+                                    <constraint firstItem="4bz-HR-llf" firstAttribute="top" secondItem="3ey-A2-nfN" secondAttribute="bottom" constant="33" id="0eM-pl-dpE"/>
+                                    <constraint firstItem="JAx-Rm-gLt" firstAttribute="leading" secondItem="WnN-oR-mTz" secondAttribute="leading" id="20H-HW-MDV"/>
+                                    <constraint firstItem="3ey-A2-nfN" firstAttribute="top" secondItem="QVM-1t-7ix" secondAttribute="bottom" constant="15" id="2Cc-04-lkA"/>
+                                    <constraint firstItem="WnN-oR-mTz" firstAttribute="trailing" secondItem="FLZ-7i-cCa" secondAttribute="trailing" id="3oQ-va-bgh"/>
+                                    <constraint firstItem="FLZ-7i-cCa" firstAttribute="trailing" secondItem="QVM-1t-7ix" secondAttribute="trailing" id="5Xs-20-dhe"/>
+                                    <constraint firstItem="JAx-Rm-gLt" firstAttribute="top" secondItem="WH8-o4-Sgm" secondAttribute="bottom" constant="15" id="8H0-Sl-Ja8"/>
+                                    <constraint firstItem="FLZ-7i-cCa" firstAttribute="leading" secondItem="QVM-1t-7ix" secondAttribute="leading" id="B9o-GB-N8p"/>
+                                    <constraint firstItem="QVM-1t-7ix" firstAttribute="top" secondItem="FLZ-7i-cCa" secondAttribute="bottom" constant="15" id="EGO-4b-Qzo"/>
+                                    <constraint firstItem="QVM-1t-7ix" firstAttribute="leading" secondItem="3ey-A2-nfN" secondAttribute="leading" id="GVK-Zf-Ert"/>
+                                    <constraint firstItem="JAx-Rm-gLt" firstAttribute="trailing" secondItem="WH8-o4-Sgm" secondAttribute="trailing" id="H4o-35-fTm"/>
+                                    <constraint firstItem="JAx-Rm-gLt" firstAttribute="leading" secondItem="WH8-o4-Sgm" secondAttribute="leading" id="HIO-p0-8Zr"/>
                                     <constraint firstItem="WH8-o4-Sgm" firstAttribute="top" secondItem="L1T-l2-MSw" secondAttribute="top" constant="8" id="IN3-Fb-ckI"/>
-                                    <constraint firstItem="FLZ-7i-cCa" firstAttribute="top" secondItem="WH8-o4-Sgm" secondAttribute="bottom" constant="15" id="Lwc-GI-I4h"/>
-                                    <constraint firstItem="3ey-A2-nfN" firstAttribute="leading" secondItem="QVM-1t-7ix" secondAttribute="leading" id="Mtm-gT-lPh"/>
-                                    <constraint firstAttribute="bottom" secondItem="4bz-HR-llf" secondAttribute="bottom" constant="20" id="Qar-xF-F0E"/>
+                                    <constraint firstItem="3ey-A2-nfN" firstAttribute="centerX" secondItem="4bz-HR-llf" secondAttribute="centerX" id="LPH-FM-aGu"/>
+                                    <constraint firstAttribute="bottom" secondItem="4bz-HR-llf" secondAttribute="bottom" constant="240" id="ND5-EX-yiP"/>
+                                    <constraint firstItem="4bz-HR-llf" firstAttribute="leading" secondItem="L1T-l2-MSw" secondAttribute="leading" constant="83" id="VW5-q7-Yie"/>
                                     <constraint firstItem="WH8-o4-Sgm" firstAttribute="leading" secondItem="L1T-l2-MSw" secondAttribute="leading" constant="20" id="VkC-aA-gyB"/>
-                                    <constraint firstItem="4bz-HR-llf" firstAttribute="centerX" secondItem="L1T-l2-MSw" secondAttribute="centerX" id="WdX-Rm-dym"/>
-                                    <constraint firstItem="3ey-A2-nfN" firstAttribute="top" secondItem="QVM-1t-7ix" secondAttribute="bottom" constant="15" id="X8s-aT-hdx"/>
+                                    <constraint firstItem="WnN-oR-mTz" firstAttribute="leading" secondItem="FLZ-7i-cCa" secondAttribute="leading" id="XF6-sn-vPE"/>
+                                    <constraint firstItem="WnN-oR-mTz" firstAttribute="top" secondItem="JAx-Rm-gLt" secondAttribute="bottom" constant="16" id="XR7-No-hHv"/>
                                     <constraint firstAttribute="trailing" secondItem="WH8-o4-Sgm" secondAttribute="trailing" constant="20" id="Y2h-d2-Jh4"/>
-                                    <constraint firstItem="FLZ-7i-cCa" firstAttribute="leading" secondItem="WH8-o4-Sgm" secondAttribute="leading" id="fdT-Yv-us2"/>
-                                    <constraint firstItem="FLZ-7i-cCa" firstAttribute="trailing" secondItem="WH8-o4-Sgm" secondAttribute="trailing" id="lcN-U6-zPa"/>
-                                    <constraint firstItem="QVM-1t-7ix" firstAttribute="top" secondItem="FLZ-7i-cCa" secondAttribute="bottom" constant="15" id="qFj-zx-dvn"/>
+                                    <constraint firstItem="QVM-1t-7ix" firstAttribute="trailing" secondItem="3ey-A2-nfN" secondAttribute="trailing" id="gQw-7l-guu"/>
+                                    <constraint firstItem="FLZ-7i-cCa" firstAttribute="top" secondItem="WnN-oR-mTz" secondAttribute="bottom" constant="15" id="hUd-A4-ku6"/>
+                                    <constraint firstItem="JAx-Rm-gLt" firstAttribute="trailing" secondItem="WnN-oR-mTz" secondAttribute="trailing" id="mBq-oT-dXQ"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -259,6 +309,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x8y-bq-6fX"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="3ey-A2-nfN" id="Xqn-6O-VNg"/>
+                        <outlet property="dateOfBirthTextField" destination="WnN-oR-mTz" id="eaQ-yW-k7Y"/>
+                        <outlet property="emailTextField" destination="FLZ-7i-cCa" id="xkP-SD-zpX"/>
+                        <outlet property="firstNameTextField" destination="HMr-kV-5rq" id="80a-Ip-MPX"/>
+                        <outlet property="genderTextField" destination="JAx-Rm-gLt" id="ob2-5v-1Uf"/>
+                        <outlet property="lastNameTextField" destination="74g-sL-4SM" id="pIA-zT-vMO"/>
+                        <outlet property="passwordTextField" destination="QVM-1t-7ix" id="CsO-ub-Zkb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDt-bY-Gt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -281,6 +340,9 @@
                                             <constraint firstAttribute="height" constant="30" id="SzN-9w-GKG"/>
                                         </constraints>
                                         <state key="normal" title="Forget Password"/>
+                                        <connections>
+                                            <action selector="forgetPasswordButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zom-jz-SeU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeC-u9-Vi7">
                                         <rect key="frame" x="82.5" y="201" width="210" height="45"/>
@@ -297,6 +359,9 @@
                                                 <real key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3FE-YZ-Ah3"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jn4-ec-8w6" customClass="HoshiTextField" customModule="TextFieldEffects">
                                         <rect key="frame" x="20" y="28" width="335" height="40"/>
@@ -311,7 +376,7 @@
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="1.2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -331,7 +396,7 @@
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="1.2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -365,6 +430,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="iuY-qu-0Hv" id="dqL-pT-75M"/>
+                        <outlet property="usernameTextField" destination="Jn4-ec-8w6" id="4XK-Ze-BgR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -528,7 +597,7 @@
                                         <color key="value" red="0.0" green="0.39215686274509803" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="1.2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -545,7 +614,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="1.2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -554,6 +623,9 @@
                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="locationTextFieldClicked:" destination="bRP-DV-KBp" eventType="editingDidBegin" id="wdv-YE-cwN"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ze-pb-uhd" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="20" y="192" width="335" height="40"/>
@@ -565,7 +637,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="1.2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -588,7 +660,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="1.2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -671,6 +743,7 @@
                     <connections>
                         <outlet property="endDateTextField" destination="RhO-7G-wAV" id="rZg-yD-dyk"/>
                         <outlet property="hangoutPrivacySwitch" destination="Ih1-Dk-kKv" id="cWx-d8-i16"/>
+                        <outlet property="hangoutTitleTextField" destination="zNq-gp-dsS" id="tne-hG-GlI"/>
                         <outlet property="requestToJoinSwitch" destination="fmG-QX-RYS" id="W74-1N-xHE"/>
                         <outlet property="startDateTextField" destination="9ze-pb-uhd" id="jte-in-tO2"/>
                     </connections>
@@ -690,8 +763,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ec-aV-HZt">
                                 <rect key="frame" x="20" y="170" width="335" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4h-ah-1r6">
-                                        <rect key="frame" x="289" y="5" width="30" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4h-ah-1r6">
+                                        <rect key="frame" x="289" y="5" width="30" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="80r-e8-IZL"/>
                                         </constraints>
@@ -699,8 +772,8 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Interests #" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cjR-Mh-w3B" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="8" y="5" width="265" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Interests #" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cjR-Mh-w3B" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="8" y="5" width="265" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -709,7 +782,7 @@
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="1.2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                 <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -724,7 +797,7 @@
                                     <constraint firstAttribute="trailing" secondItem="p4h-ah-1r6" secondAttribute="trailing" constant="16" id="Kpj-P5-4XG"/>
                                     <constraint firstItem="p4h-ah-1r6" firstAttribute="leading" secondItem="cjR-Mh-w3B" secondAttribute="trailing" constant="16" id="Pvz-jW-88R"/>
                                     <constraint firstAttribute="height" constant="40" id="T6n-k7-P3G"/>
-                                    <constraint firstItem="cjR-Mh-w3B" firstAttribute="centerY" secondItem="3ec-aV-HZt" secondAttribute="centerY" id="XeG-dA-Ex6"/>
+                                    <constraint firstItem="cjR-Mh-w3B" firstAttribute="centerY" secondItem="3ec-aV-HZt" secondAttribute="centerY" constant="5" id="XeG-dA-Ex6"/>
                                     <constraint firstItem="cjR-Mh-w3B" firstAttribute="top" secondItem="p4h-ah-1r6" secondAttribute="top" id="nm4-Wt-tK5"/>
                                 </constraints>
                             </view>
@@ -738,7 +811,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="1.2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -781,10 +854,10 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="1.2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -810,7 +883,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="1.2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -838,6 +911,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hoq-I3-YYb"/>
                     </view>
+                    <connections>
+                        <outlet property="genderTextField" destination="dDw-au-lPc" id="Ghh-Nk-kHt"/>
+                        <outlet property="maxMembersLimitTextField" destination="hvG-Sf-Vxx" id="rya-JD-Kub"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIV-jG-VUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -870,6 +947,9 @@
                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="allowedMembersTextFieldClicked:" destination="EWl-OK-vpG" eventType="editingDidBegin" id="s9b-4r-Nj9"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Oq-2w-KGj">
                                 <rect key="frame" x="0.0" y="154" width="375" height="1"/>
@@ -914,6 +994,9 @@
                                         <color key="value" red="0.0" green="0.3921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="assignAdminsTextFieldClicked:" destination="EWl-OK-vpG" eventType="editingDidBegin" id="0n4-iC-0Tg"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2u-1W-uDy" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="300" width="343" height="40"/>
@@ -976,6 +1059,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonClicked:" destination="HgY-8r-snm" eventType="touchUpInside" id="ihX-PB-0qP"/>
+                                    <action selector="saveButtonPressed:" destination="EWl-OK-vpG" eventType="touchUpInside" id="J6U-N5-Lra"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDb-QC-pYj">
@@ -1059,6 +1143,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="editHangoutDetailsButtonPressed:" destination="EWl-OK-vpG" eventType="touchUpInside" id="KN7-rw-Bnn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1105,6 +1192,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LbN-GJ-t7a"/>
                     </view>
+                    <connections>
+                        <outlet property="chatUISwitch" destination="sW9-vU-SA0" id="9gg-MD-heV"/>
+                        <outlet property="genderTextField" destination="a2u-1W-uDy" id="o2u-H4-V14"/>
+                        <outlet property="withRequestUISwitch" destination="VA3-ZC-nI9" id="ANC-BH-jkC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVH-fE-gsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1870,7 +1962,7 @@
     </scenes>
     <resources>
         <image name="1" width="1366" height="768"/>
-        <image name="like" width="40" height="40"/>
-        <image name="share" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="like" width="512" height="512"/>
+        <image name="share" width="512" height="512"/>
     </resources>
 </document>

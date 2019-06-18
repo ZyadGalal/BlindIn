@@ -13,7 +13,7 @@ target 'BlindIn' do
     pod 'GoogleMaps'
     pod 'TextFieldEffects'
     pod 'Floaty', '~> 4.2.0'
-
+    pod 'lottie-ios','~> 3.0.7'
     
 
     post_install do |installer|

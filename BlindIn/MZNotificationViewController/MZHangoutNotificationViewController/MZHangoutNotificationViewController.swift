@@ -60,6 +60,7 @@ extension MZHangoutNotificationViewController : UITableViewDelegate , UITableVie
         print("Button Clicked")
         if sender.isSelected{
             sender.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+            sender.backgroundColor = UIColor.white
             sender.isSelected = false
         }
         else{

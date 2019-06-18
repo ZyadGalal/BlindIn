@@ -65,6 +65,27 @@ class ZGHangoutProfileViewController: UIViewController {
         floaty.animationSpeed = 0.2
         self.view.addSubview(floaty)
     }
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func moreSettingButtonClicked(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Setting", style: .default, handler: { _ in
+            let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutSettingViewController") as! MZHangoutSettingViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Leave", style: .default, handler: { _ in
+            //leave networking
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
 }
 extension ZGHangoutProfileViewController : FloatyDelegate
 {
