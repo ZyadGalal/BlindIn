@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UHq-rZ-KdY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-lW-I9c">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkL-cF-s8W">
                                         <rect key="frame" x="8" y="220" width="359" height="170"/>
@@ -164,6 +164,9 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                                         <state key="normal" image="like"/>
+                                                        <connections>
+                                                            <action selector="backButtonClicked:" destination="odd-dR-aiv" eventType="touchUpInside" id="QGJ-XE-WTz"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alr-3W-Pl2">
                                                         <rect key="frame" x="332" y="7.5" width="35" height="35"/>
@@ -173,6 +176,9 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                                         <state key="normal" image="like"/>
+                                                        <connections>
+                                                            <action selector="moreSettingButtonClicked:" destination="odd-dR-aiv" eventType="touchUpInside" id="tZF-AQ-9Jp"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -918,24 +924,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q02-53-8rd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1394.2028985507247" y="-181.79347826086959"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="m6d-Ag-4QR">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UHq-rZ-KdY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7aQ-AE-2zT">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="odd-dR-aiv" kind="relationship" relationship="rootViewController" id="P2w-yi-NT1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhe-xu-VFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-162.31884057971016" y="95.380434782608702"/>
         </scene>
     </scenes>
     <resources>
