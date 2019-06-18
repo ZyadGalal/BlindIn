@@ -53,6 +53,8 @@
 		32688EC522A5F5F600E6C89F /* MZAssignAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EC422A5F5F600E6C89F /* MZAssignAdminViewController.swift */; };
 		32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EC822A5F62900E6C89F /* MZAssignAdminTableViewCell.swift */; };
 		32688ECB22A5F62900E6C89F /* MZAssignAdminTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32688EC922A5F62900E6C89F /* MZAssignAdminTableViewCell.xib */; };
+		3272102322B922AC00F089A0 /* ZGCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272102222B922AC00F089A0 /* ZGCommentsTableViewCell.swift */; };
+		3272102522B923CB00F089A0 /* ZGPostsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272102422B923CA00F089A0 /* ZGPostsDetailsViewController.swift */; };
 		328A4C3C227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */; };
 		328A4C3E227E327200DFB85E /* ZGNewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */; };
 		329AB0C3228F34F8007234CE /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 329AB0C1228F34F7007234CE /* Second.storyboard */; };
@@ -158,6 +160,8 @@
 		32688EC422A5F5F600E6C89F /* MZAssignAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAssignAdminViewController.swift; sourceTree = "<group>"; };
 		32688EC822A5F62900E6C89F /* MZAssignAdminTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAssignAdminTableViewCell.swift; sourceTree = "<group>"; };
 		32688EC922A5F62900E6C89F /* MZAssignAdminTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZAssignAdminTableViewCell.xib; sourceTree = "<group>"; };
+		3272102222B922AC00F089A0 /* ZGCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGCommentsTableViewCell.swift; sourceTree = "<group>"; };
+		3272102422B923CA00F089A0 /* ZGPostsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGPostsDetailsViewController.swift; sourceTree = "<group>"; };
 		328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGNewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGNewsFeedViewController.swift; sourceTree = "<group>"; };
 		329AB0C2228F34F7007234CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Second.storyboard; sourceTree = "<group>"; };
@@ -454,9 +458,19 @@
 			path = MZAssignAdminsViewController;
 			sourceTree = "<group>";
 		};
+		3272102122B9227300F089A0 /* ZGNewsFeedPostsDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3272102222B922AC00F089A0 /* ZGCommentsTableViewCell.swift */,
+				3272102422B923CA00F089A0 /* ZGPostsDetailsViewController.swift */,
+			);
+			path = ZGNewsFeedPostsDetailsViewController;
+			sourceTree = "<group>";
+		};
 		328A4C3A227E322500DFB85E /* ZGNewsFeedViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3272102122B9227300F089A0 /* ZGNewsFeedPostsDetailsViewController */,
 				328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */,
 				328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */,
 			);
@@ -894,6 +908,7 @@
 				321B509E22B6C37F00085670 /* ExploreTableViewCell.swift in Sources */,
 				32688EBE22A5E4BE00E6C89F /* MZOffersViewController.swift in Sources */,
 				3258DCDA227DCCBA0014B316 /* ViewController.swift in Sources */,
+				3272102522B923CB00F089A0 /* ZGPostsDetailsViewController.swift in Sources */,
 				32D8620C22A49294001F0CC0 /* MZInviteMembersViewController.swift in Sources */,
 				32AA1C1A228DC6180036E252 /* MZLoginViewController.swift in Sources */,
 				32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */,
@@ -909,6 +924,7 @@
 				32D8621D22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift in Sources */,
 				32AA1C18228DC5E90036E252 /* MZInterestsCollectionViewCell.swift in Sources */,
 				32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */,
+				3272102322B922AC00F089A0 /* ZGCommentsTableViewCell.swift in Sources */,
 				32E44B8B22B7F2DF00D12BBB /* ZGHangoutProfilePostsViewController.swift in Sources */,
 				322DEEAB22A3690300408EC9 /* MZBestiesCollectionViewCell.swift in Sources */,
 				32E44B8722B7E83400D12BBB /* ZGHangoutProfileViewController.swift in Sources */,

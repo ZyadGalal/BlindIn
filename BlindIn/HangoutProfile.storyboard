@@ -749,7 +749,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pq-eA-Fzp">
-                                                    <rect key="frame" x="15" y="11" width="384" height="348"/>
+                                                    <rect key="frame" x="15" y="11" width="345" height="348"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="wRf-eG-0Xi">
                                                             <rect key="frame" x="8" y="8" width="40" height="40"/>
@@ -770,13 +770,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ho-IE-2wj">
-                                                            <rect key="frame" x="338.5" y="19" width="37.5" height="18"/>
+                                                            <rect key="frame" x="299.5" y="19" width="37.5" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="dB1-Bc-hKX">
-                                                            <rect key="frame" x="8" y="56" width="368" height="220"/>
+                                                            <rect key="frame" x="8" y="56" width="329" height="220"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="220" id="uuU-1Q-LkX"/>
                                                             </constraints>
@@ -787,13 +787,13 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-I0-Rn5">
-                                                            <rect key="frame" x="8" y="319" width="368" height="20.5"/>
+                                                            <rect key="frame" x="8" y="319" width="329" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smB-D5-ATN">
-                                                            <rect key="frame" x="113.5" y="284" width="157" height="30"/>
+                                                            <rect key="frame" x="94" y="284" width="157" height="30"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjY-tm-PiX">
                                                                     <rect key="frame" x="113" y="0.0" width="44" height="30"/>
