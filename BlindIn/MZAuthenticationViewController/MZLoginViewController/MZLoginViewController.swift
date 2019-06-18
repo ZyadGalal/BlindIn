@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import TextFieldEffects
 
 class MZLoginViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextField: HoshiTextField!
+    @IBOutlet weak var passwordTextField: HoshiTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,14 +21,10 @@ class MZLoginViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func forgetPasswordButtonTapped(_ sender: Any) {
     }
-    */
+    @IBAction func loginButtonTapped(_ sender: Any) {
+    }
+    
 
 }

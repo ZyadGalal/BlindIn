@@ -16,7 +16,7 @@ class MZBestiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let name = UIBarButtonItem(title: "Add Bestie", style: .plain, target: self, action:#selector(tapButton))
+        let name = UIBarButtonItem(title: "Add Bestie +", style: .plain, target: self, action:#selector(tapButton))
         self.navigationItem.setRightBarButton(name, animated: false)
 
         bestieTableView.register(UINib(nibName: "MZBestieTableViewCell", bundle: nil), forCellReuseIdentifier: "MZBestieTableViewCell")
