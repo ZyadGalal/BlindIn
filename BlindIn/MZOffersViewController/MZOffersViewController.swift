@@ -40,10 +40,8 @@ extension MZOffersViewController : UITableViewDelegate , UITableViewDataSource{
         let cell = offersTableView.dequeueReusableCell(withIdentifier: "MZOffersTableViewCell") as! MZOffersTableViewCell
         cell.offersNameLabel.text = offersName[indexPath.row]
         cell.detailsButton.addTarget(self, action:#selector(tapDetailsButton), for: .touchUpInside)
-        cell.selectionStyle = .none
         return cell
     }
-    
     
 }
 

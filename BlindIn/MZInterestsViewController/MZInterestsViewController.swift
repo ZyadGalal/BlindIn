@@ -46,10 +46,16 @@ extension MZInterestsViewController : UICollectionViewDataSource , UICollectionV
         return CGSize(width: (collectionView.frame.width/3)  , height: 150)
     }
     
+    
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
-        tappedImage.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        if tappedImage.borderColor == UIColor(red: 111/255.0, green: 113/255.0, blue: 121/255.0, alpha: 1.0) as UIColor{
+            tappedImage.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        }
+        else {
+            tappedImage.borderColor = UIColor(red: 111/255.0, green: 113/255.0, blue: 121/255.0, alpha: 1.0)
+        }
     }
 }
 

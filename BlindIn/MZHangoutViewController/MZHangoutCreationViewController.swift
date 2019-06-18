@@ -15,6 +15,7 @@ class MZHangoutCreationViewController: UIViewController {
     @IBOutlet weak var requestToJoinSwitch: UISwitch!
     @IBOutlet weak var startDateTextField: HoshiTextField!
     @IBOutlet weak var endDateTextField: HoshiTextField!
+    @IBOutlet weak var hangoutTitleTextField: HoshiTextField!
     
     var textFieldName : HoshiTextField!
     let datePicker = UIDatePicker()
@@ -32,7 +33,10 @@ class MZHangoutCreationViewController: UIViewController {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action:#selector(donePressedOnDatePicker))
-        toolbar.setItems([done], animated: true)
+        var flexableSpece = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        done.tintColor = UIColor.black
+        toolbar.setItems([flexableSpece,done], animated: true)
+
 
         datePicker.minimumDate = Date()
         startDateTextField.inputView = datePicker
@@ -80,6 +84,8 @@ class MZHangoutCreationViewController: UIViewController {
     
     @IBAction func requestToJoinSwitchPressed(_ sender: Any) {
         print(requestToJoinSwitch.isOn)
+    }
+    @IBAction func locationTextFieldClicked(_ sender: Any) {
     }
     
     
