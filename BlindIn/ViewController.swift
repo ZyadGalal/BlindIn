@@ -12,7 +12,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let time = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (time) in
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
 

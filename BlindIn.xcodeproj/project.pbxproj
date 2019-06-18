@@ -29,6 +29,7 @@
 		3258DD09227DCDCA0014B316 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD08227DCDCA0014B316 /* NetworkManager.swift */; };
 		3258DD11227DCDDF0014B316 /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0C227DCDDF0014B316 /* UIView+Extentions.swift */; };
 		3258DD12227DCDDF0014B316 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0D227DCDDF0014B316 /* Rating.swift */; };
+		325FB0B822B93DDE00844851 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FB0B722B93DDE00844851 /* TabViewController.swift */; };
 		326241BC22B53AE30085F643 /* MZNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241BB22B53AE30085F643 /* MZNotificationViewController.swift */; };
 		326241BF22B53FE50085F643 /* MZHangoutNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */; };
 		326241C222B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */; };
@@ -136,6 +137,7 @@
 		3258DD08227DCDCA0014B316 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3258DD0C227DCDDF0014B316 /* UIView+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 		3258DD0D227DCDDF0014B316 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		325FB0B722B93DDE00844851 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		326241BB22B53AE30085F643 /* MZNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZNotificationViewController.swift; sourceTree = "<group>"; };
 		326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutNotificationViewController.swift; sourceTree = "<group>"; };
 		326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutNotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				3258DCE0227DCCBE0014B316 /* LaunchScreen.storyboard */,
 				3258DCE3227DCCBE0014B316 /* Info.plist */,
 				321B50A422B7C9C900085670 /* HangoutProfile.storyboard */,
+				325FB0B722B93DDE00844851 /* TabViewController.swift */,
 			);
 			path = BlindIn;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				32AA1C21228DEE900036E252 /* MZHangoutCreationViewController.swift in Sources */,
 				32D8621D22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift in Sources */,
 				32AA1C18228DC5E90036E252 /* MZInterestsCollectionViewCell.swift in Sources */,
+				325FB0B822B93DDE00844851 /* TabViewController.swift in Sources */,
 				32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */,
 				3272102322B922AC00F089A0 /* ZGCommentsTableViewCell.swift in Sources */,
 				32E44B8B22B7F2DF00D12BBB /* ZGHangoutProfilePostsViewController.swift in Sources */,
