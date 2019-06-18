@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.0)
+  - Floaty (4.2.0)
   - FTIndicator (1.2.9):
     - FTIndicator/FTNotificationIndicator (= 1.2.9)
     - FTIndicator/FTProgressIndicator (= 1.2.9)
@@ -18,6 +19,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 4.7)
+  - Floaty (~> 4.2.0)
   - FTIndicator
   - GoogleMaps
   - IQKeyboardManagerSwift
@@ -27,6 +29,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Floaty
     - FTIndicator
     - GoogleMaps
     - IQKeyboardManagerSwift
@@ -35,12 +38,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   FTIndicator: f7f071fd159e5befa1d040a9ef2e3ab53fa9322c
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   MOLH: b9766efe89be975ce82a8d5642f681da23c876fc
   TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 4311549062207bc4311a91926fbc186db274b75f
+PODFILE CHECKSUM: fe1e8a2d043720619e60345664c2084ebb90c016
 
 COCOAPODS: 1.6.1

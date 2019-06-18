@@ -12,7 +12,7 @@ target 'BlindIn' do
     pod 'IQKeyboardManagerSwift'
     pod 'GoogleMaps'
     pod 'TextFieldEffects'
-
+    pod 'Floaty', '~> 4.2.0'
 
     
 
