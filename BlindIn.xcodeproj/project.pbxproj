@@ -29,6 +29,8 @@
 		3258DD09227DCDCA0014B316 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD08227DCDCA0014B316 /* NetworkManager.swift */; };
 		3258DD11227DCDDF0014B316 /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0C227DCDDF0014B316 /* UIView+Extentions.swift */; };
 		3258DD12227DCDDF0014B316 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0D227DCDDF0014B316 /* Rating.swift */; };
+		325FB0B822B93DDE00844851 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FB0B722B93DDE00844851 /* TabViewController.swift */; };
+		325FB0BB22B94F2A00844851 /* ZGEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FB0BA22B94F2A00844851 /* ZGEditProfileViewController.swift */; };
 		326241BC22B53AE30085F643 /* MZNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241BB22B53AE30085F643 /* MZNotificationViewController.swift */; };
 		326241BF22B53FE50085F643 /* MZHangoutNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */; };
 		326241C222B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */; };
@@ -53,6 +55,8 @@
 		32688EC522A5F5F600E6C89F /* MZAssignAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EC422A5F5F600E6C89F /* MZAssignAdminViewController.swift */; };
 		32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32688EC822A5F62900E6C89F /* MZAssignAdminTableViewCell.swift */; };
 		32688ECB22A5F62900E6C89F /* MZAssignAdminTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32688EC922A5F62900E6C89F /* MZAssignAdminTableViewCell.xib */; };
+		3272102322B922AC00F089A0 /* ZGCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272102222B922AC00F089A0 /* ZGCommentsTableViewCell.swift */; };
+		3272102522B923CB00F089A0 /* ZGPostsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272102422B923CA00F089A0 /* ZGPostsDetailsViewController.swift */; };
 		328A4C3C227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */; };
 		328A4C3E227E327200DFB85E /* ZGNewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */; };
 		329AB0C3228F34F8007234CE /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 329AB0C1228F34F7007234CE /* Second.storyboard */; };
@@ -134,6 +138,8 @@
 		3258DD08227DCDCA0014B316 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3258DD0C227DCDDF0014B316 /* UIView+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 		3258DD0D227DCDDF0014B316 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		325FB0B722B93DDE00844851 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		325FB0BA22B94F2A00844851 /* ZGEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGEditProfileViewController.swift; sourceTree = "<group>"; };
 		326241BB22B53AE30085F643 /* MZNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZNotificationViewController.swift; sourceTree = "<group>"; };
 		326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutNotificationViewController.swift; sourceTree = "<group>"; };
 		326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutNotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +164,8 @@
 		32688EC422A5F5F600E6C89F /* MZAssignAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAssignAdminViewController.swift; sourceTree = "<group>"; };
 		32688EC822A5F62900E6C89F /* MZAssignAdminTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAssignAdminTableViewCell.swift; sourceTree = "<group>"; };
 		32688EC922A5F62900E6C89F /* MZAssignAdminTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZAssignAdminTableViewCell.xib; sourceTree = "<group>"; };
+		3272102222B922AC00F089A0 /* ZGCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGCommentsTableViewCell.swift; sourceTree = "<group>"; };
+		3272102422B923CA00F089A0 /* ZGPostsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGPostsDetailsViewController.swift; sourceTree = "<group>"; };
 		328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGNewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGNewsFeedViewController.swift; sourceTree = "<group>"; };
 		329AB0C2228F34F7007234CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Second.storyboard; sourceTree = "<group>"; };
@@ -322,6 +330,7 @@
 				3258DCE0227DCCBE0014B316 /* LaunchScreen.storyboard */,
 				3258DCE3227DCCBE0014B316 /* Info.plist */,
 				321B50A422B7C9C900085670 /* HangoutProfile.storyboard */,
+				325FB0B722B93DDE00844851 /* TabViewController.swift */,
 			);
 			path = BlindIn;
 			sourceTree = "<group>";
@@ -353,6 +362,14 @@
 				32E44B8822B7F04100D12BBB /* GradientView.swift */,
 			);
 			path = helpers;
+			sourceTree = "<group>";
+		};
+		325FB0B922B94F0600844851 /* ZGEditProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				325FB0BA22B94F2A00844851 /* ZGEditProfileViewController.swift */,
+			);
+			path = ZGEditProfileViewController;
 			sourceTree = "<group>";
 		};
 		326241BD22B53AF30085F643 /* MZNotificationViewController */ = {
@@ -454,9 +471,19 @@
 			path = MZAssignAdminsViewController;
 			sourceTree = "<group>";
 		};
+		3272102122B9227300F089A0 /* ZGNewsFeedPostsDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3272102222B922AC00F089A0 /* ZGCommentsTableViewCell.swift */,
+				3272102422B923CA00F089A0 /* ZGPostsDetailsViewController.swift */,
+			);
+			path = ZGNewsFeedPostsDetailsViewController;
+			sourceTree = "<group>";
+		};
 		328A4C3A227E322500DFB85E /* ZGNewsFeedViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3272102122B9227300F089A0 /* ZGNewsFeedPostsDetailsViewController */,
 				328A4C3B227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift */,
 				328A4C3D227E327200DFB85E /* ZGNewsFeedViewController.swift */,
 			);
@@ -574,6 +601,7 @@
 		32E44B9222B8211200D12BBB /* ZGMoreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				325FB0B922B94F0600844851 /* ZGEditProfileViewController */,
 				32E44B9322B8213900D12BBB /* ZGMoreViewController.swift */,
 				32E44B9522B8215900D12BBB /* ZGMoreTableViewCell.swift */,
 			);
@@ -817,6 +845,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MOLH/MOLH.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -828,6 +857,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MOLH.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -894,8 +924,10 @@
 				321B509E22B6C37F00085670 /* ExploreTableViewCell.swift in Sources */,
 				32688EBE22A5E4BE00E6C89F /* MZOffersViewController.swift in Sources */,
 				3258DCDA227DCCBA0014B316 /* ViewController.swift in Sources */,
+				3272102522B923CB00F089A0 /* ZGPostsDetailsViewController.swift in Sources */,
 				32D8620C22A49294001F0CC0 /* MZInviteMembersViewController.swift in Sources */,
 				32AA1C1A228DC6180036E252 /* MZLoginViewController.swift in Sources */,
+				325FB0BB22B94F2A00844851 /* ZGEditProfileViewController.swift in Sources */,
 				32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */,
 				326241DD22B6573E0085F643 /* MZOffersDetailsViewController.swift in Sources */,
 				32E44B9422B8213900D12BBB /* ZGMoreViewController.swift in Sources */,
@@ -908,7 +940,9 @@
 				32AA1C21228DEE900036E252 /* MZHangoutCreationViewController.swift in Sources */,
 				32D8621D22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift in Sources */,
 				32AA1C18228DC5E90036E252 /* MZInterestsCollectionViewCell.swift in Sources */,
+				325FB0B822B93DDE00844851 /* TabViewController.swift in Sources */,
 				32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */,
+				3272102322B922AC00F089A0 /* ZGCommentsTableViewCell.swift in Sources */,
 				32E44B8B22B7F2DF00D12BBB /* ZGHangoutProfilePostsViewController.swift in Sources */,
 				322DEEAB22A3690300408EC9 /* MZBestiesCollectionViewCell.swift in Sources */,
 				32E44B8722B7E83400D12BBB /* ZGHangoutProfileViewController.swift in Sources */,

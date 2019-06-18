@@ -47,6 +47,11 @@ class ZGHangMapViewController: UIViewController {
         }
     }
 
+    
+    @IBAction func openHangoutProfileViewClicked(_ sender: Any) {
+        let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileViewController") as! ZGHangoutProfileViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     func setFakeMarkers(lat : Double , lng : Double , name : String)
     {
         let customMarker = CustomMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: UIImage(named: "1")!, borderColor: UIColor(red: 0, green: 100, blue: 255, alpha: 1.0))
