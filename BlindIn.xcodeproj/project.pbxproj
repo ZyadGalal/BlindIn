@@ -30,6 +30,7 @@
 		3258DD11227DCDDF0014B316 /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0C227DCDDF0014B316 /* UIView+Extentions.swift */; };
 		3258DD12227DCDDF0014B316 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DD0D227DCDDF0014B316 /* Rating.swift */; };
 		325FB0B822B93DDE00844851 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FB0B722B93DDE00844851 /* TabViewController.swift */; };
+		325FB0BB22B94F2A00844851 /* ZGEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FB0BA22B94F2A00844851 /* ZGEditProfileViewController.swift */; };
 		326241BC22B53AE30085F643 /* MZNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241BB22B53AE30085F643 /* MZNotificationViewController.swift */; };
 		326241BF22B53FE50085F643 /* MZHangoutNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */; };
 		326241C222B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */; };
@@ -138,6 +139,7 @@
 		3258DD0C227DCDDF0014B316 /* UIView+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 		3258DD0D227DCDDF0014B316 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		325FB0B722B93DDE00844851 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		325FB0BA22B94F2A00844851 /* ZGEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGEditProfileViewController.swift; sourceTree = "<group>"; };
 		326241BB22B53AE30085F643 /* MZNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZNotificationViewController.swift; sourceTree = "<group>"; };
 		326241BE22B53FE50085F643 /* MZHangoutNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutNotificationViewController.swift; sourceTree = "<group>"; };
 		326241C022B5400F0085F643 /* MZHangoutNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutNotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -360,6 +362,14 @@
 				32E44B8822B7F04100D12BBB /* GradientView.swift */,
 			);
 			path = helpers;
+			sourceTree = "<group>";
+		};
+		325FB0B922B94F0600844851 /* ZGEditProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				325FB0BA22B94F2A00844851 /* ZGEditProfileViewController.swift */,
+			);
+			path = ZGEditProfileViewController;
 			sourceTree = "<group>";
 		};
 		326241BD22B53AF30085F643 /* MZNotificationViewController */ = {
@@ -591,6 +601,7 @@
 		32E44B9222B8211200D12BBB /* ZGMoreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				325FB0B922B94F0600844851 /* ZGEditProfileViewController */,
 				32E44B9322B8213900D12BBB /* ZGMoreViewController.swift */,
 				32E44B9522B8215900D12BBB /* ZGMoreTableViewCell.swift */,
 			);
@@ -914,6 +925,7 @@
 				3272102522B923CB00F089A0 /* ZGPostsDetailsViewController.swift in Sources */,
 				32D8620C22A49294001F0CC0 /* MZInviteMembersViewController.swift in Sources */,
 				32AA1C1A228DC6180036E252 /* MZLoginViewController.swift in Sources */,
+				325FB0BB22B94F2A00844851 /* ZGEditProfileViewController.swift in Sources */,
 				32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */,
 				326241DD22B6573E0085F643 /* MZOffersDetailsViewController.swift in Sources */,
 				32E44B9422B8213900D12BBB /* ZGMoreViewController.swift in Sources */,
