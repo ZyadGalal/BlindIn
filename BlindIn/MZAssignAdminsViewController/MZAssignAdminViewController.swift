@@ -16,9 +16,17 @@ class MZAssignAdminViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let name = UIBarButtonItem(title: "Done", style: .plain, target: self, action:#selector(tapButton))
+        name.tintColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        self.navigationItem.setRightBarButton(name, animated: false)
 
         assignAdminTabelView.register(UINib(nibName: "MZAssignAdminTableViewCell", bundle: nil), forCellReuseIdentifier: "MZAssignAdminTableViewCell")
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func tapButton(){
+        print("Finish Assigning Admins")
     }
     
 }

@@ -36,7 +36,6 @@ class ZGHangMapViewController: UIViewController {
         locationManager.desiredAccuracy = 50
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
-        
         mapView.delegate = self
         
         

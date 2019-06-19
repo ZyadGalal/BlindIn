@@ -17,8 +17,8 @@ class MZBestiesViewController: UIViewController {
         super.viewDidLoad()
         
         let name = UIBarButtonItem(title: "Add Bestie +", style: .plain, target: self, action:#selector(tapButton))
+        name.tintColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
         self.navigationItem.setRightBarButton(name, animated: false)
-
         bestieTableView.register(UINib(nibName: "MZBestieTableViewCell", bundle: nil), forCellReuseIdentifier: "MZBestieTableViewCell")
         // Do any additional setup after loading the view.
     }
