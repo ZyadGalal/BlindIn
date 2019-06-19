@@ -8,10 +8,12 @@
 
 import UIKit
 
+
 class MZOffersViewController: UIViewController {
     
     
-    var offersName = ["Sale","Sale","Sale","Sale","Sale"]
+    var offersName = ["Sale","Sale 10%","Sale 20%","Sale 50%","Sale 100%"]
+    var offerImages = ["1","1","1","1","1"]
     @IBOutlet weak var offersTableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,11 +25,7 @@ class MZOffersViewController: UIViewController {
 
     }
     
-    @objc func tapDetailsButton(){
-        print("Hello")
-        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZOffersDetailsViewController") as! MZOffersDetailsViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+   
     
 }
 
@@ -39,9 +37,15 @@ extension MZOffersViewController : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = offersTableView.dequeueReusableCell(withIdentifier: "MZOffersTableViewCell") as! MZOffersTableViewCell
         cell.offersNameLabel.text = offersName[indexPath.row]
-        cell.detailsButton.addTarget(self, action:#selector(tapDetailsButton), for: .touchUpInside)
+        cell.offersImageView.image = UIImage(named: offerImages[indexPath.row])
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZOffersDetailsViewController") as! MZOffersDetailsViewController
+        vc.OfferImage = UIImage(named: offerImages[indexPath.row])!
+        vc.offerName = offersName[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
     
 }
-

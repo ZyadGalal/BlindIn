@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,50 +31,51 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koj-zo-yT8">
-                        <rect key="frame" x="279" y="22" width="100" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100" id="4g6-Mt-53T"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                        <state key="normal" title="Details"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="15"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRv-oR-VPz">
                         <rect key="frame" x="70" y="28" width="89" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="une-75-AEm">
+                        <rect key="frame" x="271" y="23" width="100" height="30"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="orh-VY-38T"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="wRv-oR-VPz" secondAttribute="bottom" constant="22.5" id="3Wd-WR-qPf"/>
                     <constraint firstAttribute="bottom" secondItem="6Pc-Bd-KmP" secondAttribute="bottom" constant="10.5" id="51h-vE-8Fw"/>
                     <constraint firstItem="6Pc-Bd-KmP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="8rN-GA-g5G"/>
-                    <constraint firstAttribute="trailing" secondItem="koj-zo-yT8" secondAttribute="trailing" constant="12" id="9UD-A4-lam"/>
-                    <constraint firstItem="koj-zo-yT8" firstAttribute="leading" relation="lessThanOrEqual" secondItem="wRv-oR-VPz" secondAttribute="trailing" constant="120" id="ETk-Mb-6r4"/>
-                    <constraint firstItem="koj-zo-yT8" firstAttribute="leading" relation="lessThanOrEqual" secondItem="wRv-oR-VPz" secondAttribute="trailing" constant="120" id="Q0I-mf-uWk"/>
+                    <constraint firstAttribute="trailing" secondItem="une-75-AEm" secondAttribute="trailing" constant="20" id="EVZ-CJ-LFa"/>
+                    <constraint firstItem="une-75-AEm" firstAttribute="leading" relation="lessThanOrEqual" secondItem="wRv-oR-VPz" secondAttribute="trailing" constant="112" id="FsP-hq-Qac"/>
+                    <constraint firstAttribute="bottom" secondItem="une-75-AEm" secondAttribute="bottom" constant="18.5" id="IRQ-i0-C94"/>
                     <constraint firstItem="6Pc-Bd-KmP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="hLO-kl-16B"/>
+                    <constraint firstItem="une-75-AEm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="irs-gv-ddO"/>
                     <constraint firstItem="wRv-oR-VPz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="28" id="o6W-aO-JL8"/>
                     <constraint firstItem="wRv-oR-VPz" firstAttribute="leading" secondItem="6Pc-Bd-KmP" secondAttribute="trailing" constant="8" id="oFH-pI-PlG"/>
-                    <constraint firstItem="koj-zo-yT8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="qgk-sI-Uzb"/>
-                    <constraint firstAttribute="bottom" secondItem="koj-zo-yT8" secondAttribute="bottom" constant="19.5" id="yfg-Gl-7xK"/>
+                    <constraint firstItem="une-75-AEm" firstAttribute="leading" relation="lessThanOrEqual" secondItem="wRv-oR-VPz" secondAttribute="trailing" constant="112" id="viu-2M-h94"/>
                     <constraint firstItem="wRv-oR-VPz" firstAttribute="leading" secondItem="6Pc-Bd-KmP" secondAttribute="trailing" constant="8" id="zhl-y7-HpZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="detailsButton" destination="koj-zo-yT8" id="ckM-ma-B1D"/>
                 <outlet property="offersImageView" destination="6Pc-Bd-KmP" id="KJz-Op-1Ga"/>
                 <outlet property="offersNameLabel" destination="wRv-oR-VPz" id="cCc-Ov-N5u"/>
             </connections>

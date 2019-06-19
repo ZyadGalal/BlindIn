@@ -14,9 +14,15 @@ class MZOffersDetailsViewController: UIViewController {
     @IBOutlet weak var offerDetailsTextView: UITextView!
     @IBOutlet weak var getOfferButton: UIButton!
     
+    var OfferImage = UIImage()
+    var offerName = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        offerNameLabel.text = offerName
+        offerImageView.image = OfferImage
         // Do any additional setup after loading the view.
     }
     
