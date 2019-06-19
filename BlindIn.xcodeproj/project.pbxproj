@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -69,6 +69,7 @@
 		32AA1C23228DF62F0036E252 /* MZHangoutDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA1C22228DF62F0036E252 /* MZHangoutDescriptionViewController.swift */; };
 		32AB8222227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB8221227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift */; };
 		32AB8224227E527D00BD98D1 /* ZGUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB8223227E527D00BD98D1 /* ZGUserProfileViewController.swift */; };
+		32ACCAB022BA9D6D00AFBA84 /* Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ACCAAF22BA9D6D00AFBA84 /* Meteor.swift */; };
 		32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */; };
 		32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */; };
 		32BC9AAF22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */; };
@@ -178,6 +179,7 @@
 		32AA1C22228DF62F0036E252 /* MZHangoutDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutDescriptionViewController.swift; sourceTree = "<group>"; };
 		32AB8221227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGUserProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		32AB8223227E527D00BD98D1 /* ZGUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGUserProfileViewController.swift; sourceTree = "<group>"; };
+		32ACCAAF22BA9D6D00AFBA84 /* Meteor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteor.swift; sourceTree = "<group>"; };
 		32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGHangMapViewController.swift; sourceTree = "<group>"; };
 		32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerShape.swift; sourceTree = "<group>"; };
 		32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutMembersLimitViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				3258DCE3227DCCBE0014B316 /* Info.plist */,
 				321B50A422B7C9C900085670 /* HangoutProfile.storyboard */,
 				325FB0B722B93DDE00844851 /* TabViewController.swift */,
+				32ACCAAF22BA9D6D00AFBA84 /* Meteor.swift */,
 			);
 			path = BlindIn;
 			sourceTree = "<group>";
@@ -814,16 +817,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BlindIn/Pods-BlindIn-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-BlindIn/Pods-BlindIn-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-BlindIn/Pods-BlindIn-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -836,28 +834,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BlindIn/Pods-BlindIn-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/FTIndicator/FTIndicator.framework",
-				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/MOLH/MOLH.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-BlindIn/Pods-BlindIn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FTIndicator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MOLH.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-BlindIn/Pods-BlindIn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -912,6 +893,7 @@
 				32AA1C1C228DC62B0036E252 /* MZSignUpViewController.swift in Sources */,
 				32E44B8922B7F04100D12BBB /* GradientView.swift in Sources */,
 				326241C622B544620085F643 /* MZHangoutAddPostTableViewCell.swift in Sources */,
+				32ACCAB022BA9D6D00AFBA84 /* Meteor.swift in Sources */,
 				32688EC522A5F5F600E6C89F /* MZAssignAdminViewController.swift in Sources */,
 				32AA1C23228DF62F0036E252 /* MZHangoutDescriptionViewController.swift in Sources */,
 				32BC9AAF22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift in Sources */,
