@@ -6,7 +6,6 @@ target 'BlindIn' do
   use_frameworks!
 
   # Pods for BlindIn
-    pod 'Alamofire' ,'4.7'
     pod 'MOLH'
     pod 'FTIndicator'
     pod 'IQKeyboardManagerSwift'
@@ -14,7 +13,7 @@ target 'BlindIn' do
     pod 'TextFieldEffects'
     pod 'Floaty', '~> 4.2.0'
     pod 'lottie-ios','~> 3.0.7'
-    
+    pod 'ObjectiveDDP'
 
     post_install do |installer|
 installer.pods_project.build_configurations.each do |config|

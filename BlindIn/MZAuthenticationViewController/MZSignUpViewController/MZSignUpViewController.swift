@@ -9,10 +9,10 @@
 import UIKit
 import TextFieldEffects
 
-class MZSignUpViewController: UIViewController ,UIPickerViewDataSource , UIPickerViewDelegate{
+class MZSignUpViewController: UIViewController {
     
  
-    var data = ["Male" , "Female"]
+    var genders = ["Male" , "Female"]
     var genderPicker = UIPickerView()
     var datePicker = UIDatePicker()
     
@@ -38,7 +38,43 @@ class MZSignUpViewController: UIViewController ,UIPickerViewDataSource , UIPicke
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func genderTextFieldClicked(_ sender: Any) {
+        genderTextField.text = genders[0]
+        genderPicker.selectRow(0, inComponent: 0, animated: true)
+    }
+    
+    @IBAction func signUpButtonClicked(_ sender: Any) {
+        if firstNameTextField.text != "" && lastNameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" && genderTextField.text != "" && dateOfBirthTextField.text != "" && confirmPasswordTextField.text != ""{
+            if passwordTextField.text! == confirmPasswordTextField.text!{
+                if Meteor.meteorClient?.connected == true
+                {
+                    signUp(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, gender: genderTextField.text!, birthdate: dateOfBirthTextField.text!)
+                }
+                else
+                {
+                    print("not connected")
+                }
+            }
+            else
+            {
+                print("incorrect password")
+            }
+        }
+        else{
+            print("complete fields")
+        }
+    }
+    func signUp(firstName : String ,lastName : String , email : String , password : String,gender:String,birthdate:String){
+        Meteor.meteorClient?.signup(withUserParameters: ["email":email,"password":password,"profile":["firstName":firstName,"lastName":lastName,"gender":gender,"birthDate" : birthdate]], responseCallback: { (response, error) in
+            if error != nil{
+                print(error)
+            }
+            else{
+                let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInterestsViewController") as! MZInterestsViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
+    }
     func createDatePicker ()
     {
         let toolbar = UIToolbar()
@@ -60,37 +96,19 @@ class MZSignUpViewController: UIViewController ,UIPickerViewDataSource , UIPicke
         self.view.endEditing(true)
         
     }
-    
+}
+extension MZSignUpViewController : UIPickerViewDataSource , UIPickerViewDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return data.count
+        return genders.count
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        genderTextField.text = data[row]
+        genderTextField.text = genders[row]
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data[row]
+        return genders[row]
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func signUpClicked(_ sender: Any) {
-        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInterestsViewController") as! MZInterestsViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
 }
