@@ -24,6 +24,9 @@ class MZLoginViewController: UIViewController {
     @IBAction func forgetPasswordButtonTapped(_ sender: Any) {
     }
     @IBAction func loginButtonTapped(_ sender: Any) {
+        
+        
+        
     }
     
 
