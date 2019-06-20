@@ -14,11 +14,11 @@ class MZInviteFromCollectionViewController: UIViewController {
     @IBOutlet weak var bestiesCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nearbyMemberCollectionView.allowsMultipleSelection = true
+        bestiesCollectionView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
     }
     
-
 }
 
 extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
@@ -35,20 +35,17 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         if collectionView == nearbyMemberCollectionView {
             // Place content into hashtag cells
             let nearbyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MZNearbyMemberCollectionViewCell", for: indexPath) as! MZNearbyMemberCollectionViewCell
             nearbyCell.nearbyMemberNameLabel.text = "Momen"
-            nearbyCell.nearbyMemberImageView.isUserInteractionEnabled = true
-            nearbyCell.nearbyMemberImageView.addGestureRecognizer(tapGestureRecognizer)
+            
             return nearbyCell
         } else if collectionView == bestiesCollectionView {
             // Place content in creators cell
             let bestieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MZBestiesCollectionViewCell", for: indexPath) as! MZBestiesCollectionViewCell
             bestieCell.bestieNameLabel.text = "Mo2a"
-            bestieCell.bestieImageView.isUserInteractionEnabled = true
-            bestieCell.bestieImageView.addGestureRecognizer(tapGestureRecognizer)
+            
             return bestieCell
         } else {
             preconditionFailure("Unknown collection view!")
@@ -58,17 +55,14 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.width/4)  , height: 100)
     }
-    
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        if tappedImage.borderColor == UIColor(red: 111/255.0, green: 113/255.0, blue: 121/255.0, alpha: 1.0) as UIColor{
-            tappedImage.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
-        }
-        else {
-            tappedImage.borderColor = UIColor(red: 111/255.0, green: 113/255.0, blue: 121/255.0, alpha: 1.0)
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
     }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+    }
+    
     
     
 }
