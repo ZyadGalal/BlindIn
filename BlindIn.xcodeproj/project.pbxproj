@@ -90,6 +90,10 @@
 		32E44B9622B8215900D12BBB /* ZGMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E44B9522B8215900D12BBB /* ZGMoreTableViewCell.swift */; };
 		BD3DE6927E2A798BF3DB93A9 /* Pods_BlindInTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4110A44A917F91129B497CAB /* Pods_BlindInTests.framework */; };
 		DB5417ADA61BC1ACC45FFF14 /* Pods_BlindIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF45241557BE3ABED7FF698 /* Pods_BlindIn.framework */; };
+		E43E652222BB0A8D00BF14FB /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43E652122BB0A8D00BF14FB /* Third.storyboard */; };
+		E43E652422BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E652322BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift */; };
+		E43E652622BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E652522BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift */; };
+		E43E652822BB10ED00BF14FB /* CircularMarkerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E652722BB10ED00BF14FB /* CircularMarkerShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +208,10 @@
 		7636D7D6CCF946292D6B1CA6 /* Pods_BlindInUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindInUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DC59AC3B7B13952DA6A7CDF /* Pods-BlindIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindIn.debug.xcconfig"; path = "Target Support Files/Pods-BlindIn/Pods-BlindIn.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF45241557BE3ABED7FF698 /* Pods_BlindIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E43E652122BB0A8D00BF14FB /* Third.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
+		E43E652322BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutSetLocationViewController.swift; sourceTree = "<group>"; };
+		E43E652522BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutCompleteLocationInfoViewController.swift; sourceTree = "<group>"; };
+		E43E652722BB10ED00BF14FB /* CircularMarkerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularMarkerShape.swift; sourceTree = "<group>"; };
 		FB6B4CA0030176FC419CB326 /* Pods-BlindInTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindInTests.release.xcconfig"; path = "Target Support Files/Pods-BlindInTests/Pods-BlindInTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -326,6 +334,7 @@
 				32AB8220227E522E00BD98D1 /* ZGUserProfileViewController */,
 				3258DCD7227DCCBA0014B316 /* AppDelegate.swift */,
 				3258DCD9227DCCBA0014B316 /* ViewController.swift */,
+				E43E652022BB0A5300BF14FB /* MZHangoutLocationViewController */,
 				3258DCDB227DCCBA0014B316 /* Main.storyboard */,
 				329AB0C1228F34F7007234CE /* Second.storyboard */,
 				3258DCDE227DCCBE0014B316 /* Assets.xcassets */,
@@ -611,6 +620,17 @@
 			path = ZGMoreViewController;
 			sourceTree = "<group>";
 		};
+		E43E652022BB0A5300BF14FB /* MZHangoutLocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E43E652322BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift */,
+				E43E652522BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift */,
+				E43E652722BB10ED00BF14FB /* CircularMarkerShape.swift */,
+				E43E652122BB0A8D00BF14FB /* Third.storyboard */,
+			);
+			path = MZHangoutLocationViewController;
+			sourceTree = "<group>";
+		};
 		FB122979B54AA2A01C48213A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,6 +757,7 @@
 				32688EC222A5E4E600E6C89F /* MZOffersTableViewCell.xib in Resources */,
 				326241E622B6A5E90085F643 /* MZBothEventTableViewCell.xib in Resources */,
 				326241C322B5400F0085F643 /* MZHangoutNotificationTableViewCell.xib in Resources */,
+				E43E652222BB0A8D00BF14FB /* Third.storyboard in Resources */,
 				3258DCE2227DCCBE0014B316 /* LaunchScreen.storyboard in Resources */,
 				32D8621322A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.xib in Resources */,
 				3258DCDF227DCCBE0014B316 /* Assets.xcassets in Resources */,
@@ -875,6 +896,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */,
+				E43E652822BB10ED00BF14FB /* CircularMarkerShape.swift in Sources */,
 				321B50A222B6D01700085670 /* ZGPostsContainerViewController.swift in Sources */,
 				32AB8222227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift in Sources */,
 				321B509A22B6B92A00085670 /* MyBriefTableViewCell.swift in Sources */,
@@ -912,6 +934,7 @@
 				325FB0BB22B94F2A00844851 /* ZGEditProfileViewController.swift in Sources */,
 				32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */,
 				326241DD22B6573E0085F643 /* MZOffersDetailsViewController.swift in Sources */,
+				E43E652622BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift in Sources */,
 				32E44B9422B8213900D12BBB /* ZGMoreViewController.swift in Sources */,
 				322DEEA322A3571600408EC9 /* MZInviteFromMapViewController.swift in Sources */,
 				3258DD11227DCDDF0014B316 /* UIView+Extentions.swift in Sources */,
@@ -927,6 +950,7 @@
 				3272102322B922AC00F089A0 /* ZGCommentsTableViewCell.swift in Sources */,
 				32E44B8B22B7F2DF00D12BBB /* ZGHangoutProfilePostsViewController.swift in Sources */,
 				322DEEAB22A3690300408EC9 /* MZBestiesCollectionViewCell.swift in Sources */,
+				E43E652422BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift in Sources */,
 				32E44B8722B7E83400D12BBB /* ZGHangoutProfileViewController.swift in Sources */,
 				3258DCD8227DCCBA0014B316 /* AppDelegate.swift in Sources */,
 				326241E822B6AD0D0085F643 /* MZPastEventViewController.swift in Sources */,

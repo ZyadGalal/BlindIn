@@ -11,8 +11,8 @@ import TextFieldEffects
 
 class MZHangoutSettingViewController: UIViewController {
     
-    var data = ["Male" , "Female"]
-    var picker = UIPickerView()
+    var genders = ["Male" , "Female"]
+    var genderPicker = UIPickerView()
 
     @IBOutlet weak var withRequestUISwitch: UISwitch!
     @IBOutlet weak var chatUISwitch: UISwitch!
@@ -22,19 +22,28 @@ class MZHangoutSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        picker.dataSource = self
-        picker.delegate = self
-        genderTextField.inputView = picker
+        genderPicker.dataSource = self
+        genderPicker.delegate = self
+        genderTextField.inputView = genderPicker
 
         // Do any additional setup after loading the view.
     }
-    @IBAction func allowedMembersTextFieldClicked(_ sender: Any) {
+    
+    @IBAction func allowedMembersButton(_ sender: Any) {
+        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZAllowedMemberViewController") as! MZAllowedMemberViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    @IBAction func assignAdminsTextFieldClicked(_ sender: Any) {
+    @IBAction func assignAdminsButton(_ sender: Any) {
+        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZAssignAdminViewController") as! MZAssignAdminViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func saveButtonPressed(_ sender: Any) {
     }
     @IBAction func editHangoutDetailsButtonPressed(_ sender: Any) {
+    }
+    @IBAction func genderTextFieldClicked(_ sender: Any) {
+        genderTextField.text = genders[0]
+        genderPicker.selectRow(0, inComponent: 0, animated: true)
     }
     
 
@@ -47,13 +56,13 @@ extension MZHangoutSettingViewController : UIPickerViewDelegate , UIPickerViewDa
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return data.count
+        return genders.count
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        genderTextField.text = data[row]
+        genderTextField.text = genders[row]
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data[row]
+        return genders[row]
     }
     
     
