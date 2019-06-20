@@ -15,6 +15,7 @@ class MZInterestsViewController: UIViewController {
     
     var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
 
+    var idsArray : [String] = []
     override func viewDidLoad() {
         self.navigationItem.title = "Interests"
         super.viewDidLoad()
@@ -32,8 +33,22 @@ class MZInterestsViewController: UIViewController {
         interestCollectionView.reloadData()
     }
     @IBAction func nextButtonClicked(_ sender: Any) {
-        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutCreationViewController") as! MZHangoutCreationViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        print(idsArray)
+        if Meteor.meteorClient?.connected == true{
+            Meteor.meteorClient?.callMethodName("users.methods.update-interests", parameters: [["interests" : idsArray]], responseCallback: { (response, error) in
+                if error != nil{
+                    print(error)
+                }
+                else{
+                    print(response)
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
+        }
+        else{
+            print("not connected")
+        }
     }
 }
 
@@ -59,11 +74,13 @@ extension MZInterestsViewController : UICollectionViewDataSource , UICollectionV
         return CGSize(width: (collectionView.frame.width/3)  , height: 150)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        
+        let current = lists.object(at: UInt(indexPath.row))
+        idsArray.append((current["_id"] as? String)!)
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let current = lists.object(at: UInt(indexPath.row))
 
+        idsArray.removeAll {$0 == current["_id"] as! String}
     }
 }
 
