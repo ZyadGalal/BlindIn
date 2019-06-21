@@ -12,6 +12,9 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
 
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var commentsTableView: UITableView!
+    
+    var postId : String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         commentTextView.isScrollEnabled = false
@@ -22,7 +25,7 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
   
     @IBAction func sendButtonClicked(_ sender: Any) {
         if Meteor.meteorClient?.connected == true{
-            Meteor.meteorClient?.callMethodName("posts.methods.comment", parameters: [["_id":"","comment":commentTextView.text!]], responseCallback: { (response, error) in
+            Meteor.meteorClient?.callMethodName("posts.methods.comment", parameters: [["_id":postId!,"comment":commentTextView.text!]], responseCallback: { (response, error) in
                 if error != nil{
                     print(error!)
                 }

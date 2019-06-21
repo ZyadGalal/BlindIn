@@ -22,6 +22,8 @@ class MZInterestsViewController: UIViewController {
         interestCollectionView.allowsMultipleSelection = true
         Meteor.meteorClient?.addSubscription("interests.all")
         NotificationCenter.default.addObserver(self, selector: #selector(MZInterestsViewController.getAllInterests), name: NSNotification.Name(rawValue: "interests_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZInterestsViewController.getAllInterests), name: NSNotification.Name(rawValue: "interests_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZInterestsViewController.getAllInterests), name: NSNotification.Name(rawValue: "interests_removed"), object: nil)
     }
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("interests.all")

@@ -15,7 +15,8 @@ target 'BlindIn' do
     pod 'lottie-ios','~> 3.0.7'
     pod 'ObjectiveDDP'
     pod 'AWSS3'
-
+    pod 'Kingfisher', '~> 5.1.1'
+    pod 'GooglePlaces', '3.1.0'
     post_install do |installer|
 installer.pods_project.build_configurations.each do |config|
 config.build_settings.delete('CODE_SIGNING_ALLOWED')
