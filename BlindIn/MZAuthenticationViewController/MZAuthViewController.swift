@@ -21,12 +21,14 @@ class MZAuthViewController: UIViewController {
         super.viewDidLoad()
 
         logInButton.isSelected = true
+        logInButton.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 255/255, alpha: 1.0)
         self.addChild(logIn)
         self.containerView.addSubview(logIn.view)
         logIn.didMove(toParent: self)
         self.addChild(logIn)
         self.logIn.view.frame = CGRect(x: 0, y: 0, width: self.containerView.frame.width, height: self.containerView.frame.height)
         
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         // Do any additional setup after loading the view.
     }
     
@@ -35,8 +37,10 @@ class MZAuthViewController: UIViewController {
         logInButton.isSelected = false
         signUpButton.isSelected = false
         
+        logInButton.backgroundColor = UIColor.white
+        signUpButton.backgroundColor = UIColor.white
         sender.isSelected = !sender.isSelected
-        
+        sender.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 255/255, alpha: 1.0)
         if sender == logInButton
         {
             self.addChild(logIn)
