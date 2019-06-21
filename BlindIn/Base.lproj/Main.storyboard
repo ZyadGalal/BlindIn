@@ -1115,7 +1115,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y09-WH-zcm">
+
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y09-WH-zcm">
+
                                                 <rect key="frame" x="115" y="165" width="283" height="36.666666666666657"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.23921568630000001" green="0.39607843139999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1317,6 +1319,9 @@
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveButtonClicked:" destination="yu9-IM-JeE" eventType="touchUpInside" id="RhD-z5-hVD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1352,6 +1357,10 @@
                         <viewLayoutGuide key="safeArea" id="DjU-VW-K0o"/>
                     </view>
                     <connections>
+                        <outlet property="bioTextView" destination="LVo-gR-Zmh" id="reu-8u-LMH"/>
+                        <outlet property="birthDateTextField" destination="Y09-WH-zcm" id="1cH-Um-nHF"/>
+                        <outlet property="firstNameTextField" destination="o6r-ae-hun" id="VJz-eI-fC1"/>
+                        <outlet property="lastNameTextField" destination="2Tj-5t-kOj" id="IJc-vV-Fic"/>
                         <outlet property="userImageView" destination="XX1-NW-daF" id="AyR-gb-eEa"/>
                     </connections>
                 </viewController>

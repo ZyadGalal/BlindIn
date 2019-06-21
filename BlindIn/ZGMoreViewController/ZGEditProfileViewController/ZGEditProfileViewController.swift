@@ -8,18 +8,30 @@
 
 import UIKit
 import ObjectiveDDP
+import TextFieldEffects
 
 class ZGEditProfileViewController: UIViewController {
     
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var firstNameTextField: HoshiTextField!
+    @IBOutlet weak var lastNameTextField: HoshiTextField!
+    @IBOutlet weak var bioTextView: UITextView!
+    @IBOutlet weak var birthDateTextField: UITextView!
     
     var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var datePicker = UIDatePicker()
     
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
+        firstNameTextField.text = " " 
+        lastNameTextField.text = " "
+        bioTextView.text = " "
+        birthDateTextField.text = " "
+        
+        createDatePicker()
 
         // Do any additional setup after loading the view.
     }
@@ -30,18 +42,40 @@ class ZGEditProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector (ZGEditProfileViewController.getUsersInfo), name: NSNotification.Name(rawValue: "users_changed"), object: nil)
     }
     
+    func createDatePicker ()
+    {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action:#selector(donePressedOnDatePicker))
+        var flexableSpece = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        done.tintColor = UIColor.black
+        toolbar.setItems([flexableSpece,done], animated: true)
+        birthDateTextField.inputView = datePicker
+        birthDateTextField.inputAccessoryView = toolbar
+        datePicker.datePickerMode = .date
+    }
+    @objc func donePressedOnDatePicker()
+    {
+        
+        let formate = DateFormatter()
+        formate.dateFormat = "yyyy-M-dd"
+        birthDateTextField.text = formate.string(from: datePicker.date)
+        self.view.endEditing(true)
+        
+    }
+    
     @objc func getUsersInfo(){
         self.lists = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         print(lists)
         let currentIndex = lists.object(at: UInt(0))
         
-        let profile = currentIndex["profile"]! as! [String : String]
+        let profile = currentIndex["profile"]! as! [String : Any]
         let firstName = profile["firstName"]
-        print(firstName!)
-        //let firstName = profile["firstName"]
-        
-        
-        
+        firstNameTextField.text = firstName! as! String
+        let lastName = profile["lastName"]
+        lastNameTextField.text = lastName! as! String
+        let birthDate = profile["birthDate"]
+        birthDateTextField.text = birthDate! as! String
         print("HI")
 
     }
@@ -62,7 +96,25 @@ class ZGEditProfileViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-
+    
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        
+        if Meteor.meteorClient?.connected == true{
+            Meteor.meteorClient?.callMethodName("users.methods.update-profile", parameters: [["firstName" : firstNameTextField.text!,"lastName" : lastNameTextField.text! , "bio" : bioTextView.text! , "birthDate" : birthDateTextField.text!]], responseCallback: { (response, error) in
+                if error != nil{
+                    print(error)
+                }
+                else{
+                    print(response)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
+        }
+        else{
+            print("not connected")
+        }
+    }
+    
 }
 extension ZGEditProfileViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate
 {
