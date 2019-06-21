@@ -36,13 +36,15 @@ class ZGAddNewPostViewController: UIViewController {
     func uploadButtonPressed() {
             let fileManager = FileManager.default
             let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("postImage.jpeg")
-            let imageData = choosenPostImage.jpegData(compressionQuality: 0.99)
+            let imageData = choosenPostImage.jpegData(compressionQuality: 0.5)
             fileManager.createFile(atPath: path as String, contents: imageData, attributes: nil)
+        
+            let timestamp = NSDate().timeIntervalSince1970
         
             let fileUrl = NSURL(fileURLWithPath: path)
             let uploadRequest = AWSS3TransferManagerUploadRequest()
             uploadRequest?.bucket = "blendin-userfiles-mobilehub-1929261559"
-            uploadRequest?.key = "key.jpeg"
+            uploadRequest?.key = "jsaS3/\(timestamp).jpeg"
             uploadRequest?.contentType = "image/jpeg"
             uploadRequest?.body = fileUrl as URL
             uploadRequest?.acl = .publicRead
@@ -65,7 +67,10 @@ class ZGAddNewPostViewController: UIViewController {
                 let publicURL = url?.appendingPathComponent(uploadRequest!.bucket!).appendingPathComponent(uploadRequest!.key!)
                 self.ImageURL = "\(publicURL!)"
                 print("Uploaded to:\(publicURL)")
-                self.uploadPost()
+                DispatchQueue.main.async {
+                    self.uploadPost()
+
+                }
             }
             return nil
         }

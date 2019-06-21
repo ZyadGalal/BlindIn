@@ -7,16 +7,44 @@
 //
 
 import UIKit
+import ObjectiveDDP
 
 class ZGEditProfileViewController: UIViewController {
     
     @IBOutlet weak var userImageView: UIImageView!
+    
+    var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    
     let imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        Meteor.meteorClient?.addSubscription("users.mine")
+        NotificationCenter.default.addObserver(self, selector: #selector (ZGEditProfileViewController.getUsersInfo), name: NSNotification.Name(rawValue: "users_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector (ZGEditProfileViewController.getUsersInfo), name: NSNotification.Name(rawValue: "useres_removed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector (ZGEditProfileViewController.getUsersInfo), name: NSNotification.Name(rawValue: "users_changed"), object: nil)
+    }
+    
+    @objc func getUsersInfo(){
+        self.lists = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        print(lists)
+        let currentIndex = lists.object(at: UInt(0))
+        let profile = currentIndex["profile"]
+        //let firstName = profile["firstName"]
+        
+        
+        
+        print("HI")
+        print(profile!!)
+
+    }
+    
+    
 
     @IBAction func changePhotoButtonClicked(_ sender: Any) {
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
