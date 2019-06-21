@@ -28,6 +28,26 @@ class ZGHangoutProfilePostsViewController: UIViewController {
          NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
          NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
     }
+    
+    @IBAction func likeButtonClicked(_ sender: UIButton) {
+        let currentIndex = postsList.object(at: UInt(sender.tag))
+        loveMethodConnection(postId: (currentIndex["_id"] as? String)!)
+    }
+    func loveMethodConnection (postId : String){
+        if Meteor.meteorClient?.connected == true{
+            Meteor.meteorClient?.callMethodName("posts.methods.love", parameters: [["_id":postId]], responseCallback: { (response, error) in
+                if error != nil{
+                    print(error!)
+                }
+                else{
+                    print(response!)
+                }
+            })
+        }
+        else{
+            print("not connected")
+        }
+    }
     @objc func getAllHangoutPosts ()
     {
         postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
@@ -38,7 +58,7 @@ class ZGHangoutProfilePostsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     override func viewWillDisappear(_ animated: Bool) {
-        Meteor.meteorClient?.removeSubscription("interests.all")
+        Meteor.meteorClient?.removeSubscription("hangouts.posts.all")
         NotificationCenter.default.removeObserver(self)
         postsList.removeAllObjects()
     }
@@ -64,6 +84,7 @@ extension ZGHangoutProfilePostsViewController : UITableViewDataSource{
         cell.likeCountLabel.text = "\((currentIndex["lovesCount"] as? Int)!)"
         cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
         cell.hangDescriptionLabel.text = currentIndex["description"] as? String
+        cell.likeButton.tag = indexPath.row
         return cell
     }
 }
@@ -72,6 +93,10 @@ extension ZGHangoutProfilePostsViewController : UITableViewDelegate{
         let currentIndex = postsList.object(at: UInt(indexPath.row))
         let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileCommentsViewController") as! ZGHangoutProfileCommentsViewController
         vc.postId = currentIndex["_id"] as? String
+        vc.hangImage = currentIndex["image"] as? String
+        vc.hangDescription = currentIndex["description"] as? String
+        vc.hangLoveCount = (currentIndex["lovesCount"] as? Int)!
+        vc.hangCommentCount = (currentIndex["commentsCount"] as? Int)!
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
