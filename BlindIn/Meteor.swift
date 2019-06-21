@@ -11,5 +11,4 @@ import ObjectiveDDP
 
 class Meteor {
     static var meteorClient = MeteorClient(ddpVersion: "pre2")
-
 }
