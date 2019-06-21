@@ -560,7 +560,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epv-zy-PPP" customClass="UIControl">
-                                <rect key="frame" x="10" y="497" width="394" height="170"/>
+                                <rect key="frame" x="10" y="492" width="394" height="170"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rbN-vH-zLE">
                                         <rect key="frame" x="8" y="8" width="135" height="154"/>
@@ -618,7 +618,7 @@
                         <constraints>
                             <constraint firstItem="epv-zy-PPP" firstAttribute="leading" secondItem="9Pk-w5-jfE" secondAttribute="leading" constant="10" id="4re-Tq-vxU"/>
                             <constraint firstItem="9Pk-w5-jfE" firstAttribute="trailing" secondItem="eEE-Tk-RfU" secondAttribute="trailing" id="EUb-rk-M2k"/>
-                            <constraint firstItem="9Pk-w5-jfE" firstAttribute="bottom" secondItem="epv-zy-PPP" secondAttribute="bottom" constant="20" id="Qcv-kH-sZ6"/>
+                            <constraint firstItem="9Pk-w5-jfE" firstAttribute="bottom" secondItem="epv-zy-PPP" secondAttribute="bottom" constant="25" id="Qcv-kH-sZ6"/>
                             <constraint firstItem="9Pk-w5-jfE" firstAttribute="trailing" secondItem="epv-zy-PPP" secondAttribute="trailing" constant="10" id="c9V-NK-Xmm"/>
                             <constraint firstItem="eEE-Tk-RfU" firstAttribute="leading" secondItem="9Pk-w5-jfE" secondAttribute="leading" id="jYm-y6-L3i"/>
                             <constraint firstItem="eEE-Tk-RfU" firstAttribute="top" secondItem="9Pk-w5-jfE" secondAttribute="top" id="lR9-3Z-I8t"/>
@@ -1115,9 +1115,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
-
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y09-WH-zcm">
-
                                                 <rect key="frame" x="115" y="165" width="283" height="36.666666666666657"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.23921568630000001" green="0.39607843139999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
