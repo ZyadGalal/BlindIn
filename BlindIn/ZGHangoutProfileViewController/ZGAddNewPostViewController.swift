@@ -21,6 +21,7 @@ class ZGAddNewPostViewController: UIViewController {
     let secretKey = "dnb8CLod9IcyOHq7Uci0gwvKx23jP+jAj2Me8RvL"
     var choosenPostImage = UIImage()
     var ImageURL = ""
+    var hangoutId = "agKkwBDSZc6okbt8M"
     override func viewDidLoad() {
         super.viewDidLoad()
         postDescriptionTextView.text = "Post Description"
@@ -78,7 +79,7 @@ class ZGAddNewPostViewController: UIViewController {
     }
     func uploadPost(){
         if Meteor.meteorClient?.connected == true{
-            Meteor.meteorClient?.callMethodName("posts.methods.create", parameters: [["hangoutId" : "","image" : ImageURL , "description" : postDescriptionTextView.text!]], responseCallback: { (response, error) in
+            Meteor.meteorClient?.callMethodName("posts.methods.create", parameters: [["hangoutId" : hangoutId,"image" : ImageURL , "description" : postDescriptionTextView.text!]], responseCallback: { (response, error) in
                 if error != nil{
                     print(error)
                 }

@@ -12,6 +12,7 @@ class ZGNewsFeedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var hangDescriptionLabel: UILabel!
     
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var hangImageView: UIImageView!
