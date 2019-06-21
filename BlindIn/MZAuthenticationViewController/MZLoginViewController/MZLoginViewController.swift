@@ -25,6 +25,23 @@ class MZLoginViewController: UIViewController {
     }
     @IBAction func loginButtonTapped(_ sender: Any) {
         
+        if usernameTextField.text != "" && passwordTextField.text != "" {
+            if Meteor.meteorClient?.connected == true {
+                Meteor.meteorClient?.logon(withEmail: usernameTextField.text!, password: passwordTextField.text!, responseCallback: { (response, error) in
+                    if error != nil{
+                        print(error!)
+                    }
+                    else{
+                        print(response!)
+                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                })
+            }
+            else{
+                print("not connected")
+            }
+        }
         
         
     }
