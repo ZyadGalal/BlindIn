@@ -33,7 +33,7 @@ class MZLoginViewController: UIViewController {
                     }
                     else{
                         print(response!)
-                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
+                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGEditProfileViewController") as! ZGEditProfileViewController
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 })
