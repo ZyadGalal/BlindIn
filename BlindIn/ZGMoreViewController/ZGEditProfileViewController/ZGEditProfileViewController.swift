@@ -34,13 +34,15 @@ class ZGEditProfileViewController: UIViewController {
         self.lists = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         print(lists)
         let currentIndex = lists.object(at: UInt(0))
-        let profile = currentIndex["profile"]
+        
+        let profile = currentIndex["profile"]! as! [String : String]
+        let firstName = profile["firstName"]
+        print(firstName!)
         //let firstName = profile["firstName"]
         
         
         
         print("HI")
-        print(profile!!)
 
     }
     
