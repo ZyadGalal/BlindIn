@@ -30,6 +30,13 @@ class ZGHangMapViewController: UIViewController {
     //
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for lat in 0..<lats.count{
+            print(lat)
+            setFakeMarkers(lat: lats[lat], lng: longs[lat], name: name[lat])
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -38,15 +45,17 @@ class ZGHangMapViewController: UIViewController {
         locationManager.delegate = self
         mapView.delegate = self
         
-        
-        
-        for lat in 0..<lats.count{
-            print(lat)
-            setFakeMarkers(lat: lats[lat], lng: longs[lat], name: name[lat])
-        }
     }
-
-    
+    func updateCurrentLocation (lat : Double , lng : Double){
+        Meteor.meteorClient?.callMethodName("users.methods.update-location", parameters: [["lat":"\(lat)","lng" : "\(lng)"]], responseCallback: { (response, error) in
+            if error != nil{
+                print(error)
+            }
+            else{
+                print(response!)
+            }
+        })
+    }
     @IBAction func openHangoutProfileViewClicked(_ sender: Any) {
         let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileViewController") as! ZGHangoutProfileViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -85,7 +94,7 @@ extension ZGHangMapViewController: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
-        
+        self.updateCurrentLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
         // 7
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         // 8
