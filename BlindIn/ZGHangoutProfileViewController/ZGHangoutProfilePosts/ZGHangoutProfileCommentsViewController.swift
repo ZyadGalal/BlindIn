@@ -34,7 +34,7 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
         sendButton.isEnabled = false
 
         
-        Meteor.meteorClient?.addSubscription("posts.single", withParameters: [postId!])
+        Meteor.meteorClient?.addSubscription("posts.single", withParameters: [["postId":postId!]])
         NotificationCenter.default.addObserver(self, selector: #selector(getHangoutPost), name: NSNotification.Name("posts_added"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutPost), name: NSNotification.Name("posts_changed"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutPost), name: NSNotification.Name("posts_removed"),object : nil)
@@ -46,6 +46,7 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
 
     @objc func getHangoutPost ()
     {
+        print(Meteor.meteorClient?.collections)
         post = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
         print(post)
         users = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary

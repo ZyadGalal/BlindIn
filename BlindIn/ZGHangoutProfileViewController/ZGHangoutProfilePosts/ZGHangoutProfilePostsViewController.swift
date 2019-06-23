@@ -17,7 +17,6 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     var postsList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var usersList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var hangoutId = "agKkwBDSZc6okbt8M"
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hangout Posts"
@@ -33,7 +32,12 @@ class ZGHangoutProfilePostsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
     }
 
-
+    func reload(tableView: UITableView) {
+        let contentOffset = tableView.contentOffset
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        tableView.setContentOffset(contentOffset, animated: false)
+    }
     @IBAction func likeButtonClicked(_ sender: UIButton) {
         let currentIndex = postsList.object(at: UInt(sender.tag))
         loveMethodConnection(postId: (currentIndex["_id"] as? String)!)
@@ -57,7 +61,7 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     {
         postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
         print(postsList)
-        hangoutPostsTableView.reloadData()
+        reload(tableView: hangoutPostsTableView)
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -90,6 +94,13 @@ extension ZGHangoutProfilePostsViewController : UITableViewDataSource{
         cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
         cell.hangDescriptionLabel.text = currentIndex["description"] as? String
         cell.likeButton.tag = indexPath.row
+        let loveArray = currentIndex["loves"] as? [String]
+        if (loveArray?.contains((Meteor.meteorClient?.userId)!)) == true{
+            cell.likeButton.setImage(UIImage(named:"like"), for: .normal)
+        }
+        else{
+            cell.likeButton.setImage(UIImage(named:"unlike"), for: .normal)
+        }
         return cell
     }
 }

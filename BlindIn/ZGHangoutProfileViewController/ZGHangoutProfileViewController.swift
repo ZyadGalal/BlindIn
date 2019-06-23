@@ -11,6 +11,16 @@ import Floaty
 import ObjectiveDDP
 class ZGHangoutProfileViewController: UIViewController {
 
+    @IBOutlet weak var interestsLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var hangoutDescriptionLabel: UILabel!
+    @IBOutlet weak var hangoutMembersCountLabel: UILabel!
+    @IBOutlet weak var hangoutTimeLabel: UILabel!
+    @IBOutlet weak var hangoutStatusButton: UIButton!
+    @IBOutlet weak var hangoutNameLabel: UILabel!
+    @IBOutlet weak var hangoutImageView: UIImageView!
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var sharingButton: UIButton!
     @IBOutlet weak var shadingView: UIView!
@@ -41,6 +51,18 @@ class ZGHangoutProfileViewController: UIViewController {
     {
         hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
         print(hangoutInfo)
+        updateInfo()
+    }
+    func updateInfo(){
+        let current = hangoutInfo.object(at: UInt(0))
+        hangoutNameLabel.text = current["title"] as? String
+        hangoutStatusButton.setTitle(current["status"] as? String, for: .normal)
+        hangoutTimeLabel.text = current["startDate"] as? String
+        hangoutDescriptionLabel.text = current["description"] as? String
+        genderLabel.text = current["gender"] as? String
+        locationLabel.text = current["location"] as? String
+        durationLabel.text = "\(current["startDate"] as! String) - \(current["endDate"] as! String)"
+        
     }
     func addShadowToButton(){
         sharingButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -68,12 +90,12 @@ class ZGHangoutProfileViewController: UIViewController {
     }
     func setupFloatActionButton (){
         floaty.hasShadow = true
-        floaty.addItem("Posts", icon: UIImage(named: "like")) { (item) in
+        floaty.addItem("Posts", icon: UIImage(named: "post")) { (item) in
             let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfilePostsViewController") as! ZGHangoutProfilePostsViewController
             self.navigationController?.pushViewController(vc, animated: true)
             self.floaty.close()
         }
-        floaty.addItem("Chat", icon: UIImage(named: "like")) { (item) in
+        floaty.addItem("Chat", icon: UIImage(named: "chat")) { (item) in
             let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileChatViewController") as! ZGHangoutProfileChatViewController
             self.navigationController?.pushViewController(vc, animated: true)
             self.floaty.close()

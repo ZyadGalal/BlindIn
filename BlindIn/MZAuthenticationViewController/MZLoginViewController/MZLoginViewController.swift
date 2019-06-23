@@ -33,7 +33,7 @@ class MZLoginViewController: UIViewController {
                     }
                     else{
                         print(response!)
-                        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
+                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutSetLocationViewController") as! MZHangoutSetLocationViewController
                         self.navigationController?.pushViewController(vc, animated: true)
                         
                     }
