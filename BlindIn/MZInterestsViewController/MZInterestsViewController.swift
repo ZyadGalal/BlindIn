@@ -81,7 +81,6 @@ extension MZInterestsViewController : UICollectionViewDataSource , UICollectionV
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let current = lists.object(at: UInt(indexPath.row))
-
         idsArray.removeAll {$0 == current["_id"] as! String}
     }
 }
