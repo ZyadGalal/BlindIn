@@ -21,7 +21,7 @@ class MZHangoutDescriptionViewController: UIViewController {
     }
     
     @objc func tapButton(){
-        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteMembersViewController") as! MZInviteMembersViewController
+        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutMembersLimitViewController") as! MZHangoutMembersLimitViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

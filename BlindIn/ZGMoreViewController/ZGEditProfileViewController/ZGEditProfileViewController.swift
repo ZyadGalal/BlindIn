@@ -26,11 +26,6 @@ class ZGEditProfileViewController: UIViewController {
         super.viewDidLoad()
         
         
-        firstNameTextField.text = " " 
-        lastNameTextField.text = " "
-        bioTextView.text = " "
-        birthDateTextField.text = " "
-        
         createDatePicker()
 
         // Do any additional setup after loading the view.
@@ -38,8 +33,13 @@ class ZGEditProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         Meteor.meteorClient?.addSubscription("users.mine")
         NotificationCenter.default.addObserver(self, selector: #selector (ZGEditProfileViewController.getUsersInfo), name: NSNotification.Name(rawValue: "users_added"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector (ZGEditProfileViewController.getUsersInfo), name: NSNotification.Name(rawValue: "useres_removed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector (ZGEditProfileViewController.getUsersInfo), name: NSNotification.Name(rawValue: "users_removed"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector (ZGEditProfileViewController.getUsersInfo), name: NSNotification.Name(rawValue: "users_changed"), object: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("users.mine")
+        NotificationCenter.default.removeObserver(self)
+        lists.removeAllObjects()
     }
     
     func createDatePicker ()
@@ -68,7 +68,6 @@ class ZGEditProfileViewController: UIViewController {
         self.lists = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         print(lists)
         let currentIndex = lists.object(at: UInt(0))
-        
         let profile = currentIndex["profile"]! as! [String : Any]
         let firstName = profile["firstName"]
         firstNameTextField.text = firstName! as! String
@@ -98,9 +97,13 @@ class ZGEditProfileViewController: UIViewController {
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
-        
+        var params : [String : String] = [:]
+        params = ["firstName" : firstNameTextField.text!,"lastName" : lastNameTextField.text! , "bio" : bioTextView.text! , "birthDate" : birthDateTextField.text!]
+        if bioTextView.text != "" {
+            params ["bio"] = "SWE"
+        }
         if Meteor.meteorClient?.connected == true{
-            Meteor.meteorClient?.callMethodName("users.methods.update-profile", parameters: [["firstName" : firstNameTextField.text!,"lastName" : lastNameTextField.text! , "bio" : bioTextView.text! , "birthDate" : birthDateTextField.text!]], responseCallback: { (response, error) in
+            Meteor.meteorClient?.callMethodName("users.methods.update-profile", parameters: [params], responseCallback: { (response, error) in
                 if error != nil{
                     print(error)
                 }

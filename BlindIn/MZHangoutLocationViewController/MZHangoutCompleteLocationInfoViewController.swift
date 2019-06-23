@@ -15,12 +15,17 @@ class MZHangoutCompleteLocationInfoViewController: UIViewController {
     @IBOutlet weak var locationTypeTextField: HoshiTextField!
     @IBOutlet weak var locationAdressTextField: HoshiTextField!
     
-      var location = ""
+    var locationName = ""
+    var locationType = ""
+    var locationAdress = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        locationTitleTextField.text = location
+        locationAdressTextField.text = locationAdress
+        locationTypeTextField.text = locationType
+        locationTitleTextField.text = locationName
+        
         // Do any additional setup after loading the view.
     }
 

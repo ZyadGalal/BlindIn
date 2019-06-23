@@ -8,7 +8,16 @@
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
 import CoreLocation
+import ObjectiveDDP
+
+struct fakePin {
+    let lat : Double?
+    let lng : Double?
+    let name : String?
+    let type : String?
+}
 
 class MZHangoutSetLocationViewController: UIViewController {
 
@@ -18,19 +27,34 @@ class MZHangoutSetLocationViewController: UIViewController {
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var locationTypeLabel: UILabel!
     
+    var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    
     var manager = CLLocationManager()
     var lat = [Double]()
     var long = [Double]()
+    var photos: [UIImage] = []
     var longPressRecognizer = UILongPressGestureRecognizer()
     var locationAdress : String = ""
+    var locationAdressForPOI: String = ""
+    var locationNameForPOI : String = ""
+    var locationTypeForPOI : String = ""
+    var cityName : String = ""
+    var countryName : String = ""
     var geocoderLocation : String = ""
-    //let placesClient = GMSPlacesClient()
+    var placesClient: GMSPlacesClient!
     var flag = 0
-    var markerDic : [GMSMarker : fake] = [:]
-    let lats = [37.33487913960151 , 51.508362, 51.509376 , 51.517389 , 51.537391]
-    let longs = [-122.03009214252234 , -0.128769 , -0.129771,-0.137784 , -0.147799]
-    let name = ["zyad","zezo","zozz","el7ra2","el fager"]
+    var current = 0
+    var coord = 0
+    var markerDic : [GMSMarker : fakePin] = [:]
+//    let lats = [37.33487913960151 , 51.508362, 51.509376 , 51.517389 , 51.537391]
+//    let longs = [-122.03009214252234 , -0.128769 , -0.129771,-0.137784 , -0.147799]
+//    let name = ["zyad","zezo","zozz","el7ra2","el fager"]
     
+    var lats : [Double] = []
+    var longs : [Double] = []
+    var name : [String] = []
+    var type : [String] = []
+    var arr = [Double]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,14 +78,58 @@ class MZHangoutSetLocationViewController: UIViewController {
         setLocationMapView.delegate = self
         
         // Do any additional setup after loading the view.
+        placesClient = GMSPlacesClient.shared()
         
         for lat in 0..<lats.count{
-            setFakeMarkers(lat: lats[lat], lng: longs[lat], name: name[lat])
+            setFakeMarkers(lat: lats[lat] , lng: longs[lat], name: name[lat], type: type[lat])
         }
         // Do any additional setup after loading the view.
     }
     
-    func setFakeMarkers(lat : Double , lng : Double , name : String)
+    override func viewDidAppear(_ animated: Bool) {
+        Meteor.meteorClient?.addSubscription("places.all")
+        NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_removed"), object: nil)
+    }
+    
+    @objc func getAllPlaces(){
+        self.lists = Meteor.meteorClient?.collections["places"] as! M13MutableOrderedDictionary
+        //print(lists)
+        var currentIndex = lists.object(at: UInt(0))
+        
+        
+        
+//        for element in 0..<lists.count-1 {
+//            var currentIndex = lists.object(at: UInt(current))
+//
+//            name.append(currentIndex["title"] as! String)
+//            type.append(currentIndex["placeType"] as! String)
+//
+//            current += 1
+//        }
+        for getLocation in 0..<lists.count {
+            var currentIndex = lists.object(at: UInt(getLocation))
+            let location = currentIndex["location"]! as! [String : Any]
+            let coordinates : [Double] = location["coordinates"]! as! [Double]
+            print(coordinates)
+            print(coordinates[0])
+            longs.append(coordinates[0])
+            print(longs)
+            lats.append(coordinates[1])
+            print(lats)
+            
+            current += 1
+        }
+        
+        print(name)
+        
+        
+        
+    }
+    
+    
+    func setFakeMarkers(lat : Double , lng : Double , name : String , type : String)
     {
         let customMarker = CircularMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: UIImage(named: "1")!, borderColor: UIColor(red: 0, green: 100, blue: 255, alpha: 1.0))
         let marker = GMSMarker()
@@ -70,7 +138,7 @@ class MZHangoutSetLocationViewController: UIViewController {
         marker.map = setLocationMapView
         marker.tracksViewChanges = false
         
-        let ff = fake(lat: lat, lng: lng, name: name)
+        let ff = fakePin(lat: lat, lng: lng, name: name ,type:type)
         markerDic[marker] = ff
     }
     
@@ -88,18 +156,18 @@ class MZHangoutSetLocationViewController: UIViewController {
                 if let places = response?.results() {
                     if let place = places.first {
                         if let lines = place.lines {
-                            //lines[0] move to next view controller
+                            
                             print("GEOCODE: Formatted Address: \(lines[0])")
+                            self.locationAdressForPOI = lines[0]
                             self.geocoderLocation = lines[0]
-                            //self.locationTextField.text = lines[0]
+                            self.cityName = place.administrativeArea!
+                            self.countryName = place.country!
                         }
                     } else {
                         print("GEOCODE: nil first in places")
-                        //self.locationTextField.text = "غير معروف"
                     }
                 } else {
                     print("GEOCODE: nil in places")
-                    //self.locationTextField.text = "غير معروف"
                 }
             }
         }
@@ -109,7 +177,15 @@ class MZHangoutSetLocationViewController: UIViewController {
         print("Done Pressed")
         if (flag == 1){
             let vc = UIStoryboard(name: "Third", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutCompleteLocationInfoViewController") as! MZHangoutCompleteLocationInfoViewController
-            vc.location = geocoderLocation
+            vc.locationAdress = geocoderLocation
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if (flag == 2){
+            let vc = UIStoryboard(name: "Third", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutCompleteLocationInfoViewController") as! MZHangoutCompleteLocationInfoViewController
+            vc.locationName = locationNameForPOI
+            vc.locationType = locationTypeForPOI
+            vc.locationAdress = locationAdressForPOI
+            
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else {
@@ -120,7 +196,6 @@ class MZHangoutSetLocationViewController: UIViewController {
     //--------------GET RANDOM LOCATION
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
         flag = 1
-        
         print("Long Press Done")
         lat.removeAll()
         long.removeAll()
@@ -172,38 +247,83 @@ extension MZHangoutSetLocationViewController : CLLocationManagerDelegate {
         print("Error: \(error)")
     }
     
+    func loadFirstPhotoForPlace(placeID: String) {
+        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
+            if let error = error {
+                // TODO: handle the error.
+                print("Error: \(error.localizedDescription)")
+            } else {
+                if let firstPhoto = photos?.results.first {
+                    self.loadImageForMetadata(photoMetadata: firstPhoto)
+                }
+            }
+        }
+    }
+
+    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata) {
+        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
+            (photo, error) -> Void in
+            if let error = error {
+                // TODO: handle the error.
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Loading Image")
+                self.locationImageView.image = photo;
+                //       self.attributionTextView.attributedText = photoMetadata.attributions;
+            }
+        })
+    }
+    
 }
 
 extension MZHangoutSetLocationViewController : GMSMapViewDelegate {
     
     
-    //    func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D) {
-    //
-    //        print("You tapped \(name) \n : \(placeID) \n : \(GMSPlaceField.all) \n :\(location.latitude) \n : \(location.longitude)")
-    //
-    //        // Specify the place data types to return.
-    //        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) | UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.types.rawValue))!
-    //
-    //        placesClient.fetchPlace(fromPlaceID: placeID, placeFields: fields, sessionToken: nil, callback: {
-    //            (place: GMSPlace?, error: Error?) in
-    //            if let error = error {
-    //                print("An error occurred: \(error.localizedDescription)")
-    //                return
-    //            }
-    //            if let place = place {
-    //                self.lblPlace.text = place.name
-    //                self.lblType.text = place.types?[0]
-    //                print("The selected place is: \(place.name)")
-    //            }
-    //        })
-    //    }
+    func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D) {
+        
+        flag = 2
+        print("You tapped \(name) \n : \(placeID) \n :\(location.latitude) \n : \(location.longitude)")
+        
+        // Specify the place data types to return.
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) | UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.types.rawValue))!
+        
+        placesClient.fetchPlace(fromPlaceID: placeID, placeFields: fields, sessionToken: nil, callback: {
+            (place: GMSPlace?, error: Error?) in
+            if let error = error {
+                print("An error occurred: \(error.localizedDescription)")
+                return
+            }
+            if let place = place {
+                self.locationNameLabel.text = place.name
+                self.locationTypeLabel.text = place.types![0]
+                self.locationNameForPOI = place.name!
+                self.locationTypeForPOI = place.types![0]
+                self.getLocationName(lat: location.latitude, lng: location.longitude)
+                
+              self.loadFirstPhotoForPlace(placeID: place.placeID!)
+                self.locationInfoView.isHidden = false
+                self.locationNameLabel.text = place.name
+                self.locationTypeLabel.text = place.types![0]
+                
+                
+                print("The type selected place is: \(self.locationTypeForPOI)")
+                print("The selected place is: \(place.name!)")
+            }
+        })
+    }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print("HI")
-        locationInfoView.isHidden = false
-        locationImageView.image = UIImage(named: "1")
-        locationNameLabel.text = "\((markerDic[marker]?.name!)!)"
-        locationTypeLabel.text = "Resturant"
+        if let markar = markerDic[marker] {
+            print("HI")
+            locationInfoView.isHidden = false
+            locationImageView.image = UIImage(named: "1")
+            locationNameLabel.text = ((markerDic[marker]?.name!)!)
+            locationTypeLabel.text = ((markerDic[marker]?.type!)!)
+        }
+        else {
+            print("Default Marker")
+            //default marker
+        }
         return false
     }
     func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {
@@ -212,5 +332,3 @@ extension MZHangoutSetLocationViewController : GMSMapViewDelegate {
         }
     }
 }
-
-
