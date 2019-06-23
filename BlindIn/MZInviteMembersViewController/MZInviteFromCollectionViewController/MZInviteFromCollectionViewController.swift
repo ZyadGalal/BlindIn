@@ -17,6 +17,9 @@ class MZInviteFromCollectionViewController: UIViewController {
     var nearbyLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var bestieLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
+    var nearbyArray : [String] = []
+    var bestiesArray : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nearbyMemberCollectionView.allowsMultipleSelection = true
@@ -59,10 +62,10 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var return_Value = 0
         if collectionView == nearbyMemberCollectionView{
-            return_Value = 6
+            return_Value = Int(nearbyLists.count)
         }
         else if collectionView == bestiesCollectionView{
-            return_Value = 2
+            return_Value = Int(bestieLists.count)
         }
         return return_Value
     }
@@ -71,13 +74,17 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
         if collectionView == nearbyMemberCollectionView {
             // Place content into hashtag cells
             let nearbyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MZNearbyMemberCollectionViewCell", for: indexPath) as! MZNearbyMemberCollectionViewCell
-            nearbyCell.nearbyMemberNameLabel.text = "Momen"
+            let currentIndex = nearbyLists.object(at: UInt(indexPath.row))
+            let nearbyProfile = currentIndex["profile"]! as! [String : Any]
+            nearbyCell.nearbyMemberNameLabel.text = nearbyProfile["firstName"] as! String
             
             return nearbyCell
         } else if collectionView == bestiesCollectionView {
             // Place content in creators cell
             let bestieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MZBestiesCollectionViewCell", for: indexPath) as! MZBestiesCollectionViewCell
-            bestieCell.bestieNameLabel.text = "Mo2a"
+            let currentIndex = bestieLists.object(at: UInt(indexPath.row))
+            let bestieProfile = currentIndex["profile"]! as! [String : Any]
+            bestieCell.bestieNameLabel.text = bestieProfile["firstName"] as! String
             
             return bestieCell
         } else {
@@ -90,12 +97,30 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
+        if collectionView == nearbyMemberCollectionView{
+            let currentNearby = nearbyLists.object(at: UInt(indexPath.row))
+            nearbyArray.append((currentNearby["_id"] as? String)!)
+            print(nearbyArray)
+        }
+        else if collectionView == bestiesCollectionView{
+            let currentBestie = bestieLists.object(at: UInt(indexPath.row))
+            bestiesArray.append((currentBestie["_id"] as? String)!)
+            print(bestiesArray)
+        }
+    
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
+        if collectionView == nearbyMemberCollectionView{
+            let currentNearby = nearbyLists.object(at: UInt(indexPath.row))
+            nearbyArray.removeAll {$0 == currentNearby["_id"] as! String}
+        }
+        else if collectionView == bestiesCollectionView{
+            let currentBestie = bestieLists.object(at: UInt(indexPath.row))
+            bestiesArray.removeAll {$0 == currentBestie["_id"] as! String}
+        
+        }
+    
     }
-    
-    
     
 }

@@ -30,8 +30,8 @@ class MZHangoutSetLocationViewController: UIViewController {
     var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
     var manager = CLLocationManager()
-    var lat = [Double]()
-    var long = [Double]()
+    var longPressLat = [Double]()
+    var longPressLong = [Double]()
     var photos: [UIImage] = []
     var longPressRecognizer = UILongPressGestureRecognizer()
     var locationAdress : String = ""
@@ -44,7 +44,7 @@ class MZHangoutSetLocationViewController: UIViewController {
     var placesClient: GMSPlacesClient!
     var flag = 0
     var current = 0
-    var coord = 0
+    var counter = 0
     var markerDic : [GMSMarker : fakePin] = [:]
 //    let lats = [37.33487913960151 , 51.508362, 51.509376 , 51.517389 , 51.537391]
 //    let longs = [-122.03009214252234 , -0.128769 , -0.129771,-0.137784 , -0.147799]
@@ -54,7 +54,6 @@ class MZHangoutSetLocationViewController: UIViewController {
     var longs : [Double] = []
     var name : [String] = []
     var type : [String] = []
-    var arr = [Double]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,9 +79,9 @@ class MZHangoutSetLocationViewController: UIViewController {
         // Do any additional setup after loading the view.
         placesClient = GMSPlacesClient.shared()
         
-        for lat in 0..<lats.count{
-            setFakeMarkers(lat: lats[lat] , lng: longs[lat], name: name[lat], type: type[lat])
-        }
+//        for lat in 0..<lats.count{
+//            setFakeMarkers(lat: lats[lat] , lng: longs[lat], name: name[lat], type: type[lat])
+//        }
         // Do any additional setup after loading the view.
     }
     
@@ -94,20 +93,17 @@ class MZHangoutSetLocationViewController: UIViewController {
     }
     
     @objc func getAllPlaces(){
+        lats.removeAll()
+        longs.removeAll()
         self.lists = Meteor.meteorClient?.collections["places"] as! M13MutableOrderedDictionary
-        //print(lists)
-        var currentIndex = lists.object(at: UInt(0))
+        print(lists)
         
-        
-        
-//        for element in 0..<lists.count-1 {
-//            var currentIndex = lists.object(at: UInt(current))
-//
-//            name.append(currentIndex["title"] as! String)
-//            type.append(currentIndex["placeType"] as! String)
-//
-//            current += 1
-//        }
+        for element in 0..<lists.count-1 {
+            var currentIndex = lists.object(at: UInt(current))
+            name.append(currentIndex["title"] as! String)
+            type.append(currentIndex["placeType"] as! String)
+            current += 1
+        }
         for getLocation in 0..<lists.count {
             var currentIndex = lists.object(at: UInt(getLocation))
             let location = currentIndex["location"]! as! [String : Any]
@@ -115,17 +111,16 @@ class MZHangoutSetLocationViewController: UIViewController {
             print(coordinates)
             print(coordinates[0])
             longs.append(coordinates[0])
-            print(longs)
             lats.append(coordinates[1])
-            print(lats)
-            
-            current += 1
         }
-        
+        for lat in 0..<lists.count-1{
+            setFakeMarkers(lat: lats[counter] , lng: longs[counter], name: name[counter], type: type[counter])
+            counter += 1
+        }
         print(name)
-        
-        
-        
+        print(type)
+        print(longs)
+        print(lats)
     }
     
     
@@ -137,7 +132,6 @@ class MZHangoutSetLocationViewController: UIViewController {
         marker.iconView = customMarker
         marker.map = setLocationMapView
         marker.tracksViewChanges = false
-        
         let ff = fakePin(lat: lat, lng: lng, name: name ,type:type)
         markerDic[marker] = ff
     }
@@ -197,14 +191,14 @@ class MZHangoutSetLocationViewController: UIViewController {
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
         flag = 1
         print("Long Press Done")
-        lat.removeAll()
-        long.removeAll()
+        longPressLat.removeAll()
+        longPressLong.removeAll()
         let newMarker = GMSMarker(position: setLocationMapView.projection.coordinate(for: sender.location(in: setLocationMapView)))
-        self.lat.append(newMarker.position.latitude)
-        self.long.append(newMarker.position.longitude)
-        print("lat \(lat[0]) + long \(long[0])")
+        self.longPressLat.append(newMarker.position.latitude)
+        self.longPressLong.append(newMarker.position.longitude)
+        print("lat \(longPressLat[0]) + long \(longPressLong[0])")
         newMarker.map = setLocationMapView
-        getLocationName(lat: lat[0], lng: long[0])
+        getLocationName(lat: longPressLat[0], lng: longPressLong[0])
     }
 
 

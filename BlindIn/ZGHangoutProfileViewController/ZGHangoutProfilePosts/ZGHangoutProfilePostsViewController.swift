@@ -15,6 +15,7 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     @IBOutlet weak var hangoutPostsTableView: UITableView!
     
     var postsList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var usersList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var hangoutId = "agKkwBDSZc6okbt8M"
 
     override func viewDidLoad() {
@@ -23,12 +24,16 @@ class ZGHangoutProfilePostsViewController: UIViewController {
         let addNewPostButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPostButtonClicked))
         self.navigationItem.rightBarButtonItem = addNewPostButton
         
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
         Meteor.meteorClient?.addSubscription("hangouts.posts.all", withParameters: [hangoutId])
         NotificationCenter.default.addObserver(self, selector: #selector(getAllHangoutPosts), name: NSNotification.Name("posts_added"),object : nil)
-         NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
-         NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
     }
-    
+
+
     @IBAction func likeButtonClicked(_ sender: UIButton) {
         let currentIndex = postsList.object(at: UInt(sender.tag))
         loveMethodConnection(postId: (currentIndex["_id"] as? String)!)
@@ -96,7 +101,7 @@ extension ZGHangoutProfilePostsViewController : UITableViewDelegate{
         vc.hangImage = currentIndex["image"] as? String
         vc.hangDescription = currentIndex["description"] as? String
         vc.hangLoveCount = (currentIndex["lovesCount"] as? Int)!
-        vc.hangCommentCount = (currentIndex["commentsCount"] as? Int)!
+        //vc.hangCommentCount = (currentIndex["commentsCount"] as? Int)!
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

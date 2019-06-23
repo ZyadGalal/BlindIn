@@ -689,6 +689,9 @@
                                             <constraint firstAttribute="width" constant="50" id="hKR-BF-3Iw"/>
                                         </constraints>
                                         <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="sendButtonClicked:" destination="76j-RX-Lmr" eventType="touchUpInside" id="JBs-UZ-AdD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -728,7 +731,9 @@
                         <viewLayoutGuide key="safeArea" id="Y5Y-3O-tmj"/>
                     </view>
                     <connections>
+                        <outlet property="chatTableView" destination="jg3-hm-kMp" id="LCl-pl-g33"/>
                         <outlet property="inputMessageTextView" destination="sJx-jZ-qZo" id="fcO-f8-OOx"/>
+                        <outlet property="sendButton" destination="x0e-iT-5x1" id="9dD-xg-ebh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mg0-1K-KhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1355,7 +1360,7 @@
                     </view>
                     <connections>
                         <outlet property="commentTextView" destination="hYN-Xf-viB" id="wJe-IR-qNl"/>
-                        <outlet property="commentsTableView" destination="Yxc-fi-F6Y" id="ySs-0z-Tqf"/>
+                        <outlet property="commentsTableView" destination="Yxc-fi-F6Y" id="HTx-w1-5ex"/>
                         <outlet property="sendButton" destination="8eh-nu-r4B" id="45P-Yy-orm"/>
                     </connections>
                 </viewController>
