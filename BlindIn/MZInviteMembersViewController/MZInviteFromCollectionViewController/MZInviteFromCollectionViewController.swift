@@ -7,18 +7,52 @@
 //
 
 import UIKit
+import ObjectiveDDP
 
 class MZInviteFromCollectionViewController: UIViewController {
 
     @IBOutlet weak var nearbyMemberCollectionView: UICollectionView!
     @IBOutlet weak var bestiesCollectionView: UICollectionView!
+    
+    var nearbyLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var bestieLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nearbyMemberCollectionView.allowsMultipleSelection = true
         bestiesCollectionView.allowsMultipleSelection = true
+        
+        
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        Meteor.meteorClient?.addSubscription("users.nearby")
+        NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllNearby), name: NSNotification.Name(rawValue: "nearby_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllNearby), name: NSNotification.Name(rawValue: "nearby_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllNearby), name: NSNotification.Name(rawValue: "nearby_removed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllBesties), name: NSNotification.Name(rawValue: "besties_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllBesties), name: NSNotification.Name(rawValue: "besties_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllBesties), name: NSNotification.Name(rawValue: "besties_removed"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("users.nearby")
+        NotificationCenter.default.removeObserver(self)
+        nearbyLists.removeAllObjects()
+        bestieLists.removeAllObjects()
+    }
+    @objc func getAllNearby(){
+        self.nearbyLists = Meteor.meteorClient?.collections["nearby"] as! M13MutableOrderedDictionary
+        print(nearbyLists)
+        nearbyMemberCollectionView.reloadData()
+    }
+    @objc func getAllBesties(){
+        self.bestieLists = Meteor.meteorClient?.collections["besties"] as! M13MutableOrderedDictionary
+        print(bestieLists)
+        bestiesCollectionView.reloadData()
+    }
 }
 
 extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
@@ -31,7 +65,6 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
             return_Value = 2
         }
         return return_Value
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

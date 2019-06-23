@@ -19,13 +19,34 @@ class MZHangoutCreationViewController: UIViewController {
     
     var textFieldName : HoshiTextField!
     let datePicker = UIDatePicker()
-
+    let hangoutCreationInfo = HangoutCreation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let name = UIBarButtonItem(title: "Next", style: .plain, target: self, action:#selector(tapButton) )
         self.navigationItem.setRightBarButton(name, animated: false)
         createDatePicker()
+        hangoutCreationModel()
        
+    }
+    
+    func hangoutCreationModel() {
+        hangoutCreationInfo.title = hangoutTitleTextField.text!
+        //Location
+        hangoutCreationInfo.startDate = startDateTextField.text!
+        hangoutCreationInfo.endDate = endDateTextField.text!
+        if hangoutPrivacySwitch.isOn {
+            hangoutCreationInfo.isPublic = "true"
+        }
+        else {
+            hangoutCreationInfo.isPublic = "false"
+        }
+        if requestToJoinSwitch.isOn {
+            hangoutCreationInfo.requireRequest = "true"
+        }
+        else {
+            hangoutCreationInfo.requireRequest = "false"
+        }
     }
     
     func createDatePicker ()
@@ -85,9 +106,12 @@ class MZHangoutCreationViewController: UIViewController {
     @IBAction func requestToJoinSwitchPressed(_ sender: Any) {
         print(requestToJoinSwitch.isOn)
     }
-    @IBAction func locationTextFieldClicked(_ sender: Any) {
+    
+    
+    @IBAction func locationButtonClicked(_ sender: Any) {
+
+        let vc = UIStoryboard(name: "Third", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutSetLocationViewController") as! MZHangoutSetLocationViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
-    
-    
-    
 }
