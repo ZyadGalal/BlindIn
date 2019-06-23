@@ -8,6 +8,7 @@
 
 import UIKit
 import TextFieldEffects
+import GoogleMaps
 
 class MZSignUpViewController: UIViewController {
     
@@ -15,7 +16,8 @@ class MZSignUpViewController: UIViewController {
     var genders = ["Male" , "Female"]
     var genderPicker = UIPickerView()
     var datePicker = UIDatePicker()
-    
+    var locationManager = CLLocationManager()
+
     @IBOutlet weak var firstNameTextField: HoshiTextField!
     @IBOutlet weak var lastNameTextField: HoshiTextField!
     @IBOutlet weak var genderTextField: HoshiTextField!
@@ -48,7 +50,13 @@ class MZSignUpViewController: UIViewController {
             if passwordTextField.text! == confirmPasswordTextField.text!{
                 if Meteor.meteorClient?.connected == true
                 {
-                    signUp(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, gender: genderTextField.text!, birthdate: dateOfBirthTextField.text!)
+                    locationManager = CLLocationManager()
+                    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                    locationManager.requestWhenInUseAuthorization()
+                    locationManager.desiredAccuracy = 50
+                    locationManager.startUpdatingLocation()
+                    locationManager.delegate = self
+                    
                 }
                 else
                 {
@@ -64,8 +72,8 @@ class MZSignUpViewController: UIViewController {
             print("complete fields")
         }
     }
-    func signUp(firstName : String ,lastName : String , email : String , password : String,gender:String,birthdate:String){
-        Meteor.meteorClient?.signup(withUserParameters: ["email":email,"password":password,"profile":["firstName":firstName,"lastName":lastName,"gender":gender,"birthDate" : birthdate]], responseCallback: { (response, error) in
+    func signUp(firstName : String ,lastName : String , email : String , password : String,gender:String,birthdate:String , lat : String , lng : String){
+        Meteor.meteorClient?.signup(withUserParameters: ["email":email,"password":password,"profile":["firstName":firstName,"lastName":lastName,"gender":gender,"birthDate" : birthdate,"lng" : lng , "lat" : lat]], responseCallback: { (response, error) in
             if error != nil{
                 print(error)
             }
@@ -110,5 +118,34 @@ extension MZSignUpViewController : UIPickerViewDataSource , UIPickerViewDelegate
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return genders[row]
+    }
+}
+extension MZSignUpViewController: CLLocationManagerDelegate {
+    
+    // Handle incoming location events.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else {
+            return
+        }
+        // 8
+        locationManager.stopUpdatingLocation()
+        print(location.coordinate.latitude)
+        signUp(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, gender: genderTextField.text!, birthdate: dateOfBirthTextField.text!, lat: "\(location.coordinate.latitude)", lng: "\(location.coordinate.longitude)")
+    }
+    
+    // Handle authorization for the location manager.
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        guard status == .authorizedWhenInUse else {
+            return
+        }
+        // 4
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    // Handle location manager errors.
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        print("Error: \(error)")
     }
 }

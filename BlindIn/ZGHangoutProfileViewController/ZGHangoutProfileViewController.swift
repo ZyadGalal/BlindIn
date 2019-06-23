@@ -8,13 +8,16 @@
 
 import UIKit
 import Floaty
-
+import ObjectiveDDP
 class ZGHangoutProfileViewController: UIViewController {
 
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var sharingButton: UIButton!
     @IBOutlet weak var shadingView: UIView!
     var floaty = Floaty()
+    var hangoutId = "agKkwBDSZc6okbt8M"
+    var hangoutInfo = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFloatActionButton()
@@ -23,6 +26,21 @@ class ZGHangoutProfileViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        Meteor.meteorClient?.addSubscription("hangouts.single", withParameters: [["hangoutId":hangoutId]])
+        NotificationCenter.default.addObserver(self, selector: #selector(getHangoutInfo), name: NSNotification.Name("hangouts_added"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutInfo), name: NSNotification.Name("hangouts_changed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutInfo), name: NSNotification.Name("hangouts_removed"),object : nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("hangouts.single")
+        NotificationCenter.default.removeObserver(self)
+    }
+    @objc func getHangoutInfo ()
+    {
+        hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        print(hangoutInfo)
     }
     func addShadowToButton(){
         sharingButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -90,18 +108,14 @@ class ZGHangoutProfileViewController: UIViewController {
 extension ZGHangoutProfileViewController : FloatyDelegate
 {
     func floatyWillOpen(_ floaty: Floaty) {
-        print("Floaty Will Open")
     }
     
     func floatyDidOpen(_ floaty: Floaty) {
-        print("Floaty Did Open")
     }
     
     func floatyWillClose(_ floaty: Floaty) {
-        print("Floaty Will Close")
     }
     
     func floatyDidClose(_ floaty: Floaty) {
-        print("Floaty Did Close")
     }
 }

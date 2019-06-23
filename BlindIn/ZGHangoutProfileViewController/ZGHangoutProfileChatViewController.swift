@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import ObjectiveDDP
 
 class ZGHangoutProfileChatViewController: UIViewController {
 
     
     
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var inputMessageTextView: UITextView!
+    
+    
+    var hangoutId = "agKkwBDSZc6okbt8M"
+    var chatList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+
+//fake
     let meesages = ["label","ZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewController","ZGHangoutProfileChatViewController","ZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewController","ZGHangoutProfileChatViewController","ZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewController","ZGHangoutProfileChatViewController"]
     var flag = 1
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hangout Chat"
@@ -22,6 +32,8 @@ class ZGHangoutProfileChatViewController: UIViewController {
         inputMessageTextView.text = "Write a Message"
         inputMessageTextView.textColor = UIColor.lightGray
         inputMessageTextView.delegate = self
+        
+        sendButton.isEnabled = false
 //        let amountOfLinesToBeShown: CGFloat = 6
 //        var maxHeight: CGFloat = inputMessageTextView.font!.lineHeight * amountOfLinesToBeShown
 //        inputMessageTextView.sizeThatFits(CGSize(width: inputMessageTextView.frame.width, height: maxHeight))
@@ -30,9 +42,38 @@ class ZGHangoutProfileChatViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        Meteor.meteorClient?.addSubscription("hangouts.chat", withParameters: [hangoutId])
+        NotificationCenter.default.addObserver(self, selector: #selector(getAllHangoutChat), name: NSNotification.Name("chat_added"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutChat), name: NSNotification.Name("chat_changed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutChat), name: NSNotification.Name("chat_removed"),object : nil)
+    }
+    @objc func getAllHangoutChat ()
+    {
+        chatList = Meteor.meteorClient?.collections["chat"] as! M13MutableOrderedDictionary
+        print(chatList)
+        chatTableView.reloadData()
+    }
 
     
-
+    @IBAction func sendButtonClicked(_ sender: Any) {
+        if Meteor.meteorClient?.connected == true{
+            sendNewMessage(hangoutId: hangoutId, message: inputMessageTextView.text!)
+        }
+        else{
+            print("not connected")
+        }
+    }
+    func sendNewMessage (hangoutId : String , message : String){
+        Meteor.meteorClient?.callMethodName("hangouts.methods.message", parameters: [["hangoutId" : hangoutId,"message" : message ]], responseCallback: { (response, error) in
+            if error != nil{
+                print(error)
+            }
+            else{
+                print(response)
+            }
+        })
+    }
 }
 extension ZGHangoutProfileChatViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,12 +106,15 @@ extension ZGHangoutProfileChatViewController : UITextViewDelegate{
         if textView.textColor == UIColor.lightGray {
             textView.text = ""
             textView.textColor = UIColor.black
+            sendButton.isEnabled = true
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Write Message"
             textView.textColor = UIColor.lightGray
+            sendButton.isEnabled = false
+
         }
     }
 }
