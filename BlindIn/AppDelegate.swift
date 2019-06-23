@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import GoogleMaps
+import GooglePlaces
 import ObjectiveDDP
 
 @UIApplicationMain
@@ -26,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //NetworkManager.shared.startNetworkReachabilityObserver()
         IQKeyboardManager.shared.enable = true
-        GMSServices.provideAPIKey("AIzaSyC1-bAGgQ52sXl4ev2GbXofTDfugryxvY0")
-        
+        GMSServices.provideAPIKey("AIzaSyBc2rJKprpwCaS-TGzEf8GLDQk4TcMRNiY")
+        GMSPlacesClient.provideAPIKey("AIzaSyBc2rJKprpwCaS-TGzEf8GLDQk4TcMRNiY")
         
         Meteor.meteorClient?.ddp = ObjectiveDDP(urlString: "ws://18.224.108.40/websocket", delegate: Meteor.meteorClient!)
         Meteor.meteorClient?.ddp.connectWebSocket()

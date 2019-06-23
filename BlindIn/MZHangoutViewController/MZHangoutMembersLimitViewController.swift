@@ -13,6 +13,7 @@ class MZHangoutMembersLimitViewController: UIViewController {
     
     var genders = ["Male" , "Female"]
     var genderPicker = UIPickerView()
+    let hangoutCreationInfo = HangoutCreation()
     
     @IBOutlet weak var maxMembersLimitTextField: HoshiTextField!
     @IBOutlet weak var genderTextField: HoshiTextField!
@@ -23,16 +24,22 @@ class MZHangoutMembersLimitViewController: UIViewController {
         genderPicker.dataSource = self
         genderPicker.delegate = self
         genderTextField.inputView = genderPicker
+        
+        hangoutCreationModel()
 
         let name = UIBarButtonItem(title: "Next", style: .plain, target: self, action:#selector(tapButton) )
         self.navigationItem.setRightBarButton(name, animated: false)
         // Do any additional setup after loading the view.
     }
     
+    func hangoutCreationModel() {
+        hangoutCreationInfo.max = maxMembersLimitTextField.text!
+        hangoutCreationInfo.gender = genderTextField.text!
+    }
 
     @objc func tapButton(){
-        //let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteMembersViewController") as! MZInviteMembersViewController
-        //self.navigationController?.pushViewController(vc, animated: true)
+        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteMembersViewController") as! MZInviteMembersViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func genderTextFieldClicked(_ sender: Any) {
