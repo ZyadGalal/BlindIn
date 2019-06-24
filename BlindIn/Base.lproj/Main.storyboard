@@ -864,6 +864,9 @@
                                                                             </constraints>
                                                                             <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                                                             <state key="normal" image="like"/>
+                                                                            <connections>
+                                                                                <action selector="likeButtonClicked:" destination="xgL-wr-9Ia" eventType="touchUpInside" id="VlW-MU-cHp"/>
+                                                                            </connections>
                                                                         </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -957,6 +960,9 @@
                                             <constraint firstAttribute="width" constant="50" id="Hpp-LM-iMB"/>
                                         </constraints>
                                         <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="sendButtonClicked:" destination="xgL-wr-9Ia" eventType="touchUpInside" id="cDo-ms-7a7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -997,6 +1003,7 @@
                     </view>
                     <connections>
                         <outlet property="commentTextView" destination="OSA-s7-OhD" id="QUq-oY-zwh"/>
+                        <outlet property="commentsTableView" destination="61R-r7-QxS" id="iGv-ck-noA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spA-Me-PTd" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -59,24 +59,30 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     }
     @objc func getAllHangoutPosts ()
     {
-        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
-        print(postsList)
-        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
-        reload(tableView: hangoutPostsTableView)
+        if postsList.count != 0{
+            postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+            print(postsList)
+            usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+            reload(tableView: hangoutPostsTableView)
+        }
     }
     @objc func updateAllHangoutPosts ()
     {
-        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
-        print(postsList)
-        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
-        reload(tableView: hangoutPostsTableView)
+        if postsList.count != 0{
+            postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+            print(postsList)
+            usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+            reload(tableView: hangoutPostsTableView)
+        }
     }
     @objc func removeAllHangoutPosts ()
     {
-        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
-        print(postsList)
-        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
-        reload(tableView: hangoutPostsTableView)
+        if postsList.count != 0{
+            postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+            print(postsList)
+            usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+            reload(tableView: hangoutPostsTableView)
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -133,9 +139,8 @@ extension ZGHangoutProfilePostsViewController : UITableViewDelegate{
 
         let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileCommentsViewController") as! ZGHangoutProfileCommentsViewController
         vc.postId = currentIndex["_id"] as? String
-        vc.indexClicked = indexPath.row
-        vc.post = postsList
-        vc.users = self.usersList
+        //vc.indexClicked = indexPath.row
+
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

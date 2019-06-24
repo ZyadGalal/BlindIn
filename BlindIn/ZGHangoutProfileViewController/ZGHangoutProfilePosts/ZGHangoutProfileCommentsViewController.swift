@@ -19,7 +19,7 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
     var postId : String?
     var post = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var users = M13MutableOrderedDictionary<NSCopying, AnyObject>()
-    var indexClicked : Int?
+    //var indexClicked : Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         commentTextView.isScrollEnabled = false
@@ -109,11 +109,11 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
 }
 extension ZGHangoutProfileCommentsViewController : UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return post.count == 0 ? 0 : 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return 1
+            return  1
         }
         else{
             let currentIndex = post.object(at: UInt(0))
@@ -124,7 +124,7 @@ extension ZGHangoutProfileCommentsViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             
-            let currentIndex = post.object(at: UInt(indexClicked!))
+            let currentIndex = post.object(at: UInt(0))
             let cell = tableView.dequeueReusableCell(withIdentifier: "news") as! ZGNewsFeedTableViewCell
             
             cell.hangImageView.kf.indicatorType = .activity
@@ -183,6 +183,7 @@ extension ZGHangoutProfileCommentsViewController : UITableViewDataSource{
         }
     }
 }
+
 extension ZGHangoutProfileCommentsViewController : UITextViewDelegate{
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -192,6 +193,7 @@ extension ZGHangoutProfileCommentsViewController : UITextViewDelegate{
             sendButton.isEnabled = true
         }
     }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Write a comment"

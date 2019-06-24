@@ -32,6 +32,10 @@ class ZGNewsFeedViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector:  #selector(updateAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(removeAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("posts.newsfeed")
+        NotificationCenter.default.removeObserver(self)
+    }
     func reload(tableView: UITableView) {
         let contentOffset = tableView.contentOffset
         tableView.reloadData()
@@ -132,7 +136,12 @@ extension ZGNewsFeedViewController : UITableViewDataSource{
 }
 extension ZGNewsFeedViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentIndex = postsList.object(at: UInt(indexPath.row))
+
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGPostsDetailsViewController") as! ZGPostsDetailsViewController
+        vc.postId = currentIndex["_id"] as? String
+        //vc.indexClicked = indexPath.row
+
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

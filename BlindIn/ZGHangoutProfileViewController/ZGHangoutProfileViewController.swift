@@ -28,7 +28,7 @@ class ZGHangoutProfileViewController: UIViewController {
     var floaty = Floaty()
     var hangoutId = "oXMrBNvmGsb2ZZ9MN"
     var hangoutInfo = M13MutableOrderedDictionary<NSCopying, AnyObject>()
-
+    var interests = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFloatActionButton()
@@ -42,7 +42,7 @@ class ZGHangoutProfileViewController: UIViewController {
         Meteor.meteorClient?.addSubscription("hangouts.single", withParameters: [["hangoutId":hangoutId]])
         NotificationCenter.default.addObserver(self, selector: #selector(getHangoutInfo), name: NSNotification.Name("hangouts_added"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(updateHangoutInfo), name: NSNotification.Name("hangouts_changed"),object : nil)
-        //NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutInfo), name: NSNotification.Name("hangouts_removed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(removeHangoutInfo), name: NSNotification.Name("hangouts_removed"),object : nil)
     }
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("hangouts.single")
@@ -50,13 +50,24 @@ class ZGHangoutProfileViewController: UIViewController {
     }
     @objc func getHangoutInfo ()
     {
+        print(Meteor.meteorClient?.collections)
         hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        //interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        print(interests)
         print(hangoutInfo)
         updateInfo()
     }
     @objc func updateHangoutInfo ()
     {
         hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        //interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        print(hangoutInfo)
+        updateInfo()
+    }
+    @objc func removeHangoutInfo ()
+    {
+        hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        //interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
         print(hangoutInfo)
         updateInfo()
     }
@@ -73,6 +84,8 @@ class ZGHangoutProfileViewController: UIViewController {
             locationLabel.text = current["location"] as? String
             durationLabel.text = "\(current["startDate"] as! String) - \(current["endDate"] as! String)"
             hangoutImageView.kf.setImage(with: URL(string: current["image"] as! String))
+            
+            let hangoutInterests = current["interests"] as? [String]
         }
     }
     func addShadowToButton(){
