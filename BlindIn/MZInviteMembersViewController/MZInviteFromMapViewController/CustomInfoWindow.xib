@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomInfoWindow" customModule="BlindIn" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="165"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Re-BH-i3h">
+                    <rect key="frame" x="104" y="121" width="80" height="29"/>
+                    <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="njw-80-Hz3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="INVITE">
+                        <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibG-re-OPF">
+                    <rect key="frame" x="16" y="121" width="80" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="ZfY-kU-SSi"/>
+                    </constraints>
+                    <state key="normal" title="PROFILE">
+                        <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Momen Adel Zarad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqS-ga-hg8">
+                    <rect key="frame" x="16" y="92" width="168" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="LL6-Iv-2kT">
+                    <rect key="frame" x="63" y="9" width="75" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="75" id="8xi-3A-cbZ"/>
+                        <constraint firstAttribute="width" constant="75" id="Z3C-fO-FYD"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6Re-BH-i3h" secondAttribute="bottom" constant="15" id="0g0-ZK-a9g"/>
+                <constraint firstItem="6Re-BH-i3h" firstAttribute="top" secondItem="gqS-ga-hg8" secondAttribute="bottom" constant="8" id="6RO-8V-4O3"/>
+                <constraint firstItem="gqS-ga-hg8" firstAttribute="top" secondItem="LL6-Iv-2kT" secondAttribute="bottom" constant="8" id="A6X-XG-yXD"/>
+                <constraint firstItem="gqS-ga-hg8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="DRs-2M-Aw4"/>
+                <constraint firstItem="ibG-re-OPF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Jk8-XZ-4Ff"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gqS-ga-hg8" secondAttribute="trailing" constant="16" id="Jnp-ux-6B2"/>
+                <constraint firstItem="LL6-Iv-2kT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="63" id="Uga-Hb-9ij"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LL6-Iv-2kT" secondAttribute="trailing" constant="62" id="XQW-l9-0o8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Re-BH-i3h" secondAttribute="trailing" constant="16" id="c4d-Wu-383"/>
+                <constraint firstItem="6Re-BH-i3h" firstAttribute="top" secondItem="gqS-ga-hg8" secondAttribute="bottom" constant="8" id="dbc-cX-EMn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ibG-re-OPF" secondAttribute="bottom" constant="14" id="eFl-oq-t8S"/>
+                <constraint firstItem="LL6-Iv-2kT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="9" id="oax-oj-xxd"/>
+                <constraint firstItem="6Re-BH-i3h" firstAttribute="leading" secondItem="ibG-re-OPF" secondAttribute="trailing" constant="8" id="xVP-HE-R6F"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="infoWindowImageView" destination="LL6-Iv-2kT" id="AzU-TD-0Ij"/>
+                <outlet property="infoWindowInviteButton" destination="6Re-BH-i3h" id="07T-6g-Rzu"/>
+                <outlet property="infoWindowLabel" destination="gqS-ga-hg8" id="gC8-zf-BPe"/>
+                <outlet property="infoWindowProfileWindow" destination="ibG-re-OPF" id="gRu-x1-X5t"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="1" width="1366" height="768"/>
+    </resources>
+</document>

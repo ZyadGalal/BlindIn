@@ -14,17 +14,21 @@ class MZInviteFromCollectionViewController: UIViewController {
     @IBOutlet weak var nearbyMemberCollectionView: UICollectionView!
     @IBOutlet weak var bestiesCollectionView: UICollectionView!
     
+    let hangoutCreationInfo = HangoutCreation()
+    var invitedIDsArray : [String] = []
+    
     var nearbyLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var bestieLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
-    var nearbyArray : [String] = []
-    var bestiesArray : [String] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nearbyMemberCollectionView.allowsMultipleSelection = true
         bestiesCollectionView.allowsMultipleSelection = true
         
+        let name = UIBarButtonItem(title: "Create", style: .plain, target: self, action:#selector(tapButton) )
+        self.navigationItem.setRightBarButton(name, animated: false)
         
         // Do any additional setup after loading the view.
     }
@@ -55,6 +59,53 @@ class MZInviteFromCollectionViewController: UIViewController {
         self.bestieLists = Meteor.meteorClient?.collections["besties"] as! M13MutableOrderedDictionary
         print(bestieLists)
         bestiesCollectionView.reloadData()
+    }
+    @objc func tapButton(){
+        hangoutCreationInfo.invites = invitedIDsArray
+        print("***************************")
+        print(hangoutCreationInfo.title)
+        print(hangoutCreationInfo.locationID)
+        print(hangoutCreationInfo.startDate)
+        print(hangoutCreationInfo.endDate)
+        print(hangoutCreationInfo.isPublic)
+        print(hangoutCreationInfo.requireRequest)
+        print(hangoutCreationInfo.description)
+        print(hangoutCreationInfo.interests)
+        print(hangoutCreationInfo.max)
+        print(hangoutCreationInfo.gender)
+        print(hangoutCreationInfo.invites)
+        print("******************************")
+        var params : [String : String] = [:]
+        params = ["title" : hangoutCreationInfo.title
+            ,"location" : hangoutCreationInfo.locationID
+            , "startDate" : hangoutCreationInfo.startDate
+            , "endDate" : hangoutCreationInfo.endDate
+            , "isPublic" : hangoutCreationInfo.isPublic
+            , "requiresRequests" : hangoutCreationInfo.requireRequest
+            , "description" : hangoutCreationInfo.description
+            , "interests" : hangoutCreationInfo.interests
+            , "max" : hangoutCreationInfo.max
+            , "gender" : hangoutCreationInfo.gender
+            , "invites" : hangoutCreationInfo.invites ] as! [String : String]
+        if Meteor.meteorClient?.connected == true{
+            Meteor.meteorClient?.callMethodName("hangouts.methods.create", parameters: [params], responseCallback: { (response, error) in
+                if error != nil{
+                    print(error)
+                }
+                else{
+                    print(response)
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
+        }
+        else{
+            print("not connected")
+        }
+
+
+
+        
     }
 }
 
@@ -99,13 +150,13 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
         
         if collectionView == nearbyMemberCollectionView{
             let currentNearby = nearbyLists.object(at: UInt(indexPath.row))
-            nearbyArray.append((currentNearby["_id"] as? String)!)
-            print(nearbyArray)
+            invitedIDsArray.append((currentNearby["_id"] as? String)!)
+            print(invitedIDsArray)
         }
         else if collectionView == bestiesCollectionView{
             let currentBestie = bestieLists.object(at: UInt(indexPath.row))
-            bestiesArray.append((currentBestie["_id"] as? String)!)
-            print(bestiesArray)
+            invitedIDsArray.append((currentBestie["_id"] as? String)!)
+            print(invitedIDsArray)
         }
     
     }
@@ -113,11 +164,11 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
         
         if collectionView == nearbyMemberCollectionView{
             let currentNearby = nearbyLists.object(at: UInt(indexPath.row))
-            nearbyArray.removeAll {$0 == currentNearby["_id"] as! String}
+            invitedIDsArray.removeAll {$0 == currentNearby["_id"] as! String}
         }
         else if collectionView == bestiesCollectionView{
             let currentBestie = bestieLists.object(at: UInt(indexPath.row))
-            bestiesArray.removeAll {$0 == currentBestie["_id"] as! String}
+            invitedIDsArray.removeAll {$0 == currentBestie["_id"] as! String}
         
         }
     

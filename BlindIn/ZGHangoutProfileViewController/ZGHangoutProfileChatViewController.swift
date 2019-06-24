@@ -20,11 +20,9 @@ class ZGHangoutProfileChatViewController: UIViewController {
     
     var hangoutId = "agKkwBDSZc6okbt8M"
     var chatList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var usersList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
 
-//fake
-    let meesages = ["label","ZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewController","ZGHangoutProfileChatViewController","ZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewController","ZGHangoutProfileChatViewController","ZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewControllerZGHangoutProfileChatViewController","ZGHangoutProfileChatViewController"]
-    var flag = 1
-    //
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hangout Chat"
@@ -43,18 +41,45 @@ class ZGHangoutProfileChatViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     override func viewDidAppear(_ animated: Bool) {
-        Meteor.meteorClient?.addSubscription("hangouts.chat", withParameters: [hangoutId])
+        Meteor.meteorClient?.addSubscription("hangouts.chat", withParameters: [["hangoutId":hangoutId]])
         NotificationCenter.default.addObserver(self, selector: #selector(getAllHangoutChat), name: NSNotification.Name("chat_added"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutChat), name: NSNotification.Name("chat_changed"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutChat), name: NSNotification.Name("chat_removed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(updateAllHangoutChat), name: NSNotification.Name("chat_changed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(removeHangoutChat), name: NSNotification.Name("chat_removed"),object : nil)
     }
     @objc func getAllHangoutChat ()
     {
         chatList = Meteor.meteorClient?.collections["chat"] as! M13MutableOrderedDictionary
         print(chatList)
+        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        print(usersList)
         chatTableView.reloadData()
+        let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
+        self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
-
+    @objc func updateAllHangoutChat ()
+    {
+        chatList = Meteor.meteorClient?.collections["chat"] as! M13MutableOrderedDictionary
+        print(chatList)
+        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        print(usersList)
+        chatTableView.reloadData()
+        let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
+        self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    @objc func removeHangoutChat ()
+    {
+        chatList = Meteor.meteorClient?.collections["chat"] as! M13MutableOrderedDictionary
+        print(chatList)
+        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        print(usersList)
+        chatTableView.reloadData()
+        let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
+        self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("hangouts.chat")
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @IBAction func sendButtonClicked(_ sender: Any) {
         if Meteor.meteorClient?.connected == true{
@@ -71,30 +96,39 @@ class ZGHangoutProfileChatViewController: UIViewController {
             }
             else{
                 print(response)
+                self.inputMessageTextView.text = ""
             }
         })
     }
 }
 extension ZGHangoutProfileChatViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meesages.count
+        return Int(chatList.count)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if flag == 1 {
+        let currentIndex = chatList.object(at: UInt(indexPath.row))
+        if currentIndex["userId"] as? String == Meteor.meteorClient?.userId  {
             let cell = tableView.dequeueReusableCell(withIdentifier: "my") as! MyMessagesTableViewCell
-            cell.dateLabel.text = "3:45 AM"
-            cell.myMessageLabel.text = meesages[indexPath.row]
-            flag = 2
+            cell.dateLabel.text = currentIndex["time"] as? String
+            cell.myMessageLabel.text = currentIndex["message"] as? String
             return cell
         }
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "other") as! OtherMessagesTableViewCell
-            cell.dateLabel.text = "4:45 PM"
-            cell.userMessageLabel.text = meesages[indexPath.row]
-            cell.usernameLabel.text = "Zyad Galal"
-            cell.userImageView.image = UIImage(named: "1")
-            flag = 1
+            cell.dateLabel.text = currentIndex["time"] as? String
+            cell.userMessageLabel.text = currentIndex["message"] as? String
+            
+            for index in 0..<usersList.count{
+                let user = usersList.object(at: UInt(index))
+                if currentIndex["userId"] as? String == user["_id"] as? String{
+                    let currentUser = user["profile"] as? [String:Any]
+                    cell.usernameLabel.text = "\(currentUser!["firstName"] as! String) \(currentUser!["lastName"] as! String)"
+                    cell.userImageView.kf.setImage(with: URL(string: (currentUser!["image"] as? String)!))
+                    break
+                }
+            }
+            
             return cell
         }
     }
