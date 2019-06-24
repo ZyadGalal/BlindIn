@@ -84,7 +84,7 @@ class ZGHangoutProfileViewController: UIViewController {
             locationLabel.text = current["location"] as? String
             durationLabel.text = "\(current["startDate"] as! String) - \(current["endDate"] as! String)"
             hangoutImageView.kf.setImage(with: URL(string: current["image"] as! String))
-            
+            hangoutMembersCountLabel.text = current["membersCount"] as? String
             let hangoutInterests = current["interests"] as? [String]
         }
     }

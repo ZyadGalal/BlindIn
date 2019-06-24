@@ -109,14 +109,14 @@ extension ZGHangoutProfileChatViewController : UITableViewDataSource{
         let currentIndex = chatList.object(at: UInt(indexPath.row))
         if currentIndex["userId"] as? String == Meteor.meteorClient?.userId  {
             let cell = tableView.dequeueReusableCell(withIdentifier: "my") as! MyMessagesTableViewCell
-            cell.dateLabel.text = "3:45 AM"
+            cell.dateLabel.text = currentIndex["time"] as? String
             cell.myMessageLabel.text = currentIndex["message"] as? String
             return cell
         }
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "other") as! OtherMessagesTableViewCell
-            cell.dateLabel.text = "4:45 PM"
+            cell.dateLabel.text = currentIndex["time"] as? String
             cell.userMessageLabel.text = currentIndex["message"] as? String
             
             for index in 0..<usersList.count{

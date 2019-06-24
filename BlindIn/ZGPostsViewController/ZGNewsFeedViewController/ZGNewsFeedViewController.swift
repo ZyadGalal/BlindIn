@@ -119,7 +119,7 @@ extension ZGNewsFeedViewController : UITableViewDataSource{
             }
         }
         
-        cell.dateLabel.text = "5 min"
+        cell.dateLabel.text = currentIndex["time"] as? String
         cell.likeCountLabel.text = "\((currentIndex["lovesCount"] as? Int)!)"
         cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
         cell.hangDescriptionLabel.text = currentIndex["description"] as? String

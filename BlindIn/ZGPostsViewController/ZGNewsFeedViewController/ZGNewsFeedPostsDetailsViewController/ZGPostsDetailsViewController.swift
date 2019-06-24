@@ -152,7 +152,7 @@ extension ZGPostsDetailsViewController : UITableViewDataSource{
                 }
             }
             
-            cell.dateLabel.text = "5 min"
+            cell.dateLabel.text = currentIndex["time"] as? String
             cell.likeCountLabel.text = "\((currentIndex["lovesCount"] as? Int)!)"
             cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
             cell.hangDescriptionLabel.text = currentIndex["description"] as? String
@@ -191,7 +191,7 @@ extension ZGPostsDetailsViewController : UITableViewDataSource{
             cell.userImageView.kf.setImage(with: URL(string: image))
             cell.usernameLabel.text = username
             cell.commentLabel.text = comment["comment"] as? String
-            cell.timeLabel.text = "5 am"
+            cell.timeLabel.text = currentIndex["time"] as? String
             return cell
         }
     }

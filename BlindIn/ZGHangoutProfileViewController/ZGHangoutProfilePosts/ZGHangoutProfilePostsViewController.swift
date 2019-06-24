@@ -27,10 +27,12 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     }
  
     override func viewDidAppear(_ animated: Bool) {
-        Meteor.meteorClient?.addSubscription("hangouts.posts.all", withParameters: [hangoutId])
+        Meteor.meteorClient?.addSubscription("hangouts.posts.all", withParameters: [["hangoutId" : hangoutId]])
         NotificationCenter.default.addObserver(self, selector: #selector(getAllHangoutPosts), name: NSNotification.Name("posts_added"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(updateAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(removeAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
+        
+        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
     }
     func reload(tableView: UITableView) {
         let contentOffset = tableView.contentOffset
@@ -118,7 +120,7 @@ extension ZGHangoutProfilePostsViewController : UITableViewDataSource{
             }
         }
         
-        cell.dateLabel.text = "5 min"
+        cell.dateLabel.text = currentIndex["time"] as? String
         cell.likeCountLabel.text = "\((currentIndex["lovesCount"] as? Int)!)"
         cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
         cell.hangDescriptionLabel.text = currentIndex["description"] as? String
