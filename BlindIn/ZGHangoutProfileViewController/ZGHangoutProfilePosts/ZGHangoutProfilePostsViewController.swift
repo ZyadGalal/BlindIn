@@ -25,13 +25,13 @@ class ZGHangoutProfilePostsViewController: UIViewController {
         
         
     }
+ 
     override func viewDidAppear(_ animated: Bool) {
         Meteor.meteorClient?.addSubscription("hangouts.posts.all", withParameters: [hangoutId])
         NotificationCenter.default.addObserver(self, selector: #selector(getAllHangoutPosts), name: NSNotification.Name("posts_added"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(updateAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(removeAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
     }
-
     func reload(tableView: UITableView) {
         let contentOffset = tableView.contentOffset
         tableView.reloadData()
@@ -61,6 +61,21 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     {
         postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
         print(postsList)
+        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        reload(tableView: hangoutPostsTableView)
+    }
+    @objc func updateAllHangoutPosts ()
+    {
+        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+        print(postsList)
+        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        reload(tableView: hangoutPostsTableView)
+    }
+    @objc func removeAllHangoutPosts ()
+    {
+        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+        print(postsList)
+        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         reload(tableView: hangoutPostsTableView)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +84,7 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("hangouts.posts.all")
         NotificationCenter.default.removeObserver(self)
-        postsList.removeAllObjects()
+        //postsList.removeAllObjects()
     }
     @objc func addNewPostButtonClicked (){
         let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGAddNewPostViewController") as! ZGAddNewPostViewController
@@ -84,11 +99,19 @@ extension ZGHangoutProfilePostsViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentIndex = postsList.object(at: UInt(indexPath.row))
         let cell = tableView.dequeueReusableCell(withIdentifier: "news") as! ZGNewsFeedTableViewCell
-        cell.userImageView.kf.indicatorType = .activity
-        cell.userImageView.image = UIImage(named: "1")
+        
         cell.hangImageView.kf.indicatorType = .activity
         cell.hangImageView.kf.setImage(with: URL(string: currentIndex["image"] as! String))
-        cell.userNameLable.text = "Zyad Galal"
+        for index in 0..<usersList.count {
+            let currentpost = postsList.object(at: UInt(indexPath.row))
+            let currentuser = usersList.object(at: UInt(index))
+            if currentpost["userId"] as? String == currentuser["_id"] as? String{
+                let userProfile = currentuser["profile"] as! [String:Any]
+                cell.userNameLable.text = "\(userProfile["firstName"] as! String) \(userProfile["lastName"] as! String)"
+                cell.userImageView.kf.setImage(with: URL(string: userProfile["image"] as! String))
+            }
+        }
+        
         cell.dateLabel.text = "5 min"
         cell.likeCountLabel.text = "\((currentIndex["lovesCount"] as? Int)!)"
         cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
@@ -107,12 +130,12 @@ extension ZGHangoutProfilePostsViewController : UITableViewDataSource{
 extension ZGHangoutProfilePostsViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentIndex = postsList.object(at: UInt(indexPath.row))
+
         let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileCommentsViewController") as! ZGHangoutProfileCommentsViewController
         vc.postId = currentIndex["_id"] as? String
-        vc.hangImage = currentIndex["image"] as? String
-        vc.hangDescription = currentIndex["description"] as? String
-        vc.hangLoveCount = (currentIndex["lovesCount"] as? Int)!
-        //vc.hangCommentCount = (currentIndex["commentsCount"] as? Int)!
+        vc.indexClicked = indexPath.row
+        vc.post = postsList
+        vc.users = self.usersList
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

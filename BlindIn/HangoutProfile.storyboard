@@ -1253,13 +1253,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i'm relly in love with this awesome design" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSS-2D-4Vd">
-                                                            <rect key="frame" x="73" y="35.5" width="277" height="19.5"/>
+                                                            <rect key="frame" x="73" y="32.5" width="277" height="29"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKC-Ba-4jC">
-                                                            <rect key="frame" x="73" y="60" width="297" height="17"/>
+                                                            <rect key="frame" x="73" y="63.5" width="297" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="50R-D6-G8j"/>
                                                             </constraints>
@@ -1273,10 +1273,10 @@
                                                         <constraint firstAttribute="trailing" secondItem="WSS-2D-4Vd" secondAttribute="trailing" constant="25" id="MpF-Jh-wLd"/>
                                                         <constraint firstItem="PKC-Ba-4jC" firstAttribute="leading" secondItem="WSS-2D-4Vd" secondAttribute="leading" id="Nt4-1c-wft"/>
                                                         <constraint firstItem="sVn-Vz-5wj" firstAttribute="top" secondItem="JfS-gl-pd9" secondAttribute="top" id="Od8-q9-QuC"/>
-                                                        <constraint firstAttribute="bottom" secondItem="PKC-Ba-4jC" secondAttribute="bottom" constant="8.3300000000000001" id="Qdg-gI-aBG"/>
-                                                        <constraint firstItem="PKC-Ba-4jC" firstAttribute="top" secondItem="WSS-2D-4Vd" secondAttribute="bottom" constant="5" id="VnX-Yn-RIR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="PKC-Ba-4jC" secondAttribute="bottom" constant="5" id="Qdg-gI-aBG"/>
+                                                        <constraint firstItem="PKC-Ba-4jC" firstAttribute="top" secondItem="WSS-2D-4Vd" secondAttribute="bottom" constant="2" id="VnX-Yn-RIR"/>
                                                         <constraint firstItem="WSS-2D-4Vd" firstAttribute="leading" secondItem="sVn-Vz-5wj" secondAttribute="leading" id="dJX-TN-IE6"/>
-                                                        <constraint firstItem="WSS-2D-4Vd" firstAttribute="top" secondItem="sVn-Vz-5wj" secondAttribute="bottom" constant="6" id="fZc-oB-Rg3"/>
+                                                        <constraint firstItem="WSS-2D-4Vd" firstAttribute="top" secondItem="sVn-Vz-5wj" secondAttribute="bottom" constant="3" id="fZc-oB-Rg3"/>
                                                         <constraint firstItem="JfS-gl-pd9" firstAttribute="top" secondItem="Thc-Jo-cPd" secondAttribute="top" constant="8" id="l4n-9S-1LU"/>
                                                         <constraint firstItem="sVn-Vz-5wj" firstAttribute="leading" secondItem="JfS-gl-pd9" secondAttribute="trailing" constant="8" id="mTs-g8-hev"/>
                                                         <constraint firstAttribute="trailing" secondItem="PKC-Ba-4jC" secondAttribute="trailing" constant="5" id="qes-H5-5Hi"/>

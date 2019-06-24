@@ -43,8 +43,8 @@ class ZGHangoutProfileChatViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         Meteor.meteorClient?.addSubscription("hangouts.chat", withParameters: [["hangoutId":hangoutId]])
         NotificationCenter.default.addObserver(self, selector: #selector(getAllHangoutChat), name: NSNotification.Name("chat_added"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutChat), name: NSNotification.Name("chat_changed"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getAllHangoutChat), name: NSNotification.Name("chat_removed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(updateAllHangoutChat), name: NSNotification.Name("chat_changed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(removeHangoutChat), name: NSNotification.Name("chat_removed"),object : nil)
     }
     @objc func getAllHangoutChat ()
     {
@@ -53,6 +53,28 @@ class ZGHangoutProfileChatViewController: UIViewController {
         usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         print(usersList)
         chatTableView.reloadData()
+        let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
+        self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    @objc func updateAllHangoutChat ()
+    {
+        chatList = Meteor.meteorClient?.collections["chat"] as! M13MutableOrderedDictionary
+        print(chatList)
+        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        print(usersList)
+        chatTableView.reloadData()
+        let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
+        self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    @objc func removeHangoutChat ()
+    {
+        chatList = Meteor.meteorClient?.collections["chat"] as! M13MutableOrderedDictionary
+        print(chatList)
+        usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        print(usersList)
+        chatTableView.reloadData()
+        let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
+        self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("hangouts.chat")
@@ -96,8 +118,17 @@ extension ZGHangoutProfileChatViewController : UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "other") as! OtherMessagesTableViewCell
             cell.dateLabel.text = "4:45 PM"
             cell.userMessageLabel.text = currentIndex["message"] as? String
-            cell.usernameLabel.text = "Zyad Galal"
-            cell.userImageView.image = UIImage(named: "1")
+            
+            for index in 0..<usersList.count{
+                let user = usersList.object(at: UInt(index))
+                if currentIndex["userId"] as? String == user["_id"] as? String{
+                    let currentUser = user["profile"] as? [String:Any]
+                    cell.usernameLabel.text = "\(currentUser!["firstName"] as! String) \(currentUser!["lastName"] as! String)"
+                    cell.userImageView.kf.setImage(with: URL(string: (currentUser!["image"] as? String)!))
+                    break
+                }
+            }
+            
             return cell
         }
     }

@@ -9,6 +9,7 @@
 import UIKit
 import Floaty
 import ObjectiveDDP
+import Kingfisher
 class ZGHangoutProfileViewController: UIViewController {
 
     @IBOutlet weak var interestsLabel: UILabel!
@@ -25,7 +26,7 @@ class ZGHangoutProfileViewController: UIViewController {
     @IBOutlet weak var sharingButton: UIButton!
     @IBOutlet weak var shadingView: UIView!
     var floaty = Floaty()
-    var hangoutId = "agKkwBDSZc6okbt8M"
+    var hangoutId = "oXMrBNvmGsb2ZZ9MN"
     var hangoutInfo = M13MutableOrderedDictionary<NSCopying, AnyObject>()
 
     override func viewDidLoad() {
@@ -40,8 +41,8 @@ class ZGHangoutProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         Meteor.meteorClient?.addSubscription("hangouts.single", withParameters: [["hangoutId":hangoutId]])
         NotificationCenter.default.addObserver(self, selector: #selector(getHangoutInfo), name: NSNotification.Name("hangouts_added"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutInfo), name: NSNotification.Name("hangouts_changed"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutInfo), name: NSNotification.Name("hangouts_removed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(updateHangoutInfo), name: NSNotification.Name("hangouts_changed"),object : nil)
+        //NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutInfo), name: NSNotification.Name("hangouts_removed"),object : nil)
     }
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("hangouts.single")
@@ -53,16 +54,26 @@ class ZGHangoutProfileViewController: UIViewController {
         print(hangoutInfo)
         updateInfo()
     }
+    @objc func updateHangoutInfo ()
+    {
+        hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        print(hangoutInfo)
+        updateInfo()
+    }
     func updateInfo(){
-        let current = hangoutInfo.object(at: UInt(0))
-        hangoutNameLabel.text = current["title"] as? String
-        hangoutStatusButton.setTitle(current["status"] as? String, for: .normal)
-        hangoutTimeLabel.text = current["startDate"] as? String
-        hangoutDescriptionLabel.text = current["description"] as? String
-        genderLabel.text = current["gender"] as? String
-        locationLabel.text = current["location"] as? String
-        durationLabel.text = "\(current["startDate"] as! String) - \(current["endDate"] as! String)"
-        
+        if hangoutInfo.count != 0
+        {
+            let current = hangoutInfo.object(at: UInt(0))
+            
+            hangoutNameLabel.text = current["title"] as? String
+            hangoutStatusButton.setTitle(current["status"] as? String, for: .normal)
+            hangoutTimeLabel.text = current["startDate"] as? String
+            hangoutDescriptionLabel.text = current["description"] as? String
+            genderLabel.text = current["gender"] as? String
+            locationLabel.text = current["location"] as? String
+            durationLabel.text = "\(current["startDate"] as! String) - \(current["endDate"] as! String)"
+            hangoutImageView.kf.setImage(with: URL(string: current["image"] as! String))
+        }
     }
     func addShadowToButton(){
         sharingButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor

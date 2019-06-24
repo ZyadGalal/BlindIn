@@ -19,12 +19,7 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
     var postId : String?
     var post = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var users = M13MutableOrderedDictionary<NSCopying, AnyObject>()
-    var hangImage :String?
-    var hangDescription : String?
-    var hangLoveCount : Int?
-    var hangCommentCount : Int = 0
-    var userImage : String = "1"
-    var postOwnerName : String?
+    var indexClicked : Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         commentTextView.isScrollEnabled = false
@@ -34,16 +29,29 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
         sendButton.isEnabled = false
 
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
         Meteor.meteorClient?.addSubscription("posts.single", withParameters: [["postId":postId!]])
         NotificationCenter.default.addObserver(self, selector: #selector(getHangoutPost), name: NSNotification.Name("posts_added"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutPost), name: NSNotification.Name("posts_changed"),object : nil)
-        NotificationCenter.default.addObserver(self, selector:  #selector(getHangoutPost), name: NSNotification.Name("posts_removed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(updateHangoutPost), name: NSNotification.Name("posts_changed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(removeHangoutPost), name: NSNotification.Name("posts_removed"),object : nil)
+
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("posts.single")
         NotificationCenter.default.removeObserver(self)
     }
+    @objc func updateHangoutPost ()
+    {
+        print(Meteor.meteorClient?.collections)
+        post = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+        print(post)
+        users = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        print(users)
 
+        commentsTableView.reloadData()
+    }
     @objc func getHangoutPost ()
     {
         print(Meteor.meteorClient?.collections)
@@ -51,29 +59,15 @@ class ZGHangoutProfileCommentsViewController: UIViewController {
         print(post)
         users = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         print(users)
-        if post.count > 0{
-        let currentIndex = post.object(at: UInt(0))
-        
-        postId = currentIndex["_id"] as? String
-        hangImage = currentIndex["image"] as? String
-        hangDescription = currentIndex["description"] as? String
-        hangLoveCount = (currentIndex["lovesCount"] as? Int)!
-        hangCommentCount = (currentIndex["commentsCount"] as? Int)!
-        }
-        
-//        let userId = comment["userId"] as? String
-//        for index in 0..<users.count{
-//            let user = users.object(at: UInt(index))
-//            if userId == user["_id"] as? String
-//            {
-//                if user["image"] != nil{
-//                    image = (user["image"] as? String)!
-//                }
-//                username = "\(user["firstName"]) \(user["lastName"])"
-//                break
-//            }
-//
-//        }
+
+        commentsTableView.reloadData()
+    }
+    @objc func removeHangoutPost ()
+    {
+        post = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+        print(post)
+        users = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        print(users)
         
         commentsTableView.reloadData()
     }
@@ -122,22 +116,41 @@ extension ZGHangoutProfileCommentsViewController : UITableViewDataSource{
             return 1
         }
         else{
-            return hangCommentCount
+            let currentIndex = post.object(at: UInt(0))
+            let current = currentIndex["comments"] as! [[String : Any]]
+            return current.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             
+            let currentIndex = post.object(at: UInt(indexClicked!))
             let cell = tableView.dequeueReusableCell(withIdentifier: "news") as! ZGNewsFeedTableViewCell
-            cell.userImageView.kf.indicatorType = .activity
-            cell.userImageView.image = UIImage(named: "1")
+            
             cell.hangImageView.kf.indicatorType = .activity
-            cell.hangImageView.kf.setImage(with: URL(string: hangImage!))
-            cell.userNameLable.text = "Zyad Galal"
+            cell.hangImageView.kf.setImage(with: URL(string: currentIndex["image"] as! String))
+            for index in 0..<users.count {
+                let currentpost = post.object(at: UInt(indexPath.row))
+                let currentuser = users.object(at: UInt(index))
+                if currentpost["userId"] as? String == currentuser["_id"] as? String{
+                    let userProfile = currentuser["profile"] as! [String:Any]
+                    cell.userNameLable.text = "\(userProfile["firstName"] as! String) \(userProfile["lastName"] as! String)"
+                    cell.userImageView.kf.setImage(with: URL(string: userProfile["image"] as! String))
+                }
+            }
+            
             cell.dateLabel.text = "5 min"
-            cell.likeCountLabel.text = "\(hangLoveCount!)"
-            cell.commentCountLabel.text = "\(hangCommentCount)"
-            cell.hangDescriptionLabel.text = hangDescription!
+            cell.likeCountLabel.text = "\((currentIndex["lovesCount"] as? Int)!)"
+            cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
+            cell.hangDescriptionLabel.text = currentIndex["description"] as? String
+            cell.likeButton.tag = indexPath.row
+            let loveArray = currentIndex["loves"] as? [String]
+            if (loveArray?.contains((Meteor.meteorClient?.userId)!)) == true{
+                cell.likeButton.setImage(UIImage(named:"like"), for: .normal)
+            }
+            else{
+                cell.likeButton.setImage(UIImage(named:"unlike"), for: .normal)
+            }
             return cell
         }
         else{
@@ -147,15 +160,15 @@ extension ZGHangoutProfileCommentsViewController : UITableViewDataSource{
             
             let userId = comment["userId"] as? String
             var image : String = "1"
-            var username : String?
+            var username : String = "zz"
             for index in 0..<users.count{
                 let user = users.object(at: UInt(index))
                 if userId == user["_id"] as? String
                 {
-                    if user["image"] != nil{
-                        image = (user["image"] as? String)!
-                    }
-                    username = "\(user["firstName"]) \(user["lastName"])"
+                    let userProfile = user["profile"] as? [String: Any]
+                    image = (userProfile!["image"] as? String)!
+                    
+                    username = "\(userProfile!["firstName"] as! String) \(userProfile!["lastName"] as! String)"
                     break
                 }
                 
@@ -163,7 +176,7 @@ extension ZGHangoutProfileCommentsViewController : UITableViewDataSource{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "comment") as! ZGCommentsTableViewCell
             cell.userImageView.kf.setImage(with: URL(string: image))
-            cell.usernameLabel.text = username!
+            cell.usernameLabel.text = username
             cell.commentLabel.text = comment["comment"] as? String
             cell.timeLabel.text = "5 am"
             return cell
