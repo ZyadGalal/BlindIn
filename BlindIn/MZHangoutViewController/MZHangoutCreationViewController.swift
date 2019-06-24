@@ -26,7 +26,7 @@ class MZHangoutCreationViewController: UIViewController {
         let name = UIBarButtonItem(title: "Next", style: .plain, target: self, action:#selector(tapButton) )
         self.navigationItem.setRightBarButton(name, animated: false)
         createDatePicker()
-        hangoutCreationModel()
+        
        
     }
     
@@ -47,6 +47,13 @@ class MZHangoutCreationViewController: UIViewController {
         else {
             hangoutCreationInfo.requireRequest = "false"
         }
+        print("**************")
+        print(hangoutCreationInfo.title)
+        print(hangoutCreationInfo.startDate)
+        print(hangoutCreationInfo.endDate)
+        print(hangoutCreationInfo.isPublic)
+        print(hangoutCreationInfo.requireRequest)
+        print("***************")
     }
     
     func createDatePicker ()
@@ -64,14 +71,14 @@ class MZHangoutCreationViewController: UIViewController {
         startDateTextField.inputAccessoryView = toolbar
         endDateTextField.inputView = datePicker
         endDateTextField.inputAccessoryView = toolbar
-        datePicker.datePickerMode = .date
+        datePicker.datePickerMode = .dateAndTime
     }
     
     @objc func donePressedOnDatePicker()
     {
 
         let formate = DateFormatter()
-        formate.dateFormat = "yyyy-M-dd"
+        formate.dateFormat = "YYYY-MM-DD HH:MM"
         if textFieldName == startDateTextField
         {
             print("hi")
@@ -88,6 +95,7 @@ class MZHangoutCreationViewController: UIViewController {
     }
     
     @objc func tapButton(){
+        hangoutCreationModel()
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutDescriptionViewController") as! MZHangoutDescriptionViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
