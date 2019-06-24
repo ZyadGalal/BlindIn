@@ -16,9 +16,9 @@ class MZLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
+    
     
 
     @IBAction func forgetPasswordButtonTapped(_ sender: Any) {
@@ -33,8 +33,10 @@ class MZLoginViewController: UIViewController {
                     }
                     else{
                         print(response!)
-                        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
+                        
+                        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
                         self.navigationController?.pushViewController(vc, animated: true)
+
                         
                     }
                 })

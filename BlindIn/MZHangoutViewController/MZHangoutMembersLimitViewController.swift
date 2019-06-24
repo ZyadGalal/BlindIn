@@ -25,7 +25,7 @@ class MZHangoutMembersLimitViewController: UIViewController {
         genderPicker.delegate = self
         genderTextField.inputView = genderPicker
         
-        hangoutCreationModel()
+        
 
         let name = UIBarButtonItem(title: "Next", style: .plain, target: self, action:#selector(tapButton) )
         self.navigationItem.setRightBarButton(name, animated: false)
@@ -38,7 +38,8 @@ class MZHangoutMembersLimitViewController: UIViewController {
     }
 
     @objc func tapButton(){
-        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteMembersViewController") as! MZInviteMembersViewController
+        hangoutCreationModel()
+        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

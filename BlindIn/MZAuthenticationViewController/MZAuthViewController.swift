@@ -19,7 +19,10 @@ class MZAuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
+        
         logInButton.isSelected = true
         logInButton.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 255/255, alpha: 1.0)
         self.addChild(logIn)
@@ -28,7 +31,6 @@ class MZAuthViewController: UIViewController {
         self.addChild(logIn)
         self.logIn.view.frame = CGRect(x: 0, y: 0, width: self.containerView.frame.width, height: self.containerView.frame.height)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
         // Do any additional setup after loading the view.
     }
     
