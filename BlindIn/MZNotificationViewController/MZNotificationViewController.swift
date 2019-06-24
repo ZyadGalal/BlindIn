@@ -18,8 +18,8 @@ class MZNotificationViewController: UIViewController {
     let segmentedControl = UISegmentedControl()
     var segmentIndex : Int = 0
     
-    let hangout = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutNotificationViewController") as! MZHangoutNotificationViewController
-    let invite = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteNotificationViewController") as! MZInviteNotificationViewController
+    let hangout = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutNotificationViewController") as! MZHangoutNotificationViewController
+    let invite = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MZInviteNotificationViewController") as! MZInviteNotificationViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
