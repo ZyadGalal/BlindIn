@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qyC-S2-q7P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qyC-S2-q7P">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1823,115 +1823,6 @@
             <point key="canvasLocation" x="10212" y="-429.53523238380814"/>
         </scene>
         <!-- -->
-        <scene sceneID="dji-H2-EG7">
-            <objects>
-                <viewController storyboardIdentifier="MZNotificationViewController" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="aaM-ci-ZXa" customClass="MZNotificationViewController" customModule="BlindIn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="22d-7K-B3A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anU-Cj-JW2">
-                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="jk4-hk-8d4"/>
-                                </constraints>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAj-7c-7qS">
-                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="lAj-7c-7qS" firstAttribute="leading" secondItem="anU-Cj-JW2" secondAttribute="leading" id="0Iu-cZ-skw"/>
-                            <constraint firstItem="lAj-7c-7qS" firstAttribute="centerX" secondItem="anU-Cj-JW2" secondAttribute="centerX" id="1G2-rx-k9p"/>
-                            <constraint firstItem="anU-Cj-JW2" firstAttribute="leading" secondItem="5Z6-9f-Vsn" secondAttribute="leading" id="87Y-Ui-v2p"/>
-                            <constraint firstItem="anU-Cj-JW2" firstAttribute="top" secondItem="5Z6-9f-Vsn" secondAttribute="top" id="BIM-M9-hme"/>
-                            <constraint firstItem="lAj-7c-7qS" firstAttribute="trailing" secondItem="anU-Cj-JW2" secondAttribute="trailing" id="Evf-Xg-Pq3"/>
-                            <constraint firstItem="lAj-7c-7qS" firstAttribute="top" secondItem="anU-Cj-JW2" secondAttribute="bottom" constant="8" id="Lxv-up-srY"/>
-                            <constraint firstItem="lAj-7c-7qS" firstAttribute="top" secondItem="anU-Cj-JW2" secondAttribute="bottom" constant="8" id="NqB-p6-kl9"/>
-                            <constraint firstItem="lAj-7c-7qS" firstAttribute="bottom" secondItem="5Z6-9f-Vsn" secondAttribute="bottom" id="cso-S5-f34"/>
-                            <constraint firstItem="anU-Cj-JW2" firstAttribute="trailing" secondItem="5Z6-9f-Vsn" secondAttribute="trailing" id="goA-2V-jD9"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5Z6-9f-Vsn"/>
-                    </view>
-                    <connections>
-                        <outlet property="containerView" destination="lAj-7c-7qS" id="6VK-bu-JWD"/>
-                        <outlet property="segmentInsertView" destination="anU-Cj-JW2" id="kUj-Kh-IL6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FHL-WI-5Bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11002.4" y="-427.73613193403304"/>
-        </scene>
-        <!-- -->
-        <scene sceneID="V5d-ht-eVq">
-            <objects>
-                <viewController storyboardIdentifier="MZInviteNotificationViewController" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="S4s-yP-LOb" customClass="MZInviteNotificationViewController" customModule="BlindIn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1XX-lC-Zmp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nNM-k2-au8">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="S4s-yP-LOb" id="w28-A6-WcJ"/>
-                                    <outlet property="delegate" destination="S4s-yP-LOb" id="Vcc-6G-a0u"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="nNM-k2-au8" firstAttribute="top" secondItem="GtK-5r-odg" secondAttribute="top" id="F40-C8-tj9"/>
-                            <constraint firstItem="GtK-5r-odg" firstAttribute="trailing" secondItem="nNM-k2-au8" secondAttribute="trailing" id="b2X-Uh-8Qo"/>
-                            <constraint firstItem="GtK-5r-odg" firstAttribute="bottom" secondItem="nNM-k2-au8" secondAttribute="bottom" id="iSG-6c-fhJ"/>
-                            <constraint firstItem="nNM-k2-au8" firstAttribute="leading" secondItem="GtK-5r-odg" secondAttribute="leading" id="snz-2B-g4X"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="GtK-5r-odg"/>
-                    </view>
-                    <connections>
-                        <outlet property="inviteTabelView" destination="nNM-k2-au8" id="b2n-Ep-U3W"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rQk-gn-QqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11824.799999999999" y="84.107946026986511"/>
-        </scene>
-        <!-- -->
-        <scene sceneID="96c-Hc-vbT">
-            <objects>
-                <viewController storyboardIdentifier="MZHangoutNotificationViewController" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="suA-QP-42f" customClass="MZHangoutNotificationViewController" customModule="BlindIn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4Vv-8d-abt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Em-Rj-ybn">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="suA-QP-42f" id="gIW-Dj-qzX"/>
-                                    <outlet property="delegate" destination="suA-QP-42f" id="qgR-2s-cbn"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="5RU-wo-gFy" firstAttribute="trailing" secondItem="3Em-Rj-ybn" secondAttribute="trailing" id="BJc-3V-2IT"/>
-                            <constraint firstItem="3Em-Rj-ybn" firstAttribute="leading" secondItem="5RU-wo-gFy" secondAttribute="leading" id="Rue-AG-SM5"/>
-                            <constraint firstItem="5RU-wo-gFy" firstAttribute="bottom" secondItem="3Em-Rj-ybn" secondAttribute="bottom" id="WZ4-4O-PMZ"/>
-                            <constraint firstItem="3Em-Rj-ybn" firstAttribute="top" secondItem="5RU-wo-gFy" secondAttribute="top" id="abM-0c-vNs"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5RU-wo-gFy"/>
-                    </view>
-                    <connections>
-                        <outlet property="hangoutNotificationTableView" destination="3Em-Rj-ybn" id="Hze-gC-i2i"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="baC-PR-cAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11824.799999999999" y="-672.41379310344837"/>
-        </scene>
-        <!-- -->
         <scene sceneID="cxI-ek-cOs">
             <objects>
                 <viewController storyboardIdentifier="MZEventHistoryViewController" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="bvQ-yy-Nwc" customClass="MZEventHistoryViewController" customModule="BlindIn" customModuleProvider="target" sceneMemberID="viewController">
@@ -2130,7 +2021,7 @@
     </scenes>
     <resources>
         <image name="1" width="1366" height="768"/>
-        <image name="like" width="512" height="512"/>
-        <image name="share" width="512" height="512"/>
+        <image name="like" width="40" height="40"/>
+        <image name="share" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
 </document>

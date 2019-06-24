@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kJ-i8-oE3">
-                                <rect key="frame" x="0.0" y="20" width="90" height="15"/>
+                                <rect key="frame" x="0.0" y="20" width="79.5" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -58,15 +58,15 @@
                             <constraint firstItem="LZl-XY-9Ln" firstAttribute="leading" secondItem="amE-7D-a7z" secondAttribute="leading" id="2Fp-PX-S4A"/>
                             <constraint firstItem="0kJ-i8-oE3" firstAttribute="leading" secondItem="amE-7D-a7z" secondAttribute="leading" id="3HP-3h-iJb"/>
                             <constraint firstItem="Ps2-Tm-prL" firstAttribute="top" secondItem="0kJ-i8-oE3" secondAttribute="bottom" id="5sq-Vf-XCw"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0kJ-i8-oE3" secondAttribute="trailing" constant="204" id="6HB-RC-URf"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0kJ-i8-oE3" secondAttribute="trailing" constant="8" id="6HB-RC-URf"/>
                             <constraint firstItem="0kJ-i8-oE3" firstAttribute="top" secondItem="LZl-XY-9Ln" secondAttribute="bottom" id="ITn-M8-BQS"/>
                             <constraint firstItem="Ps2-Tm-prL" firstAttribute="leading" secondItem="amE-7D-a7z" secondAttribute="leading" id="Sat-EL-hpm"/>
                             <constraint firstItem="LZl-XY-9Ln" firstAttribute="top" secondItem="amE-7D-a7z" secondAttribute="top" id="Wkq-rZ-Ize"/>
                             <constraint firstAttribute="bottom" secondItem="Ps2-Tm-prL" secondAttribute="bottom" constant="5" id="c4P-kj-Emw"/>
                             <constraint firstItem="0kJ-i8-oE3" firstAttribute="top" secondItem="LZl-XY-9Ln" secondAttribute="bottom" id="faI-rw-ifr"/>
                             <constraint firstItem="Ps2-Tm-prL" firstAttribute="top" secondItem="0kJ-i8-oE3" secondAttribute="bottom" id="g19-X7-Mrb"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ps2-Tm-prL" secondAttribute="trailing" constant="231" id="wm3-Q1-egu"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="LZl-XY-9Ln" secondAttribute="trailing" constant="217" id="yTo-te-417"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ps2-Tm-prL" secondAttribute="trailing" constant="8" id="wm3-Q1-egu"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LZl-XY-9Ln" secondAttribute="trailing" constant="8" id="yTo-te-417"/>
                         </constraints>
                     </view>
                 </subviews>
