@@ -88,8 +88,8 @@ class MZHangoutSetLocationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         Meteor.meteorClient?.addSubscription("places.all")
         NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_added"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_changed"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_removed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_removed"), object: nil)
     }
     
     @objc func getAllPlaces(){
@@ -102,24 +102,12 @@ class MZHangoutSetLocationViewController: UIViewController {
             let location = currentIndex["location"]! as! [String : Any]
         
             let currentObject = lists.object(at: UInt(current)) as! [String : Any]
-        
-        
+    
         let coordinates : [Double] = location["coordinates"] as! [Double]
-
-        print(coordinates)
-        //for cu in 0..<coordinates.count {
-
-//            var lo : String = coordinates[cu]
-//            var la : String = coordinates[cu+1]
-
-            longs.append((coordinates[0]) as! Double)
-            lats.append((coordinates[1]) as! Double)
-        //}
-//        let coordinates : [Double] = location["coordinates"] as! [Double]
-//            print(coordinates)
-//            print(coordinates[0])
-//            longs.append(coordinates[0])
-//            lats.append(coordinates[1])
+            print(coordinates)
+            print(coordinates[0])
+            longs.append(coordinates[0])
+            lats.append(coordinates[1])
         
             var markers = GMSMarker()
             dicForMarker[markers] = currentObject
@@ -190,6 +178,9 @@ class MZHangoutSetLocationViewController: UIViewController {
         }
         else {
             hangoutCreationInfo.locationID = placeDone
+            print("******************")
+            print(hangoutCreationInfo.locationID)
+            print("******************")
             self.navigationController?.popViewController(animated: true)
         }
     }

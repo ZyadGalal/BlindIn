@@ -77,8 +77,9 @@ class MZHangoutCreationViewController: UIViewController {
     @objc func donePressedOnDatePicker()
     {
 
+        
         let formate = DateFormatter()
-        formate.dateFormat = "YYYY-MM-DD HH:MM"
+        formate.dateFormat = "yyyy-M-dd HH:MM"
         if textFieldName == startDateTextField
         {
             print("hi")
