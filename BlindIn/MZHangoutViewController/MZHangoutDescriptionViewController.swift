@@ -106,6 +106,11 @@ class MZHangoutDescriptionViewController: UIViewController {
     @objc func tapButton(){
         hangoutCreationInfo.description = hangoutDescreptionTextField.text!
         hangoutCreationInfo.interests = idsArray
+        print("******************")
+        print(hangoutCreationInfo.description)
+        print(hangoutCreationInfo.interests)
+        print("******************")
+
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutMembersLimitViewController") as! MZHangoutMembersLimitViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }

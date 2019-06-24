@@ -39,6 +39,11 @@ class MZHangoutMembersLimitViewController: UIViewController {
 
     @objc func tapButton(){
         hangoutCreationModel()
+        print("******************")
+        print(hangoutCreationInfo.max)
+        print(hangoutCreationInfo.gender)
+        print("******************")
+
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
