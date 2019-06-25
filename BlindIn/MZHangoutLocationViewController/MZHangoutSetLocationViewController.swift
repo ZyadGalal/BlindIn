@@ -106,7 +106,10 @@ class MZHangoutSetLocationViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_changed"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MZHangoutSetLocationViewController.getAllPlaces), name: NSNotification.Name(rawValue: "places_removed"), object: nil)
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("places.all")
+        NotificationCenter.default.removeObserver(self)
+    }
     @objc func getAllPlaces(){
         self.lists = Meteor.meteorClient?.collections["places"] as! M13MutableOrderedDictionary
         print(lists)
