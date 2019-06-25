@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qyC-S2-q7P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qyC-S2-q7P">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1058,7 +1058,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hvG-Sf-Vxx" firstAttribute="leading" secondItem="hoq-I3-YYb" secondAttribute="leading" constant="20" id="2Ux-JE-hGa"/>
-                            <constraint firstItem="hoq-I3-YYb" firstAttribute="bottom" secondItem="dDw-au-lPc" secondAttribute="bottom" constant="439" id="7eO-2b-6ay"/>
                             <constraint firstItem="hoq-I3-YYb" firstAttribute="trailing" secondItem="3KQ-ww-aB2" secondAttribute="trailing" constant="222" id="AsO-y7-f3D"/>
                             <constraint firstItem="dDw-au-lPc" firstAttribute="top" secondItem="3KQ-ww-aB2" secondAttribute="bottom" constant="26" id="B5v-8L-3PL"/>
                             <constraint firstItem="hoq-I3-YYb" firstAttribute="trailing" secondItem="dDw-au-lPc" secondAttribute="trailing" constant="20" id="VLg-fU-edX"/>
@@ -1451,15 +1450,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1n-xE-3B4">
+                                                    <rect key="frame" x="13" y="82" width="76" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="PQu-7S-KTE">
-                                                    <rect key="frame" x="25.5" y="11" width="50" height="50"/>
+                                                    <rect key="frame" x="13" y="6" width="75" height="75"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="MPC-gy-Ynb"/>
-                                                        <constraint firstAttribute="height" constant="50" id="sd1-g1-Sqw"/>
+                                                        <constraint firstAttribute="width" constant="75" id="MPC-gy-Ynb"/>
+                                                        <constraint firstAttribute="height" constant="75" id="sd1-g1-Sqw"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="25"/>
+                                                            <real key="value" value="30"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="2"/>
@@ -1469,18 +1474,12 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1n-xE-3B4">
-                                                    <rect key="frame" x="32.5" y="72" width="36" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="b1n-xE-3B4" firstAttribute="top" secondItem="PQu-7S-KTE" secondAttribute="bottom" constant="11" id="LVe-2T-Fqw"/>
+                                            <constraint firstItem="b1n-xE-3B4" firstAttribute="top" secondItem="PQu-7S-KTE" secondAttribute="bottom" constant="1" id="LVe-2T-Fqw"/>
                                             <constraint firstItem="PQu-7S-KTE" firstAttribute="centerX" secondItem="afa-2B-cIK" secondAttribute="centerX" id="XqU-OU-Krm"/>
-                                            <constraint firstItem="PQu-7S-KTE" firstAttribute="centerY" secondItem="afa-2B-cIK" secondAttribute="centerY" constant="-14.5" id="hPg-F6-Zoz"/>
+                                            <constraint firstItem="PQu-7S-KTE" firstAttribute="centerY" secondItem="afa-2B-cIK" secondAttribute="centerY" constant="-7" id="hPg-F6-Zoz"/>
                                             <constraint firstItem="b1n-xE-3B4" firstAttribute="centerX" secondItem="afa-2B-cIK" secondAttribute="centerX" id="q2i-um-VCd"/>
                                         </constraints>
                                         <connections>
@@ -1511,15 +1510,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Met-GM-3hN">
+                                                    <rect key="frame" x="29.5" y="79" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="hey-qW-mnY">
-                                                    <rect key="frame" x="25.5" y="11" width="50" height="50"/>
+                                                    <rect key="frame" x="13" y="6" width="75" height="75"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="6pl-l0-p4a"/>
-                                                        <constraint firstAttribute="width" constant="50" id="zh5-W6-X0Q"/>
+                                                        <constraint firstAttribute="height" constant="75" id="6pl-l0-p4a"/>
+                                                        <constraint firstAttribute="width" constant="75" id="zh5-W6-X0Q"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="25"/>
+                                                            <real key="value" value="30"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="2"/>
@@ -1529,19 +1534,13 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Met-GM-3hN">
-                                                    <rect key="frame" x="32.5" y="72" width="36" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="hey-qW-mnY" firstAttribute="centerX" secondItem="Ez3-4i-GBo" secondAttribute="centerX" id="YJV-Ti-l5B"/>
-                                            <constraint firstItem="Met-GM-3hN" firstAttribute="top" secondItem="hey-qW-mnY" secondAttribute="bottom" constant="11" id="Zng-ZV-SCE"/>
+                                            <constraint firstItem="Met-GM-3hN" firstAttribute="top" secondItem="hey-qW-mnY" secondAttribute="bottom" constant="-2" id="Zng-ZV-SCE"/>
                                             <constraint firstItem="Met-GM-3hN" firstAttribute="centerX" secondItem="Ez3-4i-GBo" secondAttribute="centerX" id="oAB-5s-YxY"/>
-                                            <constraint firstItem="hey-qW-mnY" firstAttribute="centerY" secondItem="Ez3-4i-GBo" secondAttribute="centerY" constant="-14.5" id="vix-Zd-z5I"/>
+                                            <constraint firstItem="hey-qW-mnY" firstAttribute="centerY" secondItem="Ez3-4i-GBo" secondAttribute="centerY" constant="-7" id="vix-Zd-z5I"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="bestieImageView" destination="hey-qW-mnY" id="VzP-SD-WnK"/>
@@ -1607,7 +1606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1f5-B5-l1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5818" y="-103"/>
+            <point key="canvasLocation" x="5816.8000000000002" y="-103.89805097451276"/>
         </scene>
         <!-- -->
         <scene sceneID="Ih1-2F-cYT">
@@ -2021,7 +2020,7 @@
     </scenes>
     <resources>
         <image name="1" width="1366" height="768"/>
-        <image name="like" width="40" height="40"/>
-        <image name="share" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="like" width="512" height="512"/>
+        <image name="share" width="512" height="512"/>
     </resources>
 </document>

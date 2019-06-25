@@ -17,9 +17,17 @@ class MZHangoutCreationViewController: UIViewController {
     @IBOutlet weak var endDateTextField: HoshiTextField!
     @IBOutlet weak var hangoutTitleTextField: HoshiTextField!
     
+    var locationID : String = ""
+    var locationName : String = ""
+    var locationType : String = ""
+    var locationAdress : String = ""
+    var lat : String = ""
+    var long : String = ""
+    var city : String = ""
+    var country : String = ""
     var textFieldName : HoshiTextField!
     let datePicker = UIDatePicker()
-    let hangoutCreationInfo = HangoutCreation()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,34 +35,8 @@ class MZHangoutCreationViewController: UIViewController {
         self.navigationItem.setRightBarButton(name, animated: false)
         createDatePicker()
         
-       
     }
     
-    func hangoutCreationModel() {
-        hangoutCreationInfo.title = hangoutTitleTextField.text!
-        //Location
-        hangoutCreationInfo.startDate = startDateTextField.text!
-        hangoutCreationInfo.endDate = endDateTextField.text!
-        if hangoutPrivacySwitch.isOn {
-            hangoutCreationInfo.isPublic = "true"
-        }
-        else {
-            hangoutCreationInfo.isPublic = "false"
-        }
-        if requestToJoinSwitch.isOn {
-            hangoutCreationInfo.requireRequest = "true"
-        }
-        else {
-            hangoutCreationInfo.requireRequest = "false"
-        }
-        print("**************")
-        print(hangoutCreationInfo.title)
-        print(hangoutCreationInfo.startDate)
-        print(hangoutCreationInfo.endDate)
-        print(hangoutCreationInfo.isPublic)
-        print(hangoutCreationInfo.requireRequest)
-        print("***************")
-    }
     
     func createDatePicker ()
     {
@@ -96,8 +78,37 @@ class MZHangoutCreationViewController: UIViewController {
     }
     
     @objc func tapButton(){
-        hangoutCreationModel()
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutDescriptionViewController") as! MZHangoutDescriptionViewController
+        vc.hangTitle = hangoutTitleTextField.text!
+        if locationID != "" {
+            vc.hangLocationID = locationID
+        }
+        else{
+            vc.locationName = locationName
+            vc.locationAdress = locationAdress
+            vc.locationType = locationType
+            vc.lat = lat
+            vc.long = long
+            vc.city = city
+            vc.country = country
+        }
+        
+        print(locationID)
+        vc.hangStartDate = startDateTextField.text!
+        vc.hangEndDate = endDateTextField.text!
+        if hangoutPrivacySwitch.isOn {
+            vc.hangPublic = "true"
+        }
+        else {
+            vc.hangPublic = "false"
+        }
+        if requestToJoinSwitch.isOn {
+            vc.hangWithRequest = "true"
+        }
+        else {
+            vc.hangWithRequest = "false"
+        }
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -120,7 +131,46 @@ class MZHangoutCreationViewController: UIViewController {
     @IBAction func locationButtonClicked(_ sender: Any) {
 
         let vc = UIStoryboard(name: "Third", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutSetLocationViewController") as! MZHangoutSetLocationViewController
+        vc.locationIDDelegate = self
+
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
 }
+extension MZHangoutCreationViewController : PassLocationBackward{
+    func passData(locID: String) {
+        locationID = locID
+        print(locationID)
+    }
+    func passData(locationsName: String, locationsType: String, locationsAdress: String, locationsLat: String, locationsLng: String, city: String, country: String){
+        locationName = locationsName
+        locationType = locationsType
+        locationAdress = locationsAdress
+        lat = locationsLat
+        long = locationsLng
+        self.city = city
+        self.country = country
+    }
+}
+
+//extension MZHangoutSetLocationViewController : passCompleteLocation{
+//    func passData(locationsName: String, locationsType: String, locationsAdress: String, locationsLat: String, locationsLng: String, city: String, country: String) {
+//        locationName = locationsName
+//
+//    }
+//
+//
+//
+//
+////        self.locationName = locationName
+////        self.locationType = locationType
+////        self.locationAdress = locationAdress
+////        self.lat = locationLat
+////        self.long = locationLng
+////        self.city = city
+////        self.country = country
+//
+//
+//}
+
+
