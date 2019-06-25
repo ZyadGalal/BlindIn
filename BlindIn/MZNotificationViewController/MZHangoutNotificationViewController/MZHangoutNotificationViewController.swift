@@ -13,8 +13,8 @@ class MZHangoutNotificationViewController: UIViewController {
 
     @IBOutlet weak var hangoutNotificationTableView: UITableView!
     
-    
-    var notifications = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var notificationHangout = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var hangoutNotifications = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var hangout = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
     override func viewDidLoad() {
@@ -24,14 +24,15 @@ class MZHangoutNotificationViewController: UIViewController {
         hangoutNotificationTableView.register(UINib(nibName: "MZHangoutAddPostTableViewCell", bundle: nil), forCellReuseIdentifier: "MZHangoutAddPostTableViewCell")
     }
     override func viewWillDisappear(_ animated: Bool) {
-        Meteor.meteorClient?.removeSubscription("hangout-notifications")
+        Meteor.meteorClient?.removeSubscription("notifications")
         NotificationCenter.default.removeObserver(self)
     }
     override func viewDidAppear(_ animated: Bool) {
-        Meteor.meteorClient?.addSubscription("hangout-notifications")
-        NotificationCenter.default.addObserver(self, selector: #selector(invitesAdded), name:NSNotification.Name(rawValue: "invites_added") , object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(invitesUpdated), name: NSNotification.Name(rawValue: "invites_changed") , object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(invitesRemoved), name: NSNotification.Name(rawValue: "invites_removed") , object: nil)
+        Meteor.meteorClient?.addSubscription("notifications")
+        NotificationCenter.default.addObserver(self, selector: #selector(invitesAdded), name:NSNotification.Name(rawValue: "hangout-notifications_added") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(invitesUpdated), name: NSNotification.Name(rawValue: "hangout-notifications_changed") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(invitesRemoved), name: NSNotification.Name(rawValue: "hangout-notifications_removed") , object: nil)
+
     }
     func reload(tableView: UITableView) {
         let contentOffset = tableView.contentOffset
@@ -41,19 +42,22 @@ class MZHangoutNotificationViewController: UIViewController {
     }
     @objc func invitesAdded (){
         print(Meteor.meteorClient?.collections)
-        notifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+        hangoutNotifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+        notificationHangout = (Meteor.meteorClient?.collections["notification-hangouts"] as? M13MutableOrderedDictionary)!
         //hangout = (Meteor.meteorClient?.collections["hangouts"] as? M13MutableOrderedDictionary)!
-        print(notifications)
+        print(hangoutNotifications)
         reload(tableView: hangoutNotificationTableView)
     }
     @objc func invitesUpdated (){
-        notifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+        hangoutNotifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+        notificationHangout = (Meteor.meteorClient?.collections["notification-hangouts"] as? M13MutableOrderedDictionary)!
         //hangout = (Meteor.meteorClient?.collections["hangouts"] as? M13MutableOrderedDictionary)!
 
         reload(tableView: hangoutNotificationTableView)
     }
     @objc func invitesRemoved (){
-        notifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+	        hangoutNotifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+        notificationHangout = (Meteor.meteorClient?.collections["notification-hangouts"] as? M13MutableOrderedDictionary)!
         //hangout = (Meteor.meteorClient?.collections["hangouts"] as? M13MutableOrderedDictionary)!
 
         reload(tableView: hangoutNotificationTableView)
@@ -65,11 +69,11 @@ class MZHangoutNotificationViewController: UIViewController {
 extension MZHangoutNotificationViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(notifications.count)
+        return Int(hangoutNotifications.count) + Int(notificationHangout.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let current = notifications.object(at: UInt(indexPath.row))
+        let current = hangoutNotifications.object(at: UInt(indexPath.row))
         if current["type"] as? String == "hangout"{
             let cell = hangoutNotificationTableView.dequeueReusableCell(withIdentifier: "MZHangoutNotificationTableViewCell") as! MZHangoutNotificationTableViewCell
             cell.acceptButton.accessibilityLabel = current["_id"] as! String
@@ -107,7 +111,7 @@ extension MZHangoutNotificationViewController : UITableViewDelegate , UITableVie
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var rejectAction = UITableViewRowAction(style: .destructive, title: "reject") { (action, indexpath) in
             if Meteor.meteorClient?.connected == true{
-                let current = self.notifications.object(at: UInt(indexPath.row))
+                let current = self.hangoutNotifications.object(at: UInt(indexPath.row))
                 self.rejectInvite(id: current["_id"] as! String)
             }
             else{
@@ -117,7 +121,7 @@ extension MZHangoutNotificationViewController : UITableViewDelegate , UITableVie
         return [rejectAction]
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let current = notifications.object(at: UInt(indexPath.row))
+        let current = hangoutNotifications.object(at: UInt(indexPath.row))
         let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileViewController") as! ZGHangoutProfileViewController
         vc.hangoutId = current["hangoutId"] as! String
         self.navigationController?.pushViewController(vc, animated: true)

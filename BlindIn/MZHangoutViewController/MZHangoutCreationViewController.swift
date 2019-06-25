@@ -32,11 +32,11 @@ class MZHangoutCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let name = UIBarButtonItem(title: "Next", style: .plain, target: self, action:#selector(tapButton) )
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.setRightBarButton(name, animated: false)
         createDatePicker()
         
     }
-    
     
     func createDatePicker ()
     {

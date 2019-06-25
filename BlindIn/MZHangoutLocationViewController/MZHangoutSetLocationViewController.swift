@@ -188,7 +188,7 @@ class MZHangoutSetLocationViewController: UIViewController {
             })
             
             completeLocationAddressTextField.text = geocoderLocation
-            locationIDDelegate.passData(locationsName: completeLocationTitleTextField.text! , locationsType: completeLocationTypeTextField.text!, locationsAdress: geocoderLocation, locationsLat: geocoderlat, locationsLng: geocoderlng, city: cityName, country: countryName)
+            
             
         }
         else if (flag == 2){
@@ -201,7 +201,7 @@ class MZHangoutSetLocationViewController: UIViewController {
             completeLocationTypeTextField.text = locationTypeForPOI
             completeLocationAddressTextField.text = locationAdressForPOI
             
-            locationIDDelegate.passData(locationsName: locationNameForPOI , locationsType: locationTypeForPOI, locationsAdress: locationAdressForPOI, locationsLat: geocoderlat, locationsLng: geocoderlng, city: cityName, country: countryName)
+           
 
             
         }
@@ -220,6 +220,7 @@ class MZHangoutSetLocationViewController: UIViewController {
         print("Long Press Done")
         longPressLat.removeAll()
         longPressLong.removeAll()
+        setLocationMapView.clear()
         let newMarker = GMSMarker(position: setLocationMapView.projection.coordinate(for: sender.location(in: setLocationMapView)))
         self.longPressLat.append(newMarker.position.latitude)
         self.longPressLong.append(newMarker.position.longitude)
@@ -250,7 +251,15 @@ class MZHangoutSetLocationViewController: UIViewController {
             self.view.layoutIfNeeded()
             self.backgroundButton.alpha = 0
         })
+            if flag == 1{
+                locationIDDelegate.passData(locationsName: completeLocationTitleTextField.text! , locationsType: completeLocationTypeTextField.text!, locationsAdress: geocoderLocation, locationsLat: geocoderlat, locationsLng: geocoderlng, city: cityName, country: countryName)
+                
+            }
+            else{
+                 locationIDDelegate.passData(locationsName: locationNameForPOI , locationsType: locationTypeForPOI, locationsAdress: locationAdressForPOI, locationsLat: geocoderlat, locationsLng: geocoderlng, city: cityName, country: countryName)
+            }
             self.navigationController?.popViewController(animated: true)
+            
         }
         else{
             print("Fill")
@@ -301,7 +310,7 @@ extension MZHangoutSetLocationViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
-        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 10.0)
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 20.0)
         self.setLocationMapView?.animate(to: camera)
         self.manager.stopUpdatingLocation()
         
