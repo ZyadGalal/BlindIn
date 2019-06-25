@@ -22,8 +22,7 @@ class MZUpcomingEventViewController: UIViewController {
 
         upcomingEventsTabelView.register(UINib(nibName: "MZBothEventTableViewCell", bundle: nil), forCellReuseIdentifier: "MZUpcomingEventTableViewCell")
 
-        //MZBothEventTableViewCell
-        // Do any additional setup after loading the view.
+        
     }
 
 }

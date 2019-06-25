@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import ObjectiveDDP
+import Kingfisher
 
 class MZInviteFromMapViewController: UIViewController {
 
@@ -18,12 +19,7 @@ class MZInviteFromMapViewController: UIViewController {
     
     var nearbyLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
-    
-    
     var markerDic : [GMSMarker : fake] = [:]
-//    let lats = [51.507351 , 51.508362, 51.509376 , 51.517389 , 51.537391]
-//    let longs = [-0.127758 , -0.128769 , -0.129771,-0.137784 , -0.147799]
-//    let name = ["zyad","zezo","zozz","el7ra2","el fager"]
     
     var lats : [Double] = []
     var longs : [Double] = []
@@ -136,10 +132,22 @@ extension MZInviteFromMapViewController : GMSMapViewDelegate {
     
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-
+        
+        let markerClicked = dicForMarker[marker]
+        print(markerClicked!["_id"]!)
+        let profile  = markerClicked!["profile"]! as! [String : Any]
+        print("**********")
+        print(profile["image"] as! String)
+        print("**********")
+        
         var infoWindow = Bundle.main.loadNibNamed("CustomInfoWindow",owner:self,options:nil)?.first as! CustomInfoWindow
-        infoWindow.infoWindowImageView.image = UIImage(named: "1")
-        //infoWindow.infoWindowLabel.text =
+        infoWindow.infoWindowImageView.kf.indicatorType = .activity
+        infoWindow.infoWindowImageView.kf.setImage(with: URL(string: profile["image"] as! String))
+        infoWindow.isUserInteractionEnabled = true
+        
+        //infoWindow.accessibilityActivate()
+        infoWindow.infoWindowLabel.text = ((markerDic[marker]?.name!)!)
+        infoWindow.infoWindowInviteButton.isUserInteractionEnabled = true
         infoWindow.infoWindowInviteButton.addTarget(self, action: #selector(inviteButtonPressed), for: .touchUpInside)
         infoWindow.infoWindowProfileWindow.addTarget(self, action: #selector(profileButtonPressed), for: .touchUpInside)
 
@@ -152,4 +160,3 @@ extension MZInviteFromMapViewController : GMSMapViewDelegate {
         print("The Allowing Members1")
     }
 }
-

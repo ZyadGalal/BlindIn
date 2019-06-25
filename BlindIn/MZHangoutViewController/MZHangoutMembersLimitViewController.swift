@@ -15,6 +15,25 @@ class MZHangoutMembersLimitViewController: UIViewController {
     var genderPicker = UIPickerView()
     let hangoutCreationInfo = HangoutCreation()
     
+    var hangTitle : String = ""
+    var hangStartDate : String = ""
+    var hangEndDate : String = ""
+    var hangPublic : String = ""
+    var hangWithRequest : String = ""
+    var hangLocationID : String = ""
+    var hangMax : String = ""
+    var hangGender : String = ""
+    var hangDesc : String = ""
+    var hangInterests : [String] = []
+    //---------------------Custom Location
+    var locationName : String = ""
+    var locationType : String = ""
+    var locationAdress : String = ""
+    var lat : String = ""
+    var long : String = ""
+    var city : String = ""
+    var country : String = ""
+    
     @IBOutlet weak var maxMembersLimitTextField: HoshiTextField!
     @IBOutlet weak var genderTextField: HoshiTextField!
     
@@ -32,19 +51,35 @@ class MZHangoutMembersLimitViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func hangoutCreationModel() {
-        hangoutCreationInfo.max = maxMembersLimitTextField.text!
-        hangoutCreationInfo.gender = genderTextField.text!
-    }
+
 
     @objc func tapButton(){
-        hangoutCreationModel()
-        print("******************")
-        print(hangoutCreationInfo.max)
-        print(hangoutCreationInfo.gender)
-        print("******************")
 
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
+        
+        vc.hangTitle = hangTitle
+        vc.hangStartDate = hangStartDate
+        vc.hangEndDate = hangEndDate
+        vc.hangPublic = hangPublic
+        vc.hangWithRequest = hangWithRequest
+        if hangLocationID != "" {
+            vc.hangLocationID = hangLocationID
+        }
+        else{
+            vc.locationName = locationName
+            vc.locationAdress = locationAdress
+            vc.locationType = locationType
+            vc.lat = lat
+            vc.long = long
+            vc.city = city
+            vc.country = country
+        }
+        vc.hangDesc = hangDesc
+        vc.hangInterests = hangInterests
+        vc.hangMax = maxMembersLimitTextField.text!
+        vc.hangGender = genderTextField.text!
+        
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

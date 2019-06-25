@@ -15,11 +15,21 @@ class MZHangoutDescriptionViewController: UIViewController {
     var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var idsArray : [String] = []
     
-    //let name = ["zyad","zezo","zozz","el7ra2","el fager"]
     var interest : [String] = []
+    var hangTitle : String = ""
+    var hangStartDate : String = ""
+    var hangEndDate : String = ""
+    var hangPublic : String = ""
+    var hangWithRequest : String = ""
+    var hangLocationID : String = ""
+    var locationName : String = ""
+    var locationType : String = ""
+    var locationAdress : String = ""
+    var lat : String = ""
+    var long : String = ""
+    var city : String = ""
+    var country : String = ""
     
-    
-    let hangoutCreationInfo = HangoutCreation()
     
     @IBOutlet weak var hangoutDescreptionTextField: HoshiTextField!
     @IBOutlet weak var backgroundButton: UIButton!
@@ -104,14 +114,30 @@ class MZHangoutDescriptionViewController: UIViewController {
     }
     
     @objc func tapButton(){
-        hangoutCreationInfo.description = hangoutDescreptionTextField.text!
-        hangoutCreationInfo.interests = idsArray
-        print("******************")
-        print(hangoutCreationInfo.description)
-        print(hangoutCreationInfo.interests)
-        print("******************")
 
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutMembersLimitViewController") as! MZHangoutMembersLimitViewController
+        
+        vc.hangTitle = hangTitle
+        vc.hangStartDate = hangStartDate
+        vc.hangEndDate = hangEndDate
+        vc.hangPublic = hangPublic
+        vc.hangWithRequest = hangWithRequest
+        if hangLocationID != "" {
+            vc.hangLocationID = hangLocationID
+        }
+        else{
+            vc.locationName = locationName
+            vc.locationAdress = locationAdress
+            vc.locationType = locationType
+            vc.lat = lat
+            vc.long = long
+            vc.city = city
+            vc.country = country
+        }
+        vc.hangDesc = hangoutDescreptionTextField.text!
+        vc.hangInterests = idsArray
+   
+    
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

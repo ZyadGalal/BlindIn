@@ -28,6 +28,15 @@ extension ZGMoreViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "more") as! ZGMoreTableViewCell
         cell.moreImageView.image = UIImage(named: tabsImages[indexPath.row])
         cell.moreLabel.text = tabsTitle[indexPath.row]
+        cell.selectionStyle = .none
         return cell
+    }
+}
+extension ZGMoreViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2{
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGEditProfileViewController") as! ZGEditProfileViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
