@@ -153,24 +153,3 @@ extension MZHangoutCreationViewController : PassLocationBackward{
     }
 }
 
-//extension MZHangoutSetLocationViewController : passCompleteLocation{
-//    func passData(locationsName: String, locationsType: String, locationsAdress: String, locationsLat: String, locationsLng: String, city: String, country: String) {
-//        locationName = locationsName
-//
-//    }
-//
-//
-//
-//
-////        self.locationName = locationName
-////        self.locationType = locationType
-////        self.locationAdress = locationAdress
-////        self.lat = locationLat
-////        self.long = locationLng
-////        self.city = city
-////        self.country = country
-//
-//
-//}
-
-

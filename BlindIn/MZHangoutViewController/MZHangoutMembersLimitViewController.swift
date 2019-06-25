@@ -54,31 +54,31 @@ class MZHangoutMembersLimitViewController: UIViewController {
 
     @objc func tapButton(){
 
-        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
-        let mapVc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromMapViewController") as! MZInviteFromMapViewController
+        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteMembersViewController") as! MZInviteMembersViewController
+        //let mapVc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromMapViewController") as! MZInviteFromMapViewController
         
-        mapVc.hangTitle = hangTitle
-        mapVc.hangStartDate = hangStartDate
-        mapVc.hangEndDate = hangEndDate
-        mapVc.hangPublic = hangPublic
-        mapVc.hangWithRequest = hangWithRequest
-        if hangLocationID != "" {
-            mapVc.hangLocationID = hangLocationID
-        }
-        else{
-            mapVc.locationName = locationName
-            mapVc.locationAdress = locationAdress
-            mapVc.locationType = locationType
-            mapVc.lat = lat
-            mapVc.long = long
-            mapVc.city = city
-            mapVc.country = country
-        }
-        
-        mapVc.hangDesc = hangDesc
-        mapVc.hangInterests = hangInterests
-        mapVc.hangMax = maxMembersLimitTextField.text!
-        mapVc.hangGender = genderTextField.text!
+//        mapVc.hangTitle = hangTitle
+//        mapVc.hangStartDate = hangStartDate
+//        mapVc.hangEndDate = hangEndDate
+//        mapVc.hangPublic = hangPublic
+//        mapVc.hangWithRequest = hangWithRequest
+//        if hangLocationID != "" {
+//            mapVc.hangLocationID = hangLocationID
+//        }
+//        else{
+//            mapVc.locationName = locationName
+//            mapVc.locationAdress = locationAdress
+//            mapVc.locationType = locationType
+//            mapVc.lat = lat
+//            mapVc.long = long
+//            mapVc.city = city
+//            mapVc.country = country
+//        }
+//
+//        mapVc.hangDesc = hangDesc
+//        mapVc.hangInterests = hangInterests
+//        mapVc.hangMax = maxMembersLimitTextField.text!
+//        mapVc.hangGender = genderTextField.text!
         
         //---------------------------------------------
         
