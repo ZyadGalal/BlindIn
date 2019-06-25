@@ -17,24 +17,7 @@ class MZInviteFromCollectionViewController: UIViewController {
 
     
     var invitedIDsArray : [String] = []
-    var hangTitle : String = ""
-    var hangStartDate : String = ""
-    var hangEndDate : String = ""
-    var hangPublic : String = ""
-    var hangWithRequest : String = ""
-    var hangLocationID : String = ""
-    var hangMax : String = ""
-    var hangGender : String = ""
-    var hangDesc : String = ""
-    var hangInterests : [String] = []
-    //-----------Custom Location
-    var locationName : String = ""
-    var locationType : String = ""
-    var locationAdress : String = ""
-    var lat : String = ""
-    var long : String = ""
-    var city : String = ""
-    var country : String = ""
+    
     
     var nearbyLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var bestieLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
@@ -46,8 +29,7 @@ class MZInviteFromCollectionViewController: UIViewController {
         nearbyMemberCollectionView.allowsMultipleSelection = true
         bestiesCollectionView.allowsMultipleSelection = true
         
-        let name = UIBarButtonItem(title: "Create", style: .plain, target: self, action:#selector(tapButton) )
-        self.navigationItem.setRightBarButton(name, animated: false)
+        
         
         // Do any additional setup after loading the view.
     }
@@ -78,59 +60,6 @@ class MZInviteFromCollectionViewController: UIViewController {
         self.bestieLists = Meteor.meteorClient?.collections["besties"] as! M13MutableOrderedDictionary
         print(bestieLists)
         bestiesCollectionView.reloadData()
-    }
-    @objc func tapButton(){
-       
-        var params : [String : Any] = [:]
-        var location : [String : Any] = [:]
-        if hangLocationID != "" {
-            params = ["title" : hangTitle
-                ,"location" : hangLocationID
-                , "startDate" : hangStartDate
-                , "endDate" : hangEndDate
-                , "isPublic" : hangPublic
-                , "requiresRequests" : hangWithRequest
-                , "description" : hangDesc
-                , "interests" : hangInterests
-                , "max" : hangMax
-                , "gender" : hangGender
-                , "invites" : invitedIDsArray ] as! [String : Any]
-        }
-        else{
-            location = ["title" : locationName , "address" : locationAdress ,"lat" : lat,"lng" : long,"placeType" : locationType,"city" : city,"country" : country]
-            print(location)
-            params = ["title" : hangTitle
-                ,"location" : location
-                , "startDate" : hangStartDate
-                , "endDate" : hangEndDate
-                , "isPublic" : hangPublic
-                , "requiresRequests" : hangWithRequest
-                , "description" : hangDesc
-                , "interests" : hangInterests
-                , "max" : hangMax
-                , "gender" : hangGender
-                , "invites" : invitedIDsArray ] as! [String : Any]
-        }
-        
-        if Meteor.meteorClient?.connected == true{
-            Meteor.meteorClient?.callMethodName("hangouts.methods.create", parameters: [params], responseCallback: { (response, error) in
-                if error != nil{
-                    print(error)
-                }
-                else{
-                    print(response)
-                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            })
-        }
-        else{
-            print("not connected")
-        }
-
-
-
-        
     }
 }
 

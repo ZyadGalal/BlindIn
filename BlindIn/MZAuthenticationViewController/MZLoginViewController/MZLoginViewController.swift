@@ -34,7 +34,7 @@ class MZLoginViewController: UIViewController {
                     else{
                         print(response!)
 
-                        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteMembersViewController") as! MZInviteMembersViewController
+                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutCreationViewController") as! MZHangoutCreationViewController
 
                         self.navigationController?.pushViewController(vc, animated: true)
 
