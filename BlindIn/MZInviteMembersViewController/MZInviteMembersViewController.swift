@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ObjectiveDDP
 
 class MZInviteMembersViewController: UIViewController {
     
@@ -15,12 +15,14 @@ class MZInviteMembersViewController: UIViewController {
     let invFromCollection = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
     let invFromMap = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromMapViewController") as! MZInviteFromMapViewController
 
+    
+    var nearbyLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var bestieLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    
     @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
 
         let name = UIBarButtonItem(title: "Create", style: .plain, target: self, action:#selector(tapButton) )

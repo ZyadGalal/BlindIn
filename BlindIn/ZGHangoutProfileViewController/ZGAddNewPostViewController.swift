@@ -21,7 +21,7 @@ class ZGAddNewPostViewController: UIViewController {
     let secretKey = "dnb8CLod9IcyOHq7Uci0gwvKx23jP+jAj2Me8RvL"
     var choosenPostImage = UIImage()
     var ImageURL = ""
-    var hangoutId = "agKkwBDSZc6okbt8M"
+    var hangoutId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         postDescriptionTextView.text = "Post Description"

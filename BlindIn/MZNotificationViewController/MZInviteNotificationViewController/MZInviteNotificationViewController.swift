@@ -39,6 +39,7 @@ class MZInviteNotificationViewController: UIViewController {
         tableView.setContentOffset(contentOffset, animated: false)
     }
     @objc func invitesAdded (){
+        print(Meteor.meteorClient?.collections)
         notifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
         print(notifications)
         reload(tableView: inviteTabelView)
@@ -48,7 +49,7 @@ class MZInviteNotificationViewController: UIViewController {
         reload(tableView: inviteTabelView)
     }
     @objc func invitesRemoved (){
-        notifications = (Meteor.meteorClient?.collections["invited"] as? M13MutableOrderedDictionary)!
+        notifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
         reload(tableView: inviteTabelView)
     }
 

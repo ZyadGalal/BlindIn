@@ -14,8 +14,7 @@ class MZInviteFromCollectionViewController: UIViewController {
 
     @IBOutlet weak var nearbyMemberCollectionView: UICollectionView!
     @IBOutlet weak var bestiesCollectionView: UICollectionView!
-    
-    let hangoutCreationInfo = HangoutCreation()
+
     
     var invitedIDsArray : [String] = []
     var hangTitle : String = ""
@@ -98,7 +97,7 @@ class MZInviteFromCollectionViewController: UIViewController {
                 , "invites" : invitedIDsArray ] as! [String : Any]
         }
         else{
-            location = ["title" : locationName , "address" : locationAdress ,"lat" : lat,"lng" : locationName,"placeType" : locationType,"city" : city,"countru" : country]
+            location = ["title" : locationName , "address" : locationAdress ,"lat" : lat,"lng" : long,"placeType" : locationType,"city" : city,"country" : country]
             print(location)
             params = ["title" : hangTitle
                 ,"location" : location
