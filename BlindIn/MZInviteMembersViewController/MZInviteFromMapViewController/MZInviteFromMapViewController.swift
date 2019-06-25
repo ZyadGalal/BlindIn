@@ -13,10 +13,14 @@ import Kingfisher
 
 class MZInviteFromMapViewController: UIViewController {
 
+    @IBOutlet weak var backgroundButton: UIButton!
+    @IBOutlet weak var popUpImageView: UIImageView!
+    @IBOutlet weak var popUpNameLabel: UILabel!
     @IBOutlet weak var inviteMembersMapView: GMSMapView!
     var locationManager = CLLocationManager()
     //fake locations
     
+    @IBOutlet weak var centerConstrain: NSLayoutConstraint!
     var nearbyLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
     var markerDic : [GMSMarker : fake] = [:]
@@ -25,8 +29,30 @@ class MZInviteFromMapViewController: UIViewController {
     var longs : [Double] = []
     var name : [String] = []
     var nearbyArray : [String] = []
+    var idsArray : [String] = []
     var dicForMarker : [GMSMarker:[String : Any]] = [:]
     var current = 0
+    var currentMarkerID : String = ""
+    
+    var invitedIDsArray : [String] = []
+    var hangTitle : String = ""
+    var hangStartDate : String = ""
+    var hangEndDate : String = ""
+    var hangPublic : String = ""
+    var hangWithRequest : String = ""
+    var hangLocationID : String = ""
+    var hangMax : String = ""
+    var hangGender : String = ""
+    var hangDesc : String = ""
+    var hangInterests : [String] = []
+    //-----------Custom Location
+    var locationName : String = ""
+    var locationType : String = ""
+    var locationAdress : String = ""
+    var lat : String = ""
+    var long : String = ""
+    var city : String = ""
+    var country : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,15 +67,95 @@ class MZInviteFromMapViewController: UIViewController {
         
         inviteMembersMapView.delegate = self
         
+        let name = UIBarButtonItem(title: "Create", style: .plain, target: self, action:#selector(tapButton) )
+        self.navigationItem.setRightBarButton(name, animated: false)
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
         Meteor.meteorClient?.addSubscription("users.nearby")
         NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllNearby), name: NSNotification.Name(rawValue: "nearby_added"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllNearby), name: NSNotification.Name(rawValue: "nearby_changed"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MZInviteFromCollectionViewController.getAllNearby), name: NSNotification.Name(rawValue: "nearby_removed"), object: nil)
+        
+        
+    }
+    
+    @objc func tapButton(){
+        
+        var params : [String : Any] = [:]
+        var location : [String : Any] = [:]
+        if hangLocationID != "" {
+            params = ["title" : hangTitle
+                ,"location" : hangLocationID
+                , "startDate" : hangStartDate
+                , "endDate" : hangEndDate
+                , "isPublic" : hangPublic
+                , "requiresRequests" : hangWithRequest
+                , "description" : hangDesc
+                , "interests" : hangInterests
+                , "max" : hangMax
+                , "gender" : hangGender
+                , "invites" : invitedIDsArray ] as! [String : Any]
+        }
+        else{
+            location = ["title" : locationName , "address" : locationAdress ,"lat" : lat,"lng" : long,"placeType" : locationType,"city" : city,"country" : country]
+            print(location)
+            params = ["title" : hangTitle
+                ,"location" : location
+                , "startDate" : hangStartDate
+                , "endDate" : hangEndDate
+                , "isPublic" : hangPublic
+                , "requiresRequests" : hangWithRequest
+                , "description" : hangDesc
+                , "interests" : hangInterests
+                , "max" : hangMax
+                , "gender" : hangGender
+                , "invites" : invitedIDsArray ] as! [String : Any]
+        }
+
+        if Meteor.meteorClient?.connected == true{
+            Meteor.meteorClient?.callMethodName("hangouts.methods.create", parameters: [params], responseCallback: { (response, error) in
+                if error != nil{
+                    print(error)
+                }
+                else{
+                    print(response)
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
+        }
+        else{
+            print("not connected")
+        }
+        
+    }
+    
+    @IBAction func backgroundButtonClicked(_ sender: Any) {
+        centerConstrain.constant = -1000
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+            self.backgroundButton.alpha = 0
+        })
+    }
+    @IBAction func inviteButtonClicked(_ sender: Any) {
+        
+        centerConstrain.constant = -1000
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+            self.backgroundButton.alpha = 0
+        })
+        
+        idsArray.append(currentMarkerID)
+        print(idsArray)
+    }
+    @IBAction func profileButtonClicked(_ sender: Any) {
+        idsArray.removeAll()
+        print("profile")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("users.nearby")
@@ -130,33 +236,23 @@ extension MZInviteFromMapViewController : CLLocationManagerDelegate{
 
 extension MZInviteFromMapViewController : GMSMapViewDelegate {
     
-    
-    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        centerConstrain.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()
+            self.backgroundButton.alpha = 0.5
+        })
         let markerClicked = dicForMarker[marker]
         print(markerClicked!["_id"]!)
+        currentMarkerID = markerClicked!["_id"]! as! String
         let profile  = markerClicked!["profile"]! as! [String : Any]
         print("**********")
         print(profile["image"] as! String)
         print("**********")
         
-        var infoWindow = Bundle.main.loadNibNamed("CustomInfoWindow",owner:self,options:nil)?.first as! CustomInfoWindow
-        infoWindow.infoWindowImageView.kf.indicatorType = .activity
-        infoWindow.infoWindowImageView.kf.setImage(with: URL(string: profile["image"] as! String))
-        infoWindow.isUserInteractionEnabled = true
+        popUpImageView.kf.indicatorType = .activity
+        popUpImageView.kf.setImage(with: URL(string: profile["image"] as! String))
+        popUpNameLabel.text = ((markerDic[marker]?.name!)!)
         
-        //infoWindow.accessibilityActivate()
-        infoWindow.infoWindowLabel.text = ((markerDic[marker]?.name!)!)
-        infoWindow.infoWindowInviteButton.isUserInteractionEnabled = true
-        infoWindow.infoWindowInviteButton.addTarget(self, action: #selector(inviteButtonPressed), for: .touchUpInside)
-        infoWindow.infoWindowProfileWindow.addTarget(self, action: #selector(profileButtonPressed), for: .touchUpInside)
-
-        return infoWindow
-    }
-    @objc func inviteButtonPressed(){
-        print("The Allowing Members11")
-    }
-    @objc func profileButtonPressed(){
-        print("The Allowing Members1")
+        return false
     }
 }

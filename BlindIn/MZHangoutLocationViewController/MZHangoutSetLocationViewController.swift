@@ -41,6 +41,7 @@ class MZHangoutSetLocationViewController: UIViewController {
     @IBOutlet weak var completeLocationTypeTextField: HoshiTextField!
     @IBOutlet weak var completeLocationAddressTextField: HoshiTextField!
     @IBOutlet weak var centerConstrain: NSLayoutConstraint!
+    @IBOutlet weak var backgroundButton: UIButton!
     
     var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
@@ -67,8 +68,6 @@ class MZHangoutSetLocationViewController: UIViewController {
     var name : [String] = []
     var type : [String] = []
     var locationIDDelegate : PassLocationBackward!
-//    var Delegate : passCompleteLocation!
-    let hangoutCreationInfo = HangoutCreation()
     
     
     var dicForMarker : [GMSMarker:[String : Any]] = [:]
@@ -184,18 +183,24 @@ class MZHangoutSetLocationViewController: UIViewController {
         if (flag == 1){
             
             centerConstrain.constant = 0
-            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
+            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()
+                self.backgroundButton.alpha = 0.5
+            })
             
-            
+            completeLocationAddressTextField.text = geocoderLocation
             locationIDDelegate.passData(locationsName: completeLocationTitleTextField.text! , locationsType: completeLocationTypeTextField.text!, locationsAdress: geocoderLocation, locationsLat: geocoderlat, locationsLng: geocoderlng, city: cityName, country: countryName)
             
         }
         else if (flag == 2){
             
             centerConstrain.constant = 0
-            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
-            //self.navigationController?.popViewController(animated: true)
-
+            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()
+                self.backgroundButton.alpha = 0.5
+            })
+            completeLocationTitleTextField.text = locationNameForPOI
+            completeLocationTypeTextField.text = locationTypeForPOI
+            completeLocationAddressTextField.text = locationAdressForPOI
+            
             locationIDDelegate.passData(locationsName: locationNameForPOI , locationsType: locationTypeForPOI, locationsAdress: locationAdressForPOI, locationsLat: geocoderlat, locationsLng: geocoderlng, city: cityName, country: countryName)
 
             
@@ -243,6 +248,7 @@ class MZHangoutSetLocationViewController: UIViewController {
         
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
+            self.backgroundButton.alpha = 0
         })
             self.navigationController?.popViewController(animated: true)
         }
@@ -250,6 +256,15 @@ class MZHangoutSetLocationViewController: UIViewController {
             print("Fill")
         }
     }
+    @IBAction func backgroundButtonPressed(_ sender: Any) {
+        centerConstrain.constant = -1000
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+            self.backgroundButton.alpha = 0
+        })
+    }
+    
     
     func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata) {
         GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
@@ -360,9 +375,7 @@ extension MZHangoutSetLocationViewController : GMSMapViewDelegate {
             placeDone = markerClicked!["_id"]! as! String
         }
         else {
-            centerConstrain.constant = 0
-            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
-            //default marker
+                print("Default Marker")
         }
         return false
     }
