@@ -48,20 +48,7 @@ class ZGPostsDetailsViewController: UIViewController {
     }
     @IBAction func likeButtonClicked(_ sender: UIButton) {
         loveMethodConnection(postId: (postId)!)
-        if Meteor.meteorClient?.connected == true{
-            Meteor.meteorClient?.callMethodName("posts.methods.comment", parameters: [["_id":postId!,"comment":commentTextView.text!]], responseCallback: { (response, error) in
-                if error != nil{
-                    print(error!)
-                }
-                else{
-                    print(response!)
-                    self.commentTextView.text = ""
-                }
-            })
-        }
-        else{
-            print("not connected")
-        }
+        
     }
     func loveMethodConnection (postId : String){
         if Meteor.meteorClient?.connected == true{

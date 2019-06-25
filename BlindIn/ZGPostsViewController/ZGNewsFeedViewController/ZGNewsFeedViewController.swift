@@ -104,7 +104,7 @@ extension ZGNewsFeedViewController : UITableViewDataSource{
         return Int(postsList.count)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentIndex = postsList.object(at: UInt(indexPath.row))
+        unowned let  currentIndex = postsList.object(at: UInt(indexPath.row))
         let cell = tableView.dequeueReusableCell(withIdentifier: "news") as! ZGNewsFeedTableViewCell
         
         cell.hangImageView.kf.indicatorType = .activity

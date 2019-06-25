@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="392" height="72.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="O50-vW-siF">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification" translatesAutoresizingMaskIntoConstraints="NO" id="O50-vW-siF">
                         <rect key="frame" x="12" y="9" width="50" height="53"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="53" id="4wC-Z1-xjb"/>
@@ -85,6 +85,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="1" width="1366" height="768"/>
+        <image name="notification" width="102.40000152587891" height="102.40000152587891"/>
     </resources>
 </document>
