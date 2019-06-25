@@ -11,6 +11,7 @@ import GoogleMaps
 import GooglePlaces
 import CoreLocation
 import ObjectiveDDP
+import TextFieldEffects
 
 struct fakePin {
     let lat : Double?
@@ -19,6 +20,16 @@ struct fakePin {
     let type : String?
 }
 
+protocol PassLocationBackward {
+    func passData(locID : String)
+    func passData(locationsName : String , locationsType : String , locationsAdress : String , locationsLat : String , locationsLng : String , city : String , country : String)
+}
+
+//protocol passCompleteLocation {
+//    func passData(locationsName : String , locationsType : String , locationsAdress : String , locationsLat : String , locationsLng : String , city : String , country : String)
+//}
+
+
 class MZHangoutSetLocationViewController: UIViewController {
 
     @IBOutlet weak var setLocationMapView: GMSMapView!
@@ -26,13 +37,16 @@ class MZHangoutSetLocationViewController: UIViewController {
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var locationTypeLabel: UILabel!
+    @IBOutlet weak var completeLocationTitleTextField: HoshiTextField!
+    @IBOutlet weak var completeLocationTypeTextField: HoshiTextField!
+    @IBOutlet weak var completeLocationAddressTextField: HoshiTextField!
+    @IBOutlet weak var centerConstrain: NSLayoutConstraint!
     
     var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
     var manager = CLLocationManager()
     var longPressLat = [Double]()
     var longPressLong = [Double]()
-    var photos: [UIImage] = []
     var longPressRecognizer = UILongPressGestureRecognizer()
     var locationAdress : String = ""
     var locationAdressForPOI: String = ""
@@ -41,6 +55,8 @@ class MZHangoutSetLocationViewController: UIViewController {
     var cityName : String = ""
     var countryName : String = ""
     var geocoderLocation : String = ""
+    var geocoderlat : String = ""
+    var geocoderlng : String = ""
     var placeDone : String = ""
     var placesClient: GMSPlacesClient!
     var flag = 0
@@ -50,8 +66,8 @@ class MZHangoutSetLocationViewController: UIViewController {
     var longs : [Double] = []
     var name : [String] = []
     var type : [String] = []
-    
-    
+    var locationIDDelegate : PassLocationBackward!
+//    var Delegate : passCompleteLocation!
     let hangoutCreationInfo = HangoutCreation()
     
     
@@ -96,6 +112,7 @@ class MZHangoutSetLocationViewController: UIViewController {
         self.lists = Meteor.meteorClient?.collections["places"] as! M13MutableOrderedDictionary
         print(lists)
     
+        
             var currentIndex = lists.object(at: UInt(current))
             name.append(currentIndex["title"] as! String)
             type.append(currentIndex["placeType"] as! String)
@@ -149,6 +166,8 @@ class MZHangoutSetLocationViewController: UIViewController {
                             self.geocoderLocation = lines[0]
                             self.cityName = place.administrativeArea!
                             self.countryName = place.country!
+                            self.geocoderlat = String(lat)
+                            self.geocoderlng = String(lng)
                         }
                     } else {
                         print("GEOCODE: nil first in places")
@@ -164,22 +183,27 @@ class MZHangoutSetLocationViewController: UIViewController {
         print("Done Pressed")
         if (flag == 1){
             
-            let vc = UIStoryboard(name: "Third", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutCompleteLocationInfoViewController") as! MZHangoutCompleteLocationInfoViewController
-            vc.locationAdress = geocoderLocation
-            self.navigationController?.pushViewController(vc, animated: true)
+            centerConstrain.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
+            
+            
+            locationIDDelegate.passData(locationsName: completeLocationTitleTextField.text! , locationsType: completeLocationTypeTextField.text!, locationsAdress: geocoderLocation, locationsLat: geocoderlat, locationsLng: geocoderlng, city: cityName, country: countryName)
+            
         }
         else if (flag == 2){
-            let vc = UIStoryboard(name: "Third", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutCompleteLocationInfoViewController") as! MZHangoutCompleteLocationInfoViewController
-            vc.locationName = locationNameForPOI
-            vc.locationType = locationTypeForPOI
-            vc.locationAdress = locationAdressForPOI
             
-            self.navigationController?.pushViewController(vc, animated: true)
+            centerConstrain.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
+            //self.navigationController?.popViewController(animated: true)
+
+            locationIDDelegate.passData(locationsName: locationNameForPOI , locationsType: locationTypeForPOI, locationsAdress: locationAdressForPOI, locationsLat: geocoderlat, locationsLng: geocoderlng, city: cityName, country: countryName)
+
+            
         }
         else {
-            hangoutCreationInfo.locationID = placeDone
+            print(placeDone)
             print("******************")
-            print(hangoutCreationInfo.locationID)
+            locationIDDelegate.passData(locID: placeDone)
             print("******************")
             self.navigationController?.popViewController(animated: true)
         }
@@ -212,6 +236,21 @@ class MZHangoutSetLocationViewController: UIViewController {
         }
     }
     
+    @IBAction func DoneButtonPressed(_ sender: Any) {
+        
+        if completeLocationTitleTextField.text != "" && completeLocationTypeTextField.text != "" && completeLocationAddressTextField.text != "" {
+        centerConstrain.constant = -1000
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+            self.navigationController?.popViewController(animated: true)
+        }
+        else{
+            print("Fill")
+        }
+    }
+    
     func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata) {
         GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
             (photo, error) -> Void in
@@ -228,6 +267,11 @@ class MZHangoutSetLocationViewController: UIViewController {
 
 
 }
+
+
+
+
+
 
 extension MZHangoutSetLocationViewController : UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -316,7 +360,8 @@ extension MZHangoutSetLocationViewController : GMSMapViewDelegate {
             placeDone = markerClicked!["_id"]! as! String
         }
         else {
-            print("Default Marker")
+            centerConstrain.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
             //default marker
         }
         return false

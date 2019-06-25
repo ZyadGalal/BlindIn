@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectiveDDP
+import Kingfisher
 
 class MZInviteFromCollectionViewController: UIViewController {
 
@@ -15,7 +16,26 @@ class MZInviteFromCollectionViewController: UIViewController {
     @IBOutlet weak var bestiesCollectionView: UICollectionView!
     
     let hangoutCreationInfo = HangoutCreation()
+    
     var invitedIDsArray : [String] = []
+    var hangTitle : String = ""
+    var hangStartDate : String = ""
+    var hangEndDate : String = ""
+    var hangPublic : String = ""
+    var hangWithRequest : String = ""
+    var hangLocationID : String = ""
+    var hangMax : String = ""
+    var hangGender : String = ""
+    var hangDesc : String = ""
+    var hangInterests : [String] = []
+    //-----------Custom Location
+    var locationName : String = ""
+    var locationType : String = ""
+    var locationAdress : String = ""
+    var lat : String = ""
+    var long : String = ""
+    var city : String = ""
+    var country : String = ""
     
     var nearbyLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var bestieLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
@@ -61,32 +81,38 @@ class MZInviteFromCollectionViewController: UIViewController {
         bestiesCollectionView.reloadData()
     }
     @objc func tapButton(){
-        hangoutCreationInfo.invites = invitedIDsArray
-        print("***************************")
-        print(hangoutCreationInfo.title)
-        print(hangoutCreationInfo.locationID)
-        print(hangoutCreationInfo.startDate)
-        print(hangoutCreationInfo.endDate)
-        print(hangoutCreationInfo.isPublic)
-        print(hangoutCreationInfo.requireRequest)
-        print(hangoutCreationInfo.description)
-        print(hangoutCreationInfo.interests)
-        print(hangoutCreationInfo.max)
-        print(hangoutCreationInfo.gender)
-        print(hangoutCreationInfo.invites)
-        print("******************************")
-        var params : [String : String] = [:]
-        params = ["title" : hangoutCreationInfo.title
-            ,"location" : hangoutCreationInfo.locationID
-            , "startDate" : hangoutCreationInfo.startDate
-            , "endDate" : hangoutCreationInfo.endDate
-            , "isPublic" : hangoutCreationInfo.isPublic
-            , "requiresRequests" : hangoutCreationInfo.requireRequest
-            , "description" : hangoutCreationInfo.description
-            , "interests" : hangoutCreationInfo.interests
-            , "max" : hangoutCreationInfo.max
-            , "gender" : hangoutCreationInfo.gender
-            , "invites" : hangoutCreationInfo.invites ] as! [String : String]
+       
+        var params : [String : Any] = [:]
+        var location : [String : Any] = [:]
+        if hangLocationID != "" {
+            params = ["title" : hangTitle
+                ,"location" : hangLocationID
+                , "startDate" : hangStartDate
+                , "endDate" : hangEndDate
+                , "isPublic" : hangPublic
+                , "requiresRequests" : hangWithRequest
+                , "description" : hangDesc
+                , "interests" : hangInterests
+                , "max" : hangMax
+                , "gender" : hangGender
+                , "invites" : invitedIDsArray ] as! [String : Any]
+        }
+        else{
+            location = ["title" : locationName , "address" : locationAdress ,"lat" : lat,"lng" : locationName,"placeType" : locationType,"city" : city,"countru" : country]
+            print(location)
+            params = ["title" : hangTitle
+                ,"location" : location
+                , "startDate" : hangStartDate
+                , "endDate" : hangEndDate
+                , "isPublic" : hangPublic
+                , "requiresRequests" : hangWithRequest
+                , "description" : hangDesc
+                , "interests" : hangInterests
+                , "max" : hangMax
+                , "gender" : hangGender
+                , "invites" : invitedIDsArray ] as! [String : Any]
+        }
+        
         if Meteor.meteorClient?.connected == true{
             Meteor.meteorClient?.callMethodName("hangouts.methods.create", parameters: [params], responseCallback: { (response, error) in
                 if error != nil{
@@ -125,10 +151,12 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
         if collectionView == nearbyMemberCollectionView {
             // Place content into hashtag cells
             let nearbyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MZNearbyMemberCollectionViewCell", for: indexPath) as! MZNearbyMemberCollectionViewCell
+            
             let currentIndex = nearbyLists.object(at: UInt(indexPath.row))
             let nearbyProfile = currentIndex["profile"]! as! [String : Any]
             nearbyCell.nearbyMemberNameLabel.text = nearbyProfile["firstName"] as! String
-            
+            nearbyCell.nearbyMemberImageView.kf.indicatorType = .activity
+            nearbyCell.nearbyMemberImageView.kf.setImage(with: URL(string: nearbyProfile["image"] as! String))
             return nearbyCell
         } else if collectionView == bestiesCollectionView {
             // Place content in creators cell
@@ -136,7 +164,8 @@ extension MZInviteFromCollectionViewController : UICollectionViewDataSource , UI
             let currentIndex = bestieLists.object(at: UInt(indexPath.row))
             let bestieProfile = currentIndex["profile"]! as! [String : Any]
             bestieCell.bestieNameLabel.text = bestieProfile["firstName"] as! String
-            
+            bestieCell.bestieImageView.kf.indicatorType = .activity
+            bestieCell.bestieImageView.kf.setImage(with: URL(string: bestieProfile["image"] as! String))
             return bestieCell
         } else {
             preconditionFailure("Unknown collection view!")

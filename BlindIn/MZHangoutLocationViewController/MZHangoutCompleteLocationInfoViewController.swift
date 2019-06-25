@@ -9,6 +9,10 @@
 import UIKit
 import TextFieldEffects
 
+protocol PassLocationInfo {
+    func passData(locationName : String , locationType : String , locationAdress : String , locationLat : String , locationLng : String , city : String , country : String)
+}
+
 class MZHangoutCompleteLocationInfoViewController: UIViewController {
 
     @IBOutlet weak var locationTitleTextField: HoshiTextField!
@@ -18,6 +22,12 @@ class MZHangoutCompleteLocationInfoViewController: UIViewController {
     var locationName = ""
     var locationType = ""
     var locationAdress = ""
+    var lat = ""
+    var long = ""
+    var city = ""
+    var country = ""
+    
+    var Delegate : PassLocationInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +37,28 @@ class MZHangoutCompleteLocationInfoViewController: UIViewController {
         self.navigationItem.setRightBarButton(btn, animated: false)
 
         locationAdressTextField.text = locationAdress
-        locationTypeTextField.text = locationType
-        locationTitleTextField.text = locationName
+        
         
         // Do any additional setup after loading the view.
     }
     @objc func tapButton(){
-        print("Done Pressed")            
-            let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutCreationViewController") as! MZHangoutCreationViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        locationName = locationTitleTextField.text!
+        locationType = locationTypeTextField.text!
+        if locationTitleTextField.text != "" && locationTypeTextField.text != "" && locationAdressTextField.text != "" {
+            print("Done Pressed")
+            print(locationName)
+            print(locationType)
+            print(locationAdress)
+            print(lat)
+            print(long)
+            print(city)
+            print(country)
 
+            Delegate.passData(locationName: "locationName", locationType: "locationType", locationAdress: locationAdress, locationLat: lat, locationLng: long, city: city, country: country)
+            let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutCreationViewController") as! MZHangoutCreationViewController
+            self.navigationController?.popToViewController(vc, animated: true)
+        }else{
+            print("FILL")
+        }
+    }
 }
