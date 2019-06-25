@@ -16,7 +16,7 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     
     var postsList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var usersList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
-    var hangoutId = "agKkwBDSZc6okbt8M"
+    var hangoutId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hangout Posts"
@@ -33,6 +33,7 @@ class ZGHangoutProfilePostsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector:  #selector(removeAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
         
         postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+        reload(tableView: hangoutPostsTableView)
     }
     func reload(tableView: UITableView) {
         let contentOffset = tableView.contentOffset
@@ -96,6 +97,7 @@ class ZGHangoutProfilePostsViewController: UIViewController {
     }
     @objc func addNewPostButtonClicked (){
         let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGAddNewPostViewController") as! ZGAddNewPostViewController
+        vc.hangoutId = self.hangoutId
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

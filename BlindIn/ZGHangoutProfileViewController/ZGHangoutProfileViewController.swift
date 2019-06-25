@@ -26,7 +26,7 @@ class ZGHangoutProfileViewController: UIViewController {
     @IBOutlet weak var sharingButton: UIButton!
     @IBOutlet weak var shadingView: UIView!
     var floaty = Floaty()
-    var hangoutId = "fiKztj8jyXpxE4ajt"
+    var hangoutId = "XxrFMCbdujCWgqQz2"
     var hangoutInfo = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var interests = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     override func viewDidLoad() {
@@ -116,6 +116,7 @@ class ZGHangoutProfileViewController: UIViewController {
         floaty.hasShadow = true
         floaty.addItem("Posts", icon: UIImage(named: "post")) { (item) in
             let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfilePostsViewController") as! ZGHangoutProfilePostsViewController
+            vc.hangoutId = self.hangoutId
             self.navigationController?.pushViewController(vc, animated: true)
             self.floaty.close()
         }
