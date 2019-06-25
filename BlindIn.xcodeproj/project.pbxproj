@@ -92,10 +92,8 @@
 		32E44B9622B8215900D12BBB /* ZGMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E44B9522B8215900D12BBB /* ZGMoreTableViewCell.swift */; };
 		BD3DE6927E2A798BF3DB93A9 /* Pods_BlindInTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4110A44A917F91129B497CAB /* Pods_BlindInTests.framework */; };
 		DB5417ADA61BC1ACC45FFF14 /* Pods_BlindIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF45241557BE3ABED7FF698 /* Pods_BlindIn.framework */; };
-		E41D5CA522BD9D56000EAC56 /* HangoutCreationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D5CA422BD9D56000EAC56 /* HangoutCreationModel.swift */; };
 		E43E652222BB0A8D00BF14FB /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43E652122BB0A8D00BF14FB /* Third.storyboard */; };
 		E43E652422BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E652322BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift */; };
-		E43E652622BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E652522BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift */; };
 		E43E652822BB10ED00BF14FB /* CircularMarkerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E652722BB10ED00BF14FB /* CircularMarkerShape.swift */; };
 		E447D4DF22BF7D1500E82E35 /* MZInterestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447D4DE22BF7D1500E82E35 /* MZInterestTableViewCell.swift */; };
 		E447D4E522C057D800E82E35 /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E447D4E422C057D800E82E35 /* CustomInfoWindow.xib */; };
@@ -216,10 +214,8 @@
 		7636D7D6CCF946292D6B1CA6 /* Pods_BlindInUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindInUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DC59AC3B7B13952DA6A7CDF /* Pods-BlindIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindIn.debug.xcconfig"; path = "Target Support Files/Pods-BlindIn/Pods-BlindIn.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF45241557BE3ABED7FF698 /* Pods_BlindIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E41D5CA422BD9D56000EAC56 /* HangoutCreationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangoutCreationModel.swift; sourceTree = "<group>"; };
 		E43E652122BB0A8D00BF14FB /* Third.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		E43E652322BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutSetLocationViewController.swift; sourceTree = "<group>"; };
-		E43E652522BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutCompleteLocationInfoViewController.swift; sourceTree = "<group>"; };
 		E43E652722BB10ED00BF14FB /* CircularMarkerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularMarkerShape.swift; sourceTree = "<group>"; };
 		E447D4DE22BF7D1500E82E35 /* MZInterestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZInterestTableViewCell.swift; sourceTree = "<group>"; };
 		E447D4E422C057D800E82E35 /* CustomInfoWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
@@ -649,10 +645,8 @@
 			isa = PBXGroup;
 			children = (
 				E43E652322BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift */,
-				E43E652522BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift */,
 				E43E652722BB10ED00BF14FB /* CircularMarkerShape.swift */,
 				E43E652122BB0A8D00BF14FB /* Third.storyboard */,
-				E41D5CA422BD9D56000EAC56 /* HangoutCreationModel.swift */,
 			);
 			path = MZHangoutLocationViewController;
 			sourceTree = "<group>";
@@ -927,7 +921,6 @@
 				E43E652822BB10ED00BF14FB /* CircularMarkerShape.swift in Sources */,
 				321B50A222B6D01700085670 /* ZGPostsContainerViewController.swift in Sources */,
 				32AB8222227E526000BD98D1 /* ZGUserProfileCollectionViewCell.swift in Sources */,
-				E41D5CA522BD9D56000EAC56 /* HangoutCreationModel.swift in Sources */,
 				321B509A22B6B92A00085670 /* MyBriefTableViewCell.swift in Sources */,
 				322DEEA722A368C100408EC9 /* MZInviteFromCollectionViewController.swift in Sources */,
 				32D8621622A4BFD8001F0CC0 /* MZBestiesViewController.swift in Sources */,
@@ -965,7 +958,6 @@
 				E447D4E722C058EE00E82E35 /* CustomInfoWindow.swift in Sources */,
 				32688ECA22A5F62900E6C89F /* MZAssignAdminTableViewCell.swift in Sources */,
 				326241DD22B6573E0085F643 /* MZOffersDetailsViewController.swift in Sources */,
-				E43E652622BB0E3000BF14FB /* MZHangoutCompleteLocationInfoViewController.swift in Sources */,
 				32E44B9422B8213900D12BBB /* ZGMoreViewController.swift in Sources */,
 				322DEEA322A3571600408EC9 /* MZInviteFromMapViewController.swift in Sources */,
 				3258DD11227DCDDF0014B316 /* UIView+Extentions.swift in Sources */,
