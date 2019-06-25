@@ -381,7 +381,8 @@ extension MZHangoutSetLocationViewController : GMSMapViewDelegate {
     }
     func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {
         if locationInfoView.isHidden == false{
-            locationInfoView.isHidden = true
+            locationInfoView.alpha = 0
+            //locationInfoView.isHidden = true
         }
     }
 }
