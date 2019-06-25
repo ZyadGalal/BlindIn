@@ -34,7 +34,7 @@
                                     <action selector="backgroundButtonPressed:" destination="vMQ-CU-l0h" eventType="touchUpInside" id="tHa-PE-7Pt"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erc-qF-UDK">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erc-qF-UDK">
                                 <rect key="frame" x="8" y="547" width="359" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pfz-oH-C5O">
@@ -79,34 +79,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="am0-M4-lk9">
-                                <rect key="frame" x="-932.5" y="233.5" width="240" height="200"/>
+                                <rect key="frame" x="-937.5" y="208.5" width="250" height="250"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Qr-Bj-yey" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="8" y="8" width="224" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="224" id="Enu-8X-G7q"/>
-                                            <constraint firstAttribute="height" constant="40" id="HCp-oM-t4g"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                <real key="value" value="1.2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pai-2y-9xH" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="8" y="55" width="224" height="40"/>
+                                        <rect key="frame" x="8" y="87" width="234" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="apC-ab-qiZ"/>
-                                            <constraint firstAttribute="width" constant="224" id="bcv-LZ-vUN"/>
+                                            <constraint firstAttribute="width" constant="234" id="bcv-LZ-vUN"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -124,9 +103,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENs-oq-C3r" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="8" y="102" width="224" height="40"/>
+                                        <rect key="frame" x="8" y="147" width="234" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="224" id="Odv-iE-D2i"/>
+                                            <constraint firstAttribute="width" constant="234" id="Odv-iE-D2i"/>
                                             <constraint firstAttribute="height" constant="40" id="rhr-gS-lkJ"/>
                                         </constraints>
                                         <nil key="textColor"/>
@@ -144,8 +123,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-U7-Tpt">
-                                        <rect key="frame" x="8" y="160" width="224" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-U7-Tpt">
+                                        <rect key="frame" x="8" y="207" width="234" height="35"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -159,25 +138,46 @@
                                             <action selector="DoneButtonPressed:" destination="vMQ-CU-l0h" eventType="touchUpInside" id="2N3-qd-ZZh"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Qr-Bj-yey" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="8" y="27" width="234" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="234" id="Enu-8X-G7q"/>
+                                            <constraint firstAttribute="height" constant="40" id="HCp-oM-t4g"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                <real key="value" value="1.2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="37S-EP-lTS"/>
+                                    <constraint firstAttribute="width" constant="250" id="37S-EP-lTS"/>
                                     <constraint firstItem="Zlc-U7-Tpt" firstAttribute="leading" secondItem="ENs-oq-C3r" secondAttribute="leading" id="6bh-mi-Vrt"/>
-                                    <constraint firstItem="0Qr-Bj-yey" firstAttribute="top" secondItem="am0-M4-lk9" secondAttribute="top" constant="8" id="BES-z9-a5t"/>
+                                    <constraint firstItem="0Qr-Bj-yey" firstAttribute="top" secondItem="am0-M4-lk9" secondAttribute="top" constant="27" id="BES-z9-a5t"/>
                                     <constraint firstItem="ENs-oq-C3r" firstAttribute="leading" secondItem="Pai-2y-9xH" secondAttribute="leading" id="HbL-kV-nq8"/>
-                                    <constraint firstItem="ENs-oq-C3r" firstAttribute="top" secondItem="Pai-2y-9xH" secondAttribute="bottom" constant="7" id="KNn-G7-Nyt"/>
+                                    <constraint firstItem="ENs-oq-C3r" firstAttribute="top" secondItem="Pai-2y-9xH" secondAttribute="bottom" constant="20" id="KNn-G7-Nyt"/>
                                     <constraint firstItem="ENs-oq-C3r" firstAttribute="trailing" secondItem="Pai-2y-9xH" secondAttribute="trailing" id="Vou-I4-s52"/>
-                                    <constraint firstItem="Pai-2y-9xH" firstAttribute="top" secondItem="0Qr-Bj-yey" secondAttribute="bottom" constant="7" id="ZDM-lf-yF7"/>
-                                    <constraint firstAttribute="bottom" secondItem="ENs-oq-C3r" secondAttribute="bottom" constant="58" id="ZJR-rj-dgF"/>
+                                    <constraint firstItem="Pai-2y-9xH" firstAttribute="top" secondItem="0Qr-Bj-yey" secondAttribute="bottom" constant="20" id="ZDM-lf-yF7"/>
+                                    <constraint firstAttribute="bottom" secondItem="ENs-oq-C3r" secondAttribute="bottom" constant="63" id="ZJR-rj-dgF"/>
                                     <constraint firstItem="0Qr-Bj-yey" firstAttribute="centerX" secondItem="am0-M4-lk9" secondAttribute="centerX" id="caX-l7-bwI"/>
                                     <constraint firstItem="Pai-2y-9xH" firstAttribute="trailing" secondItem="0Qr-Bj-yey" secondAttribute="trailing" id="cpl-0o-PsY"/>
                                     <constraint firstItem="Pai-2y-9xH" firstAttribute="leading" secondItem="0Qr-Bj-yey" secondAttribute="leading" id="dra-ib-Hk6"/>
-                                    <constraint firstItem="Zlc-U7-Tpt" firstAttribute="top" secondItem="ENs-oq-C3r" secondAttribute="bottom" constant="18" id="kAf-LP-DmM"/>
-                                    <constraint firstAttribute="height" constant="200" id="p8a-sF-g0B"/>
+                                    <constraint firstItem="Zlc-U7-Tpt" firstAttribute="top" secondItem="ENs-oq-C3r" secondAttribute="bottom" constant="20" id="kAf-LP-DmM"/>
+                                    <constraint firstAttribute="height" constant="250" id="p8a-sF-g0B"/>
                                     <constraint firstItem="Zlc-U7-Tpt" firstAttribute="trailing" secondItem="ENs-oq-C3r" secondAttribute="trailing" id="pDh-oM-wu1"/>
-                                    <constraint firstItem="Pai-2y-9xH" firstAttribute="top" secondItem="0Qr-Bj-yey" secondAttribute="bottom" constant="7" id="weR-dv-i2J"/>
-                                    <constraint firstItem="ENs-oq-C3r" firstAttribute="top" secondItem="Pai-2y-9xH" secondAttribute="bottom" constant="7" id="yyk-3J-gqL"/>
+                                    <constraint firstItem="Pai-2y-9xH" firstAttribute="top" secondItem="0Qr-Bj-yey" secondAttribute="bottom" constant="20" id="weR-dv-i2J"/>
+                                    <constraint firstItem="ENs-oq-C3r" firstAttribute="top" secondItem="Pai-2y-9xH" secondAttribute="bottom" constant="20" id="yyk-3J-gqL"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
