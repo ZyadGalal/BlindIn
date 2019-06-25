@@ -26,7 +26,7 @@ class ZGHangoutProfileViewController: UIViewController {
     @IBOutlet weak var sharingButton: UIButton!
     @IBOutlet weak var shadingView: UIView!
     var floaty = Floaty()
-    var hangoutId = "XxrFMCbdujCWgqQz2"
+    var hangoutId = "cey22NRJqfGsfQLPh"
     var hangoutInfo = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var interests = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     override func viewDidLoad() {

@@ -14,6 +14,7 @@ class MZInviteNotificationViewController: UIViewController {
     
     var name = ["Momen","Momen Adel","Momen Adel Mohamed","Mo2a","El Mo2"]
     var notifications = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var users = M13MutableOrderedDictionary<NSCopying, AnyObject>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +28,10 @@ class MZInviteNotificationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     override func viewDidAppear(_ animated: Bool) {
-        Meteor.meteorClient?.addSubscription("invites-notifications")
-        NotificationCenter.default.addObserver(self, selector: #selector(invitesAdded), name:NSNotification.Name(rawValue: "invites_added") , object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(invitesUpdated), name: NSNotification.Name(rawValue: "invites_changed") , object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(invitesRemoved), name: NSNotification.Name(rawValue: "invites_removed") , object: nil)
+        Meteor.meteorClient?.addSubscription("notifications")
+        NotificationCenter.default.addObserver(self, selector: #selector(invitesAdded), name:NSNotification.Name(rawValue: "invite-notifications_added") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(invitesUpdated), name: NSNotification.Name(rawValue: "invite-notifications_changed") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(invitesRemoved), name: NSNotification.Name(rawValue: "invite-notifications_removed") , object: nil)
     }
     func reload(tableView: UITableView) {
         let contentOffset = tableView.contentOffset
@@ -40,16 +41,19 @@ class MZInviteNotificationViewController: UIViewController {
     }
     @objc func invitesAdded (){
         print(Meteor.meteorClient?.collections)
-        notifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+        notifications = (Meteor.meteorClient?.collections["invite-notifications"] as? M13MutableOrderedDictionary)!
+        users = (Meteor.meteorClient?.collections["notification-users"] as? M13MutableOrderedDictionary)!
         print(notifications)
         reload(tableView: inviteTabelView)
     }
     @objc func invitesUpdated (){
-        notifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+        notifications = (Meteor.meteorClient?.collections["invite-notifications"] as? M13MutableOrderedDictionary)!
+        users = (Meteor.meteorClient?.collections["notification-users"] as? M13MutableOrderedDictionary)!
         reload(tableView: inviteTabelView)
     }
     @objc func invitesRemoved (){
-        notifications = (Meteor.meteorClient?.collections["invites"] as? M13MutableOrderedDictionary)!
+        notifications = (Meteor.meteorClient?.collections["invite-notifications"] as? M13MutableOrderedDictionary)!
+        users = (Meteor.meteorClient?.collections["notification-users"] as? M13MutableOrderedDictionary)!
         reload(tableView: inviteTabelView)
     }
 

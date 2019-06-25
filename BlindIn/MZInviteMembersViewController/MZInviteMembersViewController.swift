@@ -119,8 +119,7 @@ class MZInviteMembersViewController: UIViewController {
                 }
                 else{
                     print(response)
-                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             })
         }
