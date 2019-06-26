@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import ObjectiveDDP
 
 class MZPastEventViewController: UIViewController {
+
+    var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
 
     
     var pastEvents = ["Momen","Momen Adel","Momen Adel Mohamed","Mo2a","El Mo2"]
@@ -25,6 +28,30 @@ class MZPastEventViewController: UIViewController {
          pastEventsTabelView.register(UINib(nibName: "MZBothEventTableViewCell", bundle: nil), forCellReuseIdentifier: "MZPastEventTableViewCell")
 
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        Meteor.meteorClient?.addSubscription("hangouts.mine")
+        NotificationCenter.default.addObserver(self, selector: #selector(MZPastEventViewController.getAllHangout), name: NSNotification.Name(rawValue: "hangouts_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZPastEventViewController.getAllHangoutChanged), name: NSNotification.Name(rawValue: "hangouts_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZPastEventViewController.getAllHangoutRemoved), name: NSNotification.Name(rawValue: "hangouts_removed"), object: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("hangouts.mine")
+        NotificationCenter.default.removeObserver(self)
+        lists.removeAllObjects()
+    }
+    
+    @objc func getAllHangout(){
+        
+        self.lists = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        print(lists)
+        
+    }
+    @objc func getAllHangoutChanged(){
+        
+    }
+    @objc func getAllHangoutRemoved(){
+        
     }
 
 }

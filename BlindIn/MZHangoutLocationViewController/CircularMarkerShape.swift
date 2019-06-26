@@ -8,12 +8,13 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class CircularMarkerShape : UIView {
-    var img: UIImage!
+    var img: String!
     var imgBorderColor: UIColor!
     
-    init(frame: CGRect, image: UIImage, borderColor: UIColor) {
+    init(frame: CGRect, image: String, borderColor: UIColor) {
         super.init(frame: frame)
         self.img=image
         self.imgBorderColor=borderColor
@@ -21,12 +22,16 @@ class CircularMarkerShape : UIView {
     }
     
     func setupViews() {
-        let imgView = UIImageView(image: img)
+        var imgView = UIImageView()
         imgView.frame=CGRect(x: 0, y: 0, width: 50, height: 50)
         imgView.layer.cornerRadius = 25
         imgView.layer.borderColor=imgBorderColor?.cgColor
         imgView.layer.borderWidth=4
         imgView.clipsToBounds=true
+        DispatchQueue.main.async {
+            imgView.kf.indicatorType = .activity
+            imgView.kf.setImage(with: URL(string: self.img!)!)
+        }
         
         self.addSubview(imgView)
     }

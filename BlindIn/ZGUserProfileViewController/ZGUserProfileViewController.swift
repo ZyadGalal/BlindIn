@@ -7,15 +7,74 @@
 //
 
 import UIKit
+import ObjectiveDDP
+import Kingfisher
 
 class ZGUserProfileViewController: UIViewController {
+    
+    var interestLists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var postsList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
 
-
+    @IBOutlet weak var profileTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fadeAnimationForNavigationTitle()
+      
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        var id : String = Meteor.meteorClient!.userId
+        print(id)
+        Meteor.meteorClient?.addSubscription("users.profile", withParameters: [["userId":id]] )
+        //---------------------------
+        NotificationCenter.default.addObserver(self, selector: #selector(ZGUserProfileViewController.getAllInterests), name: NSNotification.Name(rawValue: "interests_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ZGUserProfileViewController.getAllInterests), name: NSNotification.Name(rawValue: "interests_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ZGUserProfileViewController.getAllInterests), name: NSNotification.Name(rawValue: "interests_removed"), object: nil)
+        //---------------------------------------------------------
+        NotificationCenter.default.addObserver(self, selector: #selector(ZGUserProfileViewController.getAllHangoutPosts), name: NSNotification.Name(rawValue: "posts_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ZGUserProfileViewController.updateAllHangoutPosts), name: NSNotification.Name(rawValue: "posts_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ZGUserProfileViewController.removeAllHangoutPosts), name: NSNotification.Name(rawValue: "posts_removed"), object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("users.profile")
+        NotificationCenter.default.removeObserver(self)
+        interestLists.removeAllObjects()
+    }
+    @objc func getAllInterests(){
+        let cell = profileTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! MZProfileInterestsTableViewCell
+        self.interestLists = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        cell.profileInterestCollectionView.reloadData()
+    }
+    
+    @objc func getAllHangoutPosts ()
+    {
+        let cell = profileTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! ZGUserProfilePostsTableViewCell
+        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+        print(postsList)
+        self.profileTableView.reloadSections(NSIndexSet(index: 2) as IndexSet, with: UITableView.RowAnimation.top)
+    }
+    @objc func updateAllHangoutPosts ()
+    {
+        let cell = profileTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! ZGUserProfilePostsTableViewCell
+        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+        print(postsList)
+        self.profileTableView.reloadSections(NSIndexSet(index: 2) as IndexSet, with: UITableView.RowAnimation.top)
+    }
+    @objc func removeAllHangoutPosts ()
+    {
+        let cell = profileTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! ZGUserProfilePostsTableViewCell
+        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+        print(postsList)
+        self.profileTableView.reloadSections(NSIndexSet(index: 2) as IndexSet, with: UITableView.RowAnimation.top)
+    }
+    
+    
+
+    
     func fadeAnimationForNavigationTitle (){
         let fadeTextAnimation : CATransition = CATransition()
         fadeTextAnimation.duration = 5
@@ -25,12 +84,14 @@ class ZGUserProfileViewController: UIViewController {
 }
 extension ZGUserProfileViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return Int(interestLists.count)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interest", for: indexPath) as! ZGUserProfileCollectionViewCell
-        cell.interestLabel.text = "fortnite"
-        cell.interestImageView.image = UIImage(named: "1")
+        let currentIndex = interestLists.object(at: UInt(indexPath.row))
+        cell.interestLabel.text = currentIndex["title"] as! String
+        cell.interestImageView.kf.indicatorType = .activity
+        cell.interestImageView.kf.setImage(with: URL(string: currentIndex["image"] as! String))
         return cell
     }
 }
@@ -39,7 +100,7 @@ extension ZGUserProfileViewController : UITableViewDataSource{
         return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 2 ? 10 : 1
+        return section == 2 ? Int(postsList.count) : 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
@@ -49,15 +110,17 @@ extension ZGUserProfileViewController : UITableViewDataSource{
             return cell
         }
         else if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "interestsCollectionView")
-            return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MZProfileInterestsTableViewCell") as! MZProfileInterestsTableViewCell
+            return cell
         }
         else{
+            unowned let  currentIndex = postsList.object(at: UInt(indexPath.row))
             let cell = tableView.dequeueReusableCell(withIdentifier: "news") as! ZGUserProfilePostsTableViewCell
-            cell.hangImageView.image = UIImage(named: "1")
-            cell.likeCountLabel.text = "55555"
-            cell.commentCountLabel.text = "10"
-            cell.hangDescriptionLabel.text = "hi , i'm zyad mahmoud galal"
+            let userProfile = currentIndex["profile"] as! [String:Any]
+            cell.hangImageView.kf.setImage(with: URL(string: userProfile["image"] as! String))
+            cell.likeCountLabel.text = "\((currentIndex["lovesCount"] as? Int)!)"
+            cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
+            cell.hangDescriptionLabel.text = currentIndex["description"] as? String
             
             return cell
         }
