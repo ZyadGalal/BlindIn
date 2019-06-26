@@ -85,7 +85,7 @@ class MZInviteMembersViewController: UIViewController {
         var location : [String : Any] = [:]
         if hangLocationID != "" {
             params = ["title" : hangTitle
-                ,"location" : hangLocationID
+                ,"location" : ["_id":hangLocationID]
                 , "startDate" : hangStartDate
                 , "endDate" : hangEndDate
                 , "isPublic" : hangPublic

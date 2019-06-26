@@ -62,12 +62,12 @@ class ZGHangMapViewController: UIViewController {
     }
     func setFakeMarkers(lat : Double , lng : Double , name : String)
     {
-        let customMarker = CustomMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: UIImage(named: "1")!, borderColor: UIColor(red: 0, green: 100, blue: 255, alpha: 1.0))
+        let customMarker = CustomMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: "https://blendin-userfiles-mobilehub-1929261559.s3.amazonaws.com/jsaS3/1561364513254", borderColor: UIColor(red: 0, green: 100, blue: 255, alpha: 1.0))
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         marker.iconView = customMarker
         marker.map = mapView
-        marker.tracksViewChanges = false
+        //marker.tracksViewChanges = false
         
         let ff = fake(lat: lat, lng: lng, name: name)
         markerDic[marker] = ff

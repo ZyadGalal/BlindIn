@@ -37,7 +37,7 @@ class ZGAddNewPostViewController: UIViewController {
     func uploadButtonPressed() {
             let fileManager = FileManager.default
             let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("postImage.jpeg")
-            let imageData = choosenPostImage.jpegData(compressionQuality: 0.5)
+            let imageData = choosenPostImage.jpegData(compressionQuality: 0.3)
             fileManager.createFile(atPath: path as String, contents: imageData, attributes: nil)
         
             let timestamp = NSDate().timeIntervalSince1970
