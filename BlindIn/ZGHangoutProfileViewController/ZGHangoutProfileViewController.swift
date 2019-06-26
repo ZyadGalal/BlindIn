@@ -48,6 +48,25 @@ class ZGHangoutProfileViewController: UIViewController {
         Meteor.meteorClient?.removeSubscription("hangouts.single")
         NotificationCenter.default.removeObserver(self)
     }
+    
+    @IBAction func joinButtonClicked(_ sender: Any) {
+        joinHang(hangout: hangoutId)
+    }
+    func joinHang(hangout : String){
+        if Meteor.meteorClient?.connected == true{
+            Meteor.meteorClient?.callMethodName("hangouts.methods.join", parameters: [["hangoutId":hangout]], responseCallback: { (response, error) in
+                if error != nil{
+                    print(error!)
+                }
+                else{
+                    print(response!)
+                }
+            })
+        }
+        else{
+            print("not connected")
+        }
+    }
     @objc func getHangoutInfo ()
     {
         print(Meteor.meteorClient?.collections)

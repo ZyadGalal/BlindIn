@@ -8,10 +8,14 @@
 
 import UIKit
 import GoogleMaps
-struct fake {
-    let lat : Double?
-    let lng : Double?
-    let name : String?
+import ObjectiveDDP
+import Kingfisher
+
+struct Marker {
+    var hangoutId : String?
+    var title : String?
+    var description : String?
+    var image : String?
 }
 class ZGHangMapViewController: UIViewController {
     
@@ -22,19 +26,15 @@ class ZGHangMapViewController: UIViewController {
     @IBOutlet var hangContainerView: UIView!
     @IBOutlet weak var mapView: GMSMapView!
     var locationManager = CLLocationManager()
-    //fake ex
-    var markerDic : [GMSMarker : fake] = [:]
-    let lats = [51.507351 , 51.508362, 51.509376 , 51.517389 , 51.537391]
-    let longs = [-0.127758 , -0.128769 , -0.129771,-0.137784 , -0.147799]
-    let name = ["zyad","zezo","zozz","el7ra2","el fager"]
-    //
+    var lastChoosenMaker = GMSMarker()
+    var hangouts = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var places = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var markerDictionary : [GMSMarker : Marker] = [:]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for lat in 0..<lats.count{
-            print(lat)
-            setFakeMarkers(lat: lats[lat], lng: longs[lat], name: name[lat])
-        }
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         locationManager = CLLocationManager()
@@ -45,6 +45,56 @@ class ZGHangMapViewController: UIViewController {
         locationManager.delegate = self
         mapView.delegate = self
         
+        
+        Meteor.meteorClient?.addSubscription("hangouts.public")
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name:NSNotification.Name(rawValue: "hangouts_added") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "hangouts_changed") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "hangouts_removed") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name:NSNotification.Name(rawValue: "places_added") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "places_changed") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "places_removed") , object: nil)
+    }
+    @objc func updateMarkers (){
+        mapView.clear()
+        if Meteor.meteorClient?.collections["hangouts"] != nil{
+            hangouts = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        }
+        if Meteor.meteorClient?.collections["places"] != nil{
+            places = Meteor.meteorClient?.collections["places"] as! M13MutableOrderedDictionary
+        }
+        setMarkers()
+    }
+    func setMarkers(){
+        if Meteor.meteorClient?.collections["places"] != nil && Meteor.meteorClient?.collections["hangouts"] != nil{
+            for index in 0 ..< hangouts.count{
+                let hangout = hangouts.object(at: UInt(index))
+                var lat = 0.0
+                var lng = 0.0
+                for i in 0 ..< self.places.count{
+                    let place = self.places.object(at: UInt(i))
+                    if hangout["location"] as? String == place["_id"] as? String{
+                        let location = place["location"] as! [String : Any]
+                        let coordinates = location["coordinates"] as! [Any]
+                        lat = coordinates[0] as! Double
+                        lng = coordinates[1] as! Double
+                    }
+                }
+                let markerObject = Marker(hangoutId: hangout["_id"] as? String, title: hangout["title"] as? String, description: hangout["description"] as? String, image: hangout["image"] as? String)
+                let customMarker = CustomMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: hangout["image"] as! String, borderColor: UIColor(red: 0, green: 100/255, blue: 255/255, alpha: 1.0))
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                marker.iconView = customMarker
+                marker.map = mapView
+                
+                markerDictionary[marker] = markerObject
+            }
+            
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        mapView.delegate = nil
+        Meteor.meteorClient?.removeSubscription("hangouts.public")
+        NotificationCenter.default.removeObserver(self)
     }
     func updateCurrentLocation (lat : Double , lng : Double){
         Meteor.meteorClient?.callMethodName("users.methods.update-location", parameters: [["lat":"\(lat)","lng" : "\(lng)"]], responseCallback: { (response, error) in
@@ -57,28 +107,20 @@ class ZGHangMapViewController: UIViewController {
         })
     }
     @IBAction func openHangoutProfileViewClicked(_ sender: Any) {
+        let willDisplayHangoutId = markerDictionary[lastChoosenMaker]?.hangoutId!
         let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileViewController") as! ZGHangoutProfileViewController
+        vc.hangoutId = willDisplayHangoutId!
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    func setFakeMarkers(lat : Double , lng : Double , name : String)
-    {
-        let customMarker = CustomMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: "https://blendin-userfiles-mobilehub-1929261559.s3.amazonaws.com/jsaS3/1561364513254", borderColor: UIColor(red: 0, green: 100, blue: 255, alpha: 1.0))
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-        marker.iconView = customMarker
-        marker.map = mapView
-        //marker.tracksViewChanges = false
-        
-        let ff = fake(lat: lat, lng: lng, name: name)
-        markerDic[marker] = ff
-    }
+
 }
 extension ZGHangMapViewController : GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         hangContainerView.isHidden = false
-        hangImageView.image = UIImage(named: "1")
-        hangTitleLabel.text = "\((markerDic[marker]?.name!)!)"
-        hangDescriptionLabel.text = "bfvnrfvjnsdfjkvnsdjnvsdrjklnvjklsdnvrnvlrnvjklsnvjklnvdklvndrklvnrklvnrlnjvnerljgkt"
+        hangImageView.kf.setImage(with: URL(string: (markerDictionary[marker]?.image)!)!)
+        hangTitleLabel.text = "\((markerDictionary[marker]?.title!)!)"
+        hangDescriptionLabel.text = (markerDictionary[marker]?.description!)!
+        lastChoosenMaker = marker
         return false
     }
     func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {

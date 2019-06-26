@@ -13,9 +13,14 @@ class MZFollowBackTableViewCell: UITableViewCell {
     @IBOutlet weak var followerImageView: UIImageView!
     @IBOutlet weak var followerNameLabel: UILabel!
     @IBOutlet weak var followBackButton: UIButton!
+    
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.followBackButton.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        self.selectionStyle = .none
+
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
