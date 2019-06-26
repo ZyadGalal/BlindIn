@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yu9-IM-JeE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yu9-IM-JeE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2256,6 +2256,7 @@
                         <outlet property="endDateTextField" destination="ZgU-E4-ffl" id="YSN-mm-vun"/>
                         <outlet property="hangoutPrivacySwitch" destination="nDZ-zN-dRM" id="BJI-9M-EYq"/>
                         <outlet property="hangoutTitleTextField" destination="bYD-UC-Wnf" id="ga1-Ah-S51"/>
+                        <outlet property="locationSetButton" destination="29s-Ae-xeT" id="9jY-lK-4Zx"/>
                         <outlet property="requestToJoinSwitch" destination="NKe-G2-0Zu" id="HjC-AO-IeT"/>
                         <outlet property="startDateTextField" destination="6fH-a8-sX6" id="rih-Uz-Qs6"/>
                     </connections>
@@ -2288,13 +2289,13 @@
     </scenes>
     <resources>
         <image name="1" width="1366" height="768"/>
-        <image name="comment" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="home" width="18" height="18"/>
-        <image name="like" width="40" height="40"/>
-        <image name="map" width="19.200000762939453" height="19.200000762939453"/>
-        <image name="noti" width="19.200000762939453" height="19.200000762939453"/>
-        <image name="plus" width="48" height="48"/>
+        <image name="comment" width="512" height="512"/>
+        <image name="home" width="24" height="24"/>
+        <image name="like" width="512" height="512"/>
+        <image name="map" width="24" height="24"/>
+        <image name="noti" width="24" height="24"/>
+        <image name="plus" width="64" height="64"/>
         <image name="right_arrow" width="32" height="32"/>
-        <image name="setting" width="19.200000762939453" height="19.200000762939453"/>
+        <image name="setting" width="24" height="24"/>
     </resources>
 </document>

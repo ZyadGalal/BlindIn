@@ -25,10 +25,6 @@ protocol PassLocationBackward {
     func passData(locationsName : String , locationsType : String , locationsAdress : String , locationsLat : String , locationsLng : String , city : String , country : String)
 }
 
-//protocol passCompleteLocation {
-//    func passData(locationsName : String , locationsType : String , locationsAdress : String , locationsLat : String , locationsLng : String , city : String , country : String)
-//}
-
 
 class MZHangoutSetLocationViewController: UIViewController {
 
