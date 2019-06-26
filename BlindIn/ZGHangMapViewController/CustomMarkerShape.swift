@@ -8,12 +8,13 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class CustomMarkerShape: UIView {
-    var img: UIImage!
+    var img: String!
     var imgBorderColor: UIColor!
     
-    init(frame: CGRect, image: UIImage, borderColor: UIColor) {
+    init(frame: CGRect, image: String, borderColor: UIColor) {
         super.init(frame: frame)
         self.img=image
         self.imgBorderColor=borderColor
@@ -21,12 +22,17 @@ class CustomMarkerShape: UIView {
     }
     
     func setupViews() {
-        let imgView = UIImageView(image: img)
+        var imgView = UIImageView()
         imgView.frame=CGRect(x: 0, y: 0, width: 50, height: 50)
         imgView.layer.cornerRadius = 25
         imgView.layer.borderColor=imgBorderColor?.cgColor
         imgView.layer.borderWidth=4
         imgView.clipsToBounds=true
+        DispatchQueue.main.async {
+            imgView.kf.indicatorType = .activity
+            imgView.kf.setImage(with: URL(string: self.img!)!)
+        }
+        
         let lbl=UILabel(frame: CGRect(x: 0, y: 45, width: 50, height: 10))
         lbl.text = "▾"
         lbl.font=UIFont.systemFont(ofSize: 24)
