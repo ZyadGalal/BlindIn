@@ -50,9 +50,12 @@ extension MZUpcomingEventViewController : UITableViewDelegate , UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = upcomingEventsTabelView.dequeueReusableCell(withIdentifier: "MZUpcomingEventTableViewCell") as! MZBothEventTableViewCell
-        cell.eventNameLabel.text = upcomingEvents[indexPath.row]
-        cell.eventDateLabel.text = date[indexPath.row]
-        cell.eventLocationLabel.text = locations[indexPath.row]
+        let current = hangout.object(at: UInt(indexPath.row))
+        cell.eventNameLabel.text = current["title"] as? String
+        cell.eventDateLabel.text = current["endDate"] as? String
+        cell.eventLocationLabel.text = current["locationTitle"] as? String
+        cell.eventdescriptionLabel.text = current["description"] as? String
+        cell.eventImageView.kf.setImage(with: URL(string: current["image"] as! String)!)
         cell.selectionStyle = .none
         
         return cell
