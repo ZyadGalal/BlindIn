@@ -91,7 +91,6 @@ class MZNotificationViewController: UIViewController {
             self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex)
         }
         if segmentedControl.selectedSegmentIndex == 0{
-            print("0")
             self.addChild(hangout)
             self.containerView.addSubview(hangout.view)
             hangout.didMove(toParent: self)
@@ -99,7 +98,6 @@ class MZNotificationViewController: UIViewController {
             self.hangout.view.frame = CGRect(x: 0, y: 0, width: self.containerView.frame.width, height: self.containerView.frame.height)
         }
         else {
-            print("1")
             self.addChild(invite)
             self.containerView.addSubview(invite.view)
             invite.didMove(toParent: self)

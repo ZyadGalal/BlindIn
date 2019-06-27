@@ -11,6 +11,11 @@ import GoogleMaps
 import ObjectiveDDP
 import Kingfisher
 
+struct fake {
+    var lat : Double?
+    var lng : Double?
+    var name : String?
+}
 class MZInviteFromMapViewController: UIViewController {
 
     @IBOutlet weak var backgroundButton: UIButton!
