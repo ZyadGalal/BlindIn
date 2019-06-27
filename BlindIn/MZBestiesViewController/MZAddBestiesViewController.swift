@@ -18,7 +18,7 @@ class MZAddBestiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         addBestieTableView.register(UINib(nibName: "MZAddBestiesTableViewCell", bundle: nil), forCellReuseIdentifier: "MZAddBestiesTableViewCell")
 
         // Do any additional setup after loading the view.

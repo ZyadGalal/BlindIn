@@ -16,8 +16,7 @@ class ZGMoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 extension ZGMoreViewController : UITableViewDataSource{
@@ -42,6 +41,11 @@ extension ZGMoreViewController : UITableViewDelegate{
         else if indexPath.row == 2{
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGEditProfileViewController") as! ZGEditProfileViewController
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if indexPath.row == 3{
+            let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZBestiesViewController") as! MZBestiesViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
         else if indexPath.row == 4{
             let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZEventHistoryViewController") as! MZEventHistoryViewController
