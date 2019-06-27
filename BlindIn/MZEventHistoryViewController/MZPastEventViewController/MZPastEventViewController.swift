@@ -10,7 +10,10 @@ import UIKit
 import ObjectiveDDP
 import Kingfisher
 
+
 class MZPastEventViewController: UIViewController {
+
+    var lists = M13MutableOrderedDictionary<NSCopying, AnyObject>()
 
     
     var pastEvents = ["Momen","Momen Adel","Momen Adel Mohamed","Mo2a","El Mo2"]
@@ -33,16 +36,39 @@ class MZPastEventViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(getPastHangouts), name: NSNotification.Name("history_removed"), object: nil)
         
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        Meteor.meteorClient?.removeSubscription("hangout.mine")
-        NotificationCenter.default.removeObserver(self)
-    }
+
     @objc func getPastHangouts(){
         if Meteor.meteorClient?.collections["history"] != nil{
             hangout = Meteor.meteorClient?.collections["history"] as! M13MutableOrderedDictionary
             pastEventsTabelView.reloadData()
         }
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        Meteor.meteorClient?.addSubscription("hangouts.mine")
+        NotificationCenter.default.addObserver(self, selector: #selector(MZPastEventViewController.getAllHangout), name: NSNotification.Name(rawValue: "hangouts_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZPastEventViewController.getAllHangoutChanged), name: NSNotification.Name(rawValue: "hangouts_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZPastEventViewController.getAllHangoutRemoved), name: NSNotification.Name(rawValue: "hangouts_removed"), object: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("hangouts.mine")
+        NotificationCenter.default.removeObserver(self)
+        lists.removeAllObjects()
+    }
+    
+    @objc func getAllHangout(){
+        
+        self.lists = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        print(lists)
+        
+    }
+    @objc func getAllHangoutChanged(){
+        
+    }
+    @objc func getAllHangoutRemoved(){
+        
+    }
+
 }
 
 extension MZPastEventViewController : UITableViewDelegate , UITableViewDataSource{

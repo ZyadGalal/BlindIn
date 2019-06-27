@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import ObjectiveDDP
 
 class MZBestiesViewController: UIViewController {
     
     var name = ["Momen","Momen Adel","Momen Adel Mohamed","Mo2a","El Mo2"]
-
+    var besties = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    
     @IBOutlet weak var bestieTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +24,53 @@ class MZBestiesViewController: UIViewController {
         bestieTableView.register(UINib(nibName: "MZBestieTableViewCell", bundle: nil), forCellReuseIdentifier: "MZBestieTableViewCell")
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        Meteor.meteorClient?.addSubscription("users.besties")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MZBestiesViewController.bestiesAdded), name: NSNotification.Name(rawValue: "besties_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZBestiesViewController.bestiesUpdated), name: NSNotification.Name(rawValue: "besties_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MZBestiesViewController.bestiesRemoved), name: NSNotification.Name(rawValue: "besties_removed"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("users.besties")
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func reload(tableView: UITableView) {
+        let contentOffset = tableView.contentOffset
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        tableView.setContentOffset(contentOffset, animated: false)
+    }
+    
+    
+    @objc func bestiesAdded (){
+        besties = (Meteor.meteorClient?.collections["besties"] as? M13MutableOrderedDictionary)!
+        print(besties)
+        reload(tableView: bestieTableView)
+    }
+    @objc func bestiesUpdated (){
+        besties = (Meteor.meteorClient?.collections["besties"] as? M13MutableOrderedDictionary)!
+        print(besties)
+        reload(tableView: bestieTableView)
+    }
+    @objc func bestiesRemoved (){
+        besties = (Meteor.meteorClient?.collections["besties"] as? M13MutableOrderedDictionary)!
+        print(besties)
+        reload(tableView: bestieTableView)
+    }
+    
+
     @objc func tapButton(){
         print("Add New Bestie")
+        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZAddBestiesViewController") as! MZAddBestiesViewController
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
 
@@ -32,21 +79,42 @@ class MZBestiesViewController: UIViewController {
 extension MZBestiesViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return name.count
+        return Int(besties.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = bestieTableView.dequeueReusableCell(withIdentifier: "MZBestieTableViewCell") as! MZBestieTableViewCell
         cell.selectionStyle = .none
-        cell.bestieNameLabel.text = name[indexPath.row]
+        let current = besties.object(at: UInt(indexPath.row))
+        let profile = current["profile"] as! [String : Any]
+        cell.bestieNameLabel.text = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
+        cell.bestieImageView.kf.indicatorType = .activity
+        cell.bestieImageView.kf.setImage(with: URL(string: profile["image"] as! String))
         
         return cell
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
-            name.remove(at: indexPath.row)
-            bestieTableView.reloadData()
-        }
+            if Meteor.meteorClient?.connected == true{
+                let current = besties.object(at: UInt(indexPath.row))
+                var id = ""
+                id = current["_id"] as! String
+            
+                Meteor.meteorClient?.callMethodName("users.methods.remove-bestie", parameters: [["_id" : id]], responseCallback: { (response, error) in
+                    if error != nil{
+                        print(error)
+                    }
+                    else{
+                        print(response)
+                        self.bestieTableView.reloadData()
+
+                    }
+                })
+            }
+            else{
+                print("not connected")
+            }
+                    }
     }
     
     

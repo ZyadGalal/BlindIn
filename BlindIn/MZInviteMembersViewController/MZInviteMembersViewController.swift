@@ -15,6 +15,7 @@ class MZInviteMembersViewController: UIViewController {
     let invFromCollection = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
     let invFromMap = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromMapViewController") as! MZInviteFromMapViewController
 
+    
     var invitedIDsArray : [String] = []
     var hangTitle : String = ""
     var hangStartDate : String = ""
@@ -43,7 +44,8 @@ class MZInviteMembersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
+        
         let name = UIBarButtonItem(title: "Create", style: .plain, target: self, action:#selector(tapButton) )
         self.navigationItem.setRightBarButton(name, animated: false)
         
@@ -81,6 +83,15 @@ class MZInviteMembersViewController: UIViewController {
     }
     
     @objc func tapButton(){
+        if invFromCollection.invitedIDsArray == [] {
+            invitedIDsArray = invFromMap.invitedIDsArray
+        }
+        else {
+            invitedIDsArray = invFromCollection.invitedIDsArray
+        }
+        
+        
+        
         var params : [String : Any] = [:]
         var location : [String : Any] = [:]
         if hangLocationID != "" {
@@ -95,6 +106,7 @@ class MZInviteMembersViewController: UIViewController {
                 , "max" : hangMax
                 , "gender" : hangGender
                 , "invites" : invitedIDsArray ] as! [String : Any]
+            print(params)
         }
         else{
             location = ["title" : locationName , "address" : locationAdress ,"lat" : lat,"lng" : long,"placeType" : locationType,"city" : city,"country" : country]
@@ -110,6 +122,7 @@ class MZInviteMembersViewController: UIViewController {
                 , "max" : hangMax
                 , "gender" : hangGender
                 , "invites" : invitedIDsArray ] as! [String : Any]
+            print(params)
         }
         
         if Meteor.meteorClient?.connected == true{
@@ -119,7 +132,7 @@ class MZInviteMembersViewController: UIViewController {
                 }
                 else{
                     print(response)
-                    self.navigationController?.popToRootViewController(animated: true)
+                    //self.navigationController?.popToRootViewController(animated: true)
                 }
             })
         }

@@ -19,6 +19,8 @@ class ZGUserProfileBreifTableViewCell: UITableViewCell {
     @IBOutlet weak var userDescription: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userImg: UIImageView!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var addBestieButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

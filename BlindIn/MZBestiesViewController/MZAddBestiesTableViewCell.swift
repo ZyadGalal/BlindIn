@@ -1,17 +1,18 @@
 //
-//  MZInterestTableViewCell.swift
+//  MZAddBestiesTableViewCell.swift
 //  BlindIn
 //
-//  Created by Moustafa on 6/23/19.
+//  Created by Moustafa on 6/27/19.
 //  Copyright © 2019 Zyad Galal. All rights reserved.
 //
 
 import UIKit
 
-class MZInterestTableViewCell: UITableViewCell {
+class MZAddBestiesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var interestNameLabel: UILabel!
-    
+    @IBOutlet weak var addBestieImageView: UIImageView!
+    @IBOutlet weak var addUsernameLabel: UILabel!
+    @IBOutlet weak var addBestieButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +23,5 @@ class MZInterestTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

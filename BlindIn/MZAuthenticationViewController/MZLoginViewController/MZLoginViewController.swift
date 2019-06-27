@@ -34,11 +34,12 @@ class MZLoginViewController: UIViewController {
                     else{
                         print(response!)
 
-                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
+                        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZBestiesViewController") as! MZBestiesViewController
+                        
+                        
 
                         self.navigationController?.pushViewController(vc, animated: true)
 
-                        
                     }
                 })
             }

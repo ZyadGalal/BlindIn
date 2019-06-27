@@ -25,10 +25,6 @@ protocol PassLocationBackward {
     func passData(locationsName : String , locationsType : String , locationsAdress : String , locationsLat : String , locationsLng : String , city : String , country : String)
 }
 
-//protocol passCompleteLocation {
-//    func passData(locationsName : String , locationsType : String , locationsAdress : String , locationsLat : String , locationsLng : String , city : String , country : String)
-//}
-
 
 class MZHangoutSetLocationViewController: UIViewController {
 
@@ -130,7 +126,8 @@ class MZHangoutSetLocationViewController: UIViewController {
         
             var markers = GMSMarker()
             dicForMarker[markers] = currentObject
-            let customMarker = CircularMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: UIImage(named: "1")!, borderColor: UIColor(red: 0, green: 100, blue: 255, alpha: 1.0))
+            let customMarker = CircularMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: currentIndex["image"] as! String, borderColor: UIColor(red: 0/255.0, green: 100/255.0, blue: 255/255.0, alpha: 1.0))
+//            let customMarker = CircularMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: UIImage(named: currentIndex["image"] as! String)!, borderColor: UIColor(red: 0/255.0, green: 100/255.0, blue: 255/255.0, alpha: 1.0))
             //let markers = GMSMarker()
             markers.position = CLLocationCoordinate2D(latitude: lats[current], longitude: longs[current])
             markers.iconView = customMarker
@@ -381,10 +378,13 @@ extension MZHangoutSetLocationViewController : GMSMapViewDelegate {
             let markerClicked = dicForMarker[marker]
             print(markerClicked!["_id"]!)
             locationInfoView.isHidden = false
-            locationImageView.image = UIImage(named: "1")
+//            locationImageView.image = UIImage(named: "1")
+            locationImageView.kf.indicatorType = .activity
+            locationImageView.kf.setImage(with: URL(string: markerClicked!["image"] as! String))
             locationNameLabel.text = ((markerDic[marker]?.name!)!)
             locationTypeLabel.text = ((markerDic[marker]?.type!)!)
             placeDone = markerClicked!["_id"]! as! String
+            
         }
         else {
                 print("Default Marker")

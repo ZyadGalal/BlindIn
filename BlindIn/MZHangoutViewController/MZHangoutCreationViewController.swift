@@ -16,6 +16,7 @@ class MZHangoutCreationViewController: UIViewController {
     @IBOutlet weak var startDateTextField: HoshiTextField!
     @IBOutlet weak var endDateTextField: HoshiTextField!
     @IBOutlet weak var hangoutTitleTextField: HoshiTextField!
+    @IBOutlet weak var locationSetButton: UIButton!
     
     var locationID : String = ""
     var locationName : String = ""
@@ -35,6 +36,10 @@ class MZHangoutCreationViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.setRightBarButton(name, animated: false)
         createDatePicker()
+        
+        if locationName != "" {
+            locationSetButton.setTitle("Location Set Successfully", for: .selected)
+        }
         
     }
     
