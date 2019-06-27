@@ -92,6 +92,9 @@
 		32E44B9622B8215900D12BBB /* ZGMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E44B9522B8215900D12BBB /* ZGMoreTableViewCell.swift */; };
 		BD3DE6927E2A798BF3DB93A9 /* Pods_BlindInTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4110A44A917F91129B497CAB /* Pods_BlindInTests.framework */; };
 		DB5417ADA61BC1ACC45FFF14 /* Pods_BlindIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF45241557BE3ABED7FF698 /* Pods_BlindIn.framework */; };
+		E4004BE822C4F46100D8A290 /* MZAddBestiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4004BE722C4F46100D8A290 /* MZAddBestiesViewController.swift */; };
+		E4004BEB22C4F48600D8A290 /* MZAddBestiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4004BE922C4F48600D8A290 /* MZAddBestiesTableViewCell.swift */; };
+		E4004BEC22C4F48600D8A290 /* MZAddBestiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4004BEA22C4F48600D8A290 /* MZAddBestiesTableViewCell.xib */; };
 		E4225B5022C3665400E75713 /* MZProfileInterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4225B4F22C3665400E75713 /* MZProfileInterestsTableViewCell.swift */; };
 		E43E652222BB0A8D00BF14FB /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43E652122BB0A8D00BF14FB /* Third.storyboard */; };
 		E43E652422BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E652322BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift */; };
@@ -213,6 +216,9 @@
 		7636D7D6CCF946292D6B1CA6 /* Pods_BlindInUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindInUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DC59AC3B7B13952DA6A7CDF /* Pods-BlindIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindIn.debug.xcconfig"; path = "Target Support Files/Pods-BlindIn/Pods-BlindIn.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF45241557BE3ABED7FF698 /* Pods_BlindIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4004BE722C4F46100D8A290 /* MZAddBestiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAddBestiesViewController.swift; sourceTree = "<group>"; };
+		E4004BE922C4F48600D8A290 /* MZAddBestiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAddBestiesTableViewCell.swift; sourceTree = "<group>"; };
+		E4004BEA22C4F48600D8A290 /* MZAddBestiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MZAddBestiesTableViewCell.xib; sourceTree = "<group>"; };
 		E4225B4F22C3665400E75713 /* MZProfileInterestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZProfileInterestsTableViewCell.swift; sourceTree = "<group>"; };
 		E43E652122BB0A8D00BF14FB /* Third.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		E43E652322BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutSetLocationViewController.swift; sourceTree = "<group>"; };
@@ -611,6 +617,9 @@
 				32D8621522A4BFD8001F0CC0 /* MZBestiesViewController.swift */,
 				32D8621B22A4C3A7001F0CC0 /* MZBestieTableViewCell.swift */,
 				32D8621C22A4C3A7001F0CC0 /* MZBestieTableViewCell.xib */,
+				E4004BE722C4F46100D8A290 /* MZAddBestiesViewController.swift */,
+				E4004BE922C4F48600D8A290 /* MZAddBestiesTableViewCell.swift */,
+				E4004BEA22C4F48600D8A290 /* MZAddBestiesTableViewCell.xib */,
 			);
 			path = MZBestiesViewController;
 			sourceTree = "<group>";
@@ -770,6 +779,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4004BEC22C4F48600D8A290 /* MZAddBestiesTableViewCell.xib in Resources */,
 				329AB0C3228F34F8007234CE /* Second.storyboard in Resources */,
 				32688EC222A5E4E600E6C89F /* MZOffersTableViewCell.xib in Resources */,
 				326241E622B6A5E90085F643 /* MZBothEventTableViewCell.xib in Resources */,
@@ -924,6 +934,7 @@
 				326241BC22B53AE30085F643 /* MZNotificationViewController.swift in Sources */,
 				32AB8224227E527D00BD98D1 /* ZGUserProfileViewController.swift in Sources */,
 				326241E522B6A5E90085F643 /* MZBothEventTableViewCell.swift in Sources */,
+				E4004BEB22C4F48600D8A290 /* MZAddBestiesTableViewCell.swift in Sources */,
 				326241D222B556F30085F643 /* MZFollowBackTableViewCell.swift in Sources */,
 				32E44B9622B8215900D12BBB /* ZGMoreTableViewCell.swift in Sources */,
 				32688EC122A5E4E600E6C89F /* MZOffersTableViewCell.swift in Sources */,
@@ -967,6 +978,7 @@
 				325FB0B822B93DDE00844851 /* TabViewController.swift in Sources */,
 				32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */,
 				3272102322B922AC00F089A0 /* ZGCommentsTableViewCell.swift in Sources */,
+				E4004BE822C4F46100D8A290 /* MZAddBestiesViewController.swift in Sources */,
 				32E44B8B22B7F2DF00D12BBB /* ZGHangoutProfilePostsViewController.swift in Sources */,
 				322DEEAB22A3690300408EC9 /* MZBestiesCollectionViewCell.swift in Sources */,
 				E43E652422BB0E1400BF14FB /* MZHangoutSetLocationViewController.swift in Sources */,

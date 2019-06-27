@@ -1727,7 +1727,7 @@
                                                                         <constraint firstAttribute="height" constant="40" id="ddB-kN-3Y3"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <state key="normal" title="follow">
+                                                                    <state key="normal" title="Follow">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                     <userDefinedRuntimeAttributes>
@@ -1777,7 +1777,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addBestieButton" destination="DOn-Rn-6tc" id="Hnh-zc-E7d"/>
                                             <outlet property="containerViewHeightConstraint" destination="Hfj-1O-cyb" id="q1X-YS-KfQ"/>
+                                            <outlet property="followButton" destination="eQB-Zb-h3g" id="Qzl-Dk-y0S"/>
                                             <outlet property="followView" destination="7Pk-LV-BMb" id="rSh-G8-rws"/>
                                             <outlet property="followViewHeightConstraint" destination="8ll-Uz-2gV" id="tnu-xi-h6A"/>
                                             <outlet property="followersLbl" destination="a1M-ba-j7z" id="W5L-MK-W06"/>

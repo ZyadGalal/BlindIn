@@ -1481,6 +1481,40 @@
             <point key="canvasLocation" x="7620" y="-428"/>
         </scene>
         <!-- -->
+        <scene sceneID="CAV-9o-Zup">
+            <objects>
+                <viewController storyboardIdentifier="MZAddBestiesViewController" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="fSF-Xn-ftX" customClass="MZAddBestiesViewController" customModule="BlindIn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qhI-b1-sso">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-QA-8eZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fSF-Xn-ftX" id="zKn-TT-6w6"/>
+                                    <outlet property="delegate" destination="fSF-Xn-ftX" id="i4d-qa-f6Z"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="329-2L-Zog" firstAttribute="trailing" secondItem="7Zl-QA-8eZ" secondAttribute="trailing" id="CiH-OY-G99"/>
+                            <constraint firstItem="329-2L-Zog" firstAttribute="bottom" secondItem="7Zl-QA-8eZ" secondAttribute="bottom" id="cyy-Fh-e26"/>
+                            <constraint firstItem="7Zl-QA-8eZ" firstAttribute="leading" secondItem="329-2L-Zog" secondAttribute="leading" id="h3E-Bj-n70"/>
+                            <constraint firstItem="7Zl-QA-8eZ" firstAttribute="top" secondItem="qhI-b1-sso" secondAttribute="top" id="shd-TW-bKM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="329-2L-Zog"/>
+                    </view>
+                    <connections>
+                        <outlet property="addBestieTableView" destination="7Zl-QA-8eZ" id="YUR-zT-P7c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bzZ-T3-RUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7620" y="-1150"/>
+        </scene>
+        <!-- -->
         <scene sceneID="A8k-Bn-H9f">
             <objects>
                 <viewController storyboardIdentifier="MZOffersDetailsViewController" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="m8g-dR-5TL" customClass="MZOffersDetailsViewController" customModule="BlindIn" customModuleProvider="target" sceneMemberID="viewController">
@@ -1500,7 +1534,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UtR-ia-O4P">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UtR-ia-O4P">
                                 <rect key="frame" x="16" y="320" width="343" height="221"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -1514,7 +1548,7 @@
                                     <constraint firstAttribute="height" constant="40" id="ONQ-kb-NGn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Get Offer">
+                                <state key="normal" title="Claim Offer">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1522,6 +1556,9 @@
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ClaimOfferButtonClicked:" destination="m8g-dR-5TL" eventType="touchUpInside" id="GuM-sI-gak"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1589,7 +1626,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ath-Zy-9Dd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9375.2000000000007" y="-428.63568215892059"/>
+            <point key="canvasLocation" x="8436" y="-428"/>
         </scene>
         <!-- -->
         <scene sceneID="8fP-Zj-qgH">
@@ -1623,7 +1660,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Thr-eH-waR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10212" y="-429.53523238380814"/>
+            <point key="canvasLocation" x="9514" y="-428"/>
         </scene>
         <!-- -->
         <scene sceneID="cxI-ek-cOs">
@@ -1664,7 +1701,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUa-4V-Idg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12744.799999999999" y="-429.53523238380814"/>
+            <point key="canvasLocation" x="11164" y="-428"/>
         </scene>
         <!--Upcoming Event View Controller-->
         <scene sceneID="dso-Pt-ujC">
@@ -1698,7 +1735,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z50-u7-ggq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13560.799999999999" y="83.208395802098963"/>
+            <point key="canvasLocation" x="11980" y="85"/>
         </scene>
         <!--Past Event View Controller-->
         <scene sceneID="DWw-6M-ep6">
@@ -1732,7 +1769,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DRt-Wg-Ery" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13560.799999999999" y="-672.41379310344837"/>
+            <point key="canvasLocation" x="11980" y="-671"/>
         </scene>
         <!-- -->
         <scene sceneID="OLR-dC-aKt">
