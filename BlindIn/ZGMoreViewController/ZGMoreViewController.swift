@@ -18,6 +18,10 @@ class ZGMoreViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+
+    }
 }
 extension ZGMoreViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,6 +40,10 @@ extension ZGMoreViewController : UITableViewDelegate{
         if indexPath.row == 0{
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGUserProfileViewController") as! ZGUserProfileViewController
             vc.id = (Meteor.meteorClient?.userId!)!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if indexPath.row == 1{
+            let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZOffersViewController") as! MZOffersViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if indexPath.row == 2{
