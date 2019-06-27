@@ -21,11 +21,12 @@ class ZGUserProfileViewController: UIViewController {
     //----------NEED TO TEST--------
     var id : String = ""
     var cellChecker : Int?
-    
+    var username : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         fadeAnimationForNavigationTitle()
-      
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,9 +54,14 @@ class ZGUserProfileViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         Meteor.meteorClient?.removeSubscription("users.profile")
         NotificationCenter.default.removeObserver(self)
-        interestLists.removeAllObjects()
+        Meteor.meteorClient?.collections["interests"] = nil
+        Meteor.meteorClient?.collections["posts"] = nil
+        Meteor.meteorClient?.collections["profile"] = nil
+
+    
     }
     @objc func getAllInterests(){
         let cell = profileTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! MZProfileInterestsTableViewCell
@@ -67,26 +73,26 @@ class ZGUserProfileViewController: UIViewController {
     {
         postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
         print(postsList)
-        self.profileTableView.reloadSections(NSIndexSet(index: 2) as IndexSet, with: UITableView.RowAnimation.top)
+        self.profileTableView.reloadData()
     }
     @objc func updateAllHangoutPosts ()
     {
         postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
         print(postsList)
-        self.profileTableView.reloadSections(NSIndexSet(index: 2) as IndexSet, with: UITableView.RowAnimation.top)
+        self.profileTableView.reloadData()
     }
     @objc func removeAllHangoutPosts ()
     {
         postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
         print(postsList)
-        self.profileTableView.reloadSections(NSIndexSet(index: 2) as IndexSet, with: UITableView.RowAnimation.top)
+        self.profileTableView.reloadData()
     }
     
     @objc func getProfile ()
     {
         profileList = Meteor.meteorClient?.collections["profile"] as! M13MutableOrderedDictionary
         print(profileList)
-        self.profileTableView.reloadSections(NSIndexSet(index: 0) as IndexSet, with: UITableView.RowAnimation.top)
+        self.profileTableView.reloadData()
     }
     @objc func updateProfile ()
     {
@@ -219,10 +225,12 @@ extension ZGUserProfileViewController : UICollectionViewDataSource{
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interest", for: indexPath) as! ZGUserProfileCollectionViewCell
-        let currentIndex = interestLists.object(at: UInt(indexPath.row))
-        cell.interestLabel.text = (currentIndex["title"] as! String)
-        cell.interestImageView.kf.indicatorType = .activity
-        cell.interestImageView.kf.setImage(with: URL(string: currentIndex["image"] as! String))
+        if Meteor.meteorClient?.collections["interests"] != nil{
+            let currentIndex = interestLists.object(at: UInt(indexPath.row))
+            cell.interestLabel.text = (currentIndex["title"] as! String)
+            cell.interestImageView.kf.indicatorType = .activity
+            cell.interestImageView.kf.setImage(with: URL(string: currentIndex["image"] as! String))
+        }
         return cell
     }
 }
@@ -245,16 +253,17 @@ extension ZGUserProfileViewController : UITableViewDataSource{
                 if (Meteor.meteorClient?.collections["profile"]) != nil {
                 let current = profileList.object(at: UInt(0))
                 let profile = current["profile"] as! [String : Any]
+                    username = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
                     myBriefcell.username.text = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
                     myBriefcell.userDescription.text = (profile["bio"] as! String)
                     myBriefcell.userImg.kf.indicatorType = .activity
                     myBriefcell.userImg.kf.setImage(with: URL(string: profile["image"] as! String))
-                    myBriefcell.followingLabel.text = (profile["profile.followingCount"] as! String)
-                    myBriefcell.followersLbl.text = (profile["profile.followersCount"] as! String)
-                    myBriefcell.hangoutsLabel.text = (profile["profile.joinedHangoutsCount"] as! String)
+                    myBriefcell.followingLabel.text = "\((profile["followingCount"] as! Int))"
+                    myBriefcell.followersLbl.text = "\((profile["followersCount"] as! Int))"
+                    myBriefcell.hangoutsLabel.text = "\((current["profile.joinedHangoutsCount"] as! Int))"
 
                 }
-
+                myBriefcell.selectionStyle = .none
                 return myBriefcell
             }
             else{
@@ -267,6 +276,7 @@ extension ZGUserProfileViewController : UITableViewDataSource{
                     let following = profile["following"] as! [String]
                     let joinedHangout = profile["joinedHangouts"] as! [String]
                     let besties = profile["besties"] as! [String]
+                    username = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
                     cell.username.text = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
                     cell.userDescription.text = (profile["bio"] as! String)
                     cell.userImg.kf.indicatorType = .activity
@@ -276,7 +286,7 @@ extension ZGUserProfileViewController : UITableViewDataSource{
                     cell.hangoutsLabel.text = String(joinedHangout.count)
                     cell.followButton.addTarget(self, action: #selector(ZGUserProfileViewController.followButtonClicked), for: .touchUpInside)
                     cell.addBestieButton.addTarget(self, action: #selector(ZGUserProfileViewController.addBestieButtonClicked), for: .touchUpInside)
-                    if followers.contains(current["_id"] as! String){
+                    if followers.contains((Meteor.meteorClient?.userId)!){
                         print("sa7 ya amer")
                         cell.followButton.setTitle("Following", for: .normal)
                     }
@@ -285,6 +295,8 @@ extension ZGUserProfileViewController : UITableViewDataSource{
                     }
    
                 }
+                cell.selectionStyle = .none
+
                 return cell
             }
             
@@ -292,6 +304,8 @@ extension ZGUserProfileViewController : UITableViewDataSource{
         }
         else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MZProfileInterestsTableViewCell") as! MZProfileInterestsTableViewCell
+            cell.selectionStyle = .none
+
             return cell
         }
         else{
@@ -304,6 +318,8 @@ extension ZGUserProfileViewController : UITableViewDataSource{
             cell.hangDescriptionLabel.text = currentIndex["description"] as? String
         
             }
+            cell.selectionStyle = .none
+
             return cell
         }
         
@@ -311,6 +327,18 @@ extension ZGUserProfileViewController : UITableViewDataSource{
     
 }
 extension ZGUserProfileViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2{
+            let currentIndex = postsList.object(at: UInt(indexPath.row))
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGPostsDetailsViewController") as! ZGPostsDetailsViewController
+            vc.postId = currentIndex["_id"] as? String
+            //vc.indexClicked = indexPath.row
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        }
+    }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
 
@@ -319,8 +347,9 @@ extension ZGUserProfileViewController : UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
-            
-            self.title = "zyad galal"
+            if username != nil{
+                self.title = username!
+            }
         }
     }
 }

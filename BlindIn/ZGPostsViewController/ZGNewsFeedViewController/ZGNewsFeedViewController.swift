@@ -98,6 +98,12 @@ class ZGNewsFeedViewController: UIViewController {
         usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         reload(tableView: newsFeedTableView)
     }
+    @objc func imageProfileImage(sender : UITapGestureRecognizer){
+        print(sender.accessibilityLabel!)
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGUserProfileViewController") as! ZGUserProfileViewController
+        vc.id = sender.accessibilityLabel!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 extension ZGNewsFeedViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,6 +122,12 @@ extension ZGNewsFeedViewController : UITableViewDataSource{
                 let userProfile = currentuser["profile"] as! [String:Any]
                 cell.userNameLable.text = "\(userProfile["firstName"] as! String) \(userProfile["lastName"] as! String)"
                 cell.userImageView.kf.setImage(with: URL(string: userProfile["image"] as! String))
+                cell.userImageView.isUserInteractionEnabled = true
+                let profileImage: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageProfileImage(sender:)))
+                profileImage.numberOfTapsRequired = 1
+                profileImage.accessibilityLabel = currentuser["_id"] as? String
+
+                cell.userImageView.addGestureRecognizer(profileImage)
             }
         }
         

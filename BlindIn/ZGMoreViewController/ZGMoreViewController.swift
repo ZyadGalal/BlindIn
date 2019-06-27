@@ -34,7 +34,12 @@ extension ZGMoreViewController : UITableViewDataSource{
 }
 extension ZGMoreViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2{
+        if indexPath.row == 0{
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGUserProfileViewController") as! ZGUserProfileViewController
+            vc.id = (Meteor.meteorClient?.userId!)!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if indexPath.row == 2{
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGEditProfileViewController") as! ZGEditProfileViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
