@@ -44,8 +44,10 @@ class MZInviteNotificationViewController: UIViewController {
     @objc func invitesAdded (){
         if Meteor.meteorClient?.collections["invite-notification"] != nil{
             notifications = (Meteor.meteorClient?.collections["invite-notification"] as? M13MutableOrderedDictionary)!
-            users = (Meteor.meteorClient?.collections["notification-users"] as? M13MutableOrderedDictionary)!
-            reload(tableView: inviteTabelView)
+            if Meteor.meteorClient?.collections["notification-users"] != nil{
+                users = (Meteor.meteorClient?.collections["notification-users"] as? M13MutableOrderedDictionary)!
+                reload(tableView: inviteTabelView)
+            }
         }
     }
     @objc func invitesUpdated (){
@@ -155,7 +157,9 @@ extension MZInviteNotificationViewController : UITableViewDelegate , UITableView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let current = notifications.object(at: UInt(indexPath.row))
-
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGUserProfileViewController") as! ZGUserProfileViewController
+        vc.id = current["senderId"] as! String
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @objc func FollowBackButtonClicked (sender : UIButton){
         let current = notifications.object(at: UInt(sender.tag))
