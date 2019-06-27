@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectiveDDP
 
 class MZPastEventViewController: UIViewController {
 
@@ -18,21 +19,35 @@ class MZPastEventViewController: UIViewController {
     
     @IBOutlet weak var pastEventsTabelView: UITableView!
     
-   
+    var hangout = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
          pastEventsTabelView.register(UINib(nibName: "MZBothEventTableViewCell", bundle: nil), forCellReuseIdentifier: "MZPastEventTableViewCell")
 
-        // Do any additional setup after loading the view.
+        Meteor.meteorClient?.addSubscription("hangouts.mine")
+        NotificationCenter.default.addObserver(self, selector: #selector(getPastHangouts), name: NSNotification.Name("history_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getPastHangouts), name: NSNotification.Name("history_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getPastHangouts), name: NSNotification.Name("history_removed"), object: nil)
+        
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("hangout.mine")
+        NotificationCenter.default.removeObserver(self)
+    }
+    @objc func getPastHangouts(){
+        if Meteor.meteorClient?.collections["history"] != nil{
+            hangout = Meteor.meteorClient?.collections["history"] as! M13MutableOrderedDictionary
+            pastEventsTabelView.reloadData()
+        }
+    }
 }
 
 extension MZPastEventViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pastEvents.count
+        return Int(hangout.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

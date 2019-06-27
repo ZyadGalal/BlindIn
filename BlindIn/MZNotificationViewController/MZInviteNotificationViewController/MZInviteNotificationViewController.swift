@@ -129,7 +129,7 @@ extension MZInviteNotificationViewController : UITableViewDelegate , UITableView
                 }
             }
         }
-        followCell.notificationType.text = " "
+        followCell.notificationType.text = current["message"] as? String
         return followCell
     }
     

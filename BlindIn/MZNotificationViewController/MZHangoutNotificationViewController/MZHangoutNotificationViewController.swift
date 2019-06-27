@@ -92,7 +92,7 @@ extension MZHangoutNotificationViewController : UITableViewDelegate , UITableVie
             cell.acceptButton.accessibilityLabel = current["_id"] as? String
             cell.acceptButton.tag = indexPath.row
             cell.acceptButton.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
-            cell.notificationType.text = "Hangout Invitation"
+            cell.notificationType.text = current["message"] as? String
 
         }
         else{

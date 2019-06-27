@@ -47,17 +47,17 @@ class ZGHangMapViewController: UIViewController {
         
         
         Meteor.meteorClient?.addSubscription("hangouts.public")
-        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name:NSNotification.Name(rawValue: "hangouts_added") , object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "hangouts_changed") , object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "hangouts_removed") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name:NSNotification.Name(rawValue: "public-hangouts_added") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "public-hangouts_changed") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "public-hangouts_removed") , object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name:NSNotification.Name(rawValue: "places_added") , object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "places_changed") , object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateMarkers), name: NSNotification.Name(rawValue: "places_removed") , object: nil)
     }
     @objc func updateMarkers (){
         mapView.clear()
-        if Meteor.meteorClient?.collections["hangouts"] != nil{
-            hangouts = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
+        if Meteor.meteorClient?.collections["public-hangouts"] != nil{
+            hangouts = Meteor.meteorClient?.collections["public-hangouts"] as! M13MutableOrderedDictionary
         }
         if Meteor.meteorClient?.collections["places"] != nil{
             places = Meteor.meteorClient?.collections["places"] as! M13MutableOrderedDictionary
@@ -65,7 +65,7 @@ class ZGHangMapViewController: UIViewController {
         setMarkers()
     }
     func setMarkers(){
-        if Meteor.meteorClient?.collections["places"] != nil && Meteor.meteorClient?.collections["hangouts"] != nil{
+        if Meteor.meteorClient?.collections["places"] != nil && Meteor.meteorClient?.collections["public-hangouts"] != nil{
             for index in 0 ..< hangouts.count{
                 let hangout = hangouts.object(at: UInt(index))
                 var lat = 0.0
@@ -75,8 +75,8 @@ class ZGHangMapViewController: UIViewController {
                     if hangout["location"] as? String == place["_id"] as? String{
                         let location = place["location"] as! [String : Any]
                         let coordinates = location["coordinates"] as! [Any]
-                        lat = coordinates[0] as! Double
-                        lng = coordinates[1] as! Double
+                        lng = coordinates[0] as! Double
+                        lat = coordinates[1] as! Double
                     }
                 }
                 let markerObject = Marker(hangoutId: hangout["_id"] as? String, title: hangout["title"] as? String, description: hangout["description"] as? String, image: hangout["image"] as? String)

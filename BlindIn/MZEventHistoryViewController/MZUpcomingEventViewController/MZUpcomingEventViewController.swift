@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectiveDDP
 
 class MZUpcomingEventViewController: UIViewController {
 
@@ -16,21 +17,35 @@ class MZUpcomingEventViewController: UIViewController {
     
     @IBOutlet weak var upcomingEventsTabelView: UITableView!
     
-    
+    var hangout = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         upcomingEventsTabelView.register(UINib(nibName: "MZBothEventTableViewCell", bundle: nil), forCellReuseIdentifier: "MZUpcomingEventTableViewCell")
-
+        Meteor.meteorClient?.addSubscription("hangouts.mine")
+        NotificationCenter.default.addObserver(self, selector: #selector(getPastHangouts), name: NSNotification.Name("upcoming_added"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getPastHangouts), name: NSNotification.Name("upcoming_changed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getPastHangouts), name: NSNotification.Name("upcoming_removed"), object: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        Meteor.meteorClient?.removeSubscription("hangout.mine")
+        NotificationCenter.default.removeObserver(self)
         
     }
 
+    @objc func getPastHangouts(){
+        if Meteor.meteorClient?.collections["upcoming"] != nil{
+            hangout = Meteor.meteorClient?.collections["upcoming"] as! M13MutableOrderedDictionary
+            upcomingEventsTabelView.reloadData()
+        }
+    }
 }
 
 extension MZUpcomingEventViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return upcomingEvents.count
+        return Int(hangout.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

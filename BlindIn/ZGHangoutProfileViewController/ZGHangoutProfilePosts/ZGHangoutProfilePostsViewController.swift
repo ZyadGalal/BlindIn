@@ -31,9 +31,10 @@ class ZGHangoutProfilePostsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(getAllHangoutPosts), name: NSNotification.Name("posts_added"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(updateAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(removeAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
-        
-        postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
-        reload(tableView: hangoutPostsTableView)
+        if Meteor.meteorClient?.collections["posts"] != nil{
+            postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
+            reload(tableView: hangoutPostsTableView)
+        }
     }
     func reload(tableView: UITableView) {
         let contentOffset = tableView.contentOffset
