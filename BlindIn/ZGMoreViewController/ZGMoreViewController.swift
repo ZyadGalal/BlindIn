@@ -38,5 +38,9 @@ extension ZGMoreViewController : UITableViewDelegate{
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGEditProfileViewController") as! ZGEditProfileViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        else if indexPath.row == 4{
+            let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZEventHistoryViewController") as! MZEventHistoryViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

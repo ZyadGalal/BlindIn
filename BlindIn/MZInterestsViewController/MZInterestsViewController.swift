@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectiveDDP
+import Kingfisher
 
 class MZInterestsViewController: UIViewController {
     
@@ -66,7 +67,9 @@ extension MZInterestsViewController : UICollectionViewDataSource , UICollectionV
         
         let cell =  interestCollectionView.dequeueReusableCell(withReuseIdentifier: "interestsCell", for: indexPath) as! MZInterestsCollectionViewCell
         let currentIndex = lists.object(at: UInt(indexPath.row))
-        cell.interestLabel.text = currentIndex["title"] as! String
+        cell.interestLabel.text = currentIndex["title"] as? String
+        cell.interestImageView.kf.indicatorType = .activity
+        cell.interestImageView.kf.setImage(with: URL(string: currentIndex["image"] as! String)!)
         cell.interestImageView.image = UIImage(named: "1")
         
         return cell

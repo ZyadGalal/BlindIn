@@ -12,15 +12,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MZHangoutNotificationTableViewCell" customModule="BlindIn" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="392" height="73"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="KGk-i7-Jjw" customClass="MZHangoutNotificationTableViewCell" customModule="BlindIn" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="102"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="392" height="72.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="392" height="101.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification" translatesAutoresizingMaskIntoConstraints="NO" id="h3W-fb-qqK">
-                        <rect key="frame" x="14" y="9" width="50" height="53"/>
+                        <rect key="frame" x="14" y="24.5" width="50" height="53"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="BpT-kE-oyF"/>
                             <constraint firstAttribute="height" constant="53" id="ZfR-9O-Klx"/>
@@ -32,19 +32,20 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fi6-T8-AXY">
-                        <rect key="frame" x="72" y="18.5" width="180" height="34.5"/>
+                        <rect key="frame" x="72" y="18.5" width="191" height="65"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK8-Wr-kp0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK8-Wr-kp0">
                                 <rect key="frame" x="0.0" y="0.0" width="77" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19.5" id="BNM-cJ-emA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hangout Invitation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIi-bx-QGu">
-                                <rect key="frame" x="0.0" y="19.5" width="104" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="Mze-nE-A1L"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIi-bx-QGu">
+                                <rect key="frame" x="0.0" y="19.5" width="190.5" height="45.5"/>
+                                <string key="text">fvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsdfvsd</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -52,7 +53,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FIi-bx-QGu" secondAttribute="trailing" constant="8" id="Bdr-Vu-1X1"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FIi-bx-QGu" secondAttribute="trailing" id="Bdr-Vu-1X1"/>
                             <constraint firstItem="FIi-bx-QGu" firstAttribute="leading" secondItem="Fi6-T8-AXY" secondAttribute="leading" id="Bhr-lb-Uoy"/>
                             <constraint firstAttribute="bottom" secondItem="FIi-bx-QGu" secondAttribute="bottom" id="Jrm-sw-qBp"/>
                             <constraint firstItem="FIi-bx-QGu" firstAttribute="top" secondItem="iK8-Wr-kp0" secondAttribute="bottom" id="Jxt-WA-1mu"/>
@@ -63,7 +64,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juH-JD-DOq">
-                        <rect key="frame" x="271" y="21" width="100" height="30"/>
+                        <rect key="frame" x="271" y="36" width="100" height="30"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="1IZ-WP-gAr"/>
@@ -89,25 +90,25 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="juH-JD-DOq" firstAttribute="leading" secondItem="Fi6-T8-AXY" secondAttribute="trailing" constant="19" id="FVT-6g-YFH"/>
-                    <constraint firstItem="Fi6-T8-AXY" firstAttribute="centerY" secondItem="h3W-fb-qqK" secondAttribute="centerY" id="KIF-uk-bVF"/>
-                    <constraint firstItem="h3W-fb-qqK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="M3S-Ba-JSe"/>
-                    <constraint firstAttribute="bottom" secondItem="juH-JD-DOq" secondAttribute="bottom" constant="21.5" id="M8X-DE-H7h"/>
+                    <constraint firstItem="h3W-fb-qqK" firstAttribute="centerY" secondItem="Fi6-T8-AXY" secondAttribute="centerY" id="33g-Ot-Y5e"/>
+                    <constraint firstItem="juH-JD-DOq" firstAttribute="centerY" secondItem="Fi6-T8-AXY" secondAttribute="centerY" id="BH1-Bv-naj"/>
+                    <constraint firstItem="juH-JD-DOq" firstAttribute="leading" secondItem="Fi6-T8-AXY" secondAttribute="trailing" constant="8" id="FVT-6g-YFH"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Fi6-T8-AXY" secondAttribute="bottom" constant="7.5" id="JVZ-bU-vX5"/>
+                    <constraint firstItem="Fi6-T8-AXY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7.5" id="Jur-Yr-zMz"/>
                     <constraint firstItem="h3W-fb-qqK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="Okc-dP-Uq7"/>
-                    <constraint firstItem="juH-JD-DOq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="R19-Pf-rLG"/>
                     <constraint firstItem="Fi6-T8-AXY" firstAttribute="leading" secondItem="h3W-fb-qqK" secondAttribute="trailing" constant="8" id="Xd0-n8-4ww"/>
                     <constraint firstAttribute="trailing" secondItem="juH-JD-DOq" secondAttribute="trailing" constant="21" id="ZOa-2N-VmX"/>
-                    <constraint firstAttribute="bottom" secondItem="h3W-fb-qqK" secondAttribute="bottom" constant="10.5" id="m39-T8-dfg"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="acceptButton" destination="juH-JD-DOq" id="hpa-CS-20I"/>
+                <outlet property="buttonWidthConstraints" destination="1IZ-WP-gAr" id="eWA-96-EM0"/>
                 <outlet property="notificationImageView" destination="h3W-fb-qqK" id="GyA-Ju-CeG"/>
                 <outlet property="notificationType" destination="FIi-bx-QGu" id="Le2-dK-35p"/>
                 <outlet property="userNameLabel" destination="iK8-Wr-kp0" id="gXA-Xl-jB5"/>
             </connections>
-            <point key="canvasLocation" x="41.600000000000001" y="46.326836581709152"/>
+            <point key="canvasLocation" x="41.600000000000001" y="59.370314842578715"/>
         </tableViewCell>
     </objects>
     <resources>

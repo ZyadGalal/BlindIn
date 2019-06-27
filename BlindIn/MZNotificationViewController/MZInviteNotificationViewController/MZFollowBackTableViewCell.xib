@@ -32,13 +32,16 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMp-6R-PsG">
-                        <rect key="frame" x="70" y="27" width="72.5" height="21"/>
+                        <rect key="frame" x="70" y="8" width="72.5" height="56.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56.5" id="C2x-sH-9dE"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oip-Gc-Elp">
-                        <rect key="frame" x="262" y="20" width="110" height="34"/>
+                        <rect key="frame" x="262" y="21.5" width="110" height="30"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="110" id="Ahn-E4-WBp"/>
@@ -65,19 +68,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="jMp-6R-PsG" firstAttribute="leading" secondItem="I6p-89-Wb1" secondAttribute="trailing" constant="8" id="3db-Kt-c6B"/>
-                    <constraint firstItem="I6p-89-Wb1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="D0G-5l-Rix"/>
+                    <constraint firstItem="I6p-89-Wb1" firstAttribute="centerY" secondItem="jMp-6R-PsG" secondAttribute="centerY" id="FqT-9H-wvf"/>
+                    <constraint firstItem="oip-Gc-Elp" firstAttribute="centerY" secondItem="jMp-6R-PsG" secondAttribute="centerY" id="Gz7-Q1-e5G"/>
                     <constraint firstAttribute="trailing" secondItem="oip-Gc-Elp" secondAttribute="trailing" constant="20" id="KIh-oz-bPp"/>
-                    <constraint firstAttribute="bottom" secondItem="jMp-6R-PsG" secondAttribute="bottom" constant="24.5" id="aRQ-t3-hJW"/>
-                    <constraint firstAttribute="bottom" secondItem="I6p-89-Wb1" secondAttribute="bottom" constant="9.5" id="gR5-IF-InZ"/>
-                    <constraint firstAttribute="bottom" secondItem="oip-Gc-Elp" secondAttribute="bottom" constant="18.5" id="nbP-dw-KCM"/>
+                    <constraint firstAttribute="bottom" secondItem="jMp-6R-PsG" secondAttribute="bottom" constant="8" id="aRQ-t3-hJW"/>
                     <constraint firstItem="oip-Gc-Elp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jMp-6R-PsG" secondAttribute="trailing" constant="8" id="o0l-sC-NP6"/>
                     <constraint firstItem="I6p-89-Wb1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="r8M-AX-f58"/>
-                    <constraint firstItem="jMp-6R-PsG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="27" id="vKD-1V-mgZ"/>
-                    <constraint firstItem="oip-Gc-Elp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="xrl-n4-ruP"/>
+                    <constraint firstItem="jMp-6R-PsG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="vKD-1V-mgZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="buttonWidthConstraint" destination="Ahn-E4-WBp" id="dEb-po-l9d"/>
                 <outlet property="followBackButton" destination="oip-Gc-Elp" id="aGh-Y9-OrA"/>
                 <outlet property="followerImageView" destination="I6p-89-Wb1" id="CQh-Ac-8Gk"/>
                 <outlet property="followerNameLabel" destination="jMp-6R-PsG" id="1tY-7U-uRw"/>

@@ -13,7 +13,8 @@ class MZHangoutNotificationTableViewCell: UITableViewCell {
     @IBOutlet weak var notificationImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var notificationType: UILabel!
-    @IBOutlet weak var notificationDate: UILabel!
+   
+    @IBOutlet weak var buttonWidthConstraints: NSLayoutConstraint!
     @IBOutlet weak var acceptButton: UIButton!
 
     override func awakeFromNib() {

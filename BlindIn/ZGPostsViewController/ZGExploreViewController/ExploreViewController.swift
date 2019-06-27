@@ -60,6 +60,7 @@ class ExploreViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("posts.explore")
         NotificationCenter.default.removeObserver(self)
+        flag = 1
         arr.removeAll()
         exploreTableView.reloadData()
     }

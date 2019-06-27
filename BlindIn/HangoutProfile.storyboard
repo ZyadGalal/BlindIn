@@ -233,6 +233,9 @@
                                                 <real key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="joinButtonClicked:" destination="odd-dR-aiv" eventType="touchUpInside" id="2S0-PF-ZgG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCr-6z-dSE">
                                         <rect key="frame" x="307" y="190" width="60" height="60"/>
