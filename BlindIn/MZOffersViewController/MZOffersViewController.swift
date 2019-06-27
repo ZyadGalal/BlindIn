@@ -11,17 +11,14 @@ import ObjectiveDDP
 
 class MZOffersViewController: UIViewController {
     
-    
-    var offersName = ["Sale","Sale 10%","Sale 20%","Sale 50%","Sale 100%"]
-    var offerImages = ["1","1","1","1","1"]
-    
+
     var offers = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     
     @IBOutlet weak var offersTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         offersTableView.register(UINib(nibName: "MZOffersTableViewCell", bundle: nil), forCellReuseIdentifier: "MZOffersTableViewCell")
 
     }
@@ -75,10 +72,12 @@ extension MZOffersViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = offersTableView.dequeueReusableCell(withIdentifier: "MZOffersTableViewCell") as! MZOffersTableViewCell
+        if Meteor.meteorClient?.collections["offers"] != nil{
         let currentIndex = offers.object(at: UInt(indexPath.row))
         cell.offersNameLabel.text = (currentIndex["title"] as! String)
         cell.offersImageView.kf.indicatorType = .activity
         cell.offersImageView.kf.setImage(with: URL(string: currentIndex["image"] as! String))
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
