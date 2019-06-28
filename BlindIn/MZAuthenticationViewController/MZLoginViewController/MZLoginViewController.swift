@@ -35,8 +35,7 @@ class MZLoginViewController: UIViewController {
                         print(response!)
 
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
-                        
-                        
+
 
                         self.navigationController?.pushViewController(vc, animated: true)
 
