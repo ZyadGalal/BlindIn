@@ -59,5 +59,9 @@ extension ZGMoreViewController : UITableViewDelegate{
             let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZEventHistoryViewController") as! MZEventHistoryViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        else if indexPath.row == 6{
+            Meteor.meteorClient?.logout()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }

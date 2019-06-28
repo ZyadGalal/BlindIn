@@ -46,7 +46,6 @@ class ZGEditProfileViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         Meteor.meteorClient?.removeSubscription("users.mine")
         NotificationCenter.default.removeObserver(self)
     }
@@ -133,7 +132,7 @@ class ZGEditProfileViewController: UIViewController {
     func uploadButtonPressed() {
         let fileManager = FileManager.default
         let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("postImage.jpeg")
-        let imageData = userImageView.image!.jpegData(compressionQuality: 0.3)
+        let imageData = userImageView.image!.jpegData(compressionQuality: 0.5)
         fileManager.createFile(atPath: path as String, contents: imageData, attributes: nil)
         
         let timestamp = NSDate().timeIntervalSince1970
@@ -213,7 +212,7 @@ extension ZGEditProfileViewController : UIImagePickerControllerDelegate , UINavi
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         var chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage //2
         userImageView.contentMode = .scaleAspectFill //3
-        userImageView.image = chosenImage //4
+        userImageView.image = ResizeImage.resizeTo(image: chosenImage, maxSize: 300) //4
         didSelectNewImage = true
         dismiss(animated: true, completion: nil) //5
     }
