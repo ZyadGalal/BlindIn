@@ -64,9 +64,11 @@ class ZGUserProfileViewController: UIViewController {
     
     }
     @objc func getAllInterests(){
+        if profileTableView.cellForRow(at: IndexPath(row: 0, section: 1)) != nil{
         let cell = profileTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! MZProfileInterestsTableViewCell
         self.interestLists = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
         cell.profileInterestCollectionView.reloadData()
+        }
     }
     
     @objc func getAllHangoutPosts ()
