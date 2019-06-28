@@ -161,7 +161,7 @@ class ZGUserProfileViewController: UIViewController {
     
     @objc func addBestieButtonClicked (sender : UIButton)
     {
-            if (sender.currentImage == UIImage(named: "like")){
+            if (sender.currentImage == UIImage(named: "gold-star")){
             if (Meteor.meteorClient?.collections["profile"]) != nil {
                 let current = profileList.object(at: UInt(0))
                 var id = current["_id"] as! String
@@ -173,7 +173,7 @@ class ZGUserProfileViewController: UIViewController {
                             print(error)
                         }
                         else{
-                            sender.setImage(UIImage(named: "1"), for: .normal)
+                            sender.setImage(UIImage(named: "star"), for: .normal)
                             print(response)
                             
                         }
@@ -195,7 +195,7 @@ class ZGUserProfileViewController: UIViewController {
                             print(error)
                         }
                         else{
-                            sender.setImage(UIImage(named: "like"), for: .normal)
+                            sender.setImage(UIImage(named: "gold-star"), for: .normal)
                             print(response)
                             
                         }
@@ -289,11 +289,10 @@ extension ZGUserProfileViewController : UITableViewDataSource{
                     cell.followButton.addTarget(self, action: #selector(ZGUserProfileViewController.followButtonClicked), for: .touchUpInside)
                     cell.addBestieButton.addTarget(self, action: #selector(ZGUserProfileViewController.addBestieButtonClicked), for: .touchUpInside)
                     if followers.contains((Meteor.meteorClient?.userId)!){
-                        print("sa7 ya amer")
                         cell.followButton.setTitle("Following", for: .normal)
                     }
                     if besties.contains(current["_id"] as! String){
-                        cell.addBestieButton.setImage(UIImage(named: "1"), for: .selected)
+                        cell.addBestieButton.setImage(UIImage(named: "golde-star"), for: .normal)
                     }
    
                 }
@@ -318,7 +317,14 @@ extension ZGUserProfileViewController : UITableViewDataSource{
             cell.likeCountLabel.text = "\((currentIndex["lovesCount"] as? Int)!)"
             cell.commentCountLabel.text = "\((currentIndex["commentsCount"] as? Int)!)"
             cell.hangDescriptionLabel.text = currentIndex["description"] as? String
-        
+            cell.likeButton.tag = indexPath.row
+            let loveArray = currentIndex["loves"] as? [String]
+            if (loveArray?.contains((Meteor.meteorClient?.userId)!)) == true{
+                cell.likeButton.setImage(UIImage(named:"like"), for: .normal)
+            }
+            else{
+                cell.likeButton.setImage(UIImage(named:"unlike"), for: .normal)
+            }
             }
             cell.selectionStyle = .none
 

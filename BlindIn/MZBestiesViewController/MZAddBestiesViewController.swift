@@ -72,7 +72,8 @@ class MZAddBestiesViewController: UIViewController {
                 }
                 else{
                     print(response)
-                    sender.setTitle("Added", for: .selected)
+                    sender.setTitle("Added", for: .normal)
+                    sender.setTitleColor(.white, for: .normal)
                     sender.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
                     sender.backgroundColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
                 }
@@ -93,7 +94,6 @@ extension MZAddBestiesViewController : UITableViewDelegate , UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = addBestieTableView.dequeueReusableCell(withIdentifier: "MZAddBestiesTableViewCell") as! MZAddBestiesTableViewCell
-        cell.selectionStyle = .none
         let current = addBesties.object(at: UInt(indexPath.row))
         let profile = current["profile"] as! [String : Any]
         cell.addUsernameLabel.text = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
@@ -103,6 +103,14 @@ extension MZAddBestiesViewController : UITableViewDelegate , UITableViewDataSour
         cell.addBestieButton.addTarget(self, action: #selector(addBestieButtonClicked(sender:)), for: .touchUpInside)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let current = addBesties.object(at: UInt(indexPath.row))
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGUserProfileViewController") as! ZGUserProfileViewController
+        vc.id = current["_id"] as! String
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
