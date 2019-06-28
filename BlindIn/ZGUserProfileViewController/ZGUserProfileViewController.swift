@@ -216,6 +216,26 @@ class ZGUserProfileViewController: UIViewController {
         fadeTextAnimation.type = .fade
         self.navigationItem.titleView?.layer.add(fadeTextAnimation, forKey: "fadeTitle")
     }
+    
+    @IBAction func likeButtonClicked(_ sender: UIButton) {
+        let currentIndex = postsList.object(at: UInt(sender.tag))
+        loveMethodConnection(postId: (currentIndex["_id"] as? String)!)
+    }
+    func loveMethodConnection (postId : String){
+        if Meteor.meteorClient?.connected == true{
+            Meteor.meteorClient?.callMethodName("posts.methods.love", parameters: [["_id":postId]], responseCallback: { (response, error) in
+                if error != nil{
+                    print(error!)
+                }
+                else{
+                    print(response!)
+                }
+            })
+        }
+        else{
+            print("not connected")
+        }
+    }
 }
 extension ZGUserProfileViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
