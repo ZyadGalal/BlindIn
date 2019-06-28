@@ -84,7 +84,6 @@ extension MZBestiesViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = bestieTableView.dequeueReusableCell(withIdentifier: "MZBestieTableViewCell") as! MZBestieTableViewCell
-        cell.selectionStyle = .none
         let current = besties.object(at: UInt(indexPath.row))
         let profile = current["profile"] as! [String : Any]
         cell.bestieNameLabel.text = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
@@ -115,6 +114,13 @@ extension MZBestiesViewController : UITableViewDelegate , UITableViewDataSource{
                 print("not connected")
             }
             }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let current = besties.object(at: UInt(indexPath.row))
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGUserProfileViewController") as! ZGUserProfileViewController
+        vc.id = current["_id"] as! String
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
