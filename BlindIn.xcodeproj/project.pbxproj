@@ -73,6 +73,7 @@
 		32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */; };
 		32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */; };
 		32B6A01D22C5A52400DB4C5B /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B6A01C22C5A52400DB4C5B /* ResizeImage.swift */; };
+		32B6A01F22C5B81C00DB4C5B /* ZGInviteBestiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B6A01E22C5B81C00DB4C5B /* ZGInviteBestiesViewController.swift */; };
 		32BC9AAF22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */; };
 		32BEBF7322BBFAFF00778817 /* ZGAddNewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BEBF7222BBFAFF00778817 /* ZGAddNewPostViewController.swift */; };
 		32BEBF7622BC189900778817 /* ZGHangoutProfileCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BEBF7522BC189900778817 /* ZGHangoutProfileCommentsViewController.swift */; };
@@ -194,6 +195,7 @@
 		32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGHangMapViewController.swift; sourceTree = "<group>"; };
 		32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerShape.swift; sourceTree = "<group>"; };
 		32B6A01C22C5A52400DB4C5B /* ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImage.swift; sourceTree = "<group>"; };
+		32B6A01E22C5B81C00DB4C5B /* ZGInviteBestiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGInviteBestiesViewController.swift; sourceTree = "<group>"; };
 		32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutMembersLimitViewController.swift; sourceTree = "<group>"; };
 		32BEBF7222BBFAFF00778817 /* ZGAddNewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGAddNewPostViewController.swift; sourceTree = "<group>"; };
 		32BEBF7522BC189900778817 /* ZGHangoutProfileCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGHangoutProfileCommentsViewController.swift; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 				32E44B8E22B7FDCF00D12BBB /* OtherMessagesTableViewCell.swift */,
 				32E44B9022B7FDF800D12BBB /* ZGHangoutProfileChatViewController.swift */,
 				32BEBF7222BBFAFF00778817 /* ZGAddNewPostViewController.swift */,
+				32B6A01E22C5B81C00DB4C5B /* ZGInviteBestiesViewController.swift */,
 			);
 			path = ZGHangoutProfileViewController;
 			sourceTree = "<group>";
@@ -989,6 +992,7 @@
 				32E44B8722B7E83400D12BBB /* ZGHangoutProfileViewController.swift in Sources */,
 				E447D4DF22BF7D1500E82E35 /* MZInterestTableViewCell.swift in Sources */,
 				3258DCD8227DCCBA0014B316 /* AppDelegate.swift in Sources */,
+				32B6A01F22C5B81C00DB4C5B /* ZGInviteBestiesViewController.swift in Sources */,
 				326241E822B6AD0D0085F643 /* MZPastEventViewController.swift in Sources */,
 				32E44B8F22B7FDCF00D12BBB /* OtherMessagesTableViewCell.swift in Sources */,
 				321B50A022B6C43E00085670 /* ExploreViewController.swift in Sources */,
