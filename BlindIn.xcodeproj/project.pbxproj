@@ -72,6 +72,7 @@
 		32ACCAB022BA9D6D00AFBA84 /* Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ACCAAF22BA9D6D00AFBA84 /* Meteor.swift */; };
 		32AF49AE228EF0BF00EE7D18 /* ZGHangMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */; };
 		32AF49B0228F07F100EE7D18 /* CustomMarkerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */; };
+		32B6A01D22C5A52400DB4C5B /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B6A01C22C5A52400DB4C5B /* ResizeImage.swift */; };
 		32BC9AAF22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */; };
 		32BEBF7322BBFAFF00778817 /* ZGAddNewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BEBF7222BBFAFF00778817 /* ZGAddNewPostViewController.swift */; };
 		32BEBF7622BC189900778817 /* ZGHangoutProfileCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BEBF7522BC189900778817 /* ZGHangoutProfileCommentsViewController.swift */; };
@@ -192,6 +193,7 @@
 		32ACCAAF22BA9D6D00AFBA84 /* Meteor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteor.swift; sourceTree = "<group>"; };
 		32AF49AD228EF0BF00EE7D18 /* ZGHangMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGHangMapViewController.swift; sourceTree = "<group>"; };
 		32AF49AF228F07F100EE7D18 /* CustomMarkerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerShape.swift; sourceTree = "<group>"; };
+		32B6A01C22C5A52400DB4C5B /* ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImage.swift; sourceTree = "<group>"; };
 		32BC9AAE22B3DA210075B8C0 /* MZHangoutMembersLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZHangoutMembersLimitViewController.swift; sourceTree = "<group>"; };
 		32BEBF7222BBFAFF00778817 /* ZGAddNewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGAddNewPostViewController.swift; sourceTree = "<group>"; };
 		32BEBF7522BC189900778817 /* ZGHangoutProfileCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZGHangoutProfileCommentsViewController.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				321B50A422B7C9C900085670 /* HangoutProfile.storyboard */,
 				325FB0B722B93DDE00844851 /* TabViewController.swift */,
 				32ACCAAF22BA9D6D00AFBA84 /* Meteor.swift */,
+				32B6A01C22C5A52400DB4C5B /* ResizeImage.swift */,
 			);
 			path = BlindIn;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				3258DD11227DCDDF0014B316 /* UIView+Extentions.swift in Sources */,
 				32D8621222A4B4F6001F0CC0 /* MZAllowedMemberTableViewCell.swift in Sources */,
 				322DEEA922A368EE00408EC9 /* MZNearbyMemberCollectionViewCell.swift in Sources */,
+				32B6A01D22C5A52400DB4C5B /* ResizeImage.swift in Sources */,
 				326241D622B5570A0085F643 /* MZConfirmBestieTableViewCell.swift in Sources */,
 				328A4C3C227E325C00DFB85E /* ZGNewsFeedTableViewCell.swift in Sources */,
 				32AA1C21228DEE900036E252 /* MZHangoutCreationViewController.swift in Sources */,

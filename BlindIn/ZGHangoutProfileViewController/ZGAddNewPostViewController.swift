@@ -37,6 +37,9 @@ class ZGAddNewPostViewController: UIViewController {
     func uploadButtonPressed() {
             let fileManager = FileManager.default
             let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("postImage.jpeg")
+            print(choosenPostImage.size.width)
+        print(choosenPostImage.size.height)
+
             let imageData = choosenPostImage.jpegData(compressionQuality: 0.3)
             fileManager.createFile(atPath: path as String, contents: imageData, attributes: nil)
         
@@ -156,8 +159,8 @@ extension ZGAddNewPostViewController : UIImagePickerControllerDelegate , UINavig
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         var chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage //2
-        choosenPostImage = chosenImage
-        addImageButton.setImage(chosenImage, for: .normal)
+        choosenPostImage = ResizeImage.resizeTo(image: chosenImage, maxSize: 500)
+        addImageButton.setImage(choosenPostImage, for: .normal)
         addImageButton.setTitle("", for: .normal)
         dismiss(animated: true, completion: nil) //5
     }
