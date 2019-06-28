@@ -1,31 +1,24 @@
 //
-//  MZBestiesViewController.swift
+//  ZGInviteBestiesViewController.swift
 //  BlindIn
 //
-//  Created by Zyad Galal on 6/3/19.
+//  Created by Zyad Galal on 6/28/19.
 //  Copyright © 2019 Zyad Galal. All rights reserved.
 //
 
 import UIKit
 import ObjectiveDDP
+import Kingfisher
+class ZGInviteBestiesViewController: UIViewController {
 
-class MZBestiesViewController: UIViewController {
-    
-    var besties = M13MutableOrderedDictionary<NSCopying, AnyObject>()
-    
     @IBOutlet weak var bestieTableView: UITableView!
+    var besties = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var hangoutId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        let name = UIBarButtonItem(title: "Add Bestie +", style: .plain, target: self, action:#selector(tapButton))
-        name.tintColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
-        self.navigationItem.setRightBarButton(name, animated: false)
-        bestieTableView.register(UINib(nibName: "MZBestieTableViewCell", bundle: nil), forCellReuseIdentifier: "MZBestieTableViewCell")
-        // Do any additional setup after loading the view.
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        bestieTableView.register(UINib(nibName: "MZAddBestiesTableViewCell", bundle: nil), forCellReuseIdentifier: "MZAddBestiesTableViewCell")
     }
-    
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -39,8 +32,9 @@ class MZBestiesViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("users.besties")
         NotificationCenter.default.removeObserver(self)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
+
     func reload(tableView: UITableView) {
         let contentOffset = tableView.contentOffset
         tableView.reloadData()
@@ -65,55 +59,35 @@ class MZBestiesViewController: UIViewController {
         reload(tableView: bestieTableView)
     }
     
-
-    @objc func tapButton(){
-        print("Add New Bestie")
-        let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZAddBestiesViewController") as! MZAddBestiesViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+    @objc func addBestieButton(sender : UIButton){
+        Meteor.meteorClient?.callMethodName("hangouts.methods.invite", parameters: [["hangoutId" : hangoutId,"userId" : sender.accessibilityLabel!]], responseCallback: { (response, error) in
+            if error != nil{
+                print(error)
+            }
+            else{
+                print(response)
+            }
+        })
     }
-
 }
-
-extension MZBestiesViewController : UITableViewDelegate , UITableViewDataSource{
+extension ZGInviteBestiesViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int(besties.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = bestieTableView.dequeueReusableCell(withIdentifier: "MZBestieTableViewCell") as! MZBestieTableViewCell
+        let cell = bestieTableView.dequeueReusableCell(withIdentifier: "MZAddBestiesTableViewCell") as! MZAddBestiesTableViewCell
         let current = besties.object(at: UInt(indexPath.row))
         let profile = current["profile"] as! [String : Any]
-        cell.bestieNameLabel.text = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
-        cell.bestieImageView.kf.indicatorType = .activity
-        cell.bestieImageView.kf.setImage(with: URL(string: profile["image"] as! String))
-        
+        cell.addUsernameLabel.text = "\(profile["firstName"] as! String) \(profile["lastName"] as! String)"
+        cell.addBestieImageView.kf.indicatorType = .activity
+        cell.addBestieImageView.kf.setImage(with: URL(string: profile["image"] as! String))
+        cell.addBestieButton.accessibilityLabel = current["_id"] as? String
+        cell.addBestieButton.addTarget(self, action: #selector(addBestieButton(sender:)), for: .touchUpInside)
         return cell
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete{
-            if Meteor.meteorClient?.connected == true{
-                let current = besties.object(at: UInt(indexPath.row))
-                var id = ""
-                id = current["_id"] as! String
-            
-                Meteor.meteorClient?.callMethodName("users.methods.remove-bestie", parameters: [["_id" : id]], responseCallback: { (response, error) in
-                    if error != nil{
-                        print(error)
-                    }
-                    else{
-                        print(response)
-                        self.bestieTableView.reloadData()
 
-                    }
-                })
-            }
-            else{
-                print("not connected")
-            }
-            }
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let current = besties.object(at: UInt(indexPath.row))

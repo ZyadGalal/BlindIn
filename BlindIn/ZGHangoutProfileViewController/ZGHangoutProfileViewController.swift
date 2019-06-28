@@ -150,6 +150,11 @@ class ZGHangoutProfileViewController: UIViewController {
         self.view.addSubview(floaty)
     }
     
+    @IBAction func inviteBestieButtonClicked(_ sender: Any) {
+        let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGInviteBestiesViewController") as! ZGInviteBestiesViewController
+        vc.hangoutId = self.hangoutId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
