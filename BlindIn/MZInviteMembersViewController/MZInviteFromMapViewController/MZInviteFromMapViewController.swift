@@ -85,7 +85,10 @@ class MZInviteFromMapViewController: UIViewController {
         print(idsArray)
     }
     @IBAction func profileButtonClicked(_ sender: Any) {
-        idsArray.removeAll()
+        //idsArray.removeAll()
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGUserProfileViewController") as! ZGUserProfileViewController
+        vc.id = currentMarkerID
+        self.navigationController?.pushViewController(vc, animated: true)
         print("profile")
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -118,7 +121,7 @@ class MZInviteFromMapViewController: UIViewController {
         markers.position = CLLocationCoordinate2D(latitude: lats[current], longitude: longs[current])
         markers.iconView = customMarker
         markers.map = inviteMembersMapView
-        markers.tracksViewChanges = false
+        //markers.tracksViewChanges = false
         let fp = fake(lat: lats[current], lng: longs[current], name: name[current])
         markerDic[markers] = fp
 

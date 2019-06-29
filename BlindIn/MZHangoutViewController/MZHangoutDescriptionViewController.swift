@@ -66,8 +66,6 @@ class MZHangoutDescriptionViewController: UIViewController {
         lists.removeAllObjects()
     }
     
-    
-    
     @IBAction func popUpButtonPressed(_ sender: Any) {
         centerPopUpConstrain.constant = 0
         
@@ -87,7 +85,11 @@ class MZHangoutDescriptionViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        interestLabel.text = "\(interest)"
+        var interests :String = ""
+        for inter in interest{
+            interests.append("\(inter) ,")
+        }
+        interestLabel.text = "\(interests)"
         interestLabel.textColor = UIColor.black
         centerPopUpConstrain.constant = -350
         

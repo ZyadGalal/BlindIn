@@ -345,7 +345,7 @@ extension ZGUserProfileViewController : UITableViewDataSource{
                 cell.likeButton.setImage(UIImage(named:"unlike"), for: .normal)
             }
             }
-            cell.selectionStyle = .none
+            cell.selectionStyle = .none	
 
             return cell
         }
