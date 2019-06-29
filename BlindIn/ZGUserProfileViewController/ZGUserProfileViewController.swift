@@ -54,7 +54,6 @@ class ZGUserProfileViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         Meteor.meteorClient?.removeSubscription("users.profile")
         NotificationCenter.default.removeObserver(self)
         Meteor.meteorClient?.collections["interests"] = nil

@@ -27,10 +27,15 @@ class ZGNewsFeedViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {
+        
+        
         Meteor.meteorClient?.addSubscription("posts.newsfeed")
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(getAllHangoutPosts), name: NSNotification.Name("posts_added"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(updateAllHangoutPosts), name: NSNotification.Name("posts_changed"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(removeAllHangoutPosts), name: NSNotification.Name("posts_removed"),object : nil)
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("posts.newsfeed")
@@ -77,6 +82,9 @@ class ZGNewsFeedViewController: UIViewController {
             print("not connected")
         }
     }
+    
+    
+    
     @objc func getAllHangoutPosts ()
     {
         postsList = Meteor.meteorClient?.collections["posts"] as! M13MutableOrderedDictionary
@@ -98,6 +106,9 @@ class ZGNewsFeedViewController: UIViewController {
         usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         reload(tableView: newsFeedTableView)
     }
+    
+    
+    
     @objc func imageProfileImage(sender : UITapGestureRecognizer){
         print(sender.accessibilityLabel!)
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZGUserProfileViewController") as! ZGUserProfileViewController

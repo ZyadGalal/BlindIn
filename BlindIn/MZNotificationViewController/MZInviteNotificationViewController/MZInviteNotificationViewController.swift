@@ -167,7 +167,7 @@ extension MZInviteNotificationViewController : UITableViewDelegate , UITableView
             self.acceptBestie(id: current["_id"] as! String)
         }
         else if current["type"] as? String == "follow"{
-            self.followBack(userId: current["userId"] as! String)
+            self.followBack(userId: current["senderId"] as! String)
         }
     }
 }
