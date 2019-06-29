@@ -121,6 +121,7 @@ class ZGEditProfileViewController: UIViewController {
             }
             else{
                 params["image"] = self.currentUserImage!
+                self.navigationController?.popViewController(animated: true)
                 self.updateProfile()
             }
         }

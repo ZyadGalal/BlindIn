@@ -70,7 +70,6 @@ extension MZInterestsViewController : UICollectionViewDataSource , UICollectionV
         cell.interestLabel.text = currentIndex["title"] as? String
         cell.interestImageView.kf.indicatorType = .activity
         cell.interestImageView.kf.setImage(with: URL(string: currentIndex["image"] as! String)!)
-        cell.interestImageView.image = UIImage(named: "1")
         
         return cell
     }

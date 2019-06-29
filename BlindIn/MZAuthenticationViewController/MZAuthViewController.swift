@@ -24,7 +24,7 @@ class MZAuthViewController: UIViewController {
 
         
         logInButton.isSelected = true
-        logInButton.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 255/255, alpha: 1.0)
+        logInButton.backgroundColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
         self.addChild(logIn)
         self.containerView.addSubview(logIn.view)
         logIn.didMove(toParent: self)
@@ -42,7 +42,7 @@ class MZAuthViewController: UIViewController {
         logInButton.backgroundColor = UIColor.white
         signUpButton.backgroundColor = UIColor.white
         sender.isSelected = !sender.isSelected
-        sender.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 255/255, alpha: 1.0)
+        sender.backgroundColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
         if sender == logInButton
         {
             self.addChild(logIn)

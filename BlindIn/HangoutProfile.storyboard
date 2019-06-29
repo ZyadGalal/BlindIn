@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwX-kf-M4Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwX-kf-M4Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -403,15 +403,15 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eU-go-OWz">
                                                 <rect key="frame" x="8" y="187" width="343" height="40"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="t9B-Gv-ty8">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interestss" translatesAutoresizingMaskIntoConstraints="NO" id="t9B-Gv-ty8">
                                                         <rect key="frame" x="8" y="10" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="WsH-ak-sci"/>
                                                             <constraint firstAttribute="width" constant="20" id="q6s-Pz-cS4"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01011226220" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ku-bb-mFG">
-                                                        <rect key="frame" x="44" y="10.5" width="98.5" height="19.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sports , Games" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ku-bb-mFG">
+                                                        <rect key="frame" x="44" y="10.5" width="112" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -534,7 +534,8 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.23921568630000001" green="0.39607843139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" red="0.23921568630000001" green="0.39607843139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="210" id="AB1-bd-63d"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Mdj-4b-2Jq" secondAttribute="trailing" constant="8" id="C7C-ET-CMd"/>
@@ -704,7 +705,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="hKR-BF-3Iw"/>
                                         </constraints>
-                                        <state key="normal" title="Send"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" red="0.23921568630000001" green="0.39607843139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="sendButtonClicked:" destination="76j-RX-Lmr" eventType="touchUpInside" id="JBs-UZ-AdD"/>
                                         </connections>
@@ -1366,7 +1369,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="kSo-4t-LLN"/>
                                         </constraints>
-                                        <state key="normal" title="Send"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" red="0.23921568630000001" green="0.39607843139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="sendButtonClicked:" destination="ZM9-ay-Ryc" eventType="touchUpInside" id="KFA-Tu-5mN"/>
                                         </connections>
@@ -1421,13 +1426,14 @@
     </scenes>
     <resources>
         <image name="1" width="1366" height="768"/>
-        <image name="clock-circular-outline" width="12.800000190734863" height="12.800000190734863"/>
-        <image name="comment" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="left-arrow-2" width="25.600000381469727" height="25.600000381469727"/>
-        <image name="like" width="40" height="40"/>
-        <image name="masculine" width="12" height="12"/>
-        <image name="more-2" width="24" height="24"/>
-        <image name="placeholder" width="12.800000190734863" height="12.800000190734863"/>
-        <image name="share" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="clock-circular-outline" width="16" height="16"/>
+        <image name="comment" width="512" height="512"/>
+        <image name="interestss" width="48" height="48"/>
+        <image name="left-arrow-2" width="32" height="32"/>
+        <image name="like" width="512" height="512"/>
+        <image name="masculine" width="16" height="16"/>
+        <image name="more-2" width="32" height="32"/>
+        <image name="placeholder" width="16" height="16"/>
+        <image name="share" width="512" height="512"/>
     </resources>
 </document>

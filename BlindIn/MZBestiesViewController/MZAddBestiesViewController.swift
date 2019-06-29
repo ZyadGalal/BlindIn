@@ -18,13 +18,14 @@ class MZAddBestiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         addBestieTableView.register(UINib(nibName: "MZAddBestiesTableViewCell", bundle: nil), forCellReuseIdentifier: "MZAddBestiesTableViewCell")
-
+        
         // Do any additional setup after loading the view.
     }
     
-
     override func viewDidAppear(_ animated: Bool) {
         
         Meteor.meteorClient?.addSubscription("users.besties.recommended")
@@ -74,8 +75,8 @@ class MZAddBestiesViewController: UIViewController {
                     print(response)
                     sender.setTitle("Added", for: .normal)
                     sender.setTitleColor(.white, for: .normal)
-                    sender.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
-                    sender.backgroundColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+                    sender.borderColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
+                    sender.backgroundColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
                 }
             })
         }

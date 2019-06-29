@@ -38,7 +38,7 @@ class MZHangoutCreationViewController: UIViewController {
         createDatePicker()
         
         if locationName != "" {
-            locationSetButton.setTitle("Location Set Successfully", for: .selected)
+            locationSetButton.setTitle("Location Set Successfully", for: .normal)
         }
         
     }

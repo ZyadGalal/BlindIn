@@ -22,10 +22,8 @@ class MZBestiesViewController: UIViewController {
         self.navigationItem.setRightBarButton(name, animated: false)
         bestieTableView.register(UINib(nibName: "MZBestieTableViewCell", bundle: nil), forCellReuseIdentifier: "MZBestieTableViewCell")
         // Do any additional setup after loading the view.
+
     }
-    
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -98,14 +96,13 @@ extension MZBestiesViewController : UITableViewDelegate , UITableViewDataSource{
                 var id = ""
                 id = current["_id"] as! String
             
-                Meteor.meteorClient?.callMethodName("users.methods.remove-bestie", parameters: [["_id" : id]], responseCallback: { (response, error) in
+                Meteor.meteorClient?.callMethodName("users.methods.invite-bestie", parameters: [["userId" : id]], responseCallback: { (response, error) in
                     if error != nil{
                         print(error)
                     }
                     else{
                         print(response)
                         self.bestieTableView.reloadData()
-
                     }
                 })
             }

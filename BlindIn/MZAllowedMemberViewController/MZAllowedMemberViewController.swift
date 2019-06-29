@@ -16,7 +16,7 @@ class MZAllowedMemberViewController: UIViewController {
         super.viewDidLoad()
         
         let name = UIBarButtonItem(title: "Done", style: .plain, target: self, action:#selector(tapButton))
-        name.tintColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        name.tintColor = UIColor(red:58/255.0, green:97/255.0, blue:249/255.0, alpha:1.00)
         self.navigationItem.setRightBarButton(name, animated: false)
 
         allowedMembersTableView.register(UINib(nibName: "MZAllowedMemberTableViewCell", bundle: nil), forCellReuseIdentifier: "MZAllowedMemberTableViewCell")
@@ -39,7 +39,7 @@ extension MZAllowedMemberViewController : UITableViewDelegate , UITableViewDataS
         cell.usernameLabel.text = "momen adel mohamed"
         cell.selectionStyle = .none
         cell.allowButton.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
-        cell.allowButton.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        cell.allowButton.borderColor = UIColor(red:58/255.0, green:97/255.0, blue:249/255.0, alpha:1.00)
         return cell
     }
     
@@ -47,7 +47,7 @@ extension MZAllowedMemberViewController : UITableViewDelegate , UITableViewDataS
     @objc func checkMarkButtonClicked (sender : UIButton){
         print("Button Clicked")
         if sender.isSelected{
-            sender.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+            sender.borderColor = UIColor(red:58/255.0, green:97/255.0, blue:249/255.0, alpha:1.00)
             sender.isSelected = false
         }
         else{
