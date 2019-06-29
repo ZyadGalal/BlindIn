@@ -83,6 +83,9 @@ class MZHangoutCreationViewController: UIViewController {
     }
     
     @objc func tapButton(){
+        startDateTextField.text = ""
+        endDateTextField.text = ""
+        hangoutTitleTextField.text = ""
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutDescriptionViewController") as! MZHangoutDescriptionViewController
         vc.hangTitle = hangoutTitleTextField.text!
         if locationID != "" {

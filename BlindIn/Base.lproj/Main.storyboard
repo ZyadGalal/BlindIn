@@ -615,7 +615,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="gGa-Rx-cti" firstAttribute="bottom" secondItem="rbN-vH-zLE" secondAttribute="bottom" constant="8" id="1Ta-XW-7VA"/>
                                     <constraint firstItem="rbN-vH-zLE" firstAttribute="top" secondItem="gGa-Rx-cti" secondAttribute="top" constant="8" id="69a-9o-koP"/>
@@ -636,6 +636,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>

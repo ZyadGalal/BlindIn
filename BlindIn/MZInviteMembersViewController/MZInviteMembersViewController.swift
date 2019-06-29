@@ -11,7 +11,7 @@ import ObjectiveDDP
 
 class MZInviteMembersViewController: UIViewController {
     
-    let segment: UISegmentedControl = UISegmentedControl(items: [UIImage(named: "like"),UIImage(named: "like")])
+    let segment: UISegmentedControl = UISegmentedControl(items: [UIImage(named: "gps"),UIImage(named: "list")])
     let invFromCollection = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
     let invFromMap = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromMapViewController") as! MZInviteFromMapViewController
 

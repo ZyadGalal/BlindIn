@@ -130,7 +130,7 @@ class MZHangoutSetLocationViewController: UIViewController {
             markers.position = CLLocationCoordinate2D(latitude: lats[current], longitude: longs[current])
             markers.iconView = customMarker
             markers.map = setLocationMapView
-            markers.tracksViewChanges = false
+            //markers.tracksViewChanges = false
             let ff = fakePin(lat: lats[current], lng: longs[current], name: name[current] ,type:type[current])
             markerDic[markers] = ff
             current += 1
