@@ -11,7 +11,7 @@ import ObjectiveDDP
 
 class MZInviteMembersViewController: UIViewController {
     
-    let segment: UISegmentedControl = UISegmentedControl(items: ["First", "Second"])
+    let segment: UISegmentedControl = UISegmentedControl(items: [UIImage(named: "like"),UIImage(named: "like")])
     let invFromCollection = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromCollectionViewController") as! MZInviteFromCollectionViewController
     let invFromMap = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZInviteFromMapViewController") as! MZInviteFromMapViewController
 
@@ -133,7 +133,7 @@ class MZInviteMembersViewController: UIViewController {
                     print(response)
                     
                     //----------------------------************************(TRO7 3la Profile el hangout de)
-                    //self.navigationController?.popToRootViewController(animated: true)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             })
         }
