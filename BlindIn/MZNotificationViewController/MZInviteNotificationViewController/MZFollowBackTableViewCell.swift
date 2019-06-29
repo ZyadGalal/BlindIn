@@ -17,7 +17,7 @@ class MZFollowBackTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.followBackButton.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        self.followBackButton.borderColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
         self.selectionStyle = .none
 
         

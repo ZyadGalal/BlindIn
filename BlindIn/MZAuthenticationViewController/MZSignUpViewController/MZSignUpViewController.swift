@@ -73,7 +73,7 @@ class MZSignUpViewController: UIViewController {
         }
     }
     func signUp(firstName : String ,lastName : String , email : String , password : String,gender:String,birthdate:String , lat : String , lng : String){
-        Meteor.meteorClient?.signup(withUserParameters: ["email":email,"password":password,"profile":["firstName":firstName,"lastName":lastName,"gender":gender,"birthDate" : birthdate,"lng" : lng , "lat" : lat]], responseCallback: { (response, error) in
+        Meteor.meteorClient?.signup(withUserParameters: ["email":email,"password":password,"profile":["firstName":firstName,"lastName":lastName,"gender":gender,"birthDate" : birthdate,"lng" : lng , "lat" : lat , "token" : "momen"]], responseCallback: { (response, error) in
             if error != nil{
                 print(error)
             }

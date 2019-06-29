@@ -46,12 +46,12 @@ class MZInviteMembersViewController: UIViewController {
         
         
         
-        let name = UIBarButtonItem(title: "Create", style: .plain, target: self, action:#selector(tapButton) )
+        let name = UIBarButtonItem(title: "Create", style: .plain, target: self, action:#selector(createHangout) )
         self.navigationItem.setRightBarButton(name, animated: false)
         
         //Segment Creation
         segment.sizeToFit()
-        segment.tintColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        segment.tintColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
         segment.selectedSegmentIndex = 0
         //-------------
         self.addChild(invFromMap)
@@ -82,14 +82,13 @@ class MZInviteMembersViewController: UIViewController {
         }
     }
     
-    @objc func tapButton(){
+    @objc func createHangout(){
         if invFromCollection.invitedIDsArray == [] {
             invitedIDsArray = invFromMap.invitedIDsArray
         }
         else {
             invitedIDsArray = invFromCollection.invitedIDsArray
         }
-        
         
         
         var params : [String : Any] = [:]
@@ -132,6 +131,8 @@ class MZInviteMembersViewController: UIViewController {
                 }
                 else{
                     print(response)
+                    
+                    //----------------------------************************(TRO7 3la Profile el hangout de)
                     //self.navigationController?.popToRootViewController(animated: true)
                 }
             })

@@ -18,7 +18,7 @@ class MZAssignAdminViewController: UIViewController {
         super.viewDidLoad()
         
         let name = UIBarButtonItem(title: "Done", style: .plain, target: self, action:#selector(tapButton))
-        name.tintColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        name.tintColor = UIColor(red:58/255.0, green:97/255.0, blue:249/255.0, alpha:1.00)
         self.navigationItem.setRightBarButton(name, animated: false)
 
         assignAdminTabelView.register(UINib(nibName: "MZAssignAdminTableViewCell", bundle: nil), forCellReuseIdentifier: "MZAssignAdminTableViewCell")
@@ -42,7 +42,7 @@ extension MZAssignAdminViewController : UITableViewDelegate , UITableViewDataSou
         cell.adminNameLabel.text = name[indexPath.row]
         cell.selectionStyle = .none
         cell.assignButton.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
-        cell.assignButton.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        cell.assignButton.borderColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
         return cell
     }
     
@@ -57,7 +57,7 @@ extension MZAssignAdminViewController : UITableViewDelegate , UITableViewDataSou
     @objc func checkMarkButtonClicked (sender : UIButton){
         print("Button Clicked")
         if sender.isSelected{
-            sender.borderColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+            sender.borderColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
             //sender.setTitle("Disallow", for: .selected)
             sender.isSelected = false
         }

@@ -80,7 +80,7 @@ class ZGHangMapViewController: UIViewController {
                     }
                 }
                 let markerObject = Marker(hangoutId: hangout["_id"] as? String, title: hangout["title"] as? String, description: hangout["description"] as? String, image: hangout["image"] as? String)
-                let customMarker = CustomMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: hangout["image"] as! String, borderColor: UIColor(red: 0, green: 100/255, blue: 255/255, alpha: 1.0))
+                let customMarker = CustomMarkerShape(frame: CGRect(x: 0, y: 0, width: 50, height: 70), image: hangout["image"] as! String, borderColor: UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0))
                 let marker = GMSMarker()
                 marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                 marker.iconView = customMarker

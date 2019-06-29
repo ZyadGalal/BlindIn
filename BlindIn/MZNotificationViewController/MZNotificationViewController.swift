@@ -68,11 +68,11 @@ class MZNotificationViewController: UIViewController {
         
         self.segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont(name: "Helvetica", size: 16)!,
-            NSAttributedString.Key.foregroundColor: UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+            NSAttributedString.Key.foregroundColor: UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
             ], for: .selected)
         
         buttonBar.translatesAutoresizingMaskIntoConstraints = false
-        buttonBar.backgroundColor = UIColor(red:0/255.0, green:122/255.0, blue:255/255.0, alpha:1.00)
+        buttonBar.backgroundColor = UIColor(red: 61/255, green: 101/255, blue: 255/255, alpha: 1.0)
         segmentInsertView.addSubview(buttonBar)
         
         buttonBar.topAnchor.constraint(equalTo: segmentInsertView.bottomAnchor).isActive = true
