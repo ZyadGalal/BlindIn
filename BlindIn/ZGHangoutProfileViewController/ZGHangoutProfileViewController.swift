@@ -25,10 +25,19 @@ class ZGHangoutProfileViewController: UIViewController {
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var sharingButton: UIButton!
     @IBOutlet weak var shadingView: UIView!
+   
+    @IBOutlet weak var membersCountLabel: UILabel!
+    @IBOutlet weak var imagesDarkView: UIView!
+    @IBOutlet weak var thirdImageView: UIImageView!
+    @IBOutlet weak var secondImageView: UIImageView!
+    @IBOutlet weak var firstImageView: UIImageView!
+    
     var floaty = Floaty()
     var hangoutId = "cey22NRJqfGsfQLPh"
     var hangoutInfo = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var interests = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+    var users = M13MutableOrderedDictionary<NSCopying, AnyObject>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFloatActionButton()
@@ -43,6 +52,9 @@ class ZGHangoutProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(getHangoutInfo), name: NSNotification.Name("hangouts_added"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(updateHangoutInfo), name: NSNotification.Name("hangouts_changed"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(removeHangoutInfo), name: NSNotification.Name("hangouts_removed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getHangoutInfo), name: NSNotification.Name("interests_added"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(updateHangoutInfo), name: NSNotification.Name("interests_changed"),object : nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(removeHangoutInfo), name: NSNotification.Name("interests_removed"),object : nil)
     }
     override func viewWillDisappear(_ animated: Bool) {
         Meteor.meteorClient?.removeSubscription("hangouts.single")
@@ -71,7 +83,12 @@ class ZGHangoutProfileViewController: UIViewController {
     {
         print(Meteor.meteorClient?.collections)
         hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
-        //interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        if Meteor.meteorClient?.collections["interests"] != nil{
+        interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        }
+        if Meteor.meteorClient?.collections["users"] != nil{
+            users = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        }
         print(interests)
         print(hangoutInfo)
         updateInfo()
@@ -79,14 +96,24 @@ class ZGHangoutProfileViewController: UIViewController {
     @objc func updateHangoutInfo ()
     {
         hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
-        //interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        if Meteor.meteorClient?.collections["interests"] != nil{
+            interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        }
+        if Meteor.meteorClient?.collections["users"] != nil{
+            users = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        }
         print(hangoutInfo)
         updateInfo()
     }
     @objc func removeHangoutInfo ()
     {
         hangoutInfo = Meteor.meteorClient?.collections["hangouts"] as! M13MutableOrderedDictionary
-        //interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        if Meteor.meteorClient?.collections["interests"] != nil{
+            interests = Meteor.meteorClient?.collections["interests"] as! M13MutableOrderedDictionary
+        }
+        if Meteor.meteorClient?.collections["users"] != nil{
+            users = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
+        }
         print(hangoutInfo)
         updateInfo()
     }
@@ -104,8 +131,50 @@ class ZGHangoutProfileViewController: UIViewController {
             durationLabel.text = "\(current["startDate"] as! String) - \(current["endDate"] as! String)"
             hangoutImageView.kf.setImage(with: URL(string: current["image"] as! String))
             hangoutMembersCountLabel.text = "\(current["membersCount"] as! Int) joined"
-            let hangoutInterests = current["interests"] as? [String]
+            var interestsString = ""
+            if Meteor.meteorClient?.collections["interests"] != nil{
+                for inter in current["interests"] as! [String]{
+                    for index in 0..<Int(interests.count) {
+                        let interest = interests.object(at: UInt(index)) as! [String : Any]
+                        if inter == interest["_id"] as? String{
+                            interestsString.append("\(interest["title"] as! String) ,")
+                            break
+                        }
+                        
+                    }
+                }
+                interestsLabel.text = interestsString
+
+            }
+         if Meteor.meteorClient?.collections["users"] != nil{
+                let members = current["members"] as! [String]
+            if members.count > 1{
+                firstImageView.kf.setImage(with: URL(string: getUserImage(userId: members[0]))!)
+            }
+            if members.count > 2{
+                firstImageView.kf.setImage(with: URL(string: getUserImage(userId: members[1]))!)
+            }
+            if members.count > 3{
+                firstImageView.kf.setImage(with: URL(string: getUserImage(userId: members[2]))!)
+            }
+            if members.count > 4{
+                imagesDarkView.isHidden = false
+                membersCountLabel.text = "\(members.count - 3)"
+            }
+            }
         }
+    }
+    func getUserImage (userId : String) -> String{
+        if Meteor.meteorClient?.collections["users"] != nil{
+            for index in 0..<Int(users.count){
+                let user = users.object(at: UInt(index))
+                if userId == user["_id"] as! String{
+                    let profile = user["profile"] as! [String : Any]
+                    return profile["image"] as! String
+                }
+            }
+        }
+        return ""
     }
     func addShadowToButton(){
         sharingButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
