@@ -133,6 +133,9 @@ extension MZHangoutNotificationViewController : UITableViewDelegate , UITableVie
             }
             else{
                 print("not connected")
+                let alert = UIAlertController(title: "Alert", message: "Check Your Connection", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
         return [rejectAction]
@@ -155,6 +158,9 @@ extension MZHangoutNotificationViewController : UITableViewDelegate , UITableVie
         }
         else{
             print("not connected")
+            let alert = UIAlertController(title: "Alert", message: "Check Your Connection", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     func acceptInvite(id : String , method : String){
