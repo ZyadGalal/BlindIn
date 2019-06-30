@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwX-kf-M4Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwX-kf-M4Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,7 +67,6 @@
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kuY-vX-sfP">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="25"/>
@@ -76,7 +75,6 @@
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZgF-4R-rrh">
                                                         <rect key="frame" x="35" y="0.0" width="50" height="50"/>
-                                                        <color key="backgroundColor" red="0.74957412479999996" green="0.12770131230000001" blue="0.40322148800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="25"/>
@@ -95,12 +93,12 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
-                                                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyk-mS-IwL">
+                                                            <view hidden="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyk-mS-IwL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1k" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8U-3j-oSe">
-                                                                <rect key="frame" x="13" y="16.5" width="24.5" height="17"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8U-3j-oSe">
+                                                                <rect key="frame" x="25" y="25" width="0.0" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -484,6 +482,7 @@
                     <navigationItem key="navigationItem" id="5Bx-pD-MQg"/>
                     <connections>
                         <outlet property="durationLabel" destination="Whx-1o-cbp" id="V19-kc-iYI"/>
+                        <outlet property="firstImageView" destination="kuY-vX-sfP" id="Get-i4-we7"/>
                         <outlet property="genderLabel" destination="TLa-Td-mGH" id="iJQ-Cp-bof"/>
                         <outlet property="hangoutDescriptionLabel" destination="fHL-eJ-anf" id="Of7-GI-tvx"/>
                         <outlet property="hangoutImageView" destination="2RD-2r-52t" id="Dh9-EN-1Zh"/>
@@ -491,11 +490,15 @@
                         <outlet property="hangoutNameLabel" destination="bNm-Gm-T6A" id="OHM-bz-3tT"/>
                         <outlet property="hangoutStatusButton" destination="LpE-pQ-TH4" id="Q3F-IJ-ME0"/>
                         <outlet property="hangoutTimeLabel" destination="713-0g-kwh" id="ln9-yn-8dg"/>
+                        <outlet property="imagesDarkView" destination="Pyk-mS-IwL" id="J6m-Ln-Lbs"/>
                         <outlet property="interestsLabel" destination="4Ku-bb-mFG" id="Sbu-TD-qns"/>
                         <outlet property="joinButton" destination="NLZ-pc-PWE" id="cKy-Zq-UI6"/>
                         <outlet property="locationLabel" destination="6PM-NP-A5C" id="qF7-ZE-7LL"/>
+                        <outlet property="membersCountLabel" destination="f8U-3j-oSe" id="dy7-fb-cCn"/>
+                        <outlet property="secondImageView" destination="ZgF-4R-rrh" id="EZM-D6-gcb"/>
                         <outlet property="shadingView" destination="ome-qL-cam" id="Fst-hr-HaP"/>
                         <outlet property="sharingButton" destination="hCr-6z-dSE" id="58a-yc-c9h"/>
+                        <outlet property="thirdImageView" destination="gpj-U7-F9h" id="gRq-1J-rOo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pI0-SQ-Ba5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1426,14 +1429,14 @@
     </scenes>
     <resources>
         <image name="1" width="1366" height="768"/>
-        <image name="clock-circular-outline" width="16" height="16"/>
-        <image name="comment" width="512" height="512"/>
-        <image name="interestss" width="48" height="48"/>
-        <image name="left-arrow-2" width="32" height="32"/>
-        <image name="like" width="512" height="512"/>
-        <image name="masculine" width="16" height="16"/>
-        <image name="more-2" width="32" height="32"/>
-        <image name="placeholder" width="16" height="16"/>
-        <image name="share" width="512" height="512"/>
+        <image name="clock-circular-outline" width="12.800000190734863" height="12.800000190734863"/>
+        <image name="comment" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="interestss" width="138.24000549316406" height="138.24000549316406"/>
+        <image name="left-arrow-2" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="like" width="40" height="40"/>
+        <image name="masculine" width="12" height="12"/>
+        <image name="more-2" width="24" height="24"/>
+        <image name="placeholder" width="12.800000190734863" height="12.800000190734863"/>
+        <image name="share" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
 </document>
