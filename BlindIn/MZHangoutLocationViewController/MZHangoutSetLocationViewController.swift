@@ -118,11 +118,14 @@ class MZHangoutSetLocationViewController: UIViewController {
         
             let currentObject = lists.object(at: UInt(current)) as! [String : Any]
     
-        let coordinates : [Double] = location["coordinates"] as! [Double]
-            print(coordinates)
-            print(coordinates[0])
-            longs.append(coordinates[0])
-            lats.append(coordinates[1])
+        //let coordinates : [Double] = location["coordinates"] as! [Double]
+        
+        let coordinates = location["coordinates"] as! [Any]
+        let lngitude = coordinates[0] as! Double
+        let latitude = coordinates[1] as! Double
+
+            longs.append(lngitude)
+            lats.append(latitude)
         
             var markers = GMSMarker()
             dicForMarker[markers] = currentObject

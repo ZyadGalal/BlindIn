@@ -104,7 +104,9 @@ class MZHangoutMembersLimitViewController: UIViewController {
         vc.hangMax = maxMembersLimitTextField.text!
         vc.hangGender = genderTextField.text!
         
-        
+        print(vc.hangTitle)
+        print(vc.hangStartDate)
+        print(vc.hangEndDate)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
