@@ -33,7 +33,7 @@ class ZGHangoutProfileViewController: UIViewController {
     @IBOutlet weak var firstImageView: UIImageView!
     
     var floaty = Floaty()
-    var hangoutId = "cey22NRJqfGsfQLPh"
+    var hangoutId = ""
     var hangoutInfo = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var interests = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var users = M13MutableOrderedDictionary<NSCopying, AnyObject>()
@@ -77,6 +77,9 @@ class ZGHangoutProfileViewController: UIViewController {
         }
         else{
             print("not connected")
+            let alert = UIAlertController(title: "Alert", message: "Check Your Connection", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     @objc func getHangoutInfo ()
@@ -146,7 +149,7 @@ class ZGHangoutProfileViewController: UIViewController {
                 interestsLabel.text = interestsString
 
             }
-         if Meteor.meteorClient?.collections["users"] != nil{
+         /*if Meteor.meteorClient?.collections["users"] != nil{
                 let members = current["members"] as! [String]
             if members.count > 1{
                 firstImageView.kf.setImage(with: URL(string: getUserImage(userId: members[0]))!)
@@ -161,7 +164,7 @@ class ZGHangoutProfileViewController: UIViewController {
                 imagesDarkView.isHidden = false
                 membersCountLabel.text = "\(members.count - 3)"
             }
-            }
+            }*/
         }
     }
     func getUserImage (userId : String) -> String{
@@ -210,6 +213,7 @@ class ZGHangoutProfileViewController: UIViewController {
         }
         floaty.addItem("Chat", icon: UIImage(named: "chat")) { (item) in
             let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileChatViewController") as! ZGHangoutProfileChatViewController
+            vc.hangoutId = self.hangoutId
             self.navigationController?.pushViewController(vc, animated: true)
             self.floaty.close()
         }

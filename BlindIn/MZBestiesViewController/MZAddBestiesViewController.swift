@@ -82,6 +82,9 @@ class MZAddBestiesViewController: UIViewController {
         }
         else{
             print("not connected")
+            let alert = UIAlertController(title: "Alert", message: "Check Your Connection", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 

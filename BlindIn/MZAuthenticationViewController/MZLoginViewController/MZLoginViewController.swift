@@ -36,12 +36,17 @@ class MZLoginViewController: UIViewController {
 
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as! TabViewController
                         self.navigationController?.pushViewController(vc, animated: true)
+                        
+
 
                     }
                 })
             }
             else{
                 print("not connected")
+                let alert = UIAlertController(title: "Alert", message: "Check Your Connection", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
         

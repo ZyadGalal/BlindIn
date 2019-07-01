@@ -61,15 +61,24 @@ class MZSignUpViewController: UIViewController {
                 else
                 {
                     print("not connected")
+                    let alert = UIAlertController(title: "Alert", message: "Check Your Connection", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
             else
             {
                 print("incorrect password")
+                let alert = UIAlertController(title: "Alert", message: "Incorrect Password", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
         else{
             print("complete fields")
+            let alert = UIAlertController(title: "Alert", message: "Complete fields", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     func signUp(firstName : String ,lastName : String , email : String , password : String,gender:String,birthdate:String , lat : String , lng : String){
