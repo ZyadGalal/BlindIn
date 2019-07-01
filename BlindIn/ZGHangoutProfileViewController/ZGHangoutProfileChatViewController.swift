@@ -18,7 +18,7 @@ class ZGHangoutProfileChatViewController: UIViewController {
     @IBOutlet weak var inputMessageTextView: UITextView!
     
     
-    var hangoutId = "agKkwBDSZc6okbt8M"
+    var hangoutId = ""
     var chatList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
     var usersList = M13MutableOrderedDictionary<NSCopying, AnyObject>()
 
@@ -46,13 +46,19 @@ class ZGHangoutProfileChatViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector:  #selector(updateAllHangoutChat), name: NSNotification.Name("chat_changed"),object : nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(removeHangoutChat), name: NSNotification.Name("chat_removed"),object : nil)
     }
+    func reload(tableView: UITableView) {
+        let contentOffset = tableView.contentOffset
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        tableView.setContentOffset(contentOffset, animated: false)
+    }
     @objc func getAllHangoutChat ()
     {
         chatList = Meteor.meteorClient?.collections["chat"] as! M13MutableOrderedDictionary
         print(chatList)
         usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         print(usersList)
-        chatTableView.reloadData()
+        reload(tableView: chatTableView)
         let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
         self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
@@ -62,7 +68,7 @@ class ZGHangoutProfileChatViewController: UIViewController {
         print(chatList)
         usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         print(usersList)
-        chatTableView.reloadData()
+        reload(tableView: chatTableView)
         let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
         self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
@@ -72,7 +78,7 @@ class ZGHangoutProfileChatViewController: UIViewController {
         print(chatList)
         usersList = Meteor.meteorClient?.collections["users"] as! M13MutableOrderedDictionary
         print(usersList)
-        chatTableView.reloadData()
+        reload(tableView: chatTableView)
         let indexPath = IndexPath(row: Int(self.chatList.count)-1, section: 0)
         self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
