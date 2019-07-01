@@ -11,9 +11,6 @@ import ObjectiveDDP
 
 class MZUpcomingEventViewController: UIViewController {
 
-    var upcomingEvents = ["Momen","Momen Adel","Momen Adel Mohamed","Mo2a","El Mo2"]
-    var locations = ["Mansoura" , "Cairo" , "Alexandria","Giza","Sharm"]
-    var date = ["1/10/2019","12/9/2019","29/5/2019","7/7/2019","1/1/2019"]
     
     @IBOutlet weak var upcomingEventsTabelView: UITableView!
     
@@ -42,7 +39,7 @@ class MZUpcomingEventViewController: UIViewController {
     }
 }
 
-extension MZUpcomingEventViewController : UITableViewDelegate , UITableViewDataSource{
+extension MZUpcomingEventViewController :  UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int(hangout.count)
@@ -61,4 +58,12 @@ extension MZUpcomingEventViewController : UITableViewDelegate , UITableViewDataS
         return cell
     }
     
+}
+extension MZUpcomingEventViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let current = hangout.object(at: UInt(indexPath.row))
+        let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileViewController") as! ZGHangoutProfileViewController
+        vc.hangoutId = current["_id"] as! String
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

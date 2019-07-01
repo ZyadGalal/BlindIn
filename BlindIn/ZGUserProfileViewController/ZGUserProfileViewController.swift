@@ -294,8 +294,8 @@ extension ZGUserProfileViewController : UITableViewDataSource{
                     myBriefcell.userDescription.text = (profile["bio"] as! String)
                     myBriefcell.userImg.kf.indicatorType = .activity
                     myBriefcell.userImg.kf.setImage(with: URL(string: profile["image"] as! String))
-                    myBriefcell.followingLabel.text = "\((profile["followingCount"] as! Int))"
-                    myBriefcell.followersLbl.text = "\((profile["followersCount"] as! Int))"
+                    myBriefcell.followingLabel.text = "\((current["profile.followingCount"] as! Int))"
+                    myBriefcell.followersLbl.text = "\((current["profile.followersCount"] as! Int))"
                     myBriefcell.hangoutsLabel.text = "\((current["profile.joinedHangoutsCount"] as! Int))"
 
                 }
