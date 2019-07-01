@@ -27,6 +27,9 @@ class MZHangoutCreationViewController: UIViewController {
     var city : String = ""
     var country : String = ""
     var textFieldName : HoshiTextField!
+    var titles : String = ""
+    var startDate : String = ""
+    var endDate : String = ""
     let datePicker = UIDatePicker()
     
     
@@ -83,11 +86,14 @@ class MZHangoutCreationViewController: UIViewController {
     }
     
     @objc func tapButton(){
+        titles = hangoutTitleTextField.text!
+        startDate = startDateTextField.text!
+        endDate = endDateTextField.text!
         startDateTextField.text = ""
         endDateTextField.text = ""
         hangoutTitleTextField.text = ""
         let vc = UIStoryboard(name: "Second", bundle: nil).instantiateViewController(withIdentifier: "MZHangoutDescriptionViewController") as! MZHangoutDescriptionViewController
-        vc.hangTitle = hangoutTitleTextField.text!
+        vc.hangTitle = titles
         if locationID != "" {
             vc.hangLocationID = locationID
         }
@@ -101,9 +107,9 @@ class MZHangoutCreationViewController: UIViewController {
             vc.country = country
         }
         
-        print(locationID)
-        vc.hangStartDate = startDateTextField.text!
-        vc.hangEndDate = endDateTextField.text!
+        
+        vc.hangStartDate = startDate
+        vc.hangEndDate = endDate
         if hangoutPrivacySwitch.isOn {
             vc.hangPublic = "true"
         }
@@ -117,6 +123,7 @@ class MZHangoutCreationViewController: UIViewController {
             vc.hangWithRequest = "false"
         }
         
+
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

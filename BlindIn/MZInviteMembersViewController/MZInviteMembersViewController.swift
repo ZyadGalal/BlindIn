@@ -43,7 +43,9 @@ class MZInviteMembersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(hangTitle)
+        print(hangStartDate)
+        print(hangEndDate)
         
         
         let name = UIBarButtonItem(title: "Create", style: .plain, target: self, action:#selector(createHangout) )

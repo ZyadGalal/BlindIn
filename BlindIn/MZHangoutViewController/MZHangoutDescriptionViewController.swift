@@ -142,7 +142,9 @@ class MZHangoutDescriptionViewController: UIViewController {
         vc.hangDesc = hangoutDescreptionTextField.text!
         vc.hangInterests = idsArray
    
-    
+        print(vc.hangTitle)
+        print(vc.hangStartDate)
+        print(vc.hangEndDate)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
