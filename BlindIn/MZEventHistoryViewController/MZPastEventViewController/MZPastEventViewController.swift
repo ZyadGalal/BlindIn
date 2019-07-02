@@ -71,7 +71,7 @@ class MZPastEventViewController: UIViewController {
 
 }
 
-extension MZPastEventViewController : UITableViewDelegate , UITableViewDataSource{
+extension MZPastEventViewController :  UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int(hangout.count)
@@ -90,4 +90,12 @@ extension MZPastEventViewController : UITableViewDelegate , UITableViewDataSourc
         return cell
     }
   
+}
+extension MZPastEventViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let current = hangout.object(at: UInt(indexPath.row))
+        let vc = UIStoryboard(name: "HangoutProfile", bundle: nil).instantiateViewController(withIdentifier: "ZGHangoutProfileViewController") as! ZGHangoutProfileViewController
+        vc.hangoutId = current["_id"] as! String
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
