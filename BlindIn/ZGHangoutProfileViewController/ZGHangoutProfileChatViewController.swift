@@ -100,6 +100,7 @@ class ZGHangoutProfileChatViewController: UIViewController {
     }
     func sendNewMessage (hangoutId : String , message : String){
         Meteor.meteorClient?.callMethodName("hangouts.methods.message", parameters: [["hangoutId" : hangoutId,"message" : message ]], responseCallback: { (response, error) in
+            self.chatTableView.reloadData()
             if error != nil{
                 print(error)
             }

@@ -371,7 +371,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Wj-lJ-Nhr">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Wj-lJ-Nhr">
                                                             <rect key="frame" x="8" y="56" width="358" height="220"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="220" id="TWU-by-SzV"/>
@@ -792,7 +792,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="ejO-q0-Oh2">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="ejO-q0-Oh2">
                                                             <rect key="frame" x="8" y="56" width="358" height="220"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="220" id="Une-ML-4B1"/>

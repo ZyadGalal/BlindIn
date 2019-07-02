@@ -184,7 +184,7 @@ class ZGHangoutProfileViewController: UIViewController {
                 if member == Meteor.meteorClient?.userId!{
                     joinButton.isHidden = true
                     sharingButton.isHidden = false
-                    return
+                    break
                 }
                 else{
                     joinButton.isHidden = false
